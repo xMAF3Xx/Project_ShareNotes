@@ -1,0 +1,43 @@
+.ciao
+{
+    background-color: blueviolet;
+}
+.hola
+{
+    margin-left: 1750px;
+    width: 180px;
+    height: 120px;
+
+}
+.centered
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.testo
+{
+    text-align: center;
+    color: white;
+}
+.second-rotation
+{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+    top: 50%;
+    right: 25%;
+
+}
+@keyframes spin {
+    from{transform: rotateZ(0deg);}
+    to{transform: rotateZ(360deg);}
+}
+.centered-rotation
+{
+    animation: spin .5s  infinite;
+    animation-timing-function: linear;
+}
