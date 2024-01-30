@@ -130,7 +130,6 @@ body {
 }
 
 .popup {
-    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -140,6 +139,7 @@ body {
     z-index: 1000; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 18px;
+    height: 35%;
 }
 
 .popup-content {

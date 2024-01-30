@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
     var openPopupBtn = document.getElementById('openPopupBtn');
     var closePopupBtn = document.getElementById('closePopupBtn');
     var popup = document.getElementById('popup');
@@ -55,4 +55,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+*/
+function azione(variabile) { 
+    if(document.getElementById(variabile).style.display=='') { 
+    document.getElementById(variabile).style.display='none'; 
+    }else{ 
+    document.getElementById(variabile).style.display=''; 
+    } 
+}
 
+function azione2(variabile1, variabile2, variabile3) { 
+    if(document.getElementById(variabile1).style.display=="none") { 
+    document.getElementById(variabile1).style.display='';
+    document.getElementById(variabile2).style.display="none";
+    document.getElementById(variabile3).style.display="none";
+    }
+}
