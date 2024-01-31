@@ -12,8 +12,8 @@
 </head>
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-	<button id="openPopupBtn" onclick="azione('popup-Pulsanti')">Apri Popup</button>
-	<div id="popup-Pulsanti" class="popupPulsanti" style="display: none;">
+	<button id="openPopupBtn">Apri Popup</button>
+	<div id="popup" class="popup">
     	<div class="popup-content">
         	<span class="close" id="closePopupBtn">&times;</span>
       	  	<div class="pop-menu">
@@ -21,24 +21,39 @@
 					<h1 class="popup-sets">Crea il tuo<br>SnakeID!</h1>
     				<button id="register" class="register-button">Registrati</button><br>
     				<p class="txt-snakeID">Hai già uno SnakeID?<p>
-    				<button id="login" class="login-button" onclick="azione2('login-popup', 'popup-Pulsanti', 'openPopupBtn')">Accedi</button>
+    				<button id="access" class="login-button">Accedi</button>
 				</div>
 			</div>
     	</div>
 	</div>
-	<div id="login-popup" class="popup" style="display: none;">
+	<div id="access-popup" class="popup">
     	<div class="popup-content">
-        	<span class="close" id="closelogin" onclick="togliQuesto('login-popup')">&times;</span>
+        	<span class="close" id="closeaccess">&times;</span>
       	  	<div class="pop-menu">
-      	  		<h1 class="popup-sets">Login:</h1>
-    			<form action="checkData.php" method="post">
-					<input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email">
-    				<input class="login-inputs" type="text" id="passwordInput" name="passwordInput" placeholder="Password" autocomplete="current-password"><br>
-    				<input class="avanti-login-button" type="submit" value="Avanti" name="invia">
-				</form>
+      	  		<h1 class="popup-sets">Accedi:</h1>
+    			<input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email">
+    			<input class="login-inputs" type="text" id="passwordInput" name="passwordInput" placeholder="Password" autocomplete="current-password">
+    			<button class="avanti-login-button">Avanti</button>
     			<div>
-    				<h6 class="no-account">non hai un account?</h6> 
-    				<button id="">Registrati</button>
+    				<h6 class="no-account">non hai uno SnakeID?!</h6> 
+    				<button id="register-out" class="register-out-button">Registrati</button>
+    			</div>
+      	  	</div>
+      	</div>
+    </div>
+    <div id="register-popup" class="popup">
+    	<div class="popup-content">
+        	<span class="close" id="closeregister">&times;</span>
+      	  	<div class="pop-menu-register">
+      	  		<h1 class="popup-sets">Registrati:</h1>
+      	  		<input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="Nickname">
+    			<input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email">
+    			<input class="login-inputs" type="text" id="passwordInput" name="passwordInput" placeholder="Password" autocomplete="current-password">
+    			<input class="login-inputs" type="text" id="passwordInput" name="passwordInput" placeholder="Conferma password" autocomplete="current-password">
+    			<button class="avanti-register-button">Avanti</button>
+    			<div>
+    				<h6 class="no-account">hai già uno SnakeID?!</h6> 
+    				<button id="access-out" class="login-out-button">Accedi</button>
     			</div>
       	  	</div>
       	</div>
