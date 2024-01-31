@@ -1,0 +1,207 @@
+/*body {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('img/sfondo-prova.jpg');
+    background-repeat: no-repeat;
+}*/
+
+.login-menu-backgroud {
+	width: 300px;
+	height: 300px;
+	border: 5px solid #E68F61;
+	background-color: transparent;
+	border-radius:15px;
+	opacity: 1;
+}
+
+.pop-menu-register {
+	width: 300px;
+	height: 410px;
+	background-image: url('img/sfondo-popup-registrati.png');
+	border-radius:15px;
+	opacity: 1;
+}
+
+.pop-menu {
+	width: 300px;
+	height: 300px;
+	background-image: url('img/sfondo-popup.png');
+	border-radius:15px;
+	opacity: 1;
+}
+
+.popup-sets {
+	line-height: 1.5;
+	text-align: center;
+	color: #B6ED6C;
+}
+
+.login-inputs {
+	margin-left: 5%;
+	border-radius: 5px;
+	line-height: 1;
+	margin-top: 30px;
+	color: #76A8E4;
+}
+
+.avanti-login-button {
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #9A9CF2; 
+    color: white;
+    background-color: #9A9CF2; 
+    border-radius: 18px;
+    margin-top: 30px;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-left: 40%;
+    transition: all 0.3s ease;
+}
+.avanti-login-button:hover {
+	transform: scale(1.2);
+}
+
+.avanti-register-button {
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #FF0000; 
+    color: white;
+    background-color: #FF0000; 
+    border-radius: 18px;
+    margin-top: 30px;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-left: 40%;
+    transition: all 0.3s ease;
+}
+.avanti-register-button:hover {
+    transform: scale(1.2);
+}
+
+ .login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #9A9CF2; 
+    color: white;
+    background-color: #9A9CF2;
+    border-radius: 18px;
+    margin-left: 10%;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+.login-button:hover {
+    transform: scale(1.2);
+}
+
+.register-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #FF0000; 
+    color: white;
+    background-color: #FF0000; 
+    border-radius: 18px;
+    margin-top: 15px;
+   	margin-left: 8%;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.register-button:hover {
+    transform: scale(1.2); 
+}
+
+.login-out-button {
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #9A9CF2; 
+    color: white;
+    background-color: #9A9CF2; 
+    border-radius: 18px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.login-out-button:hover {
+    transform: scale(1.2);
+}
+
+.register-out-button {
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #FF0000; 
+    color: white;
+    background-color: #FF0000; 
+    border-radius: 18px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.register-out-button:hover {
+    transform: scale(1.2);
+    color: #fff; 
+}
+
+.no-account {
+	color: #FAE07E;
+	display: inline;
+	margin-left: 5%;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background-color: none;
+    z-index: 1000; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 18px;
+}
+
+.popup-content {
+    max-width: 400px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+}
+
+.close:hover {
+    color: #ff0000;
+}
+
+.txt-snakeID {
+	text-align:center;
+}
