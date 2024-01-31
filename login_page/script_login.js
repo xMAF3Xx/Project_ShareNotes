@@ -69,5 +69,9 @@ function azione2(variabile1, variabile2, variabile3) {
     document.getElementById(variabile1).style.display='';
     document.getElementById(variabile2).style.display="none";
     document.getElementById(variabile3).style.display="none";
-    }
+    } 
+}
+
+function togliQuesto(variabile){
+    document.getElementById(variabile).style.display='none';
 }
