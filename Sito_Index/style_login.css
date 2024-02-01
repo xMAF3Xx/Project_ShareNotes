@@ -39,11 +39,11 @@
 }
 
 .login-inputs {
-	margin-left: 5%;
+	margin-left: 1px;
 	border-radius: 5px;
 	line-height: 1;
-	margin-top: 30px;
-	color: #76A8E4;
+	margin-top: 25px;
+	color: #76A8E4; 
 }
 
 .avanti-login-button {
@@ -78,7 +78,7 @@
     color: white;
     background-color: #FF0000; 
     border-radius: 18px;
-    margin-top: 30px;
+    margin-top: 40px;
     justify-content: center;
     margin-bottom: 10px;
     margin-left: 40%;
@@ -86,6 +86,11 @@
 }
 .avanti-register-button:hover {
     transform: scale(1.2);
+}
+
+.avanti-register-button-senza-hover {
+  pointer-events: none;
+  transition: none;
 }
 
  .login-button {
@@ -204,4 +209,21 @@
 
 .txt-snakeID {
 	text-align:center;
+}
+
+.ctr {
+	color: red;
+}
+
+.checkbox {
+	display: inline-block;
+	position: absolute; 
+    top: 46%; 
+    left: 85%;
+}
+
+#controllo {
+	position: absolute; 
+    top: 66%; 
+    left: 15%;
 }
