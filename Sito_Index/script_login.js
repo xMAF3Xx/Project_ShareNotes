@@ -93,6 +93,11 @@ document.addEventListener('DOMContentLoaded', function () {
         passwordInput.addEventListener('blur', controllaInput);
         passwordInputControl.addEventListener('blur', controllaInput);
   	  	});
-  	  	
-  	  	
-  	  	
+
+        function checkEmail(theForm) {
+            var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/
+            if (re.test(theForm.news.value))
+                return true;
+            alert("l'eMail \"" + theForm.news.value + "\" NON \u00c8 valida!");
+            return false;
+        }
