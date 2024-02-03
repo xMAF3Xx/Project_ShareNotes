@@ -8,7 +8,7 @@ body
 {
     flex-direction: column;
     display: flex;
-    background-image: url("sfondo.png");
+    background-image: url("img/sfondo.png");
     background-repeat: no-repeat;
     background-size: cover; /* Aggiunta questa riga per coprire l'intera area con l'immagine */
     background-position: center center;
@@ -32,10 +32,7 @@ body
 }
 
 #imm {
-    margin-top: 10px;
-    width: 110px;
-    height: 80px;
-    margin-bottom: 20px;
+    max-width: 4.9%;
 }
 
 .navbar {
