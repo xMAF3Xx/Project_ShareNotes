@@ -1,0 +1,6 @@
+/*per fare il cavas grande come la pagina*/
+var canvasDim=document.querySelector('canvas');
+canvasDim.width=window.innerWidth;
+canvasDim.height=window.innerHeight;
+console.log(canvasDim);
+
