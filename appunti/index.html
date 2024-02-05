@@ -8,10 +8,7 @@
 </head>
 <body>
     <b><h1 ID="titolo">SHARENOTES</h1></b>
-    <canvas id="drawingCanvas" width="1200" height="800"></canvas>
     <div id="textOptions">
-        <input type="text" id="textInput" placeholder="Inserisci testo" style="position:absolute; top: 10px; left: 10px;">
-        <br>
         <label for="fontSelector">Font:</label>
         <select id="fontSelector">
             <option value="Arial">Arial</option>
@@ -25,13 +22,22 @@
             <option value="16">16px</option>
             <option value="20">20px</option>
         </select>
-        <br>
-        <button onclick="insertText()">Inserisci Testo</button>
+        <button onclick="execCommand('bold')"><b>B</b></button>
+        <button onclick="execCommand('italic')"><i>I</i></button>
+        <button onclick="execCommand('underline')"><u>U</u></button>
+        <select onchange="execCommand('formatBlock', false, this.value)">
+            <option value="p">Paragrafo</option>
+            <option value="h1">Intestazione 1</option>
+            <option value="h2">Intestazione 2</option>
+            <option value="h3">Intestazione 3</option>
+        </select>
     </div>
     <br>
     <label for="colorPicker">Colore:</label>
     <input type="color" id="colorPicker" value="#ff0000">
-
+    <div id="editor" contenteditable="true">
+    <canvas id="drawingCanvas" width="1200" height="800"></canvas>
+     </div>
     <script src="js.js"></script>
 </body>
 </html>
