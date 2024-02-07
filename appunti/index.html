@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint-Like Drawing</title>
+    <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+    <b><h1 ID="titolo">SHARENOTES</h1></b>
+    <div id="textOptions">
+        <label for="fontSelector">Font:</label>
+        <select id="fontSelector">
+            <option value="Arial">Arial</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Courier New">Courier New</option>
+        </select>
+        <br>
+        <label for="fontSizeSelector">Dimensione del testo:</label>
+        <select id="fontSizeSelector">
+            <option value="12">12px</option>
+            <option value="16">16px</option>
+            <option value="20">20px</option>
+        </select>
+        <button onclick="execCommand('bold')"><b>B</b></button>
+        <button onclick="execCommand('italic')"><i>I</i></button>
+        <button onclick="execCommand('underline')"><u>U</u></button>
+        <button onclick="enableWriting()">Scrivi</button>
+        <select onchange="execCommand('formatBlock', false, this.value)">
+            <option value="p">Paragrafo</option>
+            <option value="h1">Intestazione 1</option>
+            <option value="h2">Intestazione 2</option>
+            <option value="h3">Intestazione 3</option>
+        </select>
+    </div>
+    <button id="eraseButton">Cancella</button>
+    <br>
+    <label for="colorPicker">Colore:</label>
+    <input type="color" id="colorPicker" value="#ff0000">
+    <div id="editor" contenteditable="true">
+        <canvas id="drawingCanvas" width="800" height="600"></canvas>
+        <textarea id="textArea" style="display:none;"></textarea>
+    </div>
+    <button id="finishButton" onclick="finishWriting()">Fine</button>
+    <script src="js.js"></script>
+</body>
+</html>
+

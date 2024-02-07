@@ -1,0 +1,53 @@
+#drawingCanvas {
+    border: 1px solid #000;
+    background-color: #fff;
+    cursor: crosshair;
+    
+}
+#titolo
+{
+    background-color: greenyellow;
+    text-align: center;
+    font-size: 20px;
+    
+}
+#textOptions {
+    display: flex;
+    align-items: center;
+}
+
+#textOptions label, #textOptions select, #textOptions button {
+    margin-right: 10px;
+}
+textarea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 100%;
+    resize: none;
+    display: none;
+    font-size: 20px;
+    z-index: 2;
+}
+body {
+    margin: 0;
+    overflow: hidden;
+}
+#finishButton {
+
+    top: 10px;
+    left: 80px;
+    display: none;
+    z-index: 2;
+}
+button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+}
+#eraseButton 
+{
+   margin-left: 100px;
+}
