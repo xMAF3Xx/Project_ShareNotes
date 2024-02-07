@@ -35,7 +35,8 @@
 .popup-sets {
 	line-height: 1.5;
 	text-align: center;
-	color: #B6ED6C;
+	color: #00000; 
+	font-weight: bold;
 }
 
 .login-inputs {
@@ -43,7 +44,11 @@
 	border-radius: 5px;
 	line-height: 1;
 	margin-top: 25px;
-	color: #76A8E4; 
+	color: black; 
+	border: none; 
+	outline: none;
+	border-bottom: 2px solid;
+	backgoround: none;
 }
 
 .avanti-login-button {
@@ -171,7 +176,7 @@
 }
 
 .no-account {
-	color: #FAE07E;
+	color: #48494B;
 	display: inline;
 	margin-left: 5%;
 }
@@ -224,6 +229,12 @@
 
 #controllo {
 	position: absolute; 
-    top: 66%; 
+    top: 63%; 
+    left: 15%;
+}
+
+#controlloLog{
+	position: absolute; 
+    top: 53%; 
     left: 15%;
 }

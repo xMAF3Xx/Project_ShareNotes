@@ -24,7 +24,7 @@ body{
     margin-top: 180px;
     text-align: center;
     font-weight: bold;
-    text-shadow: 5px 5px grey;
+    text-shadow: 5px 5px #B7B7B7;
     font-size: 100px;
 }
 #menu_button{
