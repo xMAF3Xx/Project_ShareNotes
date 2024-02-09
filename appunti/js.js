@@ -15,6 +15,9 @@ let currentText = '';
 let drawings = [];
 let clickStart = { x: 0, y: 0 };
 let editingText = null;
+let isBold = false;
+let isItalic = false;
+let isUnderline = false;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -94,6 +97,18 @@ function handleKeyDown(e) {
         currentText = currentText.slice(0, -1);
     }
 
+    if (e.key === 'b') {
+        isBold = !isBold;
+    }
+
+    if (e.key === 'i') {
+        isItalic = !isItalic;
+    }
+
+    if (e.key === 'u') {
+        isUnderline = !isUnderline;
+    }
+
     redrawCanvas();
 }
 
@@ -102,10 +117,25 @@ function redrawCanvas() {
 
     for (const drawing of drawings) {
         if (drawing.type === 'text') {
-            if (drawing !== editingText) {
-                context.font = `${drawing.fontSize} ${drawing.font}`;
-                context.fillStyle = drawing.color;
-                context.fillText(drawing.text, drawing.x, drawing.y);
+            context.font = `${drawing.fontSize}px ${drawing.font}`;
+            context.fillStyle = drawing.color;
+
+            // Applica grassetto, corsivo e sottolineato
+            if (isBold) context.font = `bold ${context.font}`;
+            if (isItalic) context.font = `italic ${context.font}`;
+            
+            // Disegna il testo
+            context.fillText(drawing.text, drawing.x, drawing.y);
+
+            // Ripristina le impostazioni del font
+            context.font = `${drawing.fontSize}px ${drawing.font}`;
+
+            // Applica sottolineato
+            if (isUnderline) {
+                context.beginPath();
+                context.moveTo(drawing.x, drawing.y + parseInt(drawing.fontSize) + 5);
+                context.lineTo(drawing.x + context.measureText(drawing.text).width, drawing.y + parseInt(drawing.fontSize) + 5);
+                context.stroke();
             }
         } else if (drawing.type === 'image') {
             context.putImageData(drawing.imageData, 0, 0);
@@ -115,18 +145,35 @@ function redrawCanvas() {
     if (!isTyping && currentText !== '') {
         context.font = `${getSelectedFontSize()} ${fontSelector.value}`;
         context.fillStyle = drawingColor;
-        context.fillText(currentText, clickStart.x, clickStart.y);
+
+        // Applica grassetto, corsivo e sottolineato
+        if (isBold) context.font = `bold ${context.font}`;
+        if (isItalic) context.font = `italic ${context.font}`;
+
+        // Disegna il testo
+        //context.fillText(currentText, clickStart.x, clickStart.y);
+
+        // Ripristina le impostazioni del font
+        context.font = `${getSelectedFontSize()} ${fontSelector.value}`;
+
+        // Applica sottolineato
+        if (isUnderline) {
+            context.beginPath();
+            context.moveTo(clickStart.x, clickStart.y + parseInt(getSelectedFontSize()) + 5);
+            context.lineTo(clickStart.x + context.measureText(currentText).width, clickStart.y + parseInt(getSelectedFontSize()) + 5);
+            context.stroke();
+        }
     }
 }
 
 
 function finishWriting() {
     isTyping = false;
-    const text = textarea.value.trim(); // Rimuovi gli spazi vuoti all'inizio e alla fine del testo
+    const text = textarea.value.trim();
     textarea.value = '';
     hideWritingOptions();
 
-    if (text !== '') { // Controlla se il testo non è vuoto dopo la rimozione degli spazi vuoti
+    if (text !== '') {
         const nextX = clickStart.x;
         const nextY = clickStart.y + parseInt(getSelectedFontSize()) + 10;
 
@@ -136,36 +183,49 @@ function finishWriting() {
 
             // Sostituisci la vecchia parola con la nuova parola
             drawings[index].text = text;
-        } else {
-            // Disegna il testo
-            context.font = `${getSelectedFontSize()} ${fontSelector.value}`;
-            context.fillStyle = drawingColor;
-            context.fillText(text, nextX, nextY);
 
+            // Applica grassetto, corsivo o sottolineato
+            if (isBold) drawings[index].font = `bold ${drawings[index].font}`;
+            if (isItalic) drawings[index].font = `italic ${drawings[index].font}`;
+            if (isUnderline) drawings[index].textDecoration = 'underline';
+
+            // Disegna solo il testo modificato
+            context.font = `${drawings[index].fontSize}px ${drawings[index].font}`;
+            context.fillStyle = drawingColor;
+            context.fillText(drawings[index].text, nextX, nextY);
+        } else {
             // Aggiungi il testo all'array
+            const fontStyle = `${isBold ? 'bold' : ''} ${isItalic ? 'italic' : ''}`;
             drawings.push({
                 type: 'text',
                 text: text,
                 x: nextX,
                 y: nextY,
-                font: `${getSelectedFontSize()} ${fontSelector.value}`,
+                font: `${getSelectedFontSize()} ${fontSelector.value} ${fontStyle}`,
                 fontSize: getSelectedFontSize(),
                 color: drawingColor
             });
+
+            // Disegna solo il testo aggiunto
+            context.font = `${getSelectedFontSize()} ${fontSelector.value} ${fontStyle}`;
+            context.fillStyle = drawingColor;
+            context.fillText(text, nextX, nextY);
         }
     }
 
     currentText = '';
 }
 
-
-
-
-
-
 function eraseAll() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    drawings = [];
+    // Pulisci solo il testo, non l'intero canvas
+    for (let i = drawings.length - 1; i >= 0; i--) {
+        if (drawings[i].type === 'text') {
+            drawings.splice(i, 1);
+        }
+    }
+
+    // Ridisegna il canvas con gli elementi rimanenti
+    redrawCanvas();
 }
 
 function enableWriting() {
@@ -197,7 +257,9 @@ function editText(e) {
     const mouseX = e.clientX - canvas.offsetLeft;
     const mouseY = e.clientY - canvas.offsetTop;
 
-    for (const drawing of drawings) {
+    // Trova l'elemento di testo su cui l'utente ha cliccato
+    for (let i = drawings.length - 1; i >= 0; i--) {
+        const drawing = drawings[i];
         if (drawing.type === 'text') {
             context.font = `${drawing.fontSize} ${drawing.font}`;
             const textWidth = context.measureText(drawing.text).width;
@@ -214,6 +276,8 @@ function editText(e) {
         }
     }
 }
+
+
 
 fontSelector.addEventListener('change', function () {
     setFont(fontSelector.value);
@@ -263,3 +327,37 @@ document.addEventListener('keyup', function (e) {
         finishWriting();
     }
 });
+
+function handleKeyUp(e) {
+    if (!isTyping) return;
+
+    if (e.key === 'b') {
+        isBold = false;
+    }
+
+    if (e.key === 'i') {
+        isItalic = false;
+    }
+
+    if (e.key === 'u') {
+        isUnderline = false;
+    }
+
+    redrawCanvas();
+}
+
+document.addEventListener('keyup', handleKeyUp);
+function toggleBold() {
+    isBold = !isBold;
+    redrawCanvas();
+}
+
+function toggleItalic() {
+    isItalic = !isItalic;
+    redrawCanvas();
+}
+
+function toggleUnderline() {
+    isUnderline = !isUnderline;
+    redrawCanvas();
+}

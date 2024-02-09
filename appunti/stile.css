@@ -51,3 +51,23 @@ button {
 {
    margin-left: 100px;
 }
+#boldButton
+{
+    margin-top: 40px;
+    margin-left: 600px;
+}
+#italicButton
+{
+    margin-top: 40px;
+    margin-left: 700px;
+}
+#underlineButton
+{
+    margin-top: 40px;
+    margin-left: 800px;
+}
+#undoButton
+{
+    margin-top: 40px;
+    margin-left: 900px;
+}
