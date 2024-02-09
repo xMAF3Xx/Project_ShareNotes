@@ -1,0 +1,76 @@
+.body
+{
+    display:flex;
+    align-items: center;
+    background-color: aqua;
+}
+#titolo
+{
+    margin-left: 40px;
+    font-size: 65px;
+    font-style: inherit;
+    text-align: left;
+    color:  red;
+}
+#immagine
+{
+    margin-left: 175px;
+    border-radius: 50%;
+    height: 230px;
+    width: 230px;
+    margin-top: 10px;
+}
+#nome
+{
+    margin-left: 130px;
+    font-size: 35px;
+    margin-top: 30px;
+}
+.blocco 
+{
+    border: 2px solid ;
+    margin-top: 60px;
+    margin-left: 400px;
+    background-color: white;
+    border-radius: 50px;
+    width: 850px;
+    height: 400px;
+}
+#testo
+{
+    color: orange;
+    font-size: 30px;
+    text-align: center;
+}
+.elem
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.informazioni
+{
+    margin-left: 30px;
+}
+#scritte
+{
+    font-size: 25px;
+    text-indent: 5px;
+}
+#scritte2
+{
+    margin-top: 15px;
+    font-size: 25px;
+    text-indent: 5px;
+}
+#scritte3
+{
+    margin-top: 15px;
+    font-size: 25px;
+    text-indent: 5px;
+}
+#bottone
+{
+    width: 60px;
+    height: 30px;
+}

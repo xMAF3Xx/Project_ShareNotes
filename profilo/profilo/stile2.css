@@ -1,0 +1,19 @@
+#titolo
+{
+    color:red;
+    font-size: 35px;
+    box-shadow: inset;
+    margin-left: 600px;
+}
+label 
+{
+    display: block; 
+    font-size: 18px;
+    margin-top: 10px; 
+    color: #333; 
+    font-weight: bold;
+}
+.princ
+{
+    background-color: aqua;
+}
