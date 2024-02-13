@@ -66,8 +66,23 @@ button {
     margin-top: 40px;
     margin-left: 800px;
 }
-#undoButton
+#eraseimagesButton
 {
     margin-top: 40px;
     margin-left: 900px;
+}
+#deleteTextButton
+{
+    margin-top: 40px;
+    margin-left: 1000px;
+}
+#moveButton
+{
+    margin-top: 40px;
+    margin-left: 900px; 
+}
+#salva
+{
+    margin-top: 40px;
+    margin-left: 900px; 
 }

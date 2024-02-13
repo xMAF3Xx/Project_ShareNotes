@@ -1,3 +1,4 @@
+
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
 const textarea = document.getElementById('textArea');
@@ -30,6 +31,33 @@ function startDrawing(e) {
     context.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
     clickStart = { x: e.clientX - canvas.offsetLeft, y: e.clientY - canvas.offsetTop };
 }
+function editDoubleClick(e) {
+    const mouseX = e.clientX - canvas.offsetLeft;
+    const mouseY = e.clientY - canvas.offsetTop;
+
+    for (let i = drawings.length - 1; i >= 0; i--) {
+        const drawing = drawings[i];
+        if (drawing.type === 'text') {
+            context.font = drawing.font;
+            const textWidth = context.measureText(drawing.text).width;
+            const lineHeight = parseInt(drawing.fontSize) + 10;
+
+            if (
+                mouseX > drawing.x &&
+                mouseX < drawing.x + textWidth &&
+                mouseY > drawing.y - lineHeight &&
+                mouseY < drawing.y
+            ) {
+                editingText = drawing;
+                currentText = drawing.text;
+                redrawCanvas();
+                enableWriting();
+                break;
+            }
+        }
+    }
+}
+canvas.addEventListener('dblclick', editDoubleClick)
 
 function stopDrawing() {
     if (isErasing) return;
@@ -114,7 +142,7 @@ function handleKeyDown(e) {
 
 function redrawCanvas() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-
+    let currentText;
     for (const drawing of drawings) {
         if (drawing.type === 'text') {
             context.font = `${drawing.fontSize}px ${drawing.font}`;
@@ -149,6 +177,14 @@ function redrawCanvas() {
         // Applica grassetto, corsivo e sottolineato
         if (isBold) context.font = `bold ${context.font}`;
         if (isItalic) context.font = `italic ${context.font}`;
+        if (isUnderline && drawing.textDecoration === 'underline') {
+            const textMetrics = context.measureText(drawing.text);
+            const underlineY = drawing.y + parseInt(drawing.fontSize) + 5;
+            context.beginPath();
+            context.moveTo(drawing.x, underlineY);
+            context.lineTo(drawing.x + textMetrics.width, underlineY);
+            context.stroke();
+        }
 
         // Disegna il testo
         //context.fillText(currentText, clickStart.x, clickStart.y);
@@ -174,46 +210,173 @@ function finishWriting() {
     hideWritingOptions();
 
     if (text !== '') {
-        const nextX = clickStart.x;
-        const nextY = clickStart.y + parseInt(getSelectedFontSize()) + 10;
+        let nextX, nextY;
 
         if (editingText !== null) {
-            // Trova l'indice della versione precedente della parola
-            const index = drawings.findIndex(drawing => drawing.type === 'text' && drawing === editingText);
+            // Se si sta modificando un testo esistente
+            nextX = editingText.x;
+            nextY = editingText.y;
 
-            // Sostituisci la vecchia parola con la nuova parola
-            drawings[index].text = text;
-
-            // Applica grassetto, corsivo o sottolineato
-            if (isBold) drawings[index].font = `bold ${drawings[index].font}`;
-            if (isItalic) drawings[index].font = `italic ${drawings[index].font}`;
-            if (isUnderline) drawings[index].textDecoration = 'underline';
-
-            // Disegna solo il testo modificato
-            context.font = `${drawings[index].fontSize}px ${drawings[index].font}`;
-            context.fillStyle = drawingColor;
-            context.fillText(drawings[index].text, nextX, nextY);
+            // Rimuovi la versione precedente della parola
+            drawings = drawings.filter(drawing => drawing.type !== 'text' || drawing !== editingText);
         } else {
-            // Aggiungi il testo all'array
-            const fontStyle = `${isBold ? 'bold' : ''} ${isItalic ? 'italic' : ''}`;
-            drawings.push({
+            // Se si sta aggiungendo un nuovo testo
+            nextX = clickStart.x;
+            nextY = clickStart.y + parseInt(getSelectedFontSize()) + 10;
+
+            // Rimuovi tutte le versioni precedenti della parola
+            drawings = drawings.filter(drawing => drawing.type !== 'text');
+        }
+
+        let appliedStyles = '';
+
+        // Applica stili solo se i bottoni sono premuti
+        if (isBold) appliedStyles += 'bold ';
+        if (isItalic) appliedStyles += 'italic ';
+        if (isUnderline) appliedStyles += 'underline ';
+
+        const fontStyle = `${appliedStyles}${getSelectedFontSize()} ${fontSelector.value}`;
+
+        // Aggiungi il testo all'array con gli stili correnti
+        const newDrawing = {
+            type: 'text',
+            text: text,
+            x: nextX,
+            y: nextY,
+            font: fontStyle,
+            fontSize: getSelectedFontSize(),
+            color: drawingColor,
+            textDecoration: isUnderline ? 'underline' : 'none' // Aggiungi lo stile di sottolineatura
+        };
+
+        drawings.push(newDrawing);
+
+        // Ridisegna il canvas con il nuovo testo
+        redrawCanvas();
+    }
+
+    currentText = '';
+}
+
+function finishWriting() {
+    isTyping = false;
+    const text = textarea.value.trim();
+    textarea.value = '';
+    hideWritingOptions();
+
+    if (text !== '') {
+        let nextX, nextY;
+
+        if (editingText !== null) {
+            // Se si sta modificando un testo esistente
+            nextX = editingText.x;
+            nextY = editingText.y;
+
+            // Aggiorna la parola esistente con le nuove informazioni
+            editingText.text = text;
+            editingText.font = `${getSelectedFontSize()} ${fontSelector.value}`;
+            editingText.fontSize = getSelectedFontSize();
+            editingText.color = drawingColor;
+            editingText.textDecoration = isUnderline ? 'underline' : 'none';
+        } else {
+            // Se si sta aggiungendo un nuovo testo
+            nextX = clickStart.x;
+            nextY = clickStart.y + parseInt(getSelectedFontSize()) + 10;
+
+            // Rimuovi tutte le versioni precedenti della parola
+            drawings = drawings.filter(drawing => drawing.type !== 'text');
+            
+            let appliedStyles = '';
+
+            // Applica stili solo se i bottoni sono premuti
+            if (isBold) appliedStyles += 'bold ';
+            if (isItalic) appliedStyles += 'italic ';
+            if (isUnderline) appliedStyles += 'underline ';
+
+            const fontStyle = `${appliedStyles}${getSelectedFontSize()} ${fontSelector.value}`;
+
+            // Aggiungi il testo all'array con gli stili correnti
+            const newDrawing = {
                 type: 'text',
                 text: text,
                 x: nextX,
                 y: nextY,
-                font: `${getSelectedFontSize()} ${fontSelector.value} ${fontStyle}`,
+                font: fontStyle,
                 fontSize: getSelectedFontSize(),
-                color: drawingColor
-            });
+                color: drawingColor,
+                textDecoration: isUnderline ? 'underline' : 'none' // Aggiungi lo stile di sottolineatura
+            };
 
-            // Disegna solo il testo aggiunto
-            context.font = `${getSelectedFontSize()} ${fontSelector.value} ${fontStyle}`;
-            context.fillStyle = drawingColor;
-            context.fillText(text, nextX, nextY);
+            drawings.push(newDrawing);
         }
+
+        // Disegna solo il testo aggiunto o modificato
+        context.font = `${getSelectedFontSize()} ${fontSelector.value}`;
+        context.fillStyle = drawingColor;
+        context.fillText(text, nextX, nextY);
+
+        // Ridisegna il canvas con il nuovo testo
+        redrawCanvas();
     }
 
     currentText = '';
+}
+
+
+
+
+function redrawCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (const drawing of drawings) {
+        if (drawing.type === 'text') {
+            context.font = drawing.font;
+            context.fillStyle = drawing.color;
+
+            // Disegna il testo
+            context.fillText(drawing.text, drawing.x, drawing.y);
+
+            // Applica sottolineato
+            if (drawing.textDecoration === 'underline') {
+                const textMetrics = context.measureText(drawing.text);
+                const underlineY = drawing.y + parseInt(drawing.fontSize) + 5;
+                context.beginPath();
+                context.moveTo(drawing.x, underlineY);
+                context.lineTo(drawing.x + textMetrics.width, underlineY);
+                context.stroke();
+            }
+        } else if (drawing.type === 'image') {
+            context.putImageData(drawing.imageData, 0, 0);
+        }
+    }
+
+    if (isTyping && currentText !== '') {
+        const fontStyle = `${getSelectedFontSize()} ${fontSelector.value}`;
+        context.font = fontStyle;
+        context.fillStyle = drawingColor;
+
+        // Applica grassetto, corsivo e sottolineato
+        if (isBold) context.font = `bold ${context.font}`;
+        if (isItalic) context.font = `italic ${context.font}`;
+        if (isUnderline) {
+            const textMetrics = context.measureText(currentText);
+            const underlineY = clickStart.y + parseInt(getSelectedFontSize()) + 5;
+            context.beginPath();
+            context.moveTo(clickStart.x, underlineY);
+            context.lineTo(clickStart.x + textMetrics.width, underlineY);
+            context.stroke();
+        }
+
+        // Non disegnare il testo qui
+    }
+}
+
+
+
+
+function getUpdatedFontStyle(fontStyle) {
+    // Aggiorna gli stili al font in base allo stato corrente di grassetto e corsivo
+    return `${fontStyle} ${isBold ? 'bold' : ''} ${isItalic ? 'italic' : ''}`;
 }
 
 function eraseAll() {
