@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+}
+
+.horizontal,
+.vertical {
+    flex: 1;
+}
+
+.horizontal {
+    width: 1561px;
+    height: 1080px;
+    flex-grow: 4;
+}
+
+.vertical {
+    display: inline-block;
+    min-width: 358px;
+    min-height: 1080px;
+}
+
+.line-horizontal {
+	height: 1px;
+	border: 1px solid #BBBBBB;
+	background-color: #BBBBBB;
+}
+
+.line-vertical {
+	height: 100vh;
+	border: 1px solid #BBBBBB;
+	background-color: #BBBBBB;
+}
+
+.logo {
+	width: 82px;
+	height: 113px;
+}
+
+.open-zone {
+	background-image: url('img/try.png');
+	background-position: center;
+	width: 100%;
+	height: 100vh;
+}
+
+.user-img {
+	height: 100px;
+	width: 100px; 
+	margin-left: 37%;
+	margin-top: 50px;
+}
+
+.center-user-name,
+.center-user-mail {
+	text-align: center;
+	margin-top: 5px;
+}
+
+.center-user-name { 
+	font-weight: bold;
+}
+
+.top-buttons-style {
+	display: inline-block;
+	margin-left: 8%;
+	margin-bottom: 15px;
+}
