@@ -29,6 +29,12 @@ canvas.height = window.innerHeight;
 let erasedDrawings = [];  // Array per mantenere le coordinate degli elementi cancellati
 
 // ...
+const gommaSlider = document.getElementById('gomma');
+let gommaSize = gommaSlider.value;
+
+gommaSlider.addEventListener('input', function () {
+    gommaSize = gommaSlider.value;
+});
 
 function erase(e) {
     if (!isErasing) return;
@@ -36,8 +42,7 @@ function erase(e) {
     const mouseX = e.clientX - canvas.offsetLeft;
     const mouseY = e.clientY - canvas.offsetTop;
 
-    const eraseSize = 20;
-    context.clearRect(mouseX - eraseSize / 2, mouseY - eraseSize / 2, eraseSize, eraseSize);
+    context.clearRect(mouseX - gommaSize / 2, mouseY - gommaSize / 2, gommaSize, gommaSize);
 }
 // ...
 
