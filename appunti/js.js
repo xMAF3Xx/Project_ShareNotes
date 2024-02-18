@@ -7,6 +7,9 @@ const writeButton = document.getElementById('writeButton');
 const eraseButton = document.getElementById('eraseButton');
 const fontSelector = document.getElementById('fontSelector');
 const fontSizeSelector = document.getElementById('fontSizeSelector');
+const thicknessSlider = document.getElementById('thicknessSlider');
+let drawingThickness = thicknessSlider.value;
+
 
 let isDrawing = false;
 let isTyping = false;
@@ -19,45 +22,86 @@ let editingText = null;
 let isBold = false;
 let isItalic = false;
 let isUnderline = false;
+let eraseSize;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+let erasedDrawings = [];  // Array per mantenere le coordinate degli elementi cancellati
+
+// ...
+
+function erase(e) {
+    if (!isErasing) return;
+
+    const mouseX = e.clientX - canvas.offsetLeft;
+    const mouseY = e.clientY - canvas.offsetTop;
+
+    const eraseSize = 20;
+    context.clearRect(mouseX - eraseSize / 2, mouseY - eraseSize / 2, eraseSize, eraseSize);
+}
+// ...
+
+function eraseAll() {
+    // Aggiungi le coordinate degli elementi di tipo 'image' cancellati
+    erasedDrawings = erasedDrawings.concat(
+        drawings.filter(item => item.type === 'image').map(erasedDrawing => ({ x: 0, y: 0 }))
+    );
+
+    // Pulisci il canvas principale
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Ridisegna gli elementi di tipo 'text' rimanenti nel canvas principale
+    drawings.filter(item => item.type !== 'image').forEach(drawItem => {
+        if (drawItem.type === 'text') {
+            // Disegna il testo
+            context.font = drawItem.font;
+            context.fillStyle = drawItem.color;
+            context.fillText(drawItem.text, drawItem.x, drawItem.y);
+
+            // Applica sottolineato
+            if (drawItem.textDecoration === 'underline') {
+                const textMetrics = context.measureText(drawItem.text);
+                const underlineY = drawItem.y + parseInt(drawItem.fontSize) + 5;
+                context.beginPath();
+                context.moveTo(drawItem.x, underlineY);
+                context.lineTo(drawItem.x + textMetrics.width, underlineY);
+                context.stroke();
+            }
+        }
+    });
+
+    // Ridisegna gli elementi cancellati con il colore bianco
+    context.fillStyle = '#ffffff';  // Colore bianco
+    erasedDrawings.forEach(erasedDrawing => {
+        context.fillRect(erasedDrawing.x, erasedDrawing.y, eraseSize, eraseSize);
+    });
+
+}
+
 
 function startDrawing(e) {
     if (isErasing) return;
     isDrawing = true;
     isTyping = false;
+
+    const textCursor = document.getElementById('textCursor');
+    textCursor.style.display = 'block';
+
+    // Calcola la posizione del cursore rispetto al canvas
+    const canvasX = e.clientX - canvas.offsetLeft;
+    const canvasY = e.clientY - canvas.offsetTop;
+
+    // Posiziona il cursore esattamente sopra il punto di inizio del testo
+    textCursor.style.left = canvasX + 'px';
+    textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop + 28 + 'px';
     context.beginPath();
-    context.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-    clickStart = { x: e.clientX - canvas.offsetLeft, y: e.clientY - canvas.offsetTop };
+    context.moveTo(canvasX, canvasY);
+    clickStart = { x: canvasX, y: canvasY };
+    updateCursorSize();
 }
-function editDoubleClick(e) {
-    const mouseX = e.clientX - canvas.offsetLeft;
-    const mouseY = e.clientY - canvas.offsetTop;
 
-    for (let i = drawings.length - 1; i >= 0; i--) {
-        const drawing = drawings[i];
-        if (drawing.type === 'text') {
-            context.font = drawing.font;
-            const textWidth = context.measureText(drawing.text).width;
-            const lineHeight = parseInt(drawing.fontSize) + 10;
 
-            if (
-                mouseX > drawing.x &&
-                mouseX < drawing.x + textWidth &&
-                mouseY > drawing.y - lineHeight &&
-                mouseY < drawing.y
-            ) {
-                editingText = drawing;
-                currentText = drawing.text;
-                redrawCanvas();
-                enableWriting();
-                break;
-            }
-        }
-    }
-}
-canvas.addEventListener('dblclick', editDoubleClick)
+
 
 function stopDrawing() {
     if (isErasing) return;
@@ -76,7 +120,7 @@ function setDrawingColor(color) {
 function draw(e) {
     if (!isDrawing || isErasing) return;
 
-    context.lineWidth = 5;
+    context.lineWidth = drawingThickness;  // Usa lo spessore corrente
     context.lineCap = 'round';
     context.strokeStyle = drawingColor;
 
@@ -86,15 +130,8 @@ function draw(e) {
     context.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
 }
 
-function erase(e) {
-    if (!isErasing) return;
 
-    const mouseX = e.clientX - canvas.offsetLeft;
-    const mouseY = e.clientY - canvas.offsetTop;
 
-    const eraseSize = 20;
-    context.clearRect(mouseX - eraseSize / 2, mouseY - eraseSize / 2, eraseSize, eraseSize);
-}
 
 function toggleEraser() {
     isErasing = !isErasing;
@@ -114,7 +151,19 @@ function setFontSize(fontSize) {
     fontSizeSelector.value = fontSize;
     context.font = `${fontSize} ${fontSelector.value}`;
     redrawCanvas();
+
+    updateCursorSize();
 }
+function updateCursorSize() {
+    const textCursor = document.getElementById('textCursor');
+    const fontSize = getSelectedFontSize();
+    const lineHeight = parseInt(fontSize) + 5; // Puoi regolare il valore in base alle tue preferenze
+    textCursor.style.height = lineHeight + 'px';
+}
+
+
+
+
 
 function handleKeyDown(e) {
     if (!isTyping) return;
@@ -203,65 +252,10 @@ function redrawCanvas() {
 }
 
 
-function finishWriting() {
-    isTyping = false;
-    const text = textarea.value.trim();
-    textarea.value = '';
-    hideWritingOptions();
-
-    if (text !== '') {
-        let nextX, nextY;
-
-        if (editingText !== null) {
-            // Se si sta modificando un testo esistente
-            nextX = editingText.x;
-            nextY = editingText.y;
-
-            // Rimuovi la versione precedente della parola
-            drawings = drawings.filter(drawing => drawing.type !== 'text' || drawing !== editingText);
-        } else {
-            // Se si sta aggiungendo un nuovo testo
-            nextX = clickStart.x;
-            nextY = clickStart.y + parseInt(getSelectedFontSize()) + 10;
-
-            // Rimuovi tutte le versioni precedenti della parola
-            drawings = drawings.filter(drawing => drawing.type !== 'text');
-        }
-
-        let appliedStyles = '';
-
-        // Applica stili solo se i bottoni sono premuti
-        if (isBold) appliedStyles += 'bold ';
-        if (isItalic) appliedStyles += 'italic ';
-        if (isUnderline) appliedStyles += 'underline ';
-
-        const fontStyle = `${appliedStyles}${getSelectedFontSize()} ${fontSelector.value}`;
-
-        // Aggiungi il testo all'array con gli stili correnti
-        const newDrawing = {
-            type: 'text',
-            text: text,
-            x: nextX,
-            y: nextY,
-            font: fontStyle,
-            fontSize: getSelectedFontSize(),
-            color: drawingColor,
-            textDecoration: isUnderline ? 'underline' : 'none' // Aggiungi lo stile di sottolineatura
-        };
-
-        drawings.push(newDrawing);
-
-        // Ridisegna il canvas con il nuovo testo
-        redrawCanvas();
-    }
-
-    currentText = '';
-}
 
 function finishWriting() {
     isTyping = false;
     const text = textarea.value.trim();
-    textarea.value = '';
     hideWritingOptions();
 
     if (text !== '') {
@@ -379,17 +373,7 @@ function getUpdatedFontStyle(fontStyle) {
     return `${fontStyle} ${isBold ? 'bold' : ''} ${isItalic ? 'italic' : ''}`;
 }
 
-function eraseAll() {
-    // Pulisci solo il testo, non l'intero canvas
-    for (let i = drawings.length - 1; i >= 0; i--) {
-        if (drawings[i].type === 'text') {
-            drawings.splice(i, 1);
-        }
-    }
 
-    // Ridisegna il canvas con gli elementi rimanenti
-    redrawCanvas();
-}
 
 function enableWriting() {
     isDrawing = false;
@@ -413,9 +397,9 @@ function hideWritingOptions() {
 function getSelectedFontSize() {
     return fontSizeSelector.value + 'px';
 }
-
+let lastClickedText = null;
 function editText(e) {
-    if (isDrawing || isErasing) return;
+    if (isDrawing || isErasing || !isTyping) return;
 
     const mouseX = e.clientX - canvas.offsetLeft;
     const mouseY = e.clientY - canvas.offsetTop;
@@ -428,17 +412,27 @@ function editText(e) {
             const textWidth = context.measureText(drawing.text).width;
             const lineHeight = parseInt(drawing.fontSize) + 10;
 
-            if (mouseX > drawing.x && mouseX < drawing.x + textWidth &&
-                mouseY > drawing.y - lineHeight && mouseY < drawing.y) {
+            if (
+                mouseX > drawing.x &&
+                mouseX < drawing.x + textWidth &&
+                mouseY > drawing.y - lineHeight &&
+                mouseY < drawing.y
+            ) {
+                // Imposta la variabile editingText quando viene cliccato un testo
                 editingText = drawing;
-                currentText = drawing.text;
-                redrawCanvas();
+                lastClickedText = null;
                 enableWriting();
-                break;
+                return;
             }
         }
     }
+
+    // Se non è stato cliccato nessun testo, esegui il normale comportamento di editText
+    lastClickedText = null;
+    editingText = null; // Aggiunta per assicurarsi che la variabile sia resettata quando non si sta modificando
+    enableWriting();
 }
+
 
 
 
@@ -490,6 +484,10 @@ document.addEventListener('keyup', function (e) {
         finishWriting();
     }
 });
+thicknessSlider.addEventListener('input', function () {
+    drawingThickness = thicknessSlider.value;
+});
+
 
 function handleKeyUp(e) {
     if (!isTyping) return;

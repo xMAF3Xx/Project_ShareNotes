@@ -32,7 +32,7 @@ textarea {
 }
 body {
     margin: 0;
-    overflow: hidden;
+
 }
 #finishButton {
 
@@ -86,3 +86,12 @@ button {
     margin-top: 40px;
     margin-left: 900px; 
 }
+.cursor {
+    width: 2px;
+    height: 16px;
+    background-color: black;
+    position: absolute;
+    display: none;
+    pointer-events: none;
+}
+
