@@ -11,22 +11,59 @@
 		<div class='container'>
         	<div class='horizontal'>
         		<img class="logo" src="img/logo.png">
-        		<input class="top-buttons-style" type="button" name="home" value="Home" id="home">
-        		<input class="top-buttons-style" type="button" name="who" value="Chi siamo?" id="who">
-        		<input class="top-buttons-style" type="button" name="find" value="Cerca appunti" id="find">
-        		<input class="top-buttons-style" type="button" name="funz" value="Funzionalità" id="funz">
-          		<div class="line-horizontal"></div>
+                <button class="top-buttons-style" href="#">Home</button>
+                <button class="top-buttons-style" href="#">Chi siamo?</button>
+                <button class="top-buttons-style" href="#">Cerca appunti</button>
+        		<button class="top-buttons-style" href="#">Funzionalità</button>
+                <hr class="line-horizontal">
           		<div class="open-zone">
-          			
+          			<h1 class="main-title">Appunti</h1>
+          			<div class="folders" id="folder-math" onclick="cambiaStatoMath()">
+          				<h6 class="math" id="titleSub">Matematica<h6>
+          				<hr class="line-horizontal">
+          			</div>
           		</div>
        		</div>
-       		<div class="line-vertical"></div>
+       		<hr class="line-vertical">
         	<div class='vertical'>
             	<img src="img/user.png" class="user-img">
             	<h1 class="center-user-name">NOMEUTENTE<h1>
             	<h3 class="center-user-mail">email@utente.com<h3>
             	<div class="line-horizontal"></div>
+            	<h3 class="divisions">Divisioni</h3>
+            	<nav class="division-column">
+            		<ul>
+            			<li>
+            				<select id="materia" name="Materia" class="options-dims">
+            					<option value="all">All</option>
+  								<option value="matematica">Matematica</option>
+  								<option value="italiano">Italiano</option>
+ 								<option value="storia">Storia</option>
+  								<option value="informatica">Informatica</option>
+  								<option value="telecomunicazione">Telecomunicazione</option>
+  								<option value="tpsi">TPSI</option>
+							</select>
+						</li>
+            			<li>
+            				<select id="classe" name="Classe" class="options-dims">
+            					<option value="all">All</option>
+  								<option value="prima">Prima</option>
+  								<option value="seconda">Seconda</option>
+ 								<option value="terza">Terza</option>
+  								<option value="quarta">Quarta</option>
+  								<option value="quinta">Quinta</option>
+							</select>
+						</li>
+            			<li>
+            				<select id="proprita" name="Proprietà" class="options-dims">
+            					<option value="all">All</option>
+  								<option value="your">Creati da te</option>
+  								<option value="others">Creati da altri</option>
+							</select>
+						</li> 
+            		<ul>
+            	</nav>
         	</div>
-    </div>
+    	</div>
 	</body>
 </html>

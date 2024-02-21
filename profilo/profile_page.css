@@ -41,6 +41,7 @@
 	background-position: center;
 	width: 100%;
 	height: 100vh;
+	margin-top: -40px;
 }
 
 .user-img {
@@ -64,4 +65,61 @@
 	display: inline-block;
 	margin-left: 8%;
 	margin-bottom: 15px;
+	background: white;
+	border: white;
+}
+
+.top-buttons-style:hover {
+	font-weight: bold;
+	transition: all 0.3s;
+}
+
+.divisions {
+	font-size: 25px;
+	margin-left: 15%;
+	margin-top: 15px;
+} 
+
+.division-column {
+	font-size: 20px;
+	margin-left: 10%;
+	margin-top: 10px;
+}
+
+.options-dims {
+	width: 250px;
+	height: 18px;
+	border: none;
+}
+
+.main-title {
+	font-size: 60px;
+	text-align: center;
+}
+
+.folders {
+	width: 85%;
+	height: 20px;
+	margin-left: 7.5%;
+	background-color: white;
+	border: 2px solid grey; 
+	border-radius:18px;
+	transition: height 0.3s ease;
+	overflow: hidden;
+}
+
+.folders-clicked {
+	height: 100px;
+	/*height: auto; <- non fa funzionare la transizione pk non sa mai che input dare alla funzione transition*/ 
+}
+
+.math {
+	margin-top: 4px;
+	margin-left: 10px;
+	color: red;
+	font-weight: bold;
+} 
+.materia-clicked {
+	text-align: center;
+	
 }
