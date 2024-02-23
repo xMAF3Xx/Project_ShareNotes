@@ -1,6 +1,6 @@
-function cambiaStatoMath() {
-    var folderMath = document.getElementById("folder-math");
-    var titleSub = document.getElementById("folder-math");
+function cambiaStatoMateria(id) {
+    var folderMath = document.getElementById(id);
+    var titleSub = document.getElementById(id);
     folderMath.classList.toggle("folders-clicked"); 
     titleSub.classList.toggle('materia-clicked');
 }

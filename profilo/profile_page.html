@@ -6,19 +6,20 @@
  	    <title>profile</title>
  	    <link type="text/CSS" rel="stylesheet" href="profile_page.css">
  	    <script src="profile_page.js"></script>
+		<script src="script_selezione.js"></script>
 	</head>
 	<body>
 		<div class='container'>
         	<div class='horizontal'>
         		<img class="logo" src="img/logo.png">
-                <button class="top-buttons-style" href="#">Home</button>
-                <button class="top-buttons-style" href="#">Chi siamo?</button>
-                <button class="top-buttons-style" href="#">Cerca appunti</button>
-        		<button class="top-buttons-style" href="#">Funzionalità</button>
+                <a href="index.php"><button class="top-buttons-style">Home</button></a>
+                <a href="aboutPage.html"><button class="top-buttons-style">Chi siamo?</button></a>
+                <a href="#"><button class="top-buttons-style">Cerca appunti</button></a>
+        		<a href="#"><button class="top-buttons-style">Funzionalità</button></a>
                 <hr class="line-horizontal">
           		<div class="open-zone">
           			<h1 class="main-title">Appunti</h1>
-          			<div class="folders" id="folder-math" onclick="cambiaStatoMath()">
+          			<div class="folders" id="folder-math" onclick="cambiaStatoMateria('folder-math')">
           				<h6 class="math" id="titleSub">Matematica<h6>
           				<hr class="line-horizontal">
           			</div>
@@ -27,8 +28,8 @@
        		<hr class="line-vertical">
         	<div class='vertical'>
             	<img src="img/user.png" class="user-img">
-            	<h1 class="center-user-name">NOMEUTENTE<h1>
-            	<h3 class="center-user-mail">email@utente.com<h3>
+            	<h1 class="center-user-name"><?php echo $nomeUtente ?><h1>
+            	<h3 class="center-user-mail"><?php echo $mail ?><h3>
             	<div class="line-horizontal"></div>
             	<h3 class="divisions">Divisioni</h3>
             	<nav class="division-column">

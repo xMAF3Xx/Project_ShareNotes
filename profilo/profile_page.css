@@ -89,6 +89,7 @@
 .options-dims {
 	width: 250px;
 	height: 18px;
+	border-radius: 8px;
 	border: none;
 }
 
@@ -109,8 +110,8 @@
 }
 
 .folders-clicked {
-	height: 100px;
-	/*height: auto; <- non fa funzionare la transizione pk non sa mai che input dare alla funzione transition*/ 
+	/*height: 100px;*/
+	height: auto; /*<- non fa funzionare la transizione pk non sa mai che input dare alla funzione transition*/ 
 }
 
 .math {
