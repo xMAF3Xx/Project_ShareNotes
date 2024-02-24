@@ -107,6 +107,7 @@
 	border-radius:18px;
 	transition: height 0.3s ease;
 	overflow: hidden;
+	margin-bottom: 20px;
 }
 
 .folders-clicked {
@@ -120,6 +121,42 @@
 	color: red;
 	font-weight: bold;
 } 
+
+.ita {
+	margin-top: 4px;
+	margin-left: 10px;
+	color: blue;
+	font-weight: bold;
+}
+
+.storia{
+	margin-top: 4px;
+	margin-left: 10px;
+	color: orange;
+	font-weight: bold;
+}
+
+.ict {
+	margin-top: 4px;
+	margin-left: 10px;
+	color: #008F11;
+	font-weight: bold;
+}
+
+.tlc {
+	margin-top: 4px;
+	margin-left: 10px;
+	color: #a6dced;
+	font-weight: bold;
+}
+
+.tpsi {
+	margin-top: 4px;
+	margin-left: 10px;
+	color: #f1807e;
+	font-weight: bold;
+}
+
 .materia-clicked {
 	text-align: center;
 	

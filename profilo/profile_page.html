@@ -20,7 +20,27 @@
           		<div class="open-zone">
           			<h1 class="main-title">Appunti</h1>
           			<div class="folders" id="folder-math" onclick="cambiaStatoMateria('folder-math')">
-          				<h6 class="math" id="titleSub">Matematica<h6>
+          				<h6 class="math" id="titleSub-math">Matematica<h6>
+          				<hr class="line-horizontal">
+          			</div>
+          			<div class="folders" id="folder-ita" onclick="cambiaStatoMateria('folder-ita')">
+          				<h6 class="ita" id="titleSub-ita">Italiano<h6>
+          				<hr class="line-horizontal">
+          			</div>
+          			<div class="folders" id="folder-storia" onclick="cambiaStatoMateria('folder-storia')">
+          				<h6 class="storia" id="titleSub-storia">Storia<h6>
+          				<hr class="line-horizontal">
+          			</div>
+          			<div class="folders" id="folder-ict" onclick="cambiaStatoMateria('folder-ict')">
+          				<h6 class="ict" id="titleSub-ict">Informatica<h6>
+          				<hr class="line-horizontal">
+          			</div>
+          			<div class="folders" id="folder-tlc" onclick="cambiaStatoMateria('folder-tlc')">
+          				<h6 class="tlc" id="titleSub-tlc">Telecomunicazioni<h6>
+          				<hr class="line-horizontal">
+          			</div>
+          			<div class="folders" id="folder-tpsi" onclick="cambiaStatoMateria('folder-tpsi')">
+          				<h6 class="tpsi" id="titleSub-tpsi">TPSI<h6>
           				<hr class="line-horizontal">
           			</div>
           		</div>
@@ -28,20 +48,20 @@
        		<hr class="line-vertical">
         	<div class='vertical'>
             	<img src="img/user.png" class="user-img">
-            	<h1 class="center-user-name"><?php echo $nomeUtente ?><h1>
-            	<h3 class="center-user-mail"><?php echo $mail ?><h3>
+            	<h1 class="center-user-name">NOMEUTENTE<h1>
+            	<h3 class="center-user-mail">utente@email.com<h3>
             	<div class="line-horizontal"></div>
             	<h3 class="divisions">Divisioni</h3>
             	<nav class="division-column">
             		<ul>
             			<li>
-            				<select id="materia" name="Materia" class="options-dims">
+            				<select id="materia" name="Materia" class="options-dims" onchange="sort('folder-' + this.value, 'folders', this.value)">
             					<option value="all">All</option>
-  								<option value="matematica">Matematica</option>
-  								<option value="italiano">Italiano</option>
+  								<option value="math">Matematica</option>
+  								<option value="ita">Italiano</option>
  								<option value="storia">Storia</option>
-  								<option value="informatica">Informatica</option>
-  								<option value="telecomunicazione">Telecomunicazione</option>
+  								<option value="ict">Informatica</option>
+  								<option value="tlc">Telecomunicazione</option>
   								<option value="tpsi">TPSI</option>
 							</select>
 						</li>
