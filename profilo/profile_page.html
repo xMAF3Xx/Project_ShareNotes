@@ -7,11 +7,12 @@
  	    <link type="text/CSS" rel="stylesheet" href="profile_page.css">
  	    <script src="profile_page.js"></script>
 		<script src="script_selezione.js"></script>
+		<link rel="icon" href="img\logo_favicon.ico" type="image/x-icon"> <!-- inserire qui una nuova immagine come logo della finestra nel browser, chiedere a forna di farla-->
 	</head>
 	<body>
 		<div class='container'>
         	<div class='horizontal'>
-        		<img class="logo" src="img/logo.png">
+        		<a href="index.php"><img class="logo" src="img/logo.png"></a>
                 <a href="index.php"><button class="top-buttons-style">Home</button></a>
                 <a href="aboutPage.html"><button class="top-buttons-style">Chi siamo?</button></a>
                 <a href="#"><button class="top-buttons-style">Cerca appunti</button></a>
@@ -43,6 +44,10 @@
           				<h6 class="tpsi" id="titleSub-tpsi">TPSI<h6>
           				<hr class="line-horizontal">
           			</div>
+          			<p class="crea-txt">Crea</p>
+          			<a href="#"> <!-- qui va inserito il percorso per la pagina di creazione-->
+          				<img src="img\create.png" class="create-btn">
+          			</a>
           		</div>
        		</div>
        		<hr class="line-vertical">
@@ -84,6 +89,7 @@
 						</li> 
             		<ul>
             	</nav>
+            	<a href="#"><img class="exit-btn" src="img\exit.png"></a> <!--tag probabilmente da cambiare per far uscire l'utente dall'account-->
         	</div>
     	</div>
 	</body>
