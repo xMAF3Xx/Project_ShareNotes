@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+/*document.addEventListener('DOMContentLoaded', function () {
 	var popup = document.getElementById('popup');
     var openPopupBtn = document.getElementById('openPopupBtn');
     var closePopupBtn = document.getElementById('closePopupBtn');
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var openRegisterBtn = document.getElementById('register');
     var closeRegisterBtn = document.getElementById('closeregister');
     var openRegisterOutBtn = document.getElementById('register-out');
+    var blurry = document.getElementById('blurrato');
 
 	 function inizialiseAccessBtn() {
 	 		var bottone3 = document.getElementById("avanti-access");
@@ -29,10 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	 
     function showPopup(popupElement) {
         popupElement.style.display = 'block';
+        blurry.classList.add("blur-screen");
     }
 
     function hidePopup(popupElement) {
         popupElement.style.display = 'none';
+        blurry.classList.remove("blur-screen");
     }
 
     openPopupBtn.addEventListener('click', function () {
@@ -174,8 +177,196 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.getElementById('emailInputaccess').addEventListener('change', controllaLogin);
-    passwordInputaccess.addEventListener('change', controllaLogin);
+    passwordInputaccess.addEventListener('change', controllaLogin); 
+}); */
+
+document.addEventListener('DOMContentLoaded', function () {
+    var popup = document.getElementById('popup');
+    var openPopupBtn = document.getElementById('openPopupBtn');
+    var closePopupBtn = document.getElementById('closePopupBtn');
+    var accessPopup = document.getElementById('access-popup');
+    var openAccessBtn = document.getElementById('access');
+    var closeAccessBtn = document.getElementById('closeaccess');
+    var openAccessOutBtn = document.getElementById('access-out');
+    var registerPopup = document.getElementById('register-popup');
+    var openRegisterBtn = document.getElementById('register');
+    var closeRegisterBtn = document.getElementById('closeregister');
+    var openRegisterOutBtn = document.getElementById('register-out');
+    var blurry = document.getElementById('blurrato');
+
+    function initializeAccessBtn() {
+        var bottone3 = document.getElementById("avanti-access");
+        bottone3.disabled = true;
+        bottone3.style.backgroundColor = "gray";
+        bottone3.style.borderColor = "gray";
+        bottone3.classList.add("avanti-register-button-senza-hover");
+    }
+
+    function initializeRegisterBtn() {
+        var bottone4 = document.getElementById("avanti-register");
+        bottone4.disabled = true;
+        bottone4.style.backgroundColor = "gray";
+        bottone4.style.borderColor = "gray";
+        bottone4.classList.add("avanti-register-button-senza-hover");
+    }
+
+    function showPopup(popupElement) {
+        popupElement.style.display = 'block';
+        blurry.classList.add("blur-screen");
+    }
+
+    function hidePopup(popupElement) {
+        popupElement.style.display = 'none';
+        blurry.classList.remove("blur-screen");
+    }
+
+    function closePopups() {
+        hidePopup(popup);
+        hidePopup(accessPopup);
+        hidePopup(registerPopup);
+    }
+
+    document.addEventListener('click', function (event) {
+        var isClickInsidePopups = popup.contains(event.target) || accessPopup.contains(event.target) || registerPopup.contains(event.target);
+    
+        if (!isClickInsidePopups) {
+            closePopups();
+        }
+    });
+    
+    openPopupBtn.addEventListener('click', function (event) {
+        event.stopPropagation(); 
+        showPopup(popup);
+    });
+
+    closePopupBtn.addEventListener('click', function () {
+        hidePopup(popup);
+    });
+
+    openAccessBtn.addEventListener('click', function () {
+        hidePopup(popup);
+        hidePopup(registerPopup);
+        initializeAccessBtn();
+        showPopup(accessPopup);
+    });
+
+    closeAccessBtn.addEventListener('click', function () {
+        hidePopup(accessPopup);
+    });
+
+    openAccessOutBtn.addEventListener('click', function () {
+        hidePopup(popup);
+        hidePopup(registerPopup);
+        initializeAccessBtn();
+        showPopup(accessPopup);
+    });
+
+    openRegisterBtn.addEventListener('click', function () {
+        hidePopup(popup);
+        hidePopup(accessPopup);
+        initializeRegisterBtn();
+        showPopup(registerPopup);
+    });
+
+    closeRegisterBtn.addEventListener('click', function () {
+        hidePopup(registerPopup);
+    });
+
+    openRegisterOutBtn.addEventListener('click', function () {
+        hidePopup(popup);
+        hidePopup(accessPopup);
+        initializeRegisterBtn();
+        showPopup(registerPopup);
+    });
+
+    document.getElementById('showPasswordAccess').addEventListener('change', function () {
+        var passwordInputAccess = document.getElementById('passwordInputaccess');
+        passwordInputAccess.type = this.checked ? 'text' : 'password';
+    });
+
+    document.getElementById('showPasswordRegister').addEventListener('change', function () {
+        var passwordInput1 = document.getElementById('passwordInput');
+        var passwordInput2 = document.getElementById('passwordInputControl');
+        passwordInput1.type = this.checked ? 'text' : 'password';
+        passwordInput2.type = this.checked ? 'text' : 'password';
+    });
+
+    function checkEmail(email) {
+        var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
+        return re.test(email);
+    }
+
+    function validatePassword() {
+        var passwordInput = document.getElementById('passwordInput').value;
+        var confirmPasswordInput = document.getElementById('passwordInputControl').value;
+        var email = document.getElementById('emailInput').value;
+        var nick = document.getElementById('nickinput').value;
+        var controlloElement = document.getElementById('controllo');
+        var registerButton = document.getElementById('avanti-register');
+
+        if (passwordInput === confirmPasswordInput && checkEmail(email) && nick !== '' && passwordInput !== '') {
+            controlloElement.innerText = '';
+            registerButton.disabled = false;
+            registerButton.style.backgroundColor = "#FF0000";
+            registerButton.style.borderColor = "#FF0000";
+            registerButton.classList.remove("avanti-register-button-senza-hover");
+        } else {
+            controlloElement.innerText = 'Credenziali non valide';
+            registerButton.disabled = true;
+            registerButton.style.backgroundColor = "gray";
+            registerButton.style.borderColor = "gray";
+            registerButton.classList.add("avanti-register-button-senza-hover");
+        }
+    }
+
+    function validateEmail() {
+        var email = document.getElementById('emailInput').value;
+        var passwordInput = document.getElementById('passwordInput').value;
+        var confirmPasswordInput = document.getElementById('passwordInputControl').value;
+        var nick = document.getElementById('nickinput').value;
+        var controlloElement = document.getElementById('controllo');
+        var registerButton = document.getElementById('avanti-register');
+
+        if (checkEmail(email) && passwordInput === confirmPasswordInput && nick !== '' && passwordInput !== '') {
+            controlloElement.innerText = '';
+            registerButton.disabled = false;
+            registerButton.style.backgroundColor = "#FF0000";
+            registerButton.style.borderColor = "#FF0000";
+            registerButton.classList.remove("avanti-register-button-senza-hover");
+        } else {
+            controlloElement.innerText = 'Credenziali non valide';
+            registerButton.disabled = true;
+            registerButton.style.backgroundColor = "gray";
+            registerButton.style.borderColor = "gray";
+            registerButton.classList.add("avanti-register-button-senza-hover");
+        }
+    }
+
+    function validateLogin() {
+        var email = document.getElementById('emailInputaccess').value;
+        var password = document.getElementById('passwordInputaccess').value;
+        var loginButton = document.getElementById('avanti-access');
+        var controlloElement = document.getElementById('controlloLog');
+
+        if (checkEmail(email) && password !== '') {
+            controlloElement.innerText = '';
+            loginButton.disabled = false;
+            loginButton.style.backgroundColor = "#9A9CF2";
+            loginButton.style.borderColor = "#9A9CF2";
+            loginButton.classList.remove("avanti-register-button-senza-hover");
+        } else {
+            controlloElement.innerText = 'Credenziali non valide';
+            loginButton.disabled = true;
+            loginButton.style.backgroundColor = "gray";
+            loginButton.style.borderColor = "gray";
+            loginButton.classList.add("avanti-register-button-senza-hover");
+        }
+    }
+
+    document.getElementById('passwordInput').addEventListener('change', validatePassword);
+    document.getElementById('passwordInputControl').addEventListener('change', validatePassword);
+    document.getElementById('nickinput').addEventListener('change', validatePassword);
+    document.getElementById('emailInput').addEventListener('change', validateEmail);
+    document.getElementById('passwordInputaccess').addEventListener('change', validateLogin);
+    document.getElementById('emailInputaccess').addEventListener('change', validateLogin);
 });
-
-
-

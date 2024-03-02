@@ -13,6 +13,7 @@
     <script src="script_login.js"></script>
   </head>
   <body>
+    <div id="blurrato" class="transition-back">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
       <header>
           <nav id="navbar" class="navbar navbar-dark bg-light fixed-top">
@@ -81,6 +82,7 @@
           <img id="img_Share" src="immagine.png" alt="Inserire un'immagine">
       </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </div>
       <!--<button id="openPopupBtn">Apri Popup</button>-->
       <div id="popup" class="popup">
           <div class="popup-content">
@@ -102,7 +104,7 @@
               <div class="pop-menu">
                   <h1 class="popup-sets">Accedi:</h1>
                   <form action="check.php" method="get">
-                      <input class="login-inputs" type="text" id="emailInputaccess" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="controllaLogin()">
+                      <input class="login-inputs" type="text" id="emailInputaccess" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="controllaLogin()"><br>
                       <input class="login-inputs" type="password" id="passwordInputaccess" name="passwordInput" placeholder="Password" autocomplete="current-password" onchange="controllaLogin()">
                       <input type="checkbox" id="showPasswordAccess" class="checkbox">
                       <p id="controlloLog" class="ctr"><p>
@@ -123,9 +125,9 @@
               <div class="pop-menu-register">
                   <h1 class="popup-sets">Registrati:</h1>
                   <form action="register.php" method="post">
-                      <input class="login-inputs" type="text" id="nickinput" name="nickInput" placeholder="Nickname">
-                      <input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="controllaPassword()">
-                      <input class="login-inputs" type="password" id="passwordInput" name="passwordInput" placeholder="Password" autocomplete="current-password">
+                      <input class="login-inputs" type="text" id="nickinput" name="nickInput" placeholder="Nickname"><br>
+                      <input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="controllaPassword()"><br>
+                      <input class="login-inputs" type="password" id="passwordInput" name="passwordInput" placeholder="Password" autocomplete="current-password"><br>
                       <input type="checkbox" id="showPasswordRegister" class="checkbox">
                       <input class="login-inputs" type="password" id="passwordInputControl" name="passwordInputControl" placeholder="Conferma password" autocomplete="current-password" onchange="controllaEmail()">
                       <p id="controllo" class="ctr"><p>
