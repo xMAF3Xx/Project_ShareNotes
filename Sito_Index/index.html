@@ -104,10 +104,13 @@
               <div class="pop-menu">
                   <h1 class="popup-sets">Accedi:</h1>
                   <form action="check.php" method="get">
-                      <input class="login-inputs" type="text" id="emailInputaccess" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="controllaLogin()"><br>
-                      <input class="login-inputs" type="password" id="passwordInputaccess" name="passwordInput" placeholder="Password" autocomplete="current-password" onchange="controllaLogin()">
-                      <input type="checkbox" id="showPasswordAccess" class="checkbox">
-                      <p id="controlloLog" class="ctr"><p>
+                      <input class="login-inputs" type="text" id="emailInputaccess" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="validateLogin()"><br>
+                      <input class="login-inputs" type="password" id="passwordInputaccess" name="passwordInput" placeholder="Password" autocomplete="current-password" onchange="validateLogin()">
+                      <input type="checkbox" id="showPasswordAccess" class="checkbox"><br>
+                       <text>Vuoi rimanere loggato?</text><br>
+                  	   <text>sì</text><input type="checkbox" id="loggedOn" name="stayLogged" onchange="validateLogin()" onchange="onlyOneYes()" value=true>
+                 	   <text>no</text><input type="checkbox" id="loggedOff" name="stayLogged" onchange="validateLogin()" onchange="onlyOneNo()" value=false>
+                      <p id="controlloLog" class="ctr-login"><p>
                       <input type="submit" value="Avanti" id="avanti-access" class="avanti-login-button">
                       <!--<button class="avanti-login-button">Avanti</button>-->
                   </form>
@@ -126,11 +129,11 @@
                   <h1 class="popup-sets">Registrati:</h1>
                   <form action="register.php" method="post">
                       <input class="login-inputs" type="text" id="nickinput" name="nickInput" placeholder="Nickname"><br>
-                      <input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="controllaPassword()"><br>
+                      <input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="validatePassword()"><br>
                       <input class="login-inputs" type="password" id="passwordInput" name="passwordInput" placeholder="Password" autocomplete="current-password"><br>
                       <input type="checkbox" id="showPasswordRegister" class="checkbox">
-                      <input class="login-inputs" type="password" id="passwordInputControl" name="passwordInputControl" placeholder="Conferma password" autocomplete="current-password" onchange="controllaEmail()">
-                      <p id="controllo" class="ctr"><p>
+                      <input class="login-inputs" type="password" id="passwordInputControl" name="passwordInputControl" placeholder="Conferma password" autocomplete="current-password" onchange="validateEmail()">
+                      <p id="controllo" class="ctr-register"><p>
                       <input type="submit" value="Avanti" id="avanti-register" class="avanti-register-button">
                           <!--<button class="avanti-register-button">Avanti</button>-->
                   </form>

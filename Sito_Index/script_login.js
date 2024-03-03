@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function () {
             registerButton.style.borderColor = "#FF0000";
             registerButton.classList.remove("avanti-register-button-senza-hover");
         } else {
-            controlloElement.innerText = 'Credenziali non valide';
+            controlloElement.innerText = 'Credenziali non valide :(';
             registerButton.disabled = true;
             registerButton.style.backgroundColor = "gray";
             registerButton.style.borderColor = "gray";
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function () {
             registerButton.style.borderColor = "#FF0000";
             registerButton.classList.remove("avanti-register-button-senza-hover");
         } else {
-            controlloElement.innerText = 'Credenziali non valide';
+            controlloElement.innerText = 'Credenziali non valide :(';
             registerButton.disabled = true;
             registerButton.style.backgroundColor = "gray";
             registerButton.style.borderColor = "gray";
@@ -347,21 +347,46 @@ document.addEventListener('DOMContentLoaded', function () {
         var password = document.getElementById('passwordInputaccess').value;
         var loginButton = document.getElementById('avanti-access');
         var controlloElement = document.getElementById('controlloLog');
+        var checkon = document.getElementById('loggedOn'); 
+        var checkoff = document.getElementById('loggedOff'); 
 
-        if (checkEmail(email) && password !== '') {
+        if (checkEmail(email) && email!=="" && password !== '' && (checkon.checked || checkoff.checked)) {
             controlloElement.innerText = '';
             loginButton.disabled = false;
             loginButton.style.backgroundColor = "#9A9CF2";
             loginButton.style.borderColor = "#9A9CF2";
             loginButton.classList.remove("avanti-register-button-senza-hover");
         } else {
-            controlloElement.innerText = 'Credenziali non valide';
+            controlloElement.innerText = 'Credenziali non valide :(';
             loginButton.disabled = true;
             loginButton.style.backgroundColor = "gray";
             loginButton.style.borderColor = "gray";
             loginButton.classList.add("avanti-register-button-senza-hover");
         }
     }
+    
+    loggedOn.addEventListener('change', validateLogin);
+    loggedOff.addEventListener('change', validateLogin);
+    
+    function onlyOneYes() {
+        var checkon1 = document.getElementById('loggedOn'); 
+        var checkoff1 = document.getElementById('loggedOff'); 
+
+        if (checkoff1.checked) {
+            checkoff1.checked = false;
+        }
+    }
+    loggedOn.addEventListener('change', onlyOneYes);
+    
+    function onlyOneNo() {
+        var checkon1 = document.getElementById('loggedOn'); 
+        var checkoff1 = document.getElementById('loggedOff'); 
+
+        if (checkon1.checked) {
+            checkon1.checked = false;
+        } 
+    }
+    loggedOff.addEventListener('change', onlyOneNo);
 
     document.getElementById('passwordInput').addEventListener('change', validatePassword);
     document.getElementById('passwordInputControl').addEventListener('change', validatePassword);
@@ -369,4 +394,5 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('emailInput').addEventListener('change', validateEmail);
     document.getElementById('passwordInputaccess').addEventListener('change', validateLogin);
     document.getElementById('emailInputaccess').addEventListener('change', validateLogin);
+
 });
