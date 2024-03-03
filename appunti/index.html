@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="stile.css">
 </head>
 <body class="body">
-    <b><h1 ID="titolo">SHARENOTES</h1></b>
+    <b><h1 id="titolo">SHARENOTES</h1></b>
     <div id="textOptions">
         <label for="fontSelector">Font:</label>
         <select id="fontSelector">
@@ -41,8 +41,24 @@
     <br>
     <label for="colorPicker">Colore:</label>
     <input type="color" id="colorPicker" value="#ff0000">
-    <div id="editor" contenteditable="true">
+      <div id="blocco">
+        <p id="titolino">SALVATAGGIO NOTA<img id="croce" src="x.png"></p> 
+        <div class="cose">
+        <b><label id="label" for="nota">INSERISCI IL NOME DELLA NOTA E LA MATERIA</label></b>
+        <input id="nota" type="text">
+        <select ID="nota2" >
+            <option value="mate">MATE</option>
+            <option value="italiano">ITALIANO</option>
+            <option value="informatica">INFORMATICA</option>
+            <option value="inglese">INGLESE</option>
+        </select>
+        </div>
+        <div>
+            <input id="submit" type="button" value="CONFERMA">
+        </div>
+        </div>
         <canvas id="drawingCanvas"></canvas>
+        <div id="editor" contenteditable="true">
         <textarea id="textArea" style="display:none;"></textarea>
     </div>
     <div>
@@ -50,7 +66,7 @@
         <button id="italicButton" onclick="toggleItalic()">I</button>
         <button id="underlineButton" onclick="toggleUnderline()">U</button>
     <button id="finishButton">Fine</button>
-    <button id="moveButton" onclick="toggleMove()">SALVA</button>
+    <button id="moveButton">SALVA</button>
     </div>
     <script src="js.js"></script>
 </body>

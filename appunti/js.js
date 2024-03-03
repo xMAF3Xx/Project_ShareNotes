@@ -8,6 +8,11 @@ const eraseButton = document.getElementById('eraseButton');
 const fontSelector = document.getElementById('fontSelector');
 const fontSizeSelector = document.getElementById('fontSizeSelector');
 const thicknessSlider = document.getElementById('thicknessSlider');
+const ciao=document.getElementById('moveButton');
+const hola=document.getElementById('blocco');
+const h=document.getElementById("croce");
+const f=document.getElementById("nota");
+const g=document.getElementById("submit");
 let drawingThickness = thicknessSlider.value;
 
 
@@ -228,7 +233,6 @@ function redrawCanvas() {
         context.font = `${getSelectedFontSize()} ${fontSelector.value}`;
         context.fillStyle = drawingColor;
 
-        // Applica grassetto, corsivo e sottolineato
         if (isBold) context.font = `bold ${context.font}`;
         if (isItalic) context.font = `italic ${context.font}`;
         if (isUnderline && drawing.textDecoration === 'underline') {
@@ -240,13 +244,10 @@ function redrawCanvas() {
             context.stroke();
         }
 
-        // Disegna il testo
-        //context.fillText(currentText, clickStart.x, clickStart.y);
-
-        // Ripristina le impostazioni del font
+        
         context.font = `${getSelectedFontSize()} ${fontSelector.value}`;
 
-        // Applica sottolineato
+        
         if (isUnderline) {
             context.beginPath();
             context.moveTo(clickStart.x, clickStart.y + parseInt(getSelectedFontSize()) + 5);
@@ -267,34 +268,30 @@ function finishWriting() {
         let nextX, nextY;
 
         if (editingText !== null) {
-            // Se si sta modificando un testo esistente
             nextX = editingText.x;
             nextY = editingText.y;
 
-            // Aggiorna la parola esistente con le nuove informazioni
             editingText.text = text;
             editingText.font = `${getSelectedFontSize()} ${fontSelector.value}`;
             editingText.fontSize = getSelectedFontSize();
             editingText.color = drawingColor;
             editingText.textDecoration = isUnderline ? 'underline' : 'none';
         } else {
-            // Se si sta aggiungendo un nuovo testo
+ 
             nextX = clickStart.x;
             nextY = clickStart.y + parseInt(getSelectedFontSize()) + 10;
 
-            // Rimuovi tutte le versioni precedenti della parola
             drawings = drawings.filter(drawing => drawing.type !== 'text');
             
             let appliedStyles = '';
 
-            // Applica stili solo se i bottoni sono premuti
             if (isBold) appliedStyles += 'bold ';
             if (isItalic) appliedStyles += 'italic ';
             if (isUnderline) appliedStyles += 'underline ';
 
             const fontStyle = `${appliedStyles}${getSelectedFontSize()} ${fontSelector.value}`;
 
-            // Aggiungi il testo all'array con gli stili correnti
+            
             const newDrawing = {
                 type: 'text',
                 text: text,
@@ -303,18 +300,17 @@ function finishWriting() {
                 font: fontStyle,
                 fontSize: getSelectedFontSize(),
                 color: drawingColor,
-                textDecoration: isUnderline ? 'underline' : 'none' // Aggiungi lo stile di sottolineatura
+                textDecoration: isUnderline ? 'underline' : 'none' 
             };
 
             drawings.push(newDrawing);
         }
 
-        // Disegna solo il testo aggiunto o modificato
+        
         context.font = `${getSelectedFontSize()} ${fontSelector.value}`;
         context.fillStyle = drawingColor;
         context.fillText(text, nextX, nextY);
 
-        // Ridisegna il canvas con il nuovo testo
         redrawCanvas();
     }
 
@@ -453,6 +449,7 @@ eraseButton.addEventListener('click', function () {
     toggleEraser();
 });
 
+
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('mouseup', stopDrawing);
 canvas.addEventListener('mousemove', function (e) {
@@ -492,6 +489,31 @@ document.addEventListener('keyup', function (e) {
 thicknessSlider.addEventListener('input', function () {
     drawingThickness = thicknessSlider.value;
 });
+moveButton.addEventListener('click', function() {
+    if (hola.style.display === 'block') {
+        hola.style.display = 'none'; 
+    } else {
+        hola.style.display = 'block'; 
+    }
+});
+let alertShown = false;
+
+h.addEventListener('click',function(){
+    hola.style.display='none';
+})
+f.addEventListener('input',function(){
+    if(this.value.length>20 && !alertShown)
+    {
+        alert("non puoi inserire un nome che superi i 20 caratteri");
+        alertShown = true;
+         g.disabled=true;
+    }
+    else
+    {
+        g.disabled=false;
+    }
+})
+
 
 
 function handleKeyUp(e) {
