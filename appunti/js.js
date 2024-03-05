@@ -508,6 +508,10 @@ f.addEventListener('input',function(){
         alertShown = true;
          g.disabled=true;
     }
+    else if(this.value.length<5 || (this.value.toLowerCase() === "notabianca"))
+    {
+        g.disabled=true;
+    }
     else
     {
         g.disabled=false;
