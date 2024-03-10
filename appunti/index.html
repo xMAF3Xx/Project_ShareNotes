@@ -7,63 +7,58 @@
     <link rel="stylesheet" href="stile.css">
 </head>
 <body class="body">
-
     <div id="tutto2">
-        <img  id="apri" src="+.jpg">
-    <img id="uscita" src="uscita.png">
-    <div id="tutto">
-    <p id="strumenti">BARRA DEGLI STRUMENTI</p>
-    <div id="textOptions">
-        <label for="fontSelector">Font:</label>
-        <select id="fontSelector">
-            <option value="Arial">Arial</option>
-            <option value="Times New Roman">Times New Roman</option>
-            <option value="Courier New">Courier New</option>
-        </select>
-        <div id="selettore">
-        <label for="fontSizeSelector">Dimensione del testo:</label>
-        <select id="fontSizeSelector">
-            <option value="12">12px</option>
-            <option value="16">16px</option>
-            <option value="20">20px</option>
-        </select>
-    </div>
-        <button id="chiudi">CHIUDI</button>
-    </div>
-    <div id="tools">
-        <!-- ... altri bottoni ... -->
-        <label for="thicknessSlider">Spessore Linea:</label>
-        <input type="range" id="thicknessSlider" min="1" max="20" value="5">
-    </div>
-    <div id="textCursor" class="cursor"></div>
-    <div id="gomma2">
-        <label for="gomma">Spessore Gomma:</label>
-        <input type="range" id="gomma" min="1" max="20" value="5">
-    </div>
-    <button id="eraseButton">Cancella</button>
-    <button id="writeButton">Scrivi</button>
-    <div id="bottoni">
-        <button id="boldButton" onclick="toggleBold()">B</button>
-        <button id="italicButton" onclick="toggleItalic()">I</button>
-        <button id="underlineButton" onclick="toggleUnderline()">U</button>
-    <button id="finishButton"></button>
-    <button id="moveButton">SALVA</button>
-    </div>
-
-
-   
-    <br>
-    <div id="colore">
-    <label for="colorPicker">Colore:</label>
-    <input type="color" id="colorPicker" value="#ff0000">
-    </div>
-    </div>
-      
+        <img  id="apri" src="img/+.jpg">
+        <img id="uscita" src="img/uscita.png">
+        <div id="tutto">
+            <p id="strumenti">BARRA DEGLI STRUMENTI</p>
+            <div id="textOptions">
+                <label for="fontSelector">Font:</label>
+                <select id="fontSelector">
+                    <option value="Arial">Arial</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier New">Courier New</option>
+                </select>
+                <div id="selettore">
+                    <label for="fontSizeSelector">Dimensione del testo:</label>
+                    <select id="fontSizeSelector">
+                        <option value="12">12px</option>
+                        <option value="16">16px</option>
+                        <option value="20">20px</option>
+                    </select>
+                </div>
+                <button id="chiudi">CHIUDI</button>
+            </div>
+            <div id="tools">
+                <!-- ... altri bottoni ... -->
+                <label for="thicknessSlider">Spessore Linea:</label>
+                <input type="range" id="thicknessSlider" min="1" max="20" value="5">
+            </div>
+            <div id="textCursor" class="cursor"></div>
+                <div id="gomma2">
+                    <label for="gomma">Spessore Gomma:</label>
+                    <input type="range" id="gomma" min="1" max="20" value="5">
+                </div>
+                <button id="eraseButton">Cancella</button>
+                <button id="writeButton">Scrivi</button>
+                <div id="bottoni">
+                    <button id="boldButton" onclick="toggleBold()">B</button>
+                    <button id="italicButton" onclick="toggleItalic()">I</button>
+                    <button id="underlineButton" onclick="toggleUnderline()">U</button>
+                    <button id="finishButton"></button>
+                    <button id="moveButton">SALVA</button>
+                </div>
+                <br>
+                <div id="colore">
+                    <label for="colorPicker">Colore:</label>
+                    <input type="color" id="colorPicker" value="#ff0000">
+                </div>
+        </div>
     </div>
     <div id="blocco">
         <p id="titolino">SALVATAGGIO NOTA</p>
-        <img id="croce" src="x.png"></p> 
-        <b id="titolino2"><p>INSERISCI IL NOME DELLA NOTA, LA MATERIA E IL TUO ANNO SCOLASTICO</p></b>
+        <img id="croce" src="img/x.png"></p> 
+        <b id="titolino2"><p>INSERISCI IL NOME DELLA NOTA, LA MATERIA E IL L'ANNO SCOLASTICO A CUI SI RIFERISCE</p></b>
         <input id="nota" type="text">
         <select ID="nota2" >
             <option value="mate">MATE</option>
@@ -81,16 +76,15 @@
         <div>
             <input id="submit" type="button" value="CONFERMA">
         </div>
-        </div>
-        <textarea id="textArea" style="display:none;"></textarea>
-        <canvas id="drawingCanvas"></canvas>
-        <div id="banner" style="display:none;">
-            <p id="banner-text">Vuoi salvare le modifiche?</p>
-            <button id="confermaSalvataggio">Sì</button>
-            <button id="annullaSalvataggio">No</button>
-            <button id="annulla">Annulla</button>
-        </div>
-    
+    </div>
+    <textarea id="textArea" style="display:none;"></textarea>
+    <canvas id="drawingCanvas"></canvas>
+    <div id="banner" style="display:none;">
+        <p id="banner-text">Vuoi salvare le modifiche?</p>
+        <button id="confermaSalvataggio">Sì</button>
+        <button id="annullaSalvataggio">No</button>
+        <button id="annulla">Annulla</button>
+    </div>
     <script src="js.js"></script>
 </body>
 </html>

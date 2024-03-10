@@ -609,14 +609,9 @@ uscita.addEventListener('click', function () {
 });
 
 confermaSalvataggio.addEventListener('click', function () {
-    const conferma = confirm("Vuoi salvare le modifiche?");
-    if (!conferma) {
-        window.location.href = 'il_tuo_link_di_destinazione';
-    } else {
         hola.style.display = 'block';
-    }
-
-    banner.style.display = 'none';
+        banner.style.display = 'none';
+        applicaSfocatura();
    
 });
 d.addEventListener('click',function(){
@@ -637,5 +632,3 @@ function rimuoviSfocatura() {
 ciao.addEventListener('click',function(){
         applicaSfocatura();
 })
-
-

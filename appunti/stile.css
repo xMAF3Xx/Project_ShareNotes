@@ -1,4 +1,3 @@
-
 #titolo
 {
     background-color: greenyellow;
@@ -48,9 +47,9 @@ textarea {
     font-size: 20px;
     z-index: 2;
 }
-body {
+.body {
     margin: 0;
-
+    position: relative;
 }
 
 #finishButton {
@@ -69,7 +68,7 @@ button {
     z-index: 1;
 }
 #blocco {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -83,16 +82,17 @@ button {
 
 #tutto
 {
+    position: absolute;
     width: 1500px;
     height: 140px;
     border-radius: 30px;
-    background-image: url("sfondo1.png");
+    background-image: url("img/sfondo1.png");
     margin-left: 190px;
     border: 1px solid black;
 }
 #apri
 {
-    position: fixed;
+    position: absolute;
     height: 30px;
     width: 30px;
     margin-top: 10px;
@@ -254,7 +254,7 @@ button {
     pointer-events: none;
 }
 #uscita {
-    position: fixed; /* Imposta l'elemento come fisso rispetto alla finestra del browser */
+    position: absolute; /* Imposta l'elemento come fisso rispetto alla finestra del browser */
     top: 0; /* Fissa la distanza dall'alto della finestra del browser */
     left: 1840px; /* Fissa la distanza dalla sinistra della finestra del browser */
     margin-top: -5px; /* Imposta il margine superiore */
@@ -297,5 +297,6 @@ button {
     margin-top: 55px;
     margin-left: 100px;
 }
-
-
+body, html{
+    overflow: hidden;
+}
