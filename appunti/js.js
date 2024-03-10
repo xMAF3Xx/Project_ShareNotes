@@ -14,6 +14,13 @@ const h=document.getElementById("croce");
 const f=document.getElementById("nota");
 const g=document.getElementById("submit");
 let drawingThickness = thicknessSlider.value;
+const v=document.getElementById("tutto");
+const l=document.getElementById("apri");
+const p=document.getElementById("chiudi");
+v.style.display='none';
+const s=document.getElementById("croce");
+const d=document.getElementById("annulla");
+const tutto2=document.getElementById("tutto2");
 
 
 let isDrawing = false;
@@ -377,6 +384,7 @@ function getUpdatedFontStyle(fontStyle) {
 
 
 function enableWriting() {
+    finishButton.style.display='none';
     isDrawing = false;
     isTyping = true;
     canvas.style.cursor = 'auto';
@@ -459,6 +467,7 @@ canvas.addEventListener('mousemove', function (e) {
         draw(e);
     }
 });
+const submitButton = document.getElementById('submit');
 canvas.addEventListener('click', editText);
 
 window.addEventListener('resize', function () {
@@ -466,6 +475,9 @@ window.addEventListener('resize', function () {
     canvas.height = window.innerHeight;
     redrawCanvas();
 });
+function spostaBloccoVersoDestra() {
+    tutto.classList.toggle('spostato-verso-destra');
+}
 
 document.addEventListener('keydown', handleKeyDown);
 
@@ -473,11 +485,26 @@ const colorPicker = document.getElementById('colorPicker');
 colorPicker.addEventListener('input', function () {
     setDrawingColor(colorPicker.value);
 });
-
+function ripristinaPosizioneOriginaria() {
+    tutto.classList.remove('spostato-verso-destra');
+}
+submitButton.addEventListener('click', function() {
+    ripristinaPosizioneOriginaria();
+});
+document.addEventListener('keyup', function(event) {
+    
+    if (event.keyCode === 13) {
+        if (tutto.classList.contains('spostato-verso-destra')) {
+            ripristinaPosizioneOriginaria();
+        }
+    }
+});
 writeButton.addEventListener('click', function () {
+    spostaBloccoVersoDestra();
     eraseAll();
     enableWriting();
 });
+finishButton.style.display='none';
 
 finishButton.addEventListener('click', finishWriting);
 
@@ -490,16 +517,21 @@ thicknessSlider.addEventListener('input', function () {
     drawingThickness = thicknessSlider.value;
 });
 moveButton.addEventListener('click', function() {
-    if (hola.style.display === 'block') {
-        hola.style.display = 'none'; 
+    if (hola.style.display === 'block' || banner.style.display === 'block') {
+        hola.style.display = 'none';
     } else {
-        hola.style.display = 'block'; 
+        hola.style.display = 'block';
+        tutto2.style.filter = 'blur(5px)'; // Imposta lo sfondo sfocato
     }
 });
+
+
+
 let alertShown = false;
 
 h.addEventListener('click',function(){
     hola.style.display='none';
+    tutto2.style.filter = 'none'; // Rimuovi lo sfondo sfocato
 })
 f.addEventListener('input',function(){
     if(this.value.length>20 && !alertShown)
@@ -516,6 +548,17 @@ f.addEventListener('input',function(){
     {
         g.disabled=false;
     }
+})
+
+l.addEventListener('click',function(){
+        v.style.display='block';
+        l.style.display='none';
+
+})
+
+p.addEventListener('click',function(){
+    v.style.display='none';
+    l.style.display='block';
 })
 
 
@@ -553,3 +596,46 @@ function toggleUnderline() {
     isUnderline = !isUnderline;
     redrawCanvas();
 }
+const uscita = document.getElementById('uscita');
+const banner = document.getElementById('banner');
+const confermaSalvataggio = document.getElementById('confermaSalvataggio');
+const annullaSalvataggio = document.getElementById('annullaSalvataggio');
+const bloccoSalvataggio = document.getElementById('bloccoSalvataggio');
+
+uscita.addEventListener('click', function () {
+    event.stopPropagation();
+    banner.style.display = 'block';
+    hola.style.display='none';
+});
+
+confermaSalvataggio.addEventListener('click', function () {
+    const conferma = confirm("Vuoi salvare le modifiche?");
+    if (!conferma) {
+        window.location.href = 'il_tuo_link_di_destinazione';
+    } else {
+        hola.style.display = 'block';
+    }
+
+    banner.style.display = 'none';
+   
+});
+d.addEventListener('click',function(){
+    banner.style.display='none';
+})
+
+annullaSalvataggio.addEventListener('click', function () {
+    window.location.href = 'il_tuo_link_di_destinazione';
+});
+function applicaSfocatura() {
+    document.body.classList.add('sfocato');
+}
+
+function rimuoviSfocatura() {
+    document.body.classList.remove('sfocato');
+}
+
+ciao.addEventListener('click',function(){
+        applicaSfocatura();
+})
+
+
