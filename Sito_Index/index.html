@@ -92,7 +92,7 @@
                       <h1 class="popup-sets">Crea il tuo<br>SnakeID!</h1>
                       <button id="register" class="register-button">Registrati</button><br>
                       <p class="txt-snakeID">Hai già uno SnakeID?<p>
-                          <button id="access" class="login-button">Accedi</button>
+                      <button id="access" class="login-button">Accedi</button><br>
                   </div>
               </div>
           </div>
@@ -102,11 +102,11 @@
           <div class="popup-content">
               <span class="close" id="closeaccess">&times;</span>
               <div class="pop-menu">
-                  <h1 class="popup-sets">Accedi:</h1>
+                  <h1 class="popup-sets-access">Accedi:</h1>
                   <form action="check.php" method="get">
                       <input class="login-inputs" type="text" id="emailInputaccess" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="validateLogin()"><br>
                       <input class="login-inputs" type="password" id="passwordInputaccess" name="passwordInput" placeholder="Password" autocomplete="current-password" onchange="validateLogin()">
-                      <input type="checkbox" id="showPasswordAccess" class="checkbox"><br>
+                      <input type="checkbox" id="showPasswordAccess" class="checkbox-login"><br>
                        <text>Vuoi rimanere loggato?</text><br>
                   	   <text>sì</text><input type="checkbox" id="loggedOn" name="stayLogged" onchange="validateLogin()" onchange="onlyOneYes()" value=true>
                  	   <text>no</text><input type="checkbox" id="loggedOff" name="stayLogged" onchange="validateLogin()" onchange="onlyOneNo()" value=false>
@@ -116,7 +116,8 @@
                   </form>
                   <div class="try">
                       <h6 class="no-account">non hai uno SnakeID?!</h6>
-                      <button id="register-out" class="register-out-button">Registrati</button>
+                      <button id="register-out" class="register-out-button">Registrati</button><br>
+                      <a href="#" target="_blank" class="pass-lost">hai perso la password?</a> <!-- aggiugnere al posto di "#" il link per la pagina per reimpostare la password-->
                   </div>
               </div>
           </div>
@@ -131,8 +132,14 @@
                       <input class="login-inputs" type="text" id="nickinput" name="nickInput" placeholder="Nickname"><br>
                       <input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="validatePassword()"><br>
                       <input class="login-inputs" type="password" id="passwordInput" name="passwordInput" placeholder="Password" autocomplete="current-password"><br>
-                      <input type="checkbox" id="showPasswordRegister" class="checkbox">
-                      <input class="login-inputs" type="password" id="passwordInputControl" name="passwordInputControl" placeholder="Conferma password" autocomplete="current-password" onchange="validateEmail()">
+                      <input type="checkbox" id="showPasswordRegister" class="checkbox-register">
+                      <input class="login-inputs" type="password" id="passwordInputControl" name="passwordInputControl" placeholder="Conferma password" autocomplete="current-password" onchange="validateEmail()"><br>
+                      <select id="classes" name="classe-sel" class="class-select" onchange="validatePassword()">
+                        <option value="none">classe</option>
+                        <option value="1">test</option>
+                        <option value="2">test2</option>
+                        <!-- inserire scelte, quella test è di prova -->
+                      </select>
                       <p id="controllo" class="ctr-register"><p>
                       <input type="submit" value="Avanti" id="avanti-register" class="avanti-register-button">
                           <!--<button class="avanti-register-button">Avanti</button>-->
@@ -144,5 +151,15 @@
               </div>
           </div>
       </div>
+      <!--<div id="popup-requirements" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closePopupBtn">&times;</span>
+            <div class="pop-menu">
+                <div class="pop-menu">
+                    
+                </div>
+            </div>
+        </div>-->
+    </div>
   </body>
 </html>
