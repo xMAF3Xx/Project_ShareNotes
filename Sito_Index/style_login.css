@@ -314,4 +314,62 @@
 
 .ctr-reset-output {
     color: red;
+    position: absolute;
+    top: 53%;
+    left: 35%;
+}
+
+.cookie-accept-class {
+    font-size: 15px;
+}
+
+.cookie-title {
+    text-align: center;
+    color: rgb(0, 195, 23);
+    font-weight: bold;
+    line-height: 1.5;
+    font-size: 35px;
+}
+
+.accept-cookie-btn {
+    padding: 20px 30px;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid gray;
+    color: gray;
+    background-color: transparent;
+    border-radius: 30px;
+    justify-content: center;
+    margin-bottom: 70px;
+    margin-left: 10%;
+    transition: all 0.3s ease;
+}
+
+.accept-cookie-btn:hover {
+    transform: scale(1.2);
+    background-color: rgb(0, 195, 23);
+    border: 1px solid rgb(0, 195, 23);
+    color: white;
+}
+
+.refuse-cookie-btn {
+    padding: 20px 30px;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid gray;
+    color: gray;
+    background-color: transparent;
+    border-radius: 30px;
+    justify-content: center;
+    margin-bottom: 70px;
+    margin-left: 5%;
+    transition: all 0.3s ease;
+}
+
+.refuse-cookie-btn:hover {
+    transform: scale(0.9);
+    background-color: gray;
+    color: white;
 }
