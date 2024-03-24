@@ -13,6 +13,47 @@
 </head>
 
 <body>
+    <?php
+        session_start();
+        $conn = new mysqli("localhost","root","","share-notes");
+        include "utils.inc.php";
+
+        if (isLogged()) {
+            echo "<script>alert('Devi prima loggarti per poter prendere appunti.')
+                    setTimeout(function() {
+                    window.location.replace(\"index.html\");
+                    }, 0)
+                </script>";
+        }
+
+        if (isset($_SESSION["UserData"])){
+            $mail = $_SESSION["UserData"]["email"];
+			$nomeUtente = $_SESSION["UserData"]["name"];
+        }else {
+            $mail = $_COOKIE["UserMail"];
+			$query_nome = "SELECT name FROM user WHERE email='".trim($mail)."'";
+			$result_nome = $conn->query($query_nome);
+			$nomeUtente = ($result_nome->fetch_assoc())['name'];
+        }
+
+		function mostra($mat, $mail, $conn){
+			$query_num_mate = "SELECT * FROM nota WHERE email='$mail' and materia='$mat'";
+			$result_num_mate = $conn->query($query_num_mate);
+			$num_mate = mysqli_num_rows($result_num_mate);
+			$mate = array();
+			while ($row = $result_num_mate->fetch_assoc()) {
+				$mate[] = $row;
+			}
+			echo '<form method="POST" action="download.php">';
+			for ($j = 0; $j < $num_mate; $j++) {
+				$codice = $mate[$j]['codicenota'];
+				$title = $mate[$j]['titolo'];                                 //' onClick="assegnaValore(', $codice , ', ',$nomeInput,')" 
+				echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button><br>';
+			}
+			//echo '<input type="number" style="display: none;" name="codNot" id="', $nomeInput, '">';
+			echo '</form>';
+		}
+        ?>
     <div class='container-verti'>
         <div class='horizontal'>
             <a href="index.php"><img class="logo" src="img/logo.png"></a>
@@ -28,105 +69,125 @@
                         <h6 class="math" id="titleSub-math">Matematica
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('matematica', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-ita" onclick="cambiaStatoMateria('folder-ita')">
                         <h6 class="ita" id="titleSub-ita">Italiano
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('italiano', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-storia" onclick="cambiaStatoMateria('folder-storia')">
                         <h6 class="storia" id="titleSub-storia">Storia
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('storia', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-ict" onclick="cambiaStatoMateria('folder-ict')">
                         <h6 class="ict" id="titleSub-ict">Informatica
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('informatica', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-tlc" onclick="cambiaStatoMateria('folder-tlc')">
                         <h6 class="tlc" id="titleSub-tlc">Telecomunicazioni
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('telecomunicazioni', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-tpsi" onclick="cambiaStatoMateria('folder-tpsi')">
                         <h6 class="tpsi" id="titleSub-tpsi">TPSI
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('tpsi', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                     <div class="folders" id="folder-ty" onclick="cambiaStatoMateria('folder-ty')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
+                                <?php mostra('generico', $mail, $conn) ?>
                     </div>
                 </div>
                 <p class="crea-txt">Crea</p>
-                <a href="#">
+                <a href="crea.php">
                     <!-- qui va inserito il percorso per la pagina di creazione-->
                     <img src="img\create.png" class="create-btn">
                 </a>
@@ -135,9 +196,9 @@
         <hr class="line-vertical">
         <div class='vertical'>
             <img src="img/user.png" class="user-img">
-            <h1 class="center-user-name">NOMEUTENTE
+            <h1 class="center-user-name"><?php echo $nomeUtente ?>
                 <h1>
-                    <h3 class="center-user-mail">utente@email.com
+                    <h3 class="center-user-mail"><?php echo $mail ?>
                         <h3>
                             <div class="line-horizontal"></div>
                             <h3 class="divisions">Divisioni</h3>
@@ -174,7 +235,7 @@
                                     </li>
                                     <ul>
                             </nav>
-                            <a href="#"><img class="exit-btn" src="img\exit.png"></a>
+                            <a href="logout.php"><img class="exit-btn" src="img\exit.png"></a>
                             <!--tag probabilmente da cambiare per far uscire l'utente dall'account-->
         </div>
     </div>
