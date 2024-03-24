@@ -1,66 +1,150 @@
 <!DOCTYPE html>
 <html lang="it-IT">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 	    <title>profile</title>
- 	    <link type="text/CSS" rel="stylesheet" href="profile_page.css">
- 	    <script src="profile_page.js"></script>
-		<script src="script_selezione.js"></script>
-		<link rel="icon" href="img\logo_favicon.ico" type="image/x-icon"> <!-- inserire qui una nuova immagine come logo della finestra nel browser, chiedere a forna di farla-->
-	</head>
-	<body>
-		<div class='container'>
-        	<div class='horizontal'>
-        		<a href="index.php"><img class="logo" src="img/logo.png"></a>
-                <a href="index.php"><button class="top-buttons-style">Home</button></a>
-                <a href="aboutPage.html"><button class="top-buttons-style">Chi siamo?</button></a>
-                <a href="#"><button class="top-buttons-style">Cerca appunti</button></a>
-        		<a href="#"><button class="top-buttons-style">Funzionalità</button></a>
-                <hr class="line-horizontal">
-          		<div class="open-zone">
-          			<h1 class="main-title">Appunti</h1>
-          			<div class="folders" id="folder-math" onclick="cambiaStatoMateria('folder-math')">
-          				<h6 class="math" id="titleSub-math">Matematica<h6>
-          				<hr class="line-horizontal">
-          			</div>
-          			<div class="folders" id="folder-ita" onclick="cambiaStatoMateria('folder-ita')">
-          				<h6 class="ita" id="titleSub-ita">Italiano<h6>
-          				<hr class="line-horizontal">
-          			</div>
-          			<div class="folders" id="folder-storia" onclick="cambiaStatoMateria('folder-storia')">
-          				<h6 class="storia" id="titleSub-storia">Storia<h6>
-          				<hr class="line-horizontal">
-          			</div>
-          			<div class="folders" id="folder-ict" onclick="cambiaStatoMateria('folder-ict')">
-          				<h6 class="ict" id="titleSub-ict">Informatica<h6>
-          				<hr class="line-horizontal">
-          			</div>
-          			<div class="folders" id="folder-tlc" onclick="cambiaStatoMateria('folder-tlc')">
-          				<h6 class="tlc" id="titleSub-tlc">Telecomunicazioni<h6>
-          				<hr class="line-horizontal">
-          			</div>
-          			<div class="folders" id="folder-tpsi" onclick="cambiaStatoMateria('folder-tpsi')">
-          				<h6 class="tpsi" id="titleSub-tpsi">TPSI<h6>
-          				<hr class="line-horizontal">
-          			</div>
-          			<p class="crea-txt">Crea</p>
-          			<a href="#"> <!-- qui va inserito il percorso per la pagina di creazione-->
-          				<img src="img\create.png" class="create-btn">
-          			</a>
-          		</div>
-       		</div>
-       		<hr class="line-vertical">
-        	<div class='vertical'>
-            	<img src="img/user.png" class="user-img">
-            	<h1 class="center-user-name">NOMEUTENTE<h1>
-            	<h3 class="center-user-mail">utente@email.com<h3>
-            	<div class="line-horizontal"></div>
-            	<h3 class="divisions">Divisioni</h3>
-            	<nav class="division-column">
-            		<ul>
-            			<li>
-            				<select id="materia" name="Materia" class="options-dims" onchange="sort('folder-' + this.value, 'folders', this.value)">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link type="text/CSS" rel="stylesheet" href="profile_page.css">
+    <script src="profile_page.js"></script>
+    <script src="script_selezione.js"></script>
+    <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
+    <!-- inserire qui una nuova immagine come logo della finestra nel browser, chiedere a forna di farla-->
+</head>
+
+<body>
+    <div class='container-verti'>
+        <div class='horizontal'>
+            <a href="index.php"><img class="logo" src="img/logo.png"></a>
+            <a href="index.php"><button class="top-buttons-style">Home</button></a>
+            <a href="aboutPage.html"><button class="top-buttons-style">Chi siamo?</button></a>
+            <a href="#"><button class="top-buttons-style">Cerca appunti</button></a>
+            <a href="#"><button class="top-buttons-style">Funzionalità</button></a>
+            <hr class="line-horizontal">
+            <div class="open-zone">
+                <h1 class="main-title">Appunti</h1>
+                <div class="scrollable">
+                    <div class="folders" id="folder-math" onclick="cambiaStatoMateria('folder-math')">
+                        <h6 class="math" id="titleSub-math">Matematica
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-ita" onclick="cambiaStatoMateria('folder-ita')">
+                        <h6 class="ita" id="titleSub-ita">Italiano
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-storia" onclick="cambiaStatoMateria('folder-storia')">
+                        <h6 class="storia" id="titleSub-storia">Storia
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-ict" onclick="cambiaStatoMateria('folder-ict')">
+                        <h6 class="ict" id="titleSub-ict">Informatica
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-tlc" onclick="cambiaStatoMateria('folder-tlc')">
+                        <h6 class="tlc" id="titleSub-tlc">Telecomunicazioni
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-tpsi" onclick="cambiaStatoMateria('folder-tpsi')">
+                        <h6 class="tpsi" id="titleSub-tpsi">TPSI
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                    <div class="folders" id="folder-ty" onclick="cambiaStatoMateria('folder-ty')">
+                        <h6 class="try" id="titleSub-try">PROVA
+                            <h6>
+                                <hr class="line-horizontal">
+                    </div>
+                </div>
+                <p class="crea-txt">Crea</p>
+                <a href="#">
+                    <!-- qui va inserito il percorso per la pagina di creazione-->
+                    <img src="img\create.png" class="create-btn">
+                </a>
+            </div>
+        </div>
+        <hr class="line-vertical">
+        <div class='vertical'>
+            <img src="img/user.png" class="user-img">
+            <h1 class="center-user-name">NOMEUTENTE
+                <h1>
+                    <h3 class="center-user-mail">utente@email.com
+                        <h3>
+                            <div class="line-horizontal"></div>
+                            <h3 class="divisions">Divisioni</h3>
+                            <nav class="division-column">
+                                <ul>
+                                    <li>
+                                        <select id="materia" name="Materia" class="options-dims" onchange="sort('folder-' + this.value, 'folders', this.value)">
             					<option value="all">All</option>
   								<option value="math">Matematica</option>
   								<option value="ita">Italiano</option>
@@ -68,10 +152,11 @@
   								<option value="ict">Informatica</option>
   								<option value="tlc">Telecomunicazione</option>
   								<option value="tpsi">TPSI</option>
+								<option value="try">PROVA</option>
 							</select>
-						</li>
-            			<li>
-            				<select id="classe" name="Classe" class="options-dims">
+                                    </li>
+                                    <li>
+                                        <select id="classe" name="Classe" class="options-dims">
             					<option value="all">All</option>
   								<option value="prima">Prima</option>
   								<option value="seconda">Seconda</option>
@@ -79,18 +164,20 @@
   								<option value="quarta">Quarta</option>
   								<option value="quinta">Quinta</option>
 							</select>
-						</li>
-            			<li>
-            				<select id="proprita" name="Proprietà" class="options-dims">
+                                    </li>
+                                    <li>
+                                        <select id="proprita" name="Proprietà" class="options-dims">
             					<option value="all">All</option>
   								<option value="your">Creati da te</option>
   								<option value="others">Creati da altri</option>
 							</select>
-						</li> 
-            		<ul>
-            	</nav>
-            	<a href="#"><img class="exit-btn" src="img\exit.png"></a> <!--tag probabilmente da cambiare per far uscire l'utente dall'account-->
-        	</div>
-    	</div>
-	</body>
+                                    </li>
+                                    <ul>
+                            </nav>
+                            <a href="#"><img class="exit-btn" src="img\exit.png"></a>
+                            <!--tag probabilmente da cambiare per far uscire l'utente dall'account-->
+        </div>
+    </div>
+</body>
+
 </html>

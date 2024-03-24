@@ -1,4 +1,8 @@
-.container {
+body {
+    overflow: hidden;
+}
+
+.container-verti {
     display: flex;
 }
 
@@ -20,163 +24,199 @@
 }
 
 .line-horizontal {
-	height: 1px;
-	border: 1px solid #BBBBBB;
-	background-color: #BBBBBB;
+    height: 1px;
+    border: 1px solid #BBBBBB;
+    background-color: #BBBBBB;
 }
 
 .line-vertical {
-	height: 100vh;
-	border: 1px solid #BBBBBB;
-	background-color: #BBBBBB;
+    height: 100vh;
+    border: 1px solid #BBBBBB;
+    background-color: #BBBBBB;
 }
 
 .logo {
-	width: 82px;
-	height: 113px;
+    width: 82px;
+    height: 113px;
 }
 
 .open-zone {
-	background-image: url('img/try.png');
-	background-position: center;
-	width: 100%;
-	height: 100vh;
-	margin-top: -40px;
+    background-image: url('img/try.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    margin-top: -40px;
 }
 
 .user-img {
-	height: 100px;
-	width: 100px; 
-	margin-left: 37%;
-	margin-top: 50px;
+    height: 100px;
+    width: 100px;
+    margin-left: 37%;
+    margin-top: 50px;
 }
 
 .center-user-name,
 .center-user-mail {
-	text-align: center;
-	margin-top: 5px;
+    text-align: center;
+    margin-top: 5px;
 }
 
-.center-user-name { 
-	font-weight: bold;
+.center-user-name {
+    font-weight: bold;
 }
 
 .top-buttons-style {
-	display: inline-block;
-	margin-left: 8%;
-	margin-bottom: 15px;
-	background: white;
-	border: white;
+    display: inline-block;
+    margin-left: 8%;
+    margin-bottom: 15px;
+    background: white;
+    border: white;
+    width: 150px;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 20px;
 }
 
 .top-buttons-style:hover {
-	font-weight: bold;
-	transition: all 0.3s;
+    font-weight: bold;
+    transition: all 0.3s;
 }
 
 .divisions {
-	font-size: 25px;
-	margin-left: 15%;
-	margin-top: 15px;
-} 
+    font-size: 25px;
+    margin-left: 15%;
+    margin-top: 15px;
+}
 
 .division-column {
-	font-size: 20px;
-	margin-left: 10%;
-	margin-top: 10px;
+    font-size: 20px;
+    margin-left: 10%;
+    margin-top: 10px;
 }
 
 .options-dims {
-	width: 250px;
-	height: 18px;
-	border-radius: 8px;
-	border: none;
+    width: 250px;
+    height: 18px;
+    border-radius: 8px;
+    border: none;
 }
 
 .main-title {
-	font-size: 60px;
-	text-align: center;
+    font-size: 60px;
+    text-align: center;
 }
 
 .folders {
-	width: 85%;
-	height: 20px;
-	margin-left: 7.5%;
-	background-color: white;
-	border: 2px solid grey; 
-	border-radius:18px;
-	transition: height 0.3s ease;
-	overflow: hidden;
-	margin-bottom: 20px;
+    width: 85%;
+    height: 20px;
+    margin-left: 7.5%;
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 18px;
+    transition: height 0.3s ease;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 10px 10px;
 }
 
 .folders-clicked {
-	/*height: 100px;*/
-	height: auto; /*<- non fa funzionare la transizione pk non sa mai che input dare alla funzione transition*/ 
+    /*height: 100px;*/
+    height: auto;
+    /*<- non fa funzionare la transizione pk non sa mai che input dare alla funzione transition*/
 }
 
 .math {
-	margin-top: 4px;
-	margin-left: 10px;
-	color: red;
-	font-weight: bold;
-} 
-
-.ita {
-	margin-top: 4px;
-	margin-left: 10px;
-	color: blue;
-	font-weight: bold;
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.storia{
-	margin-top: 4px;
-	margin-left: 10px;
-	color: orange;
-	font-weight: bold;
+.ita {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: blue;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.storia {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: orange;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .ict {
-	margin-top: 4px;
-	margin-left: 10px;
-	color: #008F11;
-	font-weight: bold;
+    margin-top: 0px;
+    margin-left: 10px;
+    color: #008F11;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .tlc {
-	margin-top: 4px;
-	margin-left: 10px;
-	color: #a6dced;
-	font-weight: bold;
+    margin-top: 0px;
+    margin-left: 10px;
+    color: #a6dced;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .tpsi {
-	margin-top: 4px;
-	margin-left: 10px;
-	color: #f1807e;
-	font-weight: bold;
+    margin-top: 0px;
+    margin-left: 10px;
+    color: #f1807e;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .materia-clicked {
-	text-align: center;
-	
+    text-align: center;
 }
 
 .create-btn {
-	width: 40px;
-	height: 40px;
-	margin-top: -20px;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 3%;
+    top: 80%;
 }
 
 .crea-txt {
-	font-weight: bold;
-	margin-left: 2px;
-	
+    font-weight: bold;
+    margin-left: 2px;
+    position: absolute;
+    left: 3%;
+    top: 72%;
+    font-size: 40px;
 }
 
 .exit-btn {
-	width: 40px;
-	height: 40px; 
-	margin-top: 20px;
-	margin-left: 85%;
+    width: 40px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 85%;
+}
+
+.scrollable {
+    height: 67.5%;
+    padding: 4px;
+    overflow: auto;
+    align-items: center;
+    /*border: 1px solid blue;*/
+    margin-left: 10%;
+}
+
+.try {
+    margin-top: 0px;
+    font-size: 15px;
+    margin-top: 4px;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
 }
