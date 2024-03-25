@@ -34,6 +34,7 @@
     width: 450px;
     margin-top: 20px; 
 }
+ 
 
         
     </style>
@@ -79,21 +80,143 @@
 <div>
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
         <div class="container-fluid">
-          <a href="index.php"><img id="imm" src="img/im.png"></a>
+            <img id="imm" src="img/im.png">
           <a href="#"><button id="bottone1" class="bottoni"  type="button">FUNZIONALITA'</button></a>
-          <a href="index.php"><button id="bottone2" class="bottoni"   type="button">HOME</button></a>
+          <a href="#"><button id="bottone2" class="bottoni"   type="button">HOME</button></a>
           <a href="#"><button  id="bottone3" class="bottoni"  type="button">CERCA NOTE</button></a>
-          <a href="" ><button id="bottone5" class="bottoni"  type="button"><img id="imm2" src="img/profile.png"></button></a>
+          <a href="#"><button id="bottone6" class="bottoni"   type="button">CREA NOTE</button></a>
+          <a href="#" ><button id="bottone4" class="bottoni"   type="button">REGISTRATI</button></a>
+          <a href="#" ><button id="bottone5" class="bottoni"  type="button"><img id="imm2" src="img/profile.png"></button></a>
           <hr id="linea">
             </div>
           </div>
         </div>
     </nav>
+    
 <div>
 <hr>
 <img id="cerchio" src="img/cerchio.png">
 <img id="cerchio2" src="img/cerchio.png">
 <img src="img/about.png" class="titolo">
+<div  id="pallini" ></div>
+<div  id="pallini2" ></div>
+<div  id="pallini3"  ></div>
+<div  id="pallini4"  ></div>
+<div  id="pallini5" ></div>
+<div  id="pallini6"  ></div>
+<div  id="pallini7"  ></div>
+<div  id="pallini8"  ></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var ciao = document.getElementById("pallini");
+        var ciao2 = document.getElementById("pallini2");
+        var ciao3 = document.getElementById("pallini3");
+        var ciao4 = document.getElementById("pallini4");
+        var ciao5 = document.getElementById("pallini5");
+        var ciao6 = document.getElementById("pallini6");
+        var ciao7 = document.getElementById("pallini7");
+        var ciao8 = document.getElementById("pallini8");
+        function ok(){
+            moveElementRandomly(ciao);
+            moveElementRandomly(ciao2);
+            moveElementRandomly(ciao3);
+            moveElementRandomly(ciao4);
+            moveElementRandomly(ciao5);
+            moveElementRandomly(ciao6);
+            moveElementRandomly(ciao7);
+            moveElementRandomly(ciao8);
+                            
+        }
+        
+        var cont = 0; // Contatore per i pallini scoppiati
+        function cambiaColoreContinuo() {
+            var colori = ["red", "green", "blue", "yellow", "orange"];
+            var indiceColore = 0;
+        
+            const intervalloColore = setInterval(function() {
+                ciao.style.backgroundColor = colori[indiceColore];
+                indiceColore = (indiceColore + 1) % colori.length;
+            }, 500);
+        
+            setTimeout(function() {
+                clearInterval(intervalloColore);
+                ciao.style.backgroundColor = "pink";
+                ciao.addEventListener("click", function() {
+                    if (ciao.style.backgroundColor === "pink") {
+                        alert("ciaao");
+                        ciao.style.animation = "explode 0.5s forwards";
+                        // Rimuovi l'event listener dopo l'esplosione
+                        ciao.removeEventListener("click", arguments.callee);
+                        
+                        ok();
+                    }
+                });
+            }, 5000);
+        }
+        
+        setTimeout(cambiaColoreContinuo, 1000);
+        
+        
+        // Funzione per spostare un elemento in modo casuale sullo schermo e farlo rimbalzare
+        function moveElementRandomly(element) {
+            var windowWidth = 1920; // Larghezza dello schermo
+            var windowHeight = 1080; // Altezza dello schermo
+            var speedX = 1; // Velocità sull'asse X
+            var speedY = 1; // Velocità sull'asse Y
+            var posX = Math.random() * (windowWidth - 50); // Posizione iniziale sull'asse X
+            var posY = Math.random() * (windowHeight - 50); // Posizione iniziale sull'asse Y
+        
+            function move() {
+                posX += speedX;
+                posY += speedY;
+        
+                // Controllo dei limiti dello schermo e rimbalzo
+                if (posX <= 0 || posX + element.offsetWidth >= windowWidth) {
+                    speedX *= -1; // Inverti la direzione sull'asse X
+                }
+                if (posY <= 0 || posY + element.offsetHeight >= windowHeight) {
+                    speedY *= -1; // Inverti la direzione sull'asse Y
+                }
+        
+                // Limita le posizioni all'interno dell'area specificata
+                posX = Math.min(Math.max(posX, 0), windowWidth - element.offsetWidth);
+                posY = Math.min(Math.max(posY, 0), windowHeight - element.offsetHeight);
+                
+                // Aggiorna la posizione del pallino
+                element.style.left = posX + 'px';
+                element.style.top = posY + 'px';
+        
+                // Richiama la funzione move() al prossimo ciclo di rendering
+                requestAnimationFrame(move);
+            }
+        
+            // Avvia il movimento
+            move();
+        
+            // Gestisci l'esplosione al clic
+            element.addEventListener("click", function() {
+                element.style.animation = "explode 0.5s forwards";
+                cont += 1; // Incrementa il contatore dei pallini scoppiati
+                cambiaSfondoSeNecessario(); // Controlla se è necessario cambiare lo sfondo
+                element.removeEventListener("click", arguments.callee); // Rimuovi l'event listener clic dopo lo scoppio
+            });
+        }
+        
+        // Funzione per controllare e cambiare lo sfondo se tutti i pallini sono stati scoppiati
+        function cambiaSfondoSeNecessario() {
+            var numeroPallini = 8; // Numero totale di pallini
+            if (cont === numeroPallini-1) {
+                document.body.style.backgroundImage = "url('img/sfondo.png')";
+            }
+        }
+});
+
+
+
+    
+</script>
+
 
 </div>
 </div>
@@ -106,7 +229,7 @@
         <div id="centro"><b>CHI SIAMO?</b></div>
        <b> <p class="titoletto">CHI SIAMO?</p></b><br>
         <p class="testino">Siamo quattro ragazzi che hanno deciso di realizzare un sito per prendere appunti per partecipare ad un concorso di Informatica (abbiamo tutti sedici anni)</p>
-        <div class="tenor-gif-embed" data-postid="15201219" data-share-method="host" data-aspect-ratio="1" data-width="100%"><img src="img/ciao.gif" class="come" alt="gif senza sfondo">
+        <div class="tenor-gif-embed" data-postid="15201219" data-share-method="host" data-aspect-ratio="1" data-width="100%"><img src="ciao.gif" class="come" alt="gif senza sfondo">
     </div>
     </div>
     <div class="blocco2">

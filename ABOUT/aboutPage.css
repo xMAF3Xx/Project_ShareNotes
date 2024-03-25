@@ -1,5 +1,5 @@
 .body {
-    background-image: url("img/sfondo.png");
+    background-image: url("img/bianco.png");
     background-repeat: no-repeat;
     background-size: cover; 
     background-attachment: fixed; 
@@ -13,6 +13,94 @@
     height: 100vh; 
 }
 
+#pallini
+{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: -760px;
+    margin-top: -28px;
+    background-color: pink;
+
+}
+#pallini2
+{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 865px;
+    margin-top: 168px;
+    background-color: green;
+    
+}
+#pallini3
+{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 865px;
+    margin-top: 318px;
+    background-color: red;
+  
+}
+#pallini4
+{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 715px;
+    margin-top: 251px;
+    background-color: purple;
+    
+}
+#pallini5
+{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 995px;
+    margin-top: 251px;
+    background-color: green;
+
+}
+#pallini6
+{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 995px;
+    margin-top: 74px;
+    background-color: orange;
+   
+}
+#pallini7
+{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 995px;
+    margin-top: 391px;
+    background-color: pink;
+   
+}
+#pallini8
+{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: -735px;
+    margin-top: 391px;
+    background-color: lightblue;
+    
+}
 
 #imm
 {
@@ -37,6 +125,7 @@
     transform: translateX(-50%); 
     z-index: -1; 
 }
+
 
 
 .immagine
@@ -87,7 +176,7 @@
 }
 
 #linea {
-    margin-top: 32px;
+    margin-top: 25px;
     margin: 10px 0; 
     border: none;
     border-top: 2px solid  grey; 
@@ -277,4 +366,13 @@
 }
 
 
-
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
