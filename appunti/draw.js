@@ -1,4 +1,3 @@
-
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
 const textarea = document.getElementById('textArea');
@@ -530,6 +529,64 @@ moveButton.addEventListener('click', function() {
     }
 });
 
+let isCreatingRectangle = false;
+let rectangles = []; // Array per memorizzare tutti i rettangoli creati
+let startX, startY, currentX, currentY;
+
+const formeButton = document.getElementById('forme');
+
+formeButton.addEventListener('click', function() {
+    isCreatingRectangle = true;
+});
+
+canvas.addEventListener('mousedown', function(e) {
+    if (isCreatingRectangle) {
+        startX = e.clientX - canvas.offsetLeft;
+        startY = e.clientY - canvas.offsetTop;
+        currentX = startX;
+        currentY = startY;
+        redrawCanvas();
+        drawRectangle(startX, startY, 0, 0);
+    }
+});
+
+canvas.addEventListener('mousemove', function(e) {
+    if (isCreatingRectangle && startX !== undefined && startY !== undefined) {
+        currentX = e.clientX - canvas.offsetLeft;
+        currentY = e.clientY - canvas.offsetTop;
+        redrawCanvas();
+        drawRectangle(startX, startY, currentX - startX, currentY - startY);
+    }
+});
+
+canvas.addEventListener('mouseup', function() {
+    if (isCreatingRectangle && startX !== undefined && startY !== undefined) {
+        let width = currentX - startX;
+        let height = currentY - startY;
+        if (width < 0) {
+            startX += width;
+            width = Math.abs(width);
+        }
+        if (height < 0) {
+            startY += height;
+            height = Math.abs(height);
+        }
+        rectangles.push({ x: startX, y: startY, width: width, height: height });
+        redrawCanvas();
+        startX = undefined;
+        startY = undefined;
+        currentX = undefined;
+        currentY = undefined;
+    }
+});
+
+function drawRectangle(x, y, width, height) {
+    context.strokeStyle = '#000000';
+    context.lineWidth = 2;
+    context.strokeRect(x, y, width, height);
+}
+
+
 
 
 
@@ -591,75 +648,6 @@ function handleKeyUp(e) {
     redrawCanvas();
 }
 
-document.addEventListener('keydown', function(event) {
-    isCreatingRectangle = false;
-});
-
-let isCreatingRectangle = false;
-let rectangles = []; // Array per memorizzare tutti i rettangoli creati
-let startX, startY, currentX, currentY;
-
-const formeButton = document.getElementById('forme');
-
-formeButton.addEventListener('click', function() {
-    isCreatingRectangle = true;
-});
-
-canvas.addEventListener('mousedown', function(e) {
-    if (isCreatingRectangle) {
-        startX = e.clientX - canvas.offsetLeft;
-        startY = e.clientY - canvas.offsetTop;
-        currentX = startX;
-        currentY = startY;
-        redrawCanvas();
-        drawRectangle(startX, startY, 0, 0);
-    }
-});
-
-canvas.addEventListener('mousemove', function(e) {
-    if (isCreatingRectangle && startX !== undefined && startY !== undefined) {
-        currentX = e.clientX - canvas.offsetLeft;
-        currentY = e.clientY - canvas.offsetTop;
-        redrawCanvas();
-        drawRectangle(startX, startY, currentX - startX, currentY - startY);
-    }
-});
-
-canvas.addEventListener('mouseup', function() {
-    if (isCreatingRectangle && startX !== undefined && startY !== undefined) {
-        let width = currentX - startX;
-        let height = currentY - startY;
-        if (width < 0) {
-            startX += width;
-            width = Math.abs(width);
-        }
-        if (height < 0) {
-            startY += height;
-            height = Math.abs(height);
-        }
-        rectangles.push({ x: startX, y: startY, width: width, height: height });
-        redrawCanvas();
-        startX = undefined;
-        startY = undefined;
-        currentX = undefined;
-        currentY = undefined;
-    }
-});
-
-function drawRectangle(x, y, width, height) {
-    context.strokeStyle = '#000000';
-    context.lineWidth = 2;
-    context.strokeRect(x, y, width, height);
-}
-
-function redrawCanvas() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    rectangles.forEach(rectangle => {
-        drawRectangle(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-    });
-}
-
-
 document.addEventListener('keyup', handleKeyUp);
 function toggleBold() {
     isBold = !isBold;
@@ -710,4 +698,4 @@ function rimuoviSfocatura() {
 
 ciao.addEventListener('click',function(){
         applicaSfocatura();
-})
+});
