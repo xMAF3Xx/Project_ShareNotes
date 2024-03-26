@@ -12,7 +12,7 @@
     <!-- inserire qui una nuova immagine come logo della finestra nel browser, chiedere a forna di farla-->
 </head>
 
-<body>
+<body onload="setAll()">
     <?php
         session_start();
         $conn = new mysqli("localhost","root","","share-notes");
@@ -36,7 +36,17 @@
 			$nomeUtente = ($result_nome->fetch_assoc())['name'];
         }
 
-		function mostra($mat, $mail, $conn){
+        if(isset($_POST['Classe'])){
+            $year = (int) $_POST['Classe'];
+        }
+
+        if(isset($_POST['Proprieta'])){
+            $mine = (int) $_POST['Proprieta'];
+        }
+
+		function mostra($mat, $mail, $conn, $anno = 0, $appartenenza = 2){
+            $anno = (int) $anno;
+            $appartenenza = (int) $appartenenza;
 			$query_num_mate = "SELECT * FROM nota WHERE email='$mail' and materia='$mat'";
 			$result_num_mate = $conn->query($query_num_mate);
 			$num_mate = mysqli_num_rows($result_num_mate);
@@ -47,10 +57,23 @@
 			echo '<form method="POST" action="download.php">';
 			for ($j = 0; $j < $num_mate; $j++) {
 				$codice = $mate[$j]['codicenota'];
-				$title = $mate[$j]['titolo'];                                 //' onClick="assegnaValore(', $codice , ', ',$nomeInput,')" 
-				echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button><br>';
+				$title = $mate[$j]['titolo'];                               //' onClick="assegnaValore(', $codice , ', ',$nomeInput,')" 
+                $app = (int) $mate[$j]['mia'];
+                $ann = (int) $mate[$j]['anno-scolastico'];
+                if($appartenenza == 2){
+                    if($anno == 0){
+                        echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button><br>';
+                    }else if($anno == $ann){
+                        echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button><br>';
+                    }
+                }else if($appartenenza == $app){
+                    if($anno == 0){
+                        echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button><br>';
+                    }else if($anno == $ann){
+                        echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button><br>';
+                    }
+                }
 			}
-			//echo '<input type="number" style="display: none;" name="codNot" id="', $nomeInput, '">';
 			echo '</form>';
 		}
         ?>
@@ -69,121 +92,403 @@
                         <h6 class="math" id="titleSub-math">Matematica
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('matematica', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('matematica', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('matematica', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('matematica', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('matematica', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-ita" onclick="cambiaStatoMateria('folder-ita')">
                         <h6 class="ita" id="titleSub-ita">Italiano
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('italiano', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('italiano', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('italiano', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('italiano', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('italiano', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-storia" onclick="cambiaStatoMateria('folder-storia')">
                         <h6 class="storia" id="titleSub-storia">Storia
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('storia', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('storia', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('storia', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('storia', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('storia', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-ict" onclick="cambiaStatoMateria('folder-ict')">
                         <h6 class="ict" id="titleSub-ict">Informatica
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('informatica', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('informatica', $mail, $conn, $year, $mine);
+                                        echo "OK", "mine = ", $mine;
+                                    }else {
+                                        echo "NON OK";
+                                        mostra('informatica', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('informatica', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('informatica', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-tlc" onclick="cambiaStatoMateria('folder-tlc')">
                         <h6 class="tlc" id="titleSub-tlc">Telecomunicazioni
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('telecomunicazioni', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('telecomunicazioni', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('telecomunicazioni', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('telecomunicazioni', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('telecomunicazioni', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-tpsi" onclick="cambiaStatoMateria('folder-tpsi')">
                         <h6 class="tpsi" id="titleSub-tpsi">TPSI
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('tpsi', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('tpsi', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('tpsi', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('tpsi', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('tpsi', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                     <div class="folders" id="folder-ty" onclick="cambiaStatoMateria('folder-ty')">
                         <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
-                                <?php mostra('generico', $mail, $conn) ?>
+                                <?php
+                                if(isset($year)){
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, $year, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn, $year);
+                                    }
+                                }else{
+                                    if(isset($mine)){
+                                        mostra('generico', $mail, $conn, 0, $mine);
+                                    }else {
+                                        mostra('generico', $mail, $conn);
+                                    } 
+                                }
+                                ?>
                     </div>
                 </div>
                 <p class="crea-txt">Crea</p>
@@ -206,33 +511,35 @@
                                 <ul>
                                     <li>
                                         <select id="materia" name="Materia" class="options-dims" onchange="sort('folder-' + this.value, 'folders', this.value)">
-            					<option value="all">All</option>
-  								<option value="math">Matematica</option>
-  								<option value="ita">Italiano</option>
- 								<option value="storia">Storia</option>
-  								<option value="ict">Informatica</option>
-  								<option value="tlc">Telecomunicazione</option>
-  								<option value="tpsi">TPSI</option>
-								<option value="try">PROVA</option>
-							</select>
+            					            <option value="all">All</option>
+  								            <option value="math">Matematica</option>
+  								            <option value="ita">Italiano</option>
+ 								            <option value="storia">Storia</option>
+  								            <option value="ict">Informatica</option>
+  								            <option value="tlc">Telecomunicazione</option>
+  								            <option value="tpsi">TPSI</option>
+								            <option value="try">PROVA</option>
+							            </select>
                                     </li>
-                                    <li>
-                                        <select id="classe" name="Classe" class="options-dims">
-            					<option value="all">All</option>
-  								<option value="prima">Prima</option>
-  								<option value="seconda">Seconda</option>
- 								<option value="terza">Terza</option>
-  								<option value="quarta">Quarta</option>
-  								<option value="quinta">Quinta</option>
-							</select>
-                                    </li>
-                                    <li>
-                                        <select id="proprita" name="Proprietà" class="options-dims">
-            					<option value="all">All</option>
-  								<option value="your">Creati da te</option>
-  								<option value="others">Creati da altri</option>
-							</select>
-                                    </li>
+                                    <form action="profile_page.php" method="post" id="formFilter">
+                                        <li>
+                                            <select id="classe" name="Classe" class="options-dims" onchange="submitSelected('classe')">
+            					                <option value=0>All</option>
+  								                <option value=1>Prima</option>
+  								                <option value=2>Seconda</option>
+ 								                <option value=3>Terza</option>
+  								                <option value=4>Quarta</option>
+  								                <option value=5>Quinta</option>
+							                </select>
+                                        </li>
+                                        <li>
+                                            <select id="proprita" name="Proprieta" class="options-dims" onchange="submitSelected('proprita')">
+            					                <option value=2>All</option>
+  								                <option value=1>Creati da te</option>
+  								                <option value=0>Creati da altri</option>
+							                </select>
+                                        </li>
+                                    </form>
                                     <ul>
                             </nav>
                             <a href="logout.php"><img class="exit-btn" src="img\exit.png"></a>

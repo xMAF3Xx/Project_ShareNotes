@@ -20,3 +20,21 @@ function sort(idApp, classScomp, all) {
 		elementoDaApparire.style.display = "block";
 	}
 }
+
+function submitSelected(idValue){
+	var selectedValue = document.getElementById(idValue).value;
+    localStorage.setItem("selectedOption"+idValue, selectedValue);
+	document.getElementById('formFilter').submit();
+}
+
+function setSelectedValue(idValue) {
+	var selectedValue = localStorage.getItem("selectedOption"+idValue);
+	if (selectedValue) {
+		document.getElementById(idValue).value = selectedValue;
+	}
+}
+
+function setAll(){
+	setSelectedValue('classe');
+	setSelectedValue('proprita');
+}
