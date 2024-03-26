@@ -1,6 +1,6 @@
 body{
     background-color: rgb(255, 255, 255);
-    background-image: url('sfondo_index.jpg');
+    background-image: url('img/sfondo_index.jpg');
     background-repeat: no-repeat;
     /*background-repeat: repeat-y;*/
 }
@@ -24,7 +24,7 @@ body{
     margin-top: 180px;
     text-align: center;
     font-weight: bold;
-    text-shadow: 5px 5px #B7B7B7;
+    text-shadow: 5px 5px grey;
     font-size: 100px;
 }
 #menu_button{
@@ -54,17 +54,38 @@ body{
 .SearchNotes{
     border-radius: 30px;
 }
-.WhoWeAre{
+.About{
     border-radius: 30px;
 }
-.login_button{
-    background-image: url(login.png);
+.login_button_2{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #212529;
+    border-radius: 25px;
+    border-color: #bcc0c56a;
+    padding: 18px;
+    margin-right: -100px;
+    color: white;
+    font-weight: bold;
+}
+.login_button_1{
     background-repeat: no-repeat;
     background-position: center;
     background-color: #212529;
     border-radius: 50%;
     border-color: #bcc0c56a;
     padding: 22px;
+    margin-right: 50px;
+}
+.logOut{
+    background-image: url('img/logout.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #212529;
+    border-radius: 50%;
+    border-color: #bcc0c56a;
+    padding: 22px;
+    margin-left: -100px;
     margin-right: 15px;
 }
 .UniscitiExplore{
@@ -108,7 +129,7 @@ body{
     height: 60px;
 }
 .Create_btn{
-    background-image: url('sfondo_btn_create.png');
+    background-image: url('img/sfondo_btn_create.png');
     background-repeat: no-repeat;
     margin-left: -400px;
     margin-right: 200px;
@@ -117,7 +138,7 @@ body{
     height: 140px;
 }
 .Share_btn{
-    background-image: url('sfondo_btn_share.png');
+    background-image: url('img/sfondo_btn_share.png');
     background-repeat: no-repeat;
     margin-left: -500px;
     margin-top: 420px;
@@ -125,7 +146,7 @@ body{
     height: 90px;
 }
 .Explore_btn{
-    background-image: url('sfondo_btn_explore.png');
+    background-image: url('img/sfondo_btn_explore.png');
     background-repeat: no-repeat;
     margin-left: -400px;
     margin-right: 250px;
@@ -198,7 +219,7 @@ body{
     margin-left: 260px;
     font-size: 45px;
     font-weight: bold;
-    background-image: url('Sfondo_Titoli.png');
+    background-image: url('img/Sfondo_Titoli.png');
     background-repeat: no-repeat;
     width: 300px;
     height: 80px;
@@ -210,7 +231,7 @@ body{
     margin-left: 260px;
     font-size: 45px;
     font-weight: bold;
-    background-image: url('Sfondo_Titoli.png');
+    background-image: url('img/Sfondo_Titoli.png');
     background-repeat: no-repeat;
     width: 300px;
     height: 80px;
@@ -230,7 +251,7 @@ body{
     margin-left: 70px;
     font-size: 45px;
     font-weight: bold;
-    background-image: url('Sfondo_Titoli\ _Destra.png');
+    background-image: url('img/Sfondo_Titoli\ _Destra.png');
     background-repeat: no-repeat;
     width: 170px;
     height: auto;
