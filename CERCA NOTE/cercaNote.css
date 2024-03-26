@@ -25,6 +25,7 @@ body
     flex-direction:column-reverse;
     border: 1px solid #ccc;
     transition: border 0.3s ease-out; 
+    padding-left: 15px;
 }
 
 #input:focus {
@@ -32,7 +33,7 @@ body
 }
 
 #imm {
-    max-width: 4.9%;
+    max-width: 37%;
 }
 
 .navbar {
@@ -79,29 +80,31 @@ body
     margin-left: 30px;
 }
 
-    .sidebar {
-        text-align: center;
-        height: 100vh; 
-        width: 270px; 
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #f1f1f1;
-        padding-top: 20px;
-        margin-top: 128px; 
-
-    }
+.sidebar {
+    text-align: center;
+    height: 100vh; 
+    width: 270px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f1f1f1;
+    padding-top: 20px;
+    margin-top: 128px; 
+}
     
-    .sidebar a {
-        padding: 8px;
-        text-decoration: none;
-        font-size: 18px;
-        color: black;
-        display: block;
-    }
+.sidebar a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+}
     
-    .sidebar a:hover {
-        background-color: #555;
-        color: white;
-    }
+.sidebar a:hover {
+    background-color: #555;
+    color: white;
+}
 
+#allNotes{
+    margin-left: 600px;
+}
