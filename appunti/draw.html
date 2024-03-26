@@ -7,21 +7,12 @@
     <link rel="stylesheet" href="stile.css">
 </head>
 <body class="body" onload="Importa('drawingCanvas')">
-    <?php
-        $conn = new mysqli("localhost","root","","share-notes");
-        $codiceNota = $_POST["codNota"];
-        $query_codice = "SELECT * FROM nota WHERE codicenota=$codiceNota";
-        $result = $conn->query($query_codice);
-        $rigaNota = $result->fetch_assoc();
-        $contenutoNota = $rigaNota["contenuto"];
-        $title = $rigaNota["titolo"];
-        $materia = $rigaNota["materia"];
-        $anno = $rigaNota["anno-scolastico"];
-    ?>
+    
     <input type="text" id="contenutoNota" style="display: none;" value="<?php echo $contenutoNota ?>">
     <div id="tutto2">
-        <img  id="apri" src="img/+.jpg">
-        <img id="uscita" src="img/uscita.png">
+        <img id="apri" src="+.jpg">
+        <img id="uscita" src="uscita.png">
+        <div id="ciao">
         <div id="tutto">
             <p id="strumenti">BARRA DEGLI STRUMENTI</p>
             <div id="textOptions">
@@ -65,11 +56,17 @@
                 <label for="colorPicker">Colore:</label>
                 <input type="color" id="colorPicker" value="#ff0000">
             </div>
+            <div id="rett">
+                <button id="forme">Forme</button>
+            </div>
         </div>
+        </div>
+        <textarea id="textArea" style="display:none;"></textarea>
+        <canvas id="drawingCanvas"></canvas>
     </div>
     <div id="blocco">
         <p id="titolino">SALVATAGGIO NOTA</p>
-        <img id="croce" src="img/x.png">
+        <img id="croce" src="x.png">
         <b id="titolino2"><p>INSERISCI IL NOME DELLA NOTA, LA MATERIA E IL L'ANNO SCOLASTICO A CUI SI RIFERISCE</p></b>
         <form action="upload.php" method="post" id="fTSend">
             <input id="nota" type="text" name="title" value="<?php echo $title ?>">
@@ -95,8 +92,6 @@
             <input id="submit" type="button" value="CONFERMA" onclick="SendIt('drawingCanvas')">
         </div>
     </div>
-    <textarea id="textArea" style="display:none;"></textarea>
-    <canvas id="drawingCanvas"></canvas>
     <div id="banner" style="display:none;">
         <p id="banner-text">Vuoi salvare le modifiche?</p>
         <button id="confermaSalvataggio">Sì</button>
@@ -104,6 +99,5 @@
         <button id="annulla">Annulla</button>
     </div>
     <script src="draw.js"></script>
-    <script src="script_disegno.js"></script>
 </body>
 </html>

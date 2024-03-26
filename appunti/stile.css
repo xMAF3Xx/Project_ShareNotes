@@ -40,7 +40,7 @@ textarea {
     position: absolute;
     top: 0;
     left: 0;
-    width: 400px;
+    width: 410px;
     height: 121%;
     resize: none;
     display: none;
@@ -72,7 +72,7 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 800px;
+    width: 930px;
     height: 400px;
     border: 1px solid black;
     border-radius: 30px;
@@ -86,10 +86,12 @@ button {
     width: 1500px;
     height: 140px;
     border-radius: 30px;
-    background-image: url("img/sfondo1.png");
+    background-image: url("sfondo1.png");
     margin-left: 190px;
     border: 1px solid black;
+    
 }
+
 #apri
 {
     position: absolute;
@@ -111,12 +113,12 @@ button {
     margin-top: 5px;
 }
 .spostato-verso-destra {
-    transform: translateX(14%);  
+    transform: translateX(15%);  
     transition: transform 0.5s ease;  
 }
 .spostato-verso-sinistra
 {
-    transform: translateX(14%);  
+    transform: translateX(15%);  
     transition: transform 0.5s ease;  
 }
 
@@ -129,17 +131,17 @@ button {
 #eraseButton 
 {
     margin-top: 60px;
-   margin-left: 850px;
+   margin-left: 600px;
 }
 #writeButton
 {
     margin-top: 60px;
-   margin-left: 950px;
+   margin-left: 700px;
 }
 #chiudi
 {
     margin-top: 90px;
-    margin-left: 1100px;
+    margin-left: 900px;
 }
 #titolino {
     margin-top: 20px;
@@ -213,17 +215,17 @@ button {
 #boldButton
 {
     margin-top: 90px;
-    margin-left: 700px;
+    margin-left: 500px;
 }
 #italicButton
 {
     margin-top: 90px;
-    margin-left: 800px;
+    margin-left: 600px;
 }
 #underlineButton
 {
     margin-top: 90px;
-    margin-left: 900px;
+    margin-left: 700px;
 }
 #eraseimagesButton
 {
@@ -238,7 +240,7 @@ button {
 #moveButton
 {
     margin-top: 90px;
-    margin-left: 1000px; 
+    margin-left: 800px; 
 }
 #salva
 {
@@ -254,13 +256,18 @@ button {
     pointer-events: none;
 }
 #uscita {
-    position: absolute; /* Imposta l'elemento come fisso rispetto alla finestra del browser */
-    top: 0; /* Fissa la distanza dall'alto della finestra del browser */
-    left: 1840px; /* Fissa la distanza dalla sinistra della finestra del browser */
-    margin-top: -5px; /* Imposta il margine superiore */
-    margin-left: 0; /* Imposta il margine sinistro */
+    position: absolute; 
+    top: 0; 
+    left: 1840px; 
+    margin-top: -5px; 
+    margin-left: 0; 
     height: 55px;
     width: 55px;
+}
+
+#ciao.aperta {
+    animation: cadutaConRimbalzo 1s;
+    opacity: 1;
 }
 
 #uscita:hover
@@ -277,6 +284,7 @@ button {
     margin-top: -500px;
     background-color: aqua;
     transform: translate(-50%, -50%);
+    border: 1px solid black;
 }
 #banner-text
 {
@@ -292,11 +300,44 @@ button {
     margin-top: 25px;
     margin-left: 180px;
 }
+#forme
+{
+    margin-top: 60px;
+    margin-left: 780px;
+}
 #annulla
 {
     margin-top: 55px;
     margin-left: 100px;
 }
+.spostato-verso-sinistra
+{
+    transform: translateX(0%);  
+    transition: transform 0.5s ease;  
+}
 body, html{
     overflow: hidden;
 }
+@keyframes cadutaConRimbalzo {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    25% {
+        transform: translateX(30%);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-15%);
+    }
+    75% {
+        transform: translateX(5%);
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+

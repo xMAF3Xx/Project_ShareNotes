@@ -109,7 +109,7 @@ function startDrawing(e) {
     const canvasY = e.clientY - canvas.offsetTop;
 
     // Posiziona il cursore esattamente sopra il punto di inizio del testo
-    textCursor.style.left = canvasX + 'px';
+    textCursor.style.left = canvasX -190 + 'px';
     textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop + 28 + 'px';
     context.beginPath();
     context.moveTo(canvasX, canvasY);
@@ -487,6 +487,7 @@ colorPicker.addEventListener('input', function () {
 });
 function ripristinaPosizioneOriginaria() {
     tutto.classList.remove('spostato-verso-destra');
+    tutto.classList.toggle("spostato-verso-sinistra");
 }
 submitButton.addEventListener('click', function() {
     ripristinaPosizioneOriginaria();
@@ -519,11 +520,17 @@ thicknessSlider.addEventListener('input', function () {
 moveButton.addEventListener('click', function() {
     if (hola.style.display === 'block' || banner.style.display === 'block') {
         hola.style.display = 'none';
+        
     } else {
         hola.style.display = 'block';
-        tutto2.style.filter = 'blur(5px)'; // Imposta lo sfondo sfocato
+        tutto2.style.filter = 'blur(5px)'; 
+        document.getElementById('tutto2').style.pointerEvents = 'none';
+
+       
     }
 });
+
+
 
 
 
@@ -532,6 +539,7 @@ let alertShown = false;
 h.addEventListener('click',function(){
     hola.style.display='none';
     tutto2.style.filter = 'none'; // Rimuovi lo sfondo sfocato
+    document.getElementById('tutto2').style.pointerEvents = 'auto';
 })
 f.addEventListener('input',function(){
     if(this.value.length>20 && !alertShown)
@@ -551,6 +559,8 @@ f.addEventListener('input',function(){
 })
 
 l.addEventListener('click',function(){
+        const kiko=document.getElementById('ciao');
+        kiko.classList.add('aperta')
         v.style.display='block';
         l.style.display='none';
 
@@ -580,6 +590,75 @@ function handleKeyUp(e) {
 
     redrawCanvas();
 }
+
+document.addEventListener('keydown', function(event) {
+    isCreatingRectangle = false;
+});
+
+let isCreatingRectangle = false;
+let rectangles = []; // Array per memorizzare tutti i rettangoli creati
+let startX, startY, currentX, currentY;
+
+const formeButton = document.getElementById('forme');
+
+formeButton.addEventListener('click', function() {
+    isCreatingRectangle = true;
+});
+
+canvas.addEventListener('mousedown', function(e) {
+    if (isCreatingRectangle) {
+        startX = e.clientX - canvas.offsetLeft;
+        startY = e.clientY - canvas.offsetTop;
+        currentX = startX;
+        currentY = startY;
+        redrawCanvas();
+        drawRectangle(startX, startY, 0, 0);
+    }
+});
+
+canvas.addEventListener('mousemove', function(e) {
+    if (isCreatingRectangle && startX !== undefined && startY !== undefined) {
+        currentX = e.clientX - canvas.offsetLeft;
+        currentY = e.clientY - canvas.offsetTop;
+        redrawCanvas();
+        drawRectangle(startX, startY, currentX - startX, currentY - startY);
+    }
+});
+
+canvas.addEventListener('mouseup', function() {
+    if (isCreatingRectangle && startX !== undefined && startY !== undefined) {
+        let width = currentX - startX;
+        let height = currentY - startY;
+        if (width < 0) {
+            startX += width;
+            width = Math.abs(width);
+        }
+        if (height < 0) {
+            startY += height;
+            height = Math.abs(height);
+        }
+        rectangles.push({ x: startX, y: startY, width: width, height: height });
+        redrawCanvas();
+        startX = undefined;
+        startY = undefined;
+        currentX = undefined;
+        currentY = undefined;
+    }
+});
+
+function drawRectangle(x, y, width, height) {
+    context.strokeStyle = '#000000';
+    context.lineWidth = 2;
+    context.strokeRect(x, y, width, height);
+}
+
+function redrawCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    rectangles.forEach(rectangle => {
+        drawRectangle(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+    });
+}
+
 
 document.addEventListener('keyup', handleKeyUp);
 function toggleBold() {
