@@ -1,10 +1,9 @@
-#titolo
-{
+#titolo {
     background-color: greenyellow;
     text-align: center;
     font-size: 20px;
-    
 }
+
 #textOptions {
     margin-top: 1px;
     display: flex;
@@ -12,31 +11,32 @@
     margin-left: 50px;
 }
 
-#textOptions label, #textOptions select, #textOptions button {
+#textOptions label,
+#textOptions select,
+#textOptions button {
     margin-right: 10px;
 }
-#gomma2
-{
+
+#gomma2 {
     margin-top: -105px;
     margin-left: 1300px;
 }
-#strumenti
-{
+
+#strumenti {
     font-size: 23px;
     text-align: center;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
-#selettore
-{
+
+#selettore {
     margin-left: 35px;
 }
 
-
-#tools
-{
+#tools {
     margin-top: 5px;
     margin-left: 1300px;
 }
+
 textarea {
     position: absolute;
     top: 0;
@@ -48,41 +48,44 @@ textarea {
     font-size: 20px;
     z-index: 2;
 }
+
 .body {
     margin: 0;
     position: relative;
 }
 
 #finishButton {
-
     top: 10px;
     left: 80px;
     display: none;
     z-index: 2;
-    border:none;
+    border: none;
     background-color: white;
 }
+
 button {
     position: absolute;
     top: 10px;
     left: 10px;
     z-index: 1;
 }
+
 #blocco {
+    /*cambiato css di blocco*/
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 930px;
-    height: 400px;
-    border: 1px solid black;
+    width: 450px;
+    height: 450px;
+    border: none;
     border-radius: 30px;
-    background-color: lightblue;
+    background-image: url("img/sfondo-popup-new.png");
     display: none;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-#tutto
-{
+#tutto {
     position: absolute;
     width: 1500px;
     height: 140px;
@@ -90,11 +93,9 @@ button {
     background-image: url("sfondo1.png");
     margin-left: 190px;
     border: 1px solid black;
-    
 }
 
-#apri
-{
+#apri {
     position: absolute;
     height: 30px;
     width: 30px;
@@ -102,52 +103,42 @@ button {
     margin-left: 20px;
 }
 
-#apri:hover
-{
+#apri:hover {
     filter: brightness(50%) grayscale(0%) hue-rotate(0deg) invert(0%) saturate(200%);
 }
-#nota2
-{
-    height: 32px;
-    width: 250px;
-    margin-left: 70px;
-    margin-top: 5px;
-}
+
 .spostato-verso-destra {
-    transform: translateX(15%);  
-    transition: transform 0.5s ease;  
-}
-.spostato-verso-sinistra
-{
-    transform: translateX(15%);  
-    transition: transform 0.5s ease;  
+    transform: translateX(15%);
+    transition: transform 0.5s ease;
 }
 
+.spostato-verso-sinistra {
+    transform: translateX(15%);
+    transition: transform 0.5s ease;
+}
 
-#colore
-{
+#colore {
     margin-top: -20px;
     margin-left: 1050px;
+}
 
-}
-#eraseButton 
-{
+#eraseButton {
     height: 20px;
     width: 70px;
     margin-top: 60px;
-   margin-left: 600px;
-   border-radius: 30px;
+    margin-left: 600px;
+    border-radius: 30px;
 }
-#writeButton
-{
+
+#writeButton {
     height: 20px;
     width: 70px;
     margin-top: 60px;
-   margin-left: 700px;
-   border-radius: 30px;
+    margin-left: 700px;
+    border-radius: 30px;
 }
-#chiudi
-{
+
+#chiudi {
     height: 20px;
     width: 70px;
     margin-top: 90px;
@@ -155,77 +146,140 @@ button {
     border-radius: 30px;
     border: 0.5 solid black;
 }
+
 #titolino {
+    /*cambiato il css di titolino*/
     margin-top: 20px;
     text-align: center;
     font-size: 30px;
-    color:white;
+    color: #FFD847;
+    margin-bottom: 30px;
+    font-family: inter;
 }
 
 #croce {
+    /*cambiato il css di croce*/
     position: absolute;
-    top: 0px;
-    right: 20px;
-    height: 75px;
-    width: 95px;
+    top: 15px;
+    left: 92%;
 }
-
 
 #titolino2 {
     font-size: 25px;
     margin-top: 10px;
     text-align: center;
 }
-#nota
-{
-    margin-top: -350px;
-    height: 25px;
-    width: 400px;
-    margin-left: 200px;
-}
-#nota3
-{
+
+#nota {
+    /*cambiato il css di nota*/
     height: 30px;
     width: 300px;
-    margin-left: 150px;
+    margin-left: 20%;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    line-height: 1;
+    color: black;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid;
+    background: none;
 }
+
+#ctr {
+    /*aggiunta del css di ctr prima non esistente*/
+    color: red;
+    position: absolute;
+    top: 62%;
+    left: 32%;
+}
+
+#nota2 {
+    /*cambiato il css di nota2*/
+    height: 30px;
+    width: 300px;
+    margin-left: 20%;
+    margin-bottom: 40px;
+    align-items: center;
+    display: block;
+    border-radius: 18px;
+    border-radius: 5px;
+    line-height: 1;
+    color: black;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid;
+    background: none;
+}
+
+#nota3 {
+    /*cambiato il css di nota3*/
+    height: 30px;
+    width: 300px;
+    margin-left: 20%;
+    margin-bottom: 40px;
+    align-items: center;
+    border-radius: 18px;
+    border-radius: 5px;
+    line-height: 1;
+    color: black;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid;
+    background: none;
+}
+
 #croce:hover {
-    filter: brightness(0) invert(1);
-
+    /*cambiato il css di croce:hover*/
+    color: red;
+    width: 20px;
+    height: 20px;
 }
-#croce2:hover
-{
-    filter: brightness(0) invert(1);
 
+#croce2:hover {
+    filter: brightness(0) invert(1);
 }
-#submit
-{
-    width: 110px;
-    height: 45px;
-    margin-left: 330px;
-    margin-top: 55px;
+
+.submit-senza-hover {
+    /*creato classe submit-senza-hover*/
+    pointer-events: none;
+    transition: none;
+}
+
+.submit-con-hover {
+    /*cambiato css di submit, da sostituire con submit-con-hover*/
+    display: block;
+    padding: 20px 30px;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #FFD847;
+    color: white;
+    background-color: #FFD847;
     border-radius: 30px;
+    justify-content: center;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    margin-left: 38%;
     transition: all 0.3s ease;
-    border:none;
 }
-#submit:hover
-{
-    width: 130px;
-    height: 55px;
-    background-color: orange;
+
+.submit-con-hover:hover {
+    /*cambiato css di submit ed anceh cambiato il nome in "submit-con-hoover:hover"*/
+    transform: scale(1.2);
 }
-#label
-{
+
+#label {
     margin-top: -60px;
     margin-left: 40px;
     font-size: 25px;
 }
-.cose
-{
+
+.cose {
     margin-top: 90px;
 }
-#boldButton
-{
+
+#boldButton {
     height: 20px;
     width: 30px;
     margin-top: 90px;
@@ -233,8 +287,8 @@ button {
     border-radius: 30px;
     border: 0.5 solid black;
 }
-#italicButton
-{
+
+#italicButton {
     height: 20px;
     width: 30px;
     margin-top: 90px;
@@ -242,8 +296,8 @@ button {
     border-radius: 30px;
     border: 0.5 solid black;
 }
-#underlineButton
-{
+
+#underlineButton {
     height: 20px;
     width: 30px;
     margin-top: 90px;
@@ -251,30 +305,31 @@ button {
     border-radius: 30px;
     border: 0.5 solid black;
 }
-#eraseimagesButton
-{
+
+#eraseimagesButton {
     margin-top: 60px;
     margin-left: 1000px;
 }
-#deleteTextButton
-{
+
+#deleteTextButton {
     margin-top: 40px;
     margin-left: 1000px;
 }
-#moveButton
-{
+
+#moveButton {
     height: 20px;
     width: 70px;
     margin-top: 90px;
-    margin-left: 800px; 
+    margin-left: 800px;
     border-radius: 30px;
     border: 0.5 solid black;
 }
-#salva
-{
+
+#salva {
     margin-top: 40px;
-    margin-left: 900px; 
+    margin-left: 900px;
 }
+
 .cursor {
     width: 2px;
     height: 16px;
@@ -283,12 +338,13 @@ button {
     display: none;
     pointer-events: none;
 }
+
 #uscita {
-    position: absolute; 
-    top: 0; 
-    left: 1840px; 
-    margin-top: -5px; 
-    margin-left: 0; 
+    position: absolute;
+    top: 0;
+    left: 1840px;
+    margin-top: -5px;
+    margin-left: 0;
     height: 55px;
     width: 55px;
 }
@@ -298,15 +354,14 @@ button {
     opacity: 1;
 }
 
-#uscita:hover
-{
-    transform: scale(1.2); 
+#uscita:hover {
+    transform: scale(1.2);
     transition: transform 0.3s ease;
 }
-#banner
-{
+
+#banner {
     width: 300px;
-    height:  100px;
+    height: 100px;
     border-radius: 30px;
     margin-left: 950px;
     margin-top: -500px;
@@ -314,41 +369,44 @@ button {
     transform: translate(-50%, -50%);
     border: 1px solid black;
 }
-#banner-text
-{
+
+#banner-text {
     margin-left: 65px;
 }
-#confermaSalvataggio
-{
+
+#confermaSalvataggio {
     margin-top: 25px;
     margin-left: 45px;
 }
-#annullaSalvataggio
-{
+
+#annullaSalvataggio {
     margin-top: 25px;
     margin-left: 180px;
 }
-#forme
-{
+
+#forme {
     height: 20px;
     width: 70px;
     margin-top: 60px;
     margin-left: 800px;
     border-radius: 30px;
 }
-#annulla
-{
+
+#annulla {
     margin-top: 55px;
     margin-left: 100px;
 }
-.spostato-verso-sinistra
-{
-    transform: translateX(0%);  
-    transition: transform 0.5s ease;  
+
+.spostato-verso-sinistra {
+    transform: translateX(0%);
+    transition: transform 0.5s ease;
 }
-body, html{
+
+body,
+html {
     overflow: hidden;
 }
+
 @keyframes cadutaConRimbalzo {
     0% {
         transform: translateX(-100%);
@@ -369,6 +427,3 @@ body, html{
         opacity: 1;
     }
 }
-
-
-
