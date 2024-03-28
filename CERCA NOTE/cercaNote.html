@@ -6,12 +6,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <script src="cercaNote.js"></script>
+    <script src="js/cercaNote.js"></script>
     <link rel="stylesheet" href="style_login.css">
     <script src="script_login.js"></script>
 </head>
 <body onload="setAll()">
-    <?php
+    <!--<?php
     session_start();
     $conn = new mysqli("localhost","root","","share-notes");
     include "utils.inc.php";
@@ -156,14 +156,21 @@
         //con i filtri in base al filtro mostro solo quelle...
         //vedere come fare per ricerca...
     }
-    ?>
+    ?>-->
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
         <div class="container-fluid">
           <a href="index.php"><img id="imm" src="img/im.png"></a>
           <a href="#"><button id="bottone1"  type="button">Funzionalità</button></a>
           <a href="index.php"><button id="bottone2"  type="button">Home</button></a>
           <a href="aboutPage.php"><button  id="bottone3" type="button">Chi Siamo?</button></a>
-          <a href="#" ><button id="bottone5" type="button"><img src="img/profile.png"></button></a>
+          <a href="index.php" ><button id="bottone5" type="button"><img src="img/profile.png"></button></a> <!-- QUESTO VERRA' TOLTO QUNADO TORNERA' AD ESSERE .PHP-->
+          <!--<?php
+            if (isLogged()) {
+                echo '<a href="index.php" ><button id="bottone5" type="button"><img src="img/profile.png"></button></a>';
+            }else {
+                echo '<a href="profile_page.php" ><button id="bottone5" type="button"><img src="img/profile.png"></button></a>';
+            }
+          ?>-->
           <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ShareNotes</h5>
@@ -182,34 +189,39 @@
           </div>
         </div>
       </nav>
+      <hr id="rowUpper">
     <div class="ciao">
       <div class="sidebar">
-        <h1 id="titolo">CERCA NOTE</h1><hr> <!-- materia, anno, classe-->
-        <form action="cercaNote.php" method="post" id="Filters">
-            <select name="materia" id="matFilter" onchange="submitSelected('matFilter')">
-                <option value='all'>All</option>
-                <?php mostraMaterie($conn) ?>
-            </select>
-            <select name="anno" id="annoFilter" onchange="submitSelected('annoFilter')">
-                <option value=0>All</option>
-                <option value=1>1°</option>
-                <option value=2>2°</option>
-                <option value=3>3°</option>
-                <option value=4>4°</option>
-                <option value=5>5°</option>
-            </select>
-            <select name="classe" id="classFilter" onchange="submitSelected('classFilter')">
-                <option value='none'>All</option>
-                <?php mostraClassi($conn) ?>
-            </select>
-        </form>
+        <h1 id="titolo">Cerca tutti gli appunti che desideri</h1><hr id="titleRow"> <!-- materia, anno, classe-->
+        <h3 id="titleFilters">Filtri:</h3>
+        <div class="filtersBlock">
+            <form action="cercaNote.php" method="post" id="Filters">
+                <select name="materia" id="matFilter" onchange="submitSelected('matFilter')">
+                    <option value='all'>Materia</option>
+                    <?php mostraMaterie($conn) ?>
+                </select><br>
+                <select name="anno" id="annoFilter" onchange="submitSelected('annoFilter')">
+                    <option value=0>Anno</option>
+                    <option value=1>1°</option>
+                    <option value=2>2°</option>
+                    <option value=3>3°</option>
+                    <option value=4>4°</option>
+                    <option value=5>5°</option>
+                </select><br>
+                <select name="classe" id="classFilter" onchange="submitSelected('classFilter')">
+                    <option value='none'>Classe</option>
+                    <!--<?php mostraClassi($conn) ?>-->
+                </select>
+            </form>
+        </div>
+        <div id="vr" style="height:100%; width:1px;margin-left:270px;margin-top:-378px;"></div>
     </div>
     <div class="input-container">
         <form action="cercaNote.php" method="post" id="Search">
             <input name="SearchBar" id="input" type="text" placeholder="CERCA DEGLI APPUNTI TRAMITE IL LORO TITOLO:" onchange="submitSelected('input', 'Search')">
         </form>
         <div id="allNotes">
-            <?php
+            <!--<?php
                 if(isset($materia)){
                     if(isset($classe)){
                         if(isset($anno)){
@@ -271,110 +283,9 @@
                         }
                     }
                 }
-            ?>
+            ?>-->
         </div>
     </div>
   </div>
-  <!-- QUI -->
-  <div id="popup" class="popup">
-    <div class="popup-content">
-        <span class="close" id="closePopupBtn">&times;</span>
-        <div class="pop-menu">
-            <div class="pop-menu">
-                <h1 class="popup-sets">Crea il tuo<br>SnakeID!</h1>
-                <button id="register" class="register-button">Registrati</button><br>
-                <p class="txt-snakeID">Hai già uno SnakeID?
-                    <p>
-                        <button id="access" class="login-button">Accedi</button><br>
-            </div>
-        </div>
-    </div>
-</div>
-<a name="accesso"></a>;
-<div id="access-popup" class="popup">
-    <div class="popup-content">
-        <span class="close" id="closeaccess">&times;</span>
-        <div class="pop-menu">
-            <h1 class="popup-sets-access">Accedi:</h1>
-            <form action="login.php" method="post">
-                <input class="login-inputs" type="text" id="emailInputaccess" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="validateLogin()"><br>
-                <input class="login-inputs" type="password" id="passwordInputaccess" name="passwordInput" placeholder="Password" autocomplete="current-password" onchange="validateLogin()">
-                <input type="checkbox" id="showPasswordAccess" class="checkbox-login"><br>
-                <text>Vuoi rimanere loggato?</text><br>
-                <text>sì</text><input type="checkbox" id="loggedOn" name="stayLogged" onchange="validateLogin()" onchange="onlyOneYes()" value=1>
-                <text>no</text><input type="checkbox" id="loggedOff" name="stayLogged" onchange="validateLogin()" onchange="onlyOneNo()" value=0>
-                <p id="controlloLog" class="ctr-login">
-                    <p>
-                        <input type="submit" value="Avanti" id="avanti-access" class="avanti-login-button">
-                        <!--<button class="avanti-login-button">Avanti</button>-->
-            </form>
-            <div class="try">
-                <h6 class="no-account">non hai uno SnakeID?!</h6>
-                <button id="register-out" class="register-out-button">Registrati</button><br>
-                <a id="open-popup-reset" href="#" class="pass-lost">hai perso la password?</a>
-                <!-- aggiugnere al posto di "#" il link per la pagina per reimpostare la password-->
-            </div>
-        </div>
-    </div>
-</div>
-<a name="registrazione"></a>;
-<div id="register-popup" class="popup">
-    <div class="popup-content">
-        <span class="close" id="closeregister">&times;</span>
-        <div class="pop-menu-register">
-            <h1 class="popup-sets">Registrati:</h1>
-            <form action="inserimento.php" method="post">
-                <input class="login-inputs" type="text" id="nickinput" name="nickInput" placeholder="Nickname"><br>
-                <input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="validatePassword()"><br>
-                <input class="login-inputs" type="password" id="passwordInput" name="passwordInput" placeholder="Password" autocomplete="current-password"><br>
-                <input type="checkbox" id="showPasswordRegister" class="checkbox-register">
-                <input class="login-inputs" type="password" id="passwordInputControl" name="passwordInputControl" placeholder="Conferma password" autocomplete="current-password" onchange="validateEmail()"><br>
-                <select id="classes" name="classe-sel" class="class-select" onchange="validatePassword()">
-                    <option value="none">classe</option>
-                    <option value="1">test</option>
-                    <option value="2">test2</option>
-                    <!-- inserire scelte, quella test è di prova -->
-                  </select>
-                <p id="controllo" class="ctr-register">
-                    <p>
-                        <input type="submit" value="Avanti" id="avanti-register" class="avanti-register-button">
-                        <!--<button class="avanti-register-button">Avanti</button>-->
-            </form>
-            <div>
-                <h6 class="no-account">hai già uno SnakeID?!</h6>
-                <button id="access-out" class="login-out-button">Accedi</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="popup-requirements" class="popup">
-    <div class="popup-content">
-        <div class="pop-menu">
-            <div class="pop-menu">
-                <h1 class="cookie-title">Noi crediamo nel rispetto della privacy altrui</h1>
-                <p class="cookie-accept-class">Noi e i nostri fornitori archiviamo informazioni quali cookie su un dispositivo (e/o vi accediamo) e trattiamo i dati personali, quali gli identificativi unici e informazioni generali inviate da un dispositivo, per personalizzare gli
-                    annunci e i contenuti, misurare le prestazioni di annunci e contenuti, ricavare informazioni sul pubblico e anche per sviluppare e migliorare i prodotti. Con la tua autorizzazione noi e i nostri fornitori possiamo utilizzare dati
-                    precisi di geolocalizzazione e identificazione tramite la scansione del dispositivo.</p>
-                <input type="submit" value="rifiuto" id="refuse-requirements" class="refuse-cookie-btn">
-                <input type="submit" value="accetto" id="accept-requirements" class="accept-cookie-btn">
-            </div>
-        </div>
-    </div>
-</div>
-<div id="popup-reset" class="popup">
-    <div class="popup-content">
-        <span class="close" id="close-reset">&times;</span>
-        <div class="pop-menu">
-            <div class="pop-menu">
-                <h1 class="popup-reset-sets">Resetta la password</h1>
-                <form action="mailR.php" method="post">
-                    <input class="login-inputs" type="text" id="emailInputReset" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="resetCtr()"><br>
-                    <p id="ctr-reset" class="ctr-reset-output"></p><br>
-                    <input type="submit" value="avanti" id="reset-password-accept" class="avanti-reset-btn">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 </html>

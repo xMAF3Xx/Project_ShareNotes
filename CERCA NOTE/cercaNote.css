@@ -1,8 +1,38 @@
 #titolo
 {
-    color:red;
-    font-size: 25px;
+    color:black;
+    font-size: 35px;
     box-shadow: inset;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 20px;
+}
+#titleRow{
+    margin-top: 55px;
+}
+#titleFilters{
+    text-align: left;
+    margin-left: 20px;
+    font-style: oblique;
+    font-size: 25px;
+}
+#rowUpper{
+    margin-top: -2px;
+}
+.filtersBlock{
+    margin-left: 20px;
+    width: 249px;
+    text-align: left;
+}
+#matFilter,
+#annoFilter,
+#classFilter{
+    height: 40px;
+    border-color: white;
+    width: 200px;
+}
+#vr{
+    background-color: lightgray;   
 }
 body
 {
@@ -34,10 +64,11 @@ body
 
 #imm {
     max-width: 37%;
+    margin-bottom: 0;
 }
 
 .navbar {
-    background-color:  peachpuff;
+    background-color:  white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +118,7 @@ body
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #f1f1f1;
+    background-color:white;
     padding-top: 20px;
     margin-top: 128px; 
 }
