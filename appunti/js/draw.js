@@ -702,17 +702,18 @@ uscita.addEventListener('click', function() {
     event.stopPropagation();
     banner.style.display = 'block';
     hola.style.display = 'none';
+    tutto2.style.filter = 'blur(5px)';
 });
 
 confermaSalvataggio.addEventListener('click', function() {
     hola.style.display = 'block';
     banner.style.display = 'none';
-    applicaSfocatura();
+    tutto2.style.filter = 'blur(5px)';
     event.stopPropagation();
-
 });
 d.addEventListener('click', function() {
     banner.style.display = 'none';
+    tutto2.style.filter = 'none';
 })
 
 annullaSalvataggio.addEventListener('click', function() {

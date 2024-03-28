@@ -361,26 +361,27 @@ button {
 
 #banner {
     width: 300px;
-    height: 100px;
+    height: 200px;
     border-radius: 30px;
     margin-left: 950px;
     margin-top: -500px;
-    background-color: aqua;
+    background-image: url('img/sfondo_banner.JPG');
     transform: translate(-50%, -50%);
     border: 1px solid black;
+    text-align: center;
 }
 
 #banner-text {
-    margin-left: 65px;
+    font-family: inter;
 }
 
 #confermaSalvataggio {
-    margin-top: 25px;
+    margin-top: 105px;
     margin-left: 45px;
 }
 
 #annullaSalvataggio {
-    margin-top: 25px;
+    margin-top: 105px;
     margin-left: 180px;
 }
 
@@ -393,7 +394,7 @@ button {
 }
 
 #annulla {
-    margin-top: 55px;
+    margin-top: 145px;
     margin-left: 100px;
 }
 
@@ -426,4 +427,25 @@ html {
         transform: translateX(0);
         opacity: 1;
     }
+}
+
+.save-btns {
+    display: block;
+    padding: 5px 10px;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #5D98E0;
+    color: white;
+    background-color: #5D98E0;
+    border-radius: 18px;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+    transition: all 0.5s ease;
+}
+
+.save-btns:hover {
+    transform: scale(1.2);
 }
