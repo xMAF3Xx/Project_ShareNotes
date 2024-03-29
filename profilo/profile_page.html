@@ -131,6 +131,7 @@
             <a href="#"><button class="top-buttons-style">Funzionalità</button></a>
             <hr class="line-horizontal">
             <div class="open-zone">
+                <div class="prova">
                 <h1 class="main-title">Appunti</h1>
                 <div class="scrollable">
                     <div class="folders" id="folder-math" onclick="cambiaStatoMateria('folder-math')">
@@ -542,6 +543,7 @@
                 </form>
             </div>
         </div>
+       </div>
         <hr class="line-vertical">
         <div class='vertical'>
             <img src="img/user.png" class="user-img">
@@ -555,32 +557,32 @@
                                 <ul>
                                     <li>
                                         <select id="materia" name="Materia" class="options-dims" onchange="sort('folder-' + this.value, 'folders', this.value)">
-            					            <option value="all">All</option>
-  								            <option value="math">Matematica</option>
-  								            <option value="ita">Italiano</option>
- 								            <option value="storia">Storia</option>
-  								            <option value="ict">Informatica</option>
-  								            <option value="tlc">Telecomunicazione</option>
-  								            <option value="tpsi">TPSI</option>
-								            <option value="try">PROVA</option>
+            					            <option  class="centra" value="all">All</option>
+  								            <option  class="centra" value="math">Matematica</option>
+  								            <option  class="centra" value="ita">Italiano</option>
+ 								            <option  class="centra" value="storia">Storia</option>
+  								            <option  class="centra" value="ict">Informatica</option>
+  								            <option  class="centra" value="tlc">Telecomunicazione</option>
+  								            <option  class="centra" value="tpsi">TPSI</option>
+								            <option  class="centra" value="try">PROVA</option>
 							            </select>
                                     </li>
                                     <form action="profile_page.php" method="post" id="formFilter">
                                         <li>
                                             <select id="classe" name="Classe" class="options-dims" onchange="submitSelected('classe')">
-            					                <option value=0>All</option>
-  								                <option value=1>Prima</option>
-  								                <option value=2>Seconda</option>
- 								                <option value=3>Terza</option>
-  								                <option value=4>Quarta</option>
-  								                <option value=5>Quinta</option>
+            					                <option class="centra" value=0>All</option>
+  								                <option class="centra" value=1>Prima</option>
+  								                <option class="centra" value=2>Seconda</option>
+ 								                <option class="centra" value=3>Terza</option>
+  								                <option class="centra" value=4>Quarta</option>
+  								                <option class="centra" value=5>Quinta</option>
 							                </select>
                                         </li>
                                         <li>
                                             <select id="proprita" name="Proprieta" class="options-dims" onchange="submitSelected('proprita')">
-            					                <option value=2>All</option>
-  								                <option value=1>Creati da te</option>
-  								                <option value=0>Creati da altri</option>
+            					                <option class="centra" value=2>All</option>
+  								                <option class="centra" value=1>Creati da te</option>
+  								                <option class="centra" value=0>Creati da altri</option>
 							                </select>
                                         </li>
                                     </form>
