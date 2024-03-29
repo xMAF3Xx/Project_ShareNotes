@@ -1,46 +1,52 @@
-#titolo
-{
-    color:black;
+#titolo {
+    color: black;
     font-size: 35px;
     box-shadow: inset;
     font-weight: bold;
     text-align: left;
     margin-left: 20px;
 }
-#titleRow{
+
+#titleRow {
     margin-top: 55px;
 }
-#titleFilters{
+
+#titleFilters {
     text-align: left;
     margin-left: 20px;
     font-style: oblique;
     font-size: 25px;
 }
-#rowUpper{
+
+#rowUpper {
     margin-top: -2px;
 }
-.filtersBlock{
+
+.filtersBlock {
     margin-left: 20px;
     width: 249px;
     text-align: left;
 }
+
 #matFilter,
 #annoFilter,
-#classFilter{
+#classFilter {
     height: 40px;
     border-color: white;
     width: 200px;
 }
-#vr{
-    background-color: lightgray;   
+
+#vr {
+    background-color: lightgray;
 }
-body
-{
+
+body {
     flex-direction: column;
     display: flex;
     background-image: url("img/sfondo.png");
     background-repeat: no-repeat;
-    background-size: cover; /* Aggiunta questa riga per coprire l'intera area con l'immagine */
+    background-size: cover;
+    /* Aggiunta questa riga per coprire l'intera area con l'immagine */
     background-position: center center;
 }
 
@@ -49,12 +55,12 @@ body
     height: 45px;
     margin-top: 100px;
     margin-left: 590px;
-    display:flex;
+    display: flex;
     border-radius: 30px;
     justify-content: center;
-    flex-direction:column-reverse;
+    flex-direction: column-reverse;
     border: 1px solid #ccc;
-    transition: border 0.3s ease-out; 
+    transition: border 0.3s ease-out;
     padding-left: 15px;
 }
 
@@ -68,7 +74,7 @@ body
 }
 
 .navbar {
-    background-color:  white;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,45 +90,45 @@ body
 .offcanvas-body {
     text-align: center;
 }
-#bottone1
-{
+
+#bottone1 {
     background: none;
     border: none;
 }
-#bottone2
-{
+
+#bottone2 {
     background: none;
     border: none;
 }
-#bottone3
-{
+
+#bottone3 {
     background: none;
     border: none;
 }
-#bottone4
-{
+
+#bottone4 {
     background: none;
     border: none;
 }
-#bottone5
-{
+
+#bottone5 {
     background: none;
-    border:none;
+    border: none;
     margin-left: 30px;
 }
 
 .sidebar {
     text-align: center;
-    height: 100vh; 
-    width: 270px; 
+    height: 100vh;
+    width: 270px;
     position: fixed;
     top: 0;
     left: 0;
-    background-color:white;
+    background-color: white;
     padding-top: 20px;
-    margin-top: 128px; 
+    margin-top: 128px;
 }
-    
+
 .sidebar a {
     padding: 8px;
     text-decoration: none;
@@ -130,12 +136,23 @@ body
     color: black;
     display: block;
 }
-    
+
 .sidebar a:hover {
     background-color: #555;
     color: white;
 }
 
-#allNotes{
+#allNotes {
     margin-left: 600px;
+}
+
+.bar-Btns {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 150px;
+}
+
+.bar-Btns:hover {
+    font-weight: bold;
+    transition: all 0.3s;
 }
