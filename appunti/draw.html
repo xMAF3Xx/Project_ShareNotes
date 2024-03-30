@@ -8,7 +8,36 @@
     <link rel="stylesheet" href="stile.css">
 </head>
 
-<body class="body">
+<body class="body" onload="Importa('drawingCanvas')">
+
+    <!--<?php
+        $conn = new mysqli("localhost","root","","share-notes");
+
+        if(isset($_POST['upCodice'])){
+            $contenutoN = (string) $_POST["Salva"];
+            $codiceN = (int) $_POST["upCodice"];
+            $titolo = (string) $_POST["title"];
+            $mat = (string) $_POST["matScelta"];
+            $query = "UPDATE nota SET contenuto='$contenutoN', materia='$mat', titolo='$titolo' WHERE codicenota=$codiceN";
+            $result = $conn->query($query);
+
+            echo '<script>
+                setTimeout(function() {
+                    window.location.replace("profile_page.php");
+                }, 0)
+            </script>';
+        }else {
+            $codiceNota = (int) $_POST["codNota"];
+            echo $codiceNota;
+            $query_codice = "SELECT * FROM nota WHERE codicenota=$codiceNota";
+            $resultRiga = $conn->query($query_codice);
+            $rigaNota = $resultRiga->fetch_assoc();
+            $contenutoNota = (string) $rigaNota["contenuto"];
+            $title = (string) $rigaNota["titolo"];
+            $materia = (string) $rigaNota["materia"];
+            $anno = (int) $rigaNota["annoScolastico"];
+        }
+    ?>-->
 
     <input type="text" id="contenutoNota" style="display: none;" value="<?php echo $contenutoNota ?>">
     <div id="tutto2">
@@ -71,20 +100,20 @@
         <!-- cambio tipo di pulsante per la chiusura del pop-up-->
         <h1 id="titolino">Salva la tua nota</h1>
         <!--cambiato titolo-->
-        <form action="upload.php" method="post" id="fTSend">
+        <form action="download.php" method="post" id="fTSend">
             <input id="nota" type="text" placeholder="nome della nota" name="title" value="<?php echo $title ?>" onchange="validateSave()">
             <!--aggiunto placeholder-->
             <input id="salvaImmagine" name="Salva" type="text" style="display: none;">
-            <input name="Codice" type="number" style="display: none;" value=<?php echo $codiceNota ?>>
+            <input name="upCodice" type="number" style="display: none;" value=<?php echo $codiceNota ?>>
             <select ID="nota2" name="matScelta" onchange="validateSave()"> <!-- cambiaton "CURRENT" con "materia" e reso minuscolo le varie materie e cambio del valore del primo elemento della lista-->
-                <option value="materia">materia</option>
+                <option value="<?php echo $materia ?>">CURRENT</option>
                 <option value="matematica">matematica</option>
                 <option value="italiano">italiano</option>
                 <option value="informatica">informatica</option>
                 <option value="inglese">inglese</option>
             </select>
             <select ID="nota3" name="anno" onchange="validateSave()">
-                <option value=anno>anno</option> <!-- cambiato "CURRENT" con "anno" e cambio del valore del primo elemento della lista-->
+                <option value=<?php echo $anno ?>>CURRENT</option> <!-- cambiato "CURRENT" con "anno" e cambio del valore del primo elemento della lista-->
                 <option value=1>1°</option>
                 <option value=2>2°</option>
                 <option value=3>3°</option>
@@ -106,6 +135,7 @@
         <button class="save-btns" id="annulla">Annulla</button>
     </div>
     <script src="js/draw.js"></script>
+    <script src="js/script_disegno.js"></script>
 </body>
 
 </html>
