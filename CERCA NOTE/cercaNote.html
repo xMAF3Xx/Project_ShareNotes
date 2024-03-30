@@ -85,11 +85,11 @@
 			$note[] = $row;
 		}
         sortMatByVal($note, $num_note);
-        echo "<form action='visualizza.php' method='post'>";
+        echo "<form target='_blank' action='show.php' method='post'>";
 		for ($j = 0; $j < $num_note; $j++) {
 			$nome = ' '.$note[$j]["titolo"];
             $materia = $note[$j]["materia"];
-            $anno = $note[$j]["anno-scolastico"];
+            $anno = $note[$j]["annoScolastico"];
             $classe = $note[$j]["classe"];
             $codice = $note[$j]["codicenota"];
             if($year == 0){
@@ -155,26 +155,22 @@
             }
 		}
         echo "</form>";
-        //con i filtri in base al filtro mostro solo quelle...
-        //vedere come fare per ricerca...
     }
     ?>-->
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
         <div class="container-fluid">
-            <a href="index.php"><img id="imm" class="bar-Btns" src="img/im.png"></a>
+        <a href="index.php"><img id="imm" class="bar-Btns" src="img/im.png"></a>
             <a href="#"><button id="bottone1"  class="bar-Btns" type="button">Funzionalità</button></a>
             <a href="index.php"><button id="bottone2"  class="bar-Btns" type="button">Home</button></a>
             <a href="aboutPage.php"><button  id="bottone3" class="bar-Btns" type="button">Chi Siamo?</button></a>
-            <a href="index.php"><button id="bottone5" type="button"><img src="img/profile.png"></button></a>
-            <!-- QUESTO VERRA' TOLTO QUNADO TORNERA' AD ESSERE .PHP-->
-            <!--<?php
+          <!--<?php
             if (isLogged()) {
                 echo '<a href="index.php" ><button id="bottone5" type="button"><img src="img/profile.png"></button></a>';
             }else {
                 echo '<a href="profile_page.php" ><button id="bottone5" type="button"><img src="img/profile.png"></button></a>';
             }
           ?>-->
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ShareNotes</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -203,7 +199,7 @@
                 <form action="cercaNote.php" method="post" id="Filters">
                     <select name="materia" id="matFilter" onchange="submitSelected('matFilter')">
                     <option value='all'>Materia</option>
-                    <?php mostraMaterie($conn) ?>
+                    <!--<?php mostraMaterie($conn) ?>-->
                 </select><br>
                     <select name="anno" id="annoFilter" onchange="submitSelected('annoFilter')">
                     <option value=0>Anno</option>
@@ -221,12 +217,12 @@
             </div>
             <div id="vr" style="height:100%; width:1px;margin-left:270px;margin-top:-378px;"></div>
         </div>
-        <div class="input-container">
-            <form action="cercaNote.php" method="post" id="Search">
-                <input name="SearchBar" id="input" type="text" placeholder="CERCA DEGLI APPUNTI TRAMITE IL LORO TITOLO:" onchange="submitSelected('input', 'Search')">
-            </form>
-            <div id="allNotes">
-                <!--<?php
+    <div class="input-container">
+        <form action="cercaNote.php" method="post" id="Search">
+            <input name="SearchBar" id="input" type="text" placeholder="CERCA DEGLI APPUNTI TRAMITE IL LORO TITOLO:" onchange="submitSelected('input', 'Search')">
+        </form>
+        <div id="allNotes">
+            <!--<?php
                 if(isset($materia)){
                     if(isset($classe)){
                         if(isset($anno)){
@@ -289,9 +285,8 @@
                     }
                 }
             ?>-->
-            </div>
         </div>
     </div>
+  </div>
 </body>
-
 </html>
