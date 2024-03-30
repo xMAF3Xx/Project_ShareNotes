@@ -70,7 +70,7 @@ body {
 
 .top-buttons-style {
     display: inline-block;
-    margin-left: 15%;
+    margin-left: 11%;
     margin-bottom: 15px;
     background: white;
     border: white;
@@ -98,10 +98,11 @@ body {
 }
 
 .options-dims {
-    width: 380px;
+    width: 280px;
     height: 18px;
     border-radius: 8px;
     border: none;
+    margin-left: -10px;
 }
 
 .main-title {
@@ -112,7 +113,7 @@ body {
 .folders {
     width: 85%;
     height: 20px;
-    margin-left: 7.5%;
+    margin-left: 7%;
     background-color: white;
     border: 2px solid grey;
     border-radius: 18px;
@@ -135,7 +136,101 @@ body {
     font-weight: bold;
     font-size: 20px;
 }
+.filosofia {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.biologia {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.sta {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.motoria {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.sistemi {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.scienze {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.elettronica {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.meccanica {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+.arte {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
 
+.geografia {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.diritto {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.chimica {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.inglese {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
 .ita {
     margin-top: 0px;
     margin-left: 10px;
@@ -179,11 +274,6 @@ body {
 .materia-clicked {
     text-align: center;
 }
-.centra
-{
-    text-align: center;
-}
-
 .create-btn {
     width: 100px;
     height: 100px;
