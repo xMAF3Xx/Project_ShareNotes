@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profile</title>
     <link type="text/CSS" rel="stylesheet" href="profile_page.css">
-    <!-- Include JSZip via CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
-    <!-- Include FileSaver via CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
     <script src="js/profile_page.js"></script>
     <script src="js/script_selezione.js"></script>
@@ -76,6 +74,26 @@
 			$nomeUtente = (string) ($result_nome->fetch_assoc())['name'];
         }
 
+        if(isset($_POST['eliminaNota'])){
+            $checkNota = "SELECT * FROM nota WHERE email='$mail'";
+            $resultCheck = $conn->query($checkNota);
+            $numNota = $resultCheck->num_rows;
+            if($numNota > 1){
+                $code = $_POST['eliminaNota'];
+                $eliminazione = "DELETE FROM nota WHERE codicenota=$code";
+                $resultEliminazione = $conn->query($eliminazione);
+                if(!$resultEliminazione){
+                    echo '<script>
+                        alert("La nota non e\' stata eliminata correttamente, riprovare in seguito...");
+                    </script>';
+                }
+            }else {
+                echo '<script>
+                        alert("La nota che stai tentando di eliminare e\' l\'ultima che ti rimane, non puoi eliminarla...");
+                    </script>';
+            }
+        }
+
         if(isset($_POST['Classe'])){
             $year = (int) $_POST['Classe'];
         }
@@ -94,7 +112,6 @@
 			while ($row = $result_num_mate->fetch_assoc()) {
 				$mate[] = $row;
 			}
-			echo '<form method="POST" action="download.php">';
 			for ($j = 0; $j < $num_mate; $j++) {
 				$codice = $mate[$j]['codicenota'];
 				$title = $mate[$j]['titolo'];                               //' onClick="assegnaValore(', $codice , ', ',$nomeInput,')" 
@@ -103,23 +120,42 @@
                 $content = (string) $mate[$j]['contenuto'];
                 if($appartenenza == 2){
                     if($anno == 0){
+                        echo '<form method="POST" action="download.php">';
                         echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button>';
                         echo '<button form="noForm" onclick="downloadNota(\''.$title.'\',\''.$content.'\')">Download '.$title.'</button><br>';
+                        echo '</form>';
+                        echo '<form method="POST" action="profile_page.php">';
+                        echo '<button name="eliminaNota" value='.$codice.'>Elimina'.$title.'</button>';
+                        echo '</form>';
                     }else if($anno == $ann){
+                        echo '<form method="POST" action="download.php">';
                         echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button>';
                         echo '<button form="noForm" onclick="downloadNota(\''.$title.'\',\''.$content.'\')">Download '.$title.'</button><br>';
+                        echo '</form>';
+                        echo '<form method="POST" action="profile_page.php">';
+                        echo '<button name="eliminaNota" value='.$codice.'>Elimina'.$title.'</button>';
+                        echo '</form>';
                     }
                 }else if($appartenenza == $app){
                     if($anno == 0){
+                        echo '<form method="POST" action="download.php">';
                         echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button>';
                         echo '<button form="noForm" onclick="downloadNota(\''.$title.'\',\''.$content.'\')">Download '.$title.'</button><br>';
+                        echo '</form>';
+                        echo '<form method="POST" action="profile_page.php">';
+                        echo '<button name="eliminaNota" value='.$codice.'>Elimina'.$title.'</button>';
+                        echo '</form>';
                     }else if($anno == $ann){
+                        echo '<form method="POST" action="download.php">';
                         echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button>';
                         echo '<button form="noForm" onclick="downloadNota(\''.$title.'\',\''.$content.'\')">Download '.$title.'</button><br>';
+                        echo '</form>';
+                        echo '<form method="POST" action="profile_page.php">';
+                        echo '<button name="eliminaNota" value='.$codice.'>Elimina'.$title.'</button>';
+                        echo '</form>';
                     }
                 }
 			}
-			echo '</form>';
 		}
         ?>-->
     <div class='container-verti'>
@@ -131,7 +167,6 @@
             <a href="#"><button class="top-buttons-style">Funzionalità</button></a>
             <hr class="line-horizontal">
             <div class="open-zone">
-                
                 <h1 class="main-title">Appunti</h1>
                 <div class="scrollable">
                     <div class="folders" id="folder-math" onclick="cambiaStatoMateria('folder-math')">
@@ -172,7 +207,7 @@
                                         mostra('italiano', $mail, $conn);
                                     } 
                                 }
-                                ?>
+                                ?>-->
                     </div>
                     <div class="folders" id="folder-storia" onclick="cambiaStatoMateria('folder-storia')">
                         <h6 class="storia" id="titleSub-storia">Storia
@@ -254,8 +289,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-storia" onclick="cambiaStatoMateria('folder-storia')">
-                        <h6 class="storia" id="titleSub-storia">Storia
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -274,8 +309,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-inglese" onclick="cambiaStatoMateria('folder-inglese')">
-                        <h6 class="inglese" id="titleSub-inglese">Inglese
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -294,8 +329,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-chimica" onclick="cambiaStatoMateria('folder-chimica')">
-                        <h6 class="chimica" id="titleSub-chimica">Chimica
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -314,8 +349,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-diritto" onclick="cambiaStatoMateria('folder-diritto')">
-                        <h6 class="diritto" id="titleSub-diritto">Diritto ed Economia
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -334,8 +369,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-geografia" onclick="cambiaStatoMateria('folder-geografia')">
-                        <h6 class="geografia" id="titleSub-geografia">Geografia
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -354,8 +389,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-filosofia" onclick="cambiaStatoMateria('folder-filosofia')">
-                        <h6 class="filosofia" id="titleSub-filosofia">Filosofia
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -374,8 +409,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-arte" onclick="cambiaStatoMateria('folder-arte')">
-                        <h6 class="arte" id="titleSub-arte">Arte e disegno tecnico
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -394,8 +429,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-meccanica" onclick="cambiaStatoMateria('folder-meccanica')">
-                        <h6 class="meccanica" id="titleSub-meccanica">Meccanica
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -414,8 +449,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-elettronica" onclick="cambiaStatoMateria('folder-elettronica')">
-                        <h6 class="elettronica" id="titleSub-elettronica">Elettronica
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -434,8 +469,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-scienze" onclick="cambiaStatoMateria('folder-scienze')">
-                        <h6 class="scienze" id="titleSub-scienze">Scienze (fisica, della terra, naturali)
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -454,8 +489,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-sistemi" onclick="cambiaStatoMateria('folder-sistemi')">
-                        <h6 class="sistemi" id="titleSub-sistemi">Sistemi e Reti
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -474,8 +509,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-biologia" onclick="cambiaStatoMateria('folder-biologia')">
-                        <h6 class="biologia" id="titleSub-biologia">Biologia (anatomia, igiene,fisiologia, microbiologia)
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -494,8 +529,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-sta" onclick="cambiaStatoMateria('folder-sta')">
-                        <h6 class="sta" id="titleSub-sta">STA
+                    <div class="folders" id="folder-try" onclick="cambiaStatoMateria('folder-try')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -514,8 +549,8 @@
                                 }
                                 ?>-->
                     </div>
-                    <div class="folders" id="folder-motoria" onclick="cambiaStatoMateria('folder-motoria')">
-                        <h6 class="motoria" id="titleSub-motoria">Motoria
+                    <div class="folders" id="folder-ty" onclick="cambiaStatoMateria('folder-ty')">
+                        <h6 class="try" id="titleSub-try">PROVA
                             <h6>
                                 <hr class="line-horizontal">
                                 <!--<?php
@@ -541,10 +576,8 @@
                         <img src="img\create.png" class="create-btn">
                     </button>
                 </form>
-
             </div>
         </div>
-   
         <hr class="line-vertical">
         <div class='vertical'>
             <img src="img/user.png" class="user-img">
@@ -558,45 +591,32 @@
                                 <ul>
                                     <li>
                                         <select id="materia" name="Materia" class="options-dims" onchange="sort('folder-' + this.value, 'folders', this.value)">
-            					            <option   value="all">All</option>
-  								            <option   value="math">Matematica</option>
-  								            <option   value="ita">Italiano</option>
-  								            <option   value="ict">Informatica</option>
-  								            <option   value="tlc">Telecomunicazione</option>
-  								            <option   value="tpsi">TPSI</option>
-                                            <option   value="storia">Storia</option>
-								            <option   value="inglese">Inglese</option>
-                                            <option   value="chimica">Chimica</option>
-                                            <option   value="diritto">Diritto ed Economia</option>
-                                            <option   value="geografia">Geografia</option>
-                                            <option   value="filosofia">Filosofia</option>
-                                            <option   value="arte">Arte e disegno tecnico</option>
-                                            <option   value="meccanica">Meccanica</option>
-                                            <option   value="elettronica">Elettronica</option>
-                                            <option   value="math">Scienze</option>
-                                            <option   value="sistemi">Sistemi e reti</option>
-                                            <option   value="biologia">Biologia</option>
-                                            <option   value="sta">STA</option>
-                                            <option   value="motoria">Motoria</option>
-
+            					            <option value="all">All</option>
+  								            <option value="math">Matematica</option>
+  								            <option value="ita">Italiano</option>
+ 								            <option value="storia">Storia</option>
+  								            <option value="ict">Informatica</option>
+  								            <option value="tlc">Telecomunicazione</option>
+  								            <option value="tpsi">TPSI</option>
+								            <option value="try">PROVA</option>
 							            </select>
                                     </li>
                                     <form action="profile_page.php" method="post" id="formFilter">
                                         <li>
                                             <select id="classe" name="Classe" class="options-dims" onchange="submitSelected('classe')">
-            					                <option class="centra" value=0>All</option>
-  								                <option class="centra" value=1>Prima</option>
-  								                <option class="centra" value=2>Seconda</option>
- 								                <option class="centra" value=3>Terza</option>
-  								                <option class="centra" value=4>Quarta</option>
-  								                <option class="centra" value=5>Quinta</option>
+            					                <option value=0>All</option>
+  								                <option value=1>Prima</option>
+  								                <option value=2>Seconda</option>
+ 								                <option value=3>Terza</option>
+  								                <option value=4>Quarta</option>
+  								                <option value=5>Quinta</option>
 							                </select>
                                         </li>
                                         <li>
                                             <select id="proprita" name="Proprieta" class="options-dims" onchange="submitSelected('proprita')">
-            					                <option class="centra" value=2>All</option>
-  								                <option class="centra" value=1>Creati da te</option>
-  								                <option class="centra" value=0>Creati da altri</option>
+            					                <option value=2>All</option>
+  								                <option value=1>Creati da te</option>
+  								                <option value=0>Creati da altri</option>
 							                </select>
                                         </li>
                                     </form>
