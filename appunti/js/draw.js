@@ -7,24 +7,20 @@ const eraseButton = document.getElementById('eraseButton');
 const fontSelector = document.getElementById('fontSelector');
 const fontSizeSelector = document.getElementById('fontSizeSelector');
 const thicknessSlider = document.getElementById('thicknessSlider');
-const ciao = document.getElementById('moveButton');
-const hola = document.getElementById('blocco');
-const h = document.getElementById("croce");
-const f = document.getElementById("nota");
-const g = document.getElementById("submit");
+const ciao=document.getElementById('moveButton');
+const hola=document.getElementById('blocco');
+const h=document.getElementById("croce");
+const f=document.getElementById("nota");
+const g=document.getElementById("submit");
 let drawingThickness = thicknessSlider.value;
-const v = document.getElementById("tutto");
-const l = document.getElementById("apri");
-const p = document.getElementById("chiudi");
-v.style.display = 'none';
-const s = document.getElementById("croce");
-const d = document.getElementById("annulla");
-const tutto2 = document.getElementById("tutto2");
+const v=document.getElementById("tutto");
+const l=document.getElementById("apri");
+const p=document.getElementById("chiudi");
+v.style.display='none';
+const s=document.getElementById("croce");
+const d=document.getElementById("annulla");
+const tutto2=document.getElementById("tutto2");
 
-g.disabled = true;
-g.style.backgroundColor = "gray";
-g.style.borderColor = "gray";
-g.classList.add("submit-senza-hover");
 
 let isDrawing = false;
 let isTyping = false;
@@ -41,13 +37,13 @@ let eraseSize;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-let erasedDrawings = []; // Array per mantenere le coordinate degli elementi cancellati
+let erasedDrawings = [];  // Array per mantenere le coordinate degli elementi cancellati
 
 // ...
 const gommaSlider = document.getElementById('gomma');
 let gommaSize = gommaSlider.value;
 
-gommaSlider.addEventListener('input', function() {
+gommaSlider.addEventListener('input', function () {
     gommaSize = gommaSlider.value;
 });
 
@@ -91,7 +87,7 @@ function eraseAll() {
     });
 
     // Ridisegna gli elementi cancellati con il colore bianco
-    context.fillStyle = '#ffffff'; // Colore bianco
+    context.fillStyle = '#ffffff';  // Colore bianco
     erasedDrawings.forEach(erasedDrawing => {
         context.fillRect(erasedDrawing.x, erasedDrawing.y, eraseSize, eraseSize);
     });
@@ -112,7 +108,7 @@ function startDrawing(e) {
     const canvasY = e.clientY - canvas.offsetTop;
 
     // Posiziona il cursore esattamente sopra il punto di inizio del testo
-    textCursor.style.left = canvasX - 190 + 'px';
+    textCursor.style.left = canvasX -190 + 'px';
     textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop + 28 + 'px';
     context.beginPath();
     context.moveTo(canvasX, canvasY);
@@ -140,7 +136,7 @@ function setDrawingColor(color) {
 function draw(e) {
     if (!isDrawing || isErasing) return;
 
-    context.lineWidth = drawingThickness; // Usa lo spessore corrente
+    context.lineWidth = drawingThickness;  // Usa lo spessore corrente
     context.lineCap = 'round';
     context.strokeStyle = drawingColor;
 
@@ -174,7 +170,6 @@ function setFontSize(fontSize) {
 
     updateCursorSize();
 }
-
 function updateCursorSize() {
     const textCursor = document.getElementById('textCursor');
     const fontSize = getSelectedFontSize();
@@ -221,7 +216,7 @@ function redrawCanvas() {
             // Applica grassetto, corsivo e sottolineato
             if (isBold) context.font = `bold ${context.font}`;
             if (isItalic) context.font = `italic ${context.font}`;
-
+            
             // Disegna il testo
             context.fillText(drawing.text, drawing.x, drawing.y);
 
@@ -255,10 +250,10 @@ function redrawCanvas() {
             context.stroke();
         }
 
-
+        
         context.font = `${getSelectedFontSize()} ${fontSelector.value}`;
 
-
+        
         if (isUnderline) {
             context.beginPath();
             context.moveTo(clickStart.x, clickStart.y + parseInt(getSelectedFontSize()) + 5);
@@ -288,12 +283,12 @@ function finishWriting() {
             editingText.color = drawingColor;
             editingText.textDecoration = isUnderline ? 'underline' : 'none';
         } else {
-
+ 
             nextX = clickStart.x;
             nextY = clickStart.y + parseInt(getSelectedFontSize()) + 10;
 
             drawings = drawings.filter(drawing => drawing.type !== 'text');
-
+            
             let appliedStyles = '';
 
             if (isBold) appliedStyles += 'bold ';
@@ -302,7 +297,7 @@ function finishWriting() {
 
             const fontStyle = `${appliedStyles}${getSelectedFontSize()} ${fontSelector.value}`;
 
-
+            
             const newDrawing = {
                 type: 'text',
                 text: text,
@@ -311,13 +306,13 @@ function finishWriting() {
                 font: fontStyle,
                 fontSize: getSelectedFontSize(),
                 color: drawingColor,
-                textDecoration: isUnderline ? 'underline' : 'none'
+                textDecoration: isUnderline ? 'underline' : 'none' 
             };
 
             drawings.push(newDrawing);
         }
 
-
+        
         context.font = `${getSelectedFontSize()} ${fontSelector.value}`;
         context.fillStyle = drawingColor;
         context.fillText(text, nextX, nextY);
@@ -388,7 +383,7 @@ function getUpdatedFontStyle(fontStyle) {
 
 
 function enableWriting() {
-    finishButton.style.display = 'none';
+    finishButton.style.display='none';
     isDrawing = false;
     isTyping = true;
     canvas.style.cursor = 'auto';
@@ -411,7 +406,6 @@ function getSelectedFontSize() {
     return fontSizeSelector.value + 'px';
 }
 let lastClickedText = null;
-
 function editText(e) {
     if (isDrawing || isErasing || !isTyping) return;
 
@@ -450,22 +444,22 @@ function editText(e) {
 
 
 
-fontSelector.addEventListener('change', function() {
+fontSelector.addEventListener('change', function () {
     setFont(fontSelector.value);
 });
 
-fontSizeSelector.addEventListener('change', function() {
+fontSizeSelector.addEventListener('change', function () {
     setFontSize(fontSizeSelector.value);
 });
 
-eraseButton.addEventListener('click', function() {
+eraseButton.addEventListener('click', function () {
     toggleEraser();
 });
 
 
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('mouseup', stopDrawing);
-canvas.addEventListener('mousemove', function(e) {
+canvas.addEventListener('mousemove', function (e) {
     if (isErasing) {
         erase(e);
     } else if (isDrawing) {
@@ -475,12 +469,11 @@ canvas.addEventListener('mousemove', function(e) {
 const submitButton = document.getElementById('submit');
 canvas.addEventListener('click', editText);
 
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     redrawCanvas();
 });
-
 function spostaBloccoVersoDestra() {
     tutto.classList.toggle('spostato-verso-destra');
 }
@@ -488,10 +481,9 @@ function spostaBloccoVersoDestra() {
 document.addEventListener('keydown', handleKeyDown);
 
 const colorPicker = document.getElementById('colorPicker');
-colorPicker.addEventListener('input', function() {
+colorPicker.addEventListener('input', function () {
     setDrawingColor(colorPicker.value);
 });
-
 function ripristinaPosizioneOriginaria() {
     tutto.classList.remove('spostato-verso-destra');
     tutto.classList.toggle("spostato-verso-sinistra");
@@ -500,39 +492,41 @@ submitButton.addEventListener('click', function() {
     ripristinaPosizioneOriginaria();
 });
 document.addEventListener('keyup', function(event) {
-
+    
     if (event.keyCode === 13) {
         if (tutto.classList.contains('spostato-verso-destra')) {
             ripristinaPosizioneOriginaria();
         }
     }
 });
-writeButton.addEventListener('click', function() {
+writeButton.addEventListener('click', function () {
     spostaBloccoVersoDestra();
     eraseAll();
     enableWriting();
 });
-finishButton.style.display = 'none';
+finishButton.style.display='none';
 
 finishButton.addEventListener('click', finishWriting);
 
-document.addEventListener('keyup', function(e) {
-    if (e.key === 'Enter' && isTyping) {
+document.addEventListener('keyup', function (e) {
+    if (e.key === 'Enter') {
+        
         finishWriting();
     }
 });
-thicknessSlider.addEventListener('input', function() {
+thicknessSlider.addEventListener('input', function () {
     drawingThickness = thicknessSlider.value;
 });
 moveButton.addEventListener('click', function() {
     if (hola.style.display === 'block' || banner.style.display === 'block') {
         hola.style.display = 'none';
-
+        
     } else {
         hola.style.display = 'block';
-        tutto2.style.filter = 'blur(5px)';
+        tutto2.style.filter = 'blur(5px)'; 
         document.getElementById('tutto2').style.pointerEvents = 'none';
-        event.stopPropagation();
+
+       
     }
 });
 
@@ -598,62 +592,41 @@ function drawRectangle(x, y, width, height) {
 
 
 
-let materia = document.getElementById('nota2').value;
-let annoScolastico = document.getElementById('nota3').value;
-let controlloElement = document.getElementById('ctr');
+let alertShown = false;
 
-h.addEventListener('click', function() {
-    hola.style.display = 'none';
+h.addEventListener('click',function(){
+    hola.style.display='none';
     tutto2.style.filter = 'none'; // Rimuovi lo sfondo sfocato
     document.getElementById('tutto2').style.pointerEvents = 'auto';
 })
-f.addEventListener('input', function() {
-    if (this.value.length > 20 || this.value.length < 5 || materia === 'materia' || annoScolastico === 'anno' || (this.value.toLowerCase() === "notabianca")) {
-        controlloElement.innerText = 'valori inseriti non validi :(';
-        g.disabled = true;
-        g.style.backgroundColor = "gray";
-        g.style.borderColor = "gray";
-        g.classList.add("submit-senza-hover");
-    } else {
-        controlloElement.innerText = '';
-        g.disabled = false;
-        g.style.backgroundColor = "#FFD847";
-        g.style.borderColor = "#FFD847";
-        g.classList.remove("submit-senza-hover");
+f.addEventListener('input',function(){
+    if(this.value.length>20 && !alertShown)
+    {
+        alert("non puoi inserire un nome che superi i 20 caratteri");
+        alertShown = true;
+         g.disabled=true;
+    }
+    else if(this.value.length<5 || (this.value.toLowerCase() === "notabianca"))
+    {
+        g.disabled=true;
+    }
+    else
+    {
+        g.disabled=false;
     }
 })
 
-function validateSave() {
-    let materia = document.getElementById('nota2').value;
-    let annoScolastico = document.getElementById('nota3').value;
-    let titleNote = document.getElementById('nota').value;
-    let controlloElement = document.getElementById('ctr');
-    if (titleNote.length > 20 || titleNote.length < 5 || materia === 'materia' || annoScolastico === 'anno' || (titleNote.toLowerCase() === "notabianca")) {
-        controlloElement.innerText = 'valori inseriti non validi :(';
-        g.disabled = true;
-        g.style.backgroundColor = "gray";
-        g.style.borderColor = "gray";
-        g.classList.add("submit-senza-hover");
-    } else {
-        controlloElement.innerText = '';
-        g.disabled = false;
-        g.style.backgroundColor = "#FFD847";
-        g.style.borderColor = "#FFD847";
-        g.classList.remove("submit-senza-hover");
-    }
-}
-
-l.addEventListener('click', function() {
-    const kiko = document.getElementById('ciao');
-    kiko.classList.add('aperta')
-    v.style.display = 'block';
-    l.style.display = 'none';
+l.addEventListener('click',function(){
+        const kiko=document.getElementById('ciao');
+        kiko.classList.add('aperta')
+        v.style.display='block';
+        l.style.display='none';
 
 })
 
-p.addEventListener('click', function() {
-    v.style.display = 'none';
-    l.style.display = 'block';
+p.addEventListener('click',function(){
+    v.style.display='none';
+    l.style.display='block';
 })
 
 
@@ -677,7 +650,6 @@ function handleKeyUp(e) {
 }
 
 document.addEventListener('keyup', handleKeyUp);
-
 function toggleBold() {
     isBold = !isBold;
     redrawCanvas();
@@ -698,28 +670,25 @@ const confermaSalvataggio = document.getElementById('confermaSalvataggio');
 const annullaSalvataggio = document.getElementById('annullaSalvataggio');
 const bloccoSalvataggio = document.getElementById('bloccoSalvataggio');
 
-uscita.addEventListener('click', function() {
+uscita.addEventListener('click', function () {
     event.stopPropagation();
     banner.style.display = 'block';
-    hola.style.display = 'none';
-    tutto2.style.filter = 'blur(5px)';
+    hola.style.display='none';
 });
 
-confermaSalvataggio.addEventListener('click', function() {
-    hola.style.display = 'block';
-    banner.style.display = 'none';
-    tutto2.style.filter = 'blur(5px)';
-    event.stopPropagation();
+confermaSalvataggio.addEventListener('click', function () {
+        hola.style.display = 'block';
+        banner.style.display = 'none';
+        applicaSfocatura();
+   
 });
-d.addEventListener('click', function() {
-    banner.style.display = 'none';
-    tutto2.style.filter = 'none';
+d.addEventListener('click',function(){
+    banner.style.display='none';
 })
 
-annullaSalvataggio.addEventListener('click', function() {
+annullaSalvataggio.addEventListener('click', function () {
     window.location.href = 'il_tuo_link_di_destinazione';
 });
-
 function applicaSfocatura() {
     document.body.classList.add('sfocato');
 }
@@ -728,20 +697,6 @@ function rimuoviSfocatura() {
     document.body.classList.remove('sfocato');
 }
 
-ciao.addEventListener('click', function() {
-    applicaSfocatura();
+ciao.addEventListener('click',function(){
+        applicaSfocatura();
 });
-
-document.addEventListener('click', function(event) {
-    var isClickInsidePopups = hola.contains(event.target) || banner.contains(event.target);
-    if (!isClickInsidePopups) {
-        hidePopup()
-        tutto2.style.filter = 'none';
-        document.getElementById('tutto2').style.pointerEvents = 'auto';
-    }
-});
-
-function hidePopup() {
-    hola.style.display = 'none';
-    banner.style.display = 'none';
-}
