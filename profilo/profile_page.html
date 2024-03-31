@@ -29,6 +29,26 @@
                 </script>";
         }
 
+        if(isset($_POST['share'])){ //da aggiungere  a Matte...
+            $code = $_POST['share'];
+            $checkShare = "SELECT mia FROM nota WHERE codicenota=$code";
+            $resultCShare = $conn->query($checkShare);
+            $mia = ($resultCShare->fetch_assoc())['mia'];
+            if($mia == 1){
+                $queryShare = "UPDATE nota SET condivisa=1 WHERE codicenota=$code";
+                $resultShare = $conn->query($queryShare);
+                if(!$resultShare){
+                    echo '<script>
+                        alert("Non e\' stato possibile condividere la nota, riprova in seguito...");
+                    </script>';
+                }
+            }else {
+                echo '<script>
+                    alert("Non puoi condividere una nota non tua, devi prima modificarla...");
+                </script>';
+            }
+        }
+
         if(isset($_POST['creaNota']) and ((int) $_POST['creaNota']) == 1){
             if (sexOrCock()){
                 $mail = (string) $_SESSION["UserData"]["email"];
@@ -102,6 +122,19 @@
             $mine = (int) $_POST['Proprieta'];
         }
 
+        function printNote($codice, $title, $content){ //In più rispetto a Matte... (poi da aggiungere)
+            echo '<form method="POST" action="download.php">
+                <button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button>
+            </form>';
+            echo '<button onclick="downloadNota(\''.$title.'\',\''.$content.'\')">Download '.$title.'</button>';
+            echo '<form>
+                <button name="share" value='.$codice.'>Condividi '.$title.'</button>
+            </form>';
+            echo '<form method="POST" action="profile_page.php">
+                <button name="eliminaNota" value='.$codice.'>Elimina '.$title.'</button>
+            </form>';
+        }
+
 		function mostra($mat, $mail, $conn, $anno = 0, $appartenenza = 2){
             $anno = (int) $anno;
             $appartenenza = (int) $appartenenza;
@@ -114,49 +147,35 @@
 			}
 			for ($j = 0; $j < $num_mate; $j++) {
 				$codice = $mate[$j]['codicenota'];
-				$title = $mate[$j]['titolo'];                               //' onClick="assegnaValore(', $codice , ', ',$nomeInput,')" 
+				$title = $mate[$j]['titolo'];
                 $app = (int) $mate[$j]['mia'];
                 $ann = (int) $mate[$j]['annoScolastico'];
                 $content = (string) $mate[$j]['contenuto'];
                 if($appartenenza == 2){
                     if($anno == 0){
-                        echo '<form method="POST" action="download.php">';
-                        echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button>';
-                        echo '<button form="noForm" onclick="downloadNota(\''.$title.'\',\''.$content.'\')">Download '.$title.'</button><br>';
-                        echo '</form>';
-                        echo '<form method="POST" action="profile_page.php">';
-                        echo '<button name="eliminaNota" value='.$codice.'>Elimina'.$title.'</button>';
-                        echo '</form>';
+                        printNote($codice, $title, $content);
                     }else if($anno == $ann){
-                        echo '<form method="POST" action="download.php">';
-                        echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button>';
-                        echo '<button form="noForm" onclick="downloadNota(\''.$title.'\',\''.$content.'\')">Download '.$title.'</button><br>';
-                        echo '</form>';
-                        echo '<form method="POST" action="profile_page.php">';
-                        echo '<button name="eliminaNota" value='.$codice.'>Elimina'.$title.'</button>';
-                        echo '</form>';
+                        printNote($codice, $title, $content);
                     }
-                }else if($appartenenza == $app){
+                }else if($appartenenza == $app){         //da aggiungere tutti i printNote...
                     if($anno == 0){
-                        echo '<form method="POST" action="download.php">';
-                        echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button>';
-                        echo '<button form="noForm" onclick="downloadNota(\''.$title.'\',\''.$content.'\')">Download '.$title.'</button><br>';
-                        echo '</form>';
-                        echo '<form method="POST" action="profile_page.php">';
-                        echo '<button name="eliminaNota" value='.$codice.'>Elimina'.$title.'</button>';
-                        echo '</form>';
+                        printNote($codice, $title, $content);
                     }else if($anno == $ann){
-                        echo '<form method="POST" action="download.php">';
-                        echo '<button name="codNota" id="bottoneNota" value=', $codice, '>', $title,'</button>';
-                        echo '<button form="noForm" onclick="downloadNota(\''.$title.'\',\''.$content.'\')">Download '.$title.'</button><br>';
-                        echo '</form>';
-                        echo '<form method="POST" action="profile_page.php">';
-                        echo '<button name="eliminaNota" value='.$codice.'>Elimina'.$title.'</button>';
-                        echo '</form>';
+                        printNote($codice, $title, $content);
                     }
                 }
 			}
 		}
+
+        function stampaMaterie($conn){        //da aggiungere a Matteo...
+            $queryMaterie = "SELECT * FROM materia";
+            $resultMaterie = $conn->query($queryMaterie);
+            $numMaterie = $resultMaterie->num_rows();
+            $Materie = $resultMaterie->fetch_assoc();
+            for($j = 0; $j < $numMaterie; $j++){
+                echo '<option value="'.$Materie[$j]['nome'].'">'.$Materie[$j]['nome'].'</option>';
+            }
+        }
         ?>-->
     <div class='container-verti'>
         <div class='horizontal'>
@@ -572,7 +591,7 @@
                 </div>
                 <p class="crea-txt">Crea</p>
                 <form action="profile_page.php" method="post">
-                    <button value=1 name="creaNota">
+                    <button value=1 name="creaNota" style="background:none; border:none;"> <!-- da aggiungere a matte... -->
                         <img src="img\create.png" class="create-btn">
                     </button>
                 </form>
@@ -622,7 +641,10 @@
                                     </form>
                                     <ul>
                             </nav>
-                            <a href="logout.php"><img class="exit-btn" src="img\exit.png"></a>
+                            <form action="index.php" method="post">
+                                <button type="submit" name="loGOut" value=1 style="background:none; border:none;"><img class="exit-btn" src="img\exit.png"></button> <!-- da aggiungere a matte... -->
+                            </form>
+                            <!--<a href="logout.php"><img class="exit-btn" src="img\exit.png"></a>-->
                             <!--tag probabilmente da cambiare per far uscire l'utente dall'account-->
         </div>
     </div>

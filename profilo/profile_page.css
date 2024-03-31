@@ -40,12 +40,10 @@ body {
     height: 113px;
 }
 
-
 .open-zone {
     background-image: url('img/try.png');
     background-repeat: no-repeat;
-    background-position: 50%;
-    background-position-y: top;
+    background-position: center;
     width: 100%;
     height: 100vh;
     margin-top: -40px;
@@ -70,7 +68,7 @@ body {
 
 .top-buttons-style {
     display: inline-block;
-    margin-left: 11%;
+    margin-left: 8%;
     margin-bottom: 15px;
     background: white;
     border: white;
@@ -87,7 +85,7 @@ body {
 
 .divisions {
     font-size: 25px;
-    margin-left: 40%;
+    margin-left: 15%;
     margin-top: 15px;
 }
 
@@ -98,11 +96,10 @@ body {
 }
 
 .options-dims {
-    width: 280px;
+    width: 250px;
     height: 18px;
     border-radius: 8px;
     border: none;
-    margin-left: -10px;
 }
 
 .main-title {
@@ -113,7 +110,7 @@ body {
 .folders {
     width: 85%;
     height: 20px;
-    margin-left: 7%;
+    margin-left: 7.5%;
     background-color: white;
     border: 2px solid grey;
     border-radius: 18px;
@@ -136,101 +133,7 @@ body {
     font-weight: bold;
     font-size: 20px;
 }
-.filosofia {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-.biologia {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-.sta {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-.motoria {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-.sistemi {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-.scienze {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-.elettronica {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-.meccanica {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-.arte {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
 
-.geografia {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.diritto {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.chimica {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.inglese {
-    margin-top: 0px;
-    margin-left: 10px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
 .ita {
     margin-top: 0px;
     margin-left: 10px;
@@ -274,11 +177,12 @@ body {
 .materia-clicked {
     text-align: center;
 }
+
 .create-btn {
     width: 100px;
     height: 100px;
     position: absolute;
-    left: 1%;
+    left: 3%;
     top: 80%;
 }
 
@@ -286,7 +190,7 @@ body {
     font-weight: bold;
     margin-left: 2px;
     position: absolute;
-    left: 1.2%;
+    left: 3%;
     top: 72%;
     font-size: 40px;
 }
