@@ -13,12 +13,23 @@
     <!--<?php
         $conn = new mysqli("localhost","root","","share-notes");
 
+        $cN = (int) $_POST["codNota"];
+        $query_c = "SELECT * FROM nota WHERE codicenota=$codiceNota";
+        $resultR = $conn->query($query_codice);
+        $rigaN = $resultRiga->fetch_assoc();
+        $contentN = (string) $rigaNota["contenuto"];
+
         if(isset($_POST['upCodice'])){
             $contenutoN = (string) $_POST["Salva"];
             $codiceN = (int) $_POST["upCodice"];
             $titolo = (string) $_POST["title"];
             $mat = (string) $_POST["matScelta"];
-            $query = "UPDATE nota SET contenuto='$contenutoN', materia='$mat', titolo='$titolo' WHERE codicenota=$codiceN";
+            $ann = (int) $_POST['anno'];
+            if($contentN != $contenutoN){
+                $query = "UPDATE nota SET contenuto='$contenutoN', materia='$mat', titolo='$titolo', annoScolastico=$ann mia=1 WHERE codicenota=$codiceN";
+            }else {
+                $query = "UPDATE nota SET contenuto='$contenutoN', materia='$mat', titolo='$titolo', annoScolastico=$ann WHERE codicenota=$codiceN";
+            }
             $result = $conn->query($query);
 
             echo '<script>
@@ -28,7 +39,6 @@
             </script>';
         }else {
             $codiceNota = (int) $_POST["codNota"];
-            echo $codiceNota;
             $query_codice = "SELECT * FROM nota WHERE codicenota=$codiceNota";
             $resultRiga = $conn->query($query_codice);
             $rigaNota = $resultRiga->fetch_assoc();
@@ -39,7 +49,7 @@
         }
     ?>-->
 
-    <input type="text" id="contenutoNota" style="display: none;" value="<?php echo $contenutoNota ?>">
+    <input type="text" id="contenutoNota" style="display: none;" value="<!--<?php echo $contenutoNota ?>-->">
     <div id="tutto2">
         <img id="apri" src="img/+.jpg">
         <img id="uscita" src="img/uscita.png">
@@ -101,19 +111,19 @@
         <h1 id="titolino">Salva la tua nota</h1>
         <!--cambiato titolo-->
         <form action="download.php" method="post" id="fTSend">
-            <input id="nota" type="text" placeholder="nome della nota" name="title" value="<?php echo $title ?>" onchange="validateSave()">
+            <input id="nota" type="text" placeholder="nome della nota" name="title" value="<!--<?php echo $title ?>-->" onchange="validateSave()">
             <!--aggiunto placeholder-->
             <input id="salvaImmagine" name="Salva" type="text" style="display: none;">
-            <input name="upCodice" type="number" style="display: none;" value=<?php echo $codiceNota ?>>
+            <input name="upCodice" type="number" style="display: none;" value=<!--<?php echo $codiceNota ?>-->>
             <select ID="nota2" name="matScelta" onchange="validateSave()"> <!-- cambiaton "CURRENT" con "materia" e reso minuscolo le varie materie e cambio del valore del primo elemento della lista-->
-                <option value="<?php echo $materia ?>">CURRENT</option>
+                <option value="<!--<?php echo $materia ?>-->">CURRENT</option>
                 <option value="matematica">matematica</option>
                 <option value="italiano">italiano</option>
                 <option value="informatica">informatica</option>
                 <option value="inglese">inglese</option>
             </select>
             <select ID="nota3" name="anno" onchange="validateSave()">
-                <option value=<?php echo $anno ?>>CURRENT</option> <!-- cambiato "CURRENT" con "anno" e cambio del valore del primo elemento della lista-->
+                <option value=<!--<?php echo $anno ?>-->>CURRENT</option> <!-- cambiato "CURRENT" con "anno" e cambio del valore del primo elemento della lista-->
                 <option value=1>1°</option>
                 <option value=2>2°</option>
                 <option value=3>3°</option>
