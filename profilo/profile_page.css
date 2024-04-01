@@ -126,7 +126,7 @@ body {
     /*<- non fa funzionare la transizione pk non sa mai che input dare alla funzione transition*/
 }
 
-.math {
+.matematica {
     margin-top: 0px;
     margin-left: 10px;
     color: red;
@@ -134,7 +134,7 @@ body {
     font-size: 20px;
 }
 
-.ita {
+.italiano {
     margin-top: 0px;
     margin-left: 10px;
     color: blue;
@@ -150,7 +150,7 @@ body {
     font-size: 20px;
 }
 
-.ict {
+.informatica {
     margin-top: 0px;
     margin-left: 10px;
     color: #008F11;
@@ -158,7 +158,7 @@ body {
     font-size: 20px;
 }
 
-.tlc {
+.telecomunicazioni {
     margin-top: 0px;
     margin-left: 10px;
     color: #a6dced;
@@ -170,6 +170,14 @@ body {
     margin-top: 0px;
     margin-left: 10px;
     color: #f1807e;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.generico{
+    margin-top: 0px;
+    margin-left: 10px;
+    color: #000000;
     font-weight: bold;
     font-size: 20px;
 }

@@ -5,7 +5,7 @@ function cambiaStatoMateria(id) {
     titleSub.classList.toggle('materia-clicked');
 }
 
-function sort(idApp, classScomp, all) {
+/*function sort(idApp, classScomp, all) {
 	if (all === "all") {
 		var classOpen = document.getElementsByClassName(classScomp);
 		for(var i = 0; i < classOpen.length; i++) {
@@ -19,7 +19,7 @@ function sort(idApp, classScomp, all) {
 		}
 		elementoDaApparire.style.display = "block";
 	}
-}
+}*/
 
 function submitSelected(idValue){
 	var selectedValue = document.getElementById(idValue).value;
@@ -37,4 +37,5 @@ function setSelectedValue(idValue) {
 function setAll(){
 	setSelectedValue('classe');
 	setSelectedValue('proprita');
+	setSelectedValue('materia');
 }

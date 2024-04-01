@@ -1,0 +1,79 @@
+.NoteBlock{
+    border-color: black;
+    border-radius: 15px;
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+    margin-top: 30px;
+}
+
+.Apri, .Elimina{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.ApriNota{
+    background: none;
+    border: none;
+    font-size: 50px;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+}
+
+.matita{
+    height: 60px;
+}
+
+.DownloadNota{
+    background: none;
+    border: none;
+    margin-left: 455px;
+    margin-top: -90px;
+    position: absolute;
+}
+
+.scarica{
+    height: 80px;
+}
+
+.CondividiNota{
+    background: none;
+    border: none;
+    margin-left: -1000px;
+    margin-top: 30px;
+}
+
+.share{
+    height: 80px;
+}
+
+.EliminaNota{
+    background: none;
+    border: none;
+    margin-right: -1000px;
+}
+
+.bidone{
+    height: 50px;
+}
+
+.Dati{
+    position: absolute;
+    margin-top: -20px;
+    right: 15%;
+}
+
+.titleDati{
+    font-size: 30px;
+    margin-top: 0;
+    margin-left: 15px;
+}
+
+.listDati{
+    font-size: 17px;
+    list-style-type: none;
+    margin-left: 200px;
+    margin-top: -68px;
+}
