@@ -72,7 +72,7 @@
             });
         });
     </script>
-</head>
+</head> 
 <body class="body">
         <div class="container">
             <div>
@@ -87,10 +87,10 @@
                             session_start();
                             include ('utils.inc.php');
                             if (isLogged()) {
+                                echo '<a href="profile_page.php"><img id="imm2" src="img/profile.png"></a>';
+                            }else {
                                 //style="background-image: url(\'img/loggedIn.png\');"
                                 echo '<a href="index.php"><img id="imm2" src="img/profile.png"></a>';
-                            }else {
-                                echo '<a href="profile_page.php"><img id="imm2" src="img/profile.png"></a>';
                             }
                         ?>
                     </div>
