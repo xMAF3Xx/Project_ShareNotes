@@ -1,0 +1,39 @@
+body{
+    background-image: url('img/sfondo_index.jpg');
+}
+
+#pageTitle{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.result{
+    position: absolute;
+    left: 39%;
+    top: 35%;
+    text-align: center;
+    font-style: italic;
+}
+
+#conferma{
+    font-size: 30px;
+}
+
+#thanks{
+    font-size: 40px;
+    color: red;
+    font-weight: bold;
+}
+
+#logo{
+    position: absolute;
+    top: 80%;
+    right: 93%;
+    width: 125px;
+    height: 175px;
+}
+
+body, html{
+    overflow: hidden;
+}

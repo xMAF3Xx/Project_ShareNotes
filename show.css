@@ -1,0 +1,87 @@
+:root{
+    --cornice-width: 1280px;
+    --cornice-height: 720px;
+    --dati-height:calc((var(--cornice-height) / 3) * 2);
+}
+
+.cornice{
+    height: var(--cornice-height);
+    width: var(--cornice-width);
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    background-color: white;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+}
+
+#notaScelta{
+    width: 1280px;
+    height: 720px;
+}
+
+#titoloNota{
+    font-size: 100px;
+    margin-top: 40px;
+}
+
+.dati{
+    height: var(--dati-height);
+    width: calc(100vw - var(--cornice-width) - 20px);
+    position: absolute;
+    right: 0%;
+    bottom: calc(var(--cornice-height) - var(--dati-height));
+    background: none;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.dati p{
+    margin-left: 100px;
+    font-size: 20px;
+}
+
+.dati h4{
+    font-size: 30px;
+}
+
+.dati p,h4{
+    display: inline;
+}
+
+#titoloDati{
+    font-size: 50px;
+    margin-top: 0px;
+}
+
+#logo{
+    position: absolute;
+    top: 0.5%;
+    right: 1%;
+    height: calc(100vh - var(--cornice-height) - 20px);
+}
+
+.bottoni{
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    width: calc(100vw - var(--cornice-width) - 10px);
+    height: calc(var(--cornice-height) - var(--dati-height));
+    background-color: white;
+}
+
+.bottoni button{
+    background: none;
+    border: none;
+    margin-top: 35px;
+}
+
+.bottoni img{
+    height: calc((var(--cornice-height) - var(--dati-height)) - 59px);
+}
+
+.bottoni form{
+    display: inline-block;
+}

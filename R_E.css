@@ -1,0 +1,48 @@
+body{
+    background-image:url('img/sfondo_index.jpg');
+    background-repeat: no-repeat;
+}
+
+#titoloM{
+    color: black;
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 140px;
+}
+
+.block{
+    position: absolute;
+    top: 36%;
+    left: 42%;
+}
+
+#titoloP{
+    color: blueviolet;
+    font-size: 22px;
+    margin-bottom: -3px;
+}
+
+#password{
+    border-radius: 10px;
+    height: 30px;
+    border-width: 3px;
+    width: 280px;
+}
+
+#go{
+    margin-left: 114px;
+    margin-top: 50px;
+    border-radius: 15px;
+    color: darkmagenta;
+    background-color:plum;
+    border-color: darkmagenta;
+    font-size: 25px;
+}
+
+#logo{
+    height: 240px;
+    position: absolute;
+    top: 5%;
+    left: 88%;
+}
