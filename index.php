@@ -20,9 +20,6 @@
           <nav id="navbar" class="navbar navbar-dark bg-light fixed-top">
           <div class="container-fluid">
               <img id="img_logo" src="img/logo.png">
-            <button id="menu_button" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
             <a href="#"><button class="Functionalities" type="button">Funzionalità</button></a>
             <a href="cercaNote.php"><button class="SearchNotes" type="button">Cerca appunti</button></a>
             <a href="aboutPage.php"><button class="About" type="button">About</button></a>

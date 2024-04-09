@@ -315,14 +315,14 @@ body {
     right: -20px;
 }
 
-.container-bidoni:hover .binone-profile {
+.bidone-profile {
+    display: none;
+}
+
+.container-bidoni:hover .bidone {
+    display: none;
+}
+
+.container-bidoni:hover .bidone-profile {
     display: block;
-}
-
-.container-bidoni .bidone-profile {
-    display: none;
-}
-
-.container-bidoni:hover img:first-child {
-    display: none;
 }

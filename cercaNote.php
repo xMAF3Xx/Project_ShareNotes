@@ -139,15 +139,15 @@
     ?>
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
         <div class="container-fluid">
-        <a href="index.php"><img id="imm" class="bar-Btns" src="img/im.png"></a>
+            <a href="index.php"><img id="imm" class="bar-Btns" src="img/im.png" style="height:95px; width: 220px"></a>
             <a href="#"><button id="bottone1"  class="bar-Btns" type="button">Funzionalità</button></a>
             <a href="index.php"><button id="bottone2"  class="bar-Btns" type="button">Home</button></a>
             <a href="aboutPage.php"><button  id="bottone3" class="bar-Btns" type="button">Chi Siamo?</button></a>
           <?php
             if (isLogged()) {
-                echo '<a href="index.php" ><button id="bottone5" type="button"><img src="img/profile.png"></button></a>';
+                echo '<a href="index.php" ><button id="bottone5" type="button"><img src="img/user.png" style="height: 80px"></button></a>';
             }else {
-                echo '<a href="profile_page.php" ><button id="bottone5" type="button"><img src="img/profile.png"></button></a>';
+                echo '<a href="profile_page.php" ><button id="bottone5" type="button"><img src="img/user.png" style="height: 80px"></button></a>';
             }
           ?>
           <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">

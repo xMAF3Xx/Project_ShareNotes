@@ -81,16 +81,16 @@
                         <a href="index.php"><img id="imm" src="img/im.png"></a>
                         <a href="#"><button id="bottone1" class="bottoni"  type="button">FUNZIONALITA'</button></a>
                         <a href="index.php"><button id="bottone2" class="bottoni"   type="button">HOME</button></a>
-                        <a href="#"><button  id="bottone3" class="bottoni"  type="button">CERCA NOTE</button></a>
+                        <a href="cercaNote.php"><button id="bottone3" class="bottoni" type="button">CERCA NOTE</button></a>
                         <!--<button id="openPopupBtn" class="bottoni"  type="button"><img id="imm2" src="img/profile.png"></button>-->
                         <?php
                             session_start();
                             include ('utils.inc.php');
                             if (isLogged()) {
-                                echo '<a href="profile_page.php"><img id="imm2" src="img/profile.png"></a>';
+                                echo '<a href="profile_page.php"><img id="imm2" src="img/user.png"></a>';
                             }else {
                                 //style="background-image: url(\'img/loggedIn.png\');"
-                                echo '<a href="index.php"><img id="imm2" src="img/profile.png"></a>';
+                                echo '<a href="index.php"><img id="imm2" src="img/user.png"></a>';
                             }
                         ?>
                     </div>
@@ -98,7 +98,7 @@
         </div>
         </nav>
         <hr id="linea">
-        <div class="titoloOne">
+        <div class="titoloOne" style="margin-left: 40px">
             <img id="cerchio" src="img/cerchio.png">
             <img id="cerchio2" src="img/cerchio.png">
             <img src="img/about.png" class="titolo">
