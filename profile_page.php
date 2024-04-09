@@ -190,7 +190,12 @@
                     <p class="Anno">Anno: ', $anno ,'\'</p>
                     <p class="likes"><img src="img/cuore.png" class="cuore">', $likes ,'</p>
                     <form method="POST" action="profile_page.php" class="Elimina">
-                        <button name="eliminaNota" value=', $codice, ' class="EliminaNota"><img src="img/bidone.png" class="bidone"></button>
+                        <button name="eliminaNota" value=', $codice, ' class="EliminaNota"> 
+                            <div class="container-bidoni">
+                                <img src="img/bidone.png" class="bidone">
+                                <img src="img/bidone.gif" class="bidone-profile">
+                            </div>
+                        </button>
                     </form>
                     <form action="profile_page.php" method="post" class="Condividi">
                         <button name="share" value=', $codice, ' class="CondividiNota"><img src="img/share.png" class="share"></button>
@@ -295,47 +300,49 @@
             }
         }
         ?>
-    <div class='container-verti'>
-        <div class='horizontal'>
-            <a href="index.php"><img class="logo" src="img/logo.png"></a>
-            <a href="index.php"><button class="top-buttons-style">Home</button></a>
-            <a href="aboutPage.php"><button class="top-buttons-style">Chi siamo?</button></a>
-            <a href="cercaNote.php"><button class="top-buttons-style">Cerca appunti</button></a>
-            <a href="#"><button class="top-buttons-style">Funzionalità</button></a>
-            <hr class="line-horizontal">
-            <div class="open-zone">
-                <h1 class="main-title">Appunti</h1>
-                <div class="scrollable">
-                    <?php stampaCartelleMaterie($conn, $mail) ?>
+        <div class='container-verti'>
+            <div class='horizontal'>
+                <a href="index.php"><img class="logo" src="img/logo.png"></a>
+                <a href="index.php"><button class="top-buttons-style">Home</button></a>
+                <a href="aboutPage.php"><button class="top-buttons-style">Chi siamo?</button></a>
+                <a href="cercaNote.php"><button class="top-buttons-style">Cerca appunti</button></a>
+                <a href="#"><button class="top-buttons-style">Funzionalità</button></a>
+                <hr class="line-horizontal">
+                <div class="open-zone">
+                    <h1 class="main-title">Appunti</h1>
+                    <div class="scrollable">
+                        <?php stampaCartelleMaterie($conn, $mail) ?>
+                    </div>
                 </div>
-                <p class="crea-txt">Crea</p>
-                <form action="profile_page.php" method="post">
-                    <button value=1 name="creaNota" style="background:none; border:none;"> <!-- da aggiungere a matte... -->
-                        <img src="img\create.png" class="create-btn">
-                    </button>
-                </form>
             </div>
-        </div>
-        <hr class="line-vertical">
-        <div class='vertical'>
-            <img src="img/user.png" class="user-img">
-            <h1 class="center-user-name"><?php echo $nomeUtente ?>
-                <h1>
-                    <h3 class="center-user-mail"><?php echo $mail ?>
-                        <h3>
-                            <div class="line-horizontal"></div>
-                            <h3 class="divisions">Divisioni</h3>
-                            <nav class="division-column">
-                                <ul>
-                                <form action="profile_page.php" method="post" id="formFilter">
-                                    <li>
-                                        <select id="materia" name="Materia" class="options-dims" onchange="submitSelected('materia')">
+            <hr class="line-vertical">
+            <div class='vertical'>
+                <div class="red-circle">
+                    <form action="index.php" method="post">
+                        <button type="submit" name="loGOut" value=1 style="background:none; border:none;"><img class="exit-btn" src="img\exit.png"></button>
+                        <!-- da aggiungere a matte... -->
+                    </form>
+                </div>
+                <img src="img/user.png" class="user-img">
+                <h1 class="center-user-name">
+                    <?php echo $nomeUtente ?>
+                    <h1>
+                        <h3 class="center-user-mail">
+                            <?php echo $mail ?>
+                            <h3>
+                                <div class="line-horizontal"></div>
+                                <h3 class="divisions">Divisioni</h3>
+                                <nav class="division-column">
+                                    <ul>
+                                        <form action="profile_page.php" method="post" id="formFilter">
+                                            <li>
+                                                <select id="materia" name="Materia" class="options-dims" onchange="submitSelected('materia')">
             					            <option value="All">All</option>
                                             <?php stampaMaterie($conn) ?>
 							            </select>
-                                    </li>
-                                        <li>
-                                            <select id="classe" name="Classe" class="options-dims" onchange="submitSelected('classe')">
+                                            </li>
+                                            <li>
+                                                <select id="classe" name="Classe" class="options-dims" onchange="submitSelected('classe')">
             					                <option value=0>All</option>
   								                <option value=1>Prima</option>
   								                <option value=2>Seconda</option>
@@ -343,24 +350,27 @@
   								                <option value=4>Quarta</option>
   								                <option value=5>Quinta</option>
 							                </select>
-                                        </li>
-                                        <li>
-                                            <select id="proprita" name="Proprieta" class="options-dims" onchange="submitSelected('proprita')">
+                                            </li>
+                                            <li>
+                                                <select id="proprita" name="Proprieta" class="options-dims" onchange="submitSelected('proprita')">
             					                <option value=2>All</option>
   								                <option value=1>Creati da te</option>
   								                <option value=0>Creati da altri</option>
 							                </select>
-                                        </li>
+                                            </li>
+                                        </form>
+                                        <ul>
+                                </nav>
+                                <p class="crea-txt">Crea</p>
+                                <form action="profile_page.php" method="post">
+                                    <button value=1 name="creaNota" style="background:none; border:none;"> <!-- da aggiungere a matte... -->
+                        <img src="img\create.png" class="create-btn">
+                    </button>
                                 </form>
-                                <ul>
-                            </nav>
-                            <form action="index.php" method="post">
-                                <button type="submit" name="loGOut" value=1 style="background:none; border:none;"><img class="exit-btn" src="img\exit.png"></button> <!-- da aggiungere a matte... -->
-                            </form>
-                            <!--<a href="logout.php"><img class="exit-btn" src="img\exit.png"></a>-->
-                            <!--tag probabilmente da cambiare per far uscire l'utente dall'account-->
+                                <!--<a href="logout.php"><img class="exit-btn" src="img\exit.png"></a>-->
+                                <!--tag probabilmente da cambiare per far uscire l'utente dall'account-->
+            </div>
         </div>
-    </div>
 </body>
 
 </html>
