@@ -4,6 +4,10 @@
     --dati-height:calc((var(--cornice-height) / 3) * 2);
 }
 
+body {
+	font-family:inter;
+}
+
 .cornice{
     height: var(--cornice-height);
     width: var(--cornice-width);
