@@ -129,7 +129,7 @@ body {
 .matematica {
     margin-top: 0px;
     margin-left: 10px;
-    color: red;
+    color: black;
     font-weight: bold;
     font-size: 20px;
 }
@@ -137,7 +137,7 @@ body {
 .italiano {
     margin-top: 0px;
     margin-left: 10px;
-    color: blue;
+    color: black;
     font-weight: bold;
     font-size: 20px;
 }
@@ -145,7 +145,7 @@ body {
 .storia {
     margin-top: 0px;
     margin-left: 10px;
-    color: orange;
+    color: black;
     font-weight: bold;
     font-size: 20px;
 }
@@ -153,7 +153,7 @@ body {
 .informatica {
     margin-top: 0px;
     margin-left: 10px;
-    color: #008F11;
+    color: black;
     font-weight: bold;
     font-size: 20px;
 }
@@ -161,7 +161,7 @@ body {
 .telecomunicazioni {
     margin-top: 0px;
     margin-left: 10px;
-    color: #a6dced;
+    color: black;
     font-weight: bold;
     font-size: 20px;
 }
@@ -169,7 +169,7 @@ body {
 .tpsi {
     margin-top: 0px;
     margin-left: 10px;
-    color: #f1807e;
+    color: black;
     font-weight: bold;
     font-size: 20px;
 }
@@ -178,6 +178,86 @@ body {
     margin-top: 0px;
     margin-left: 10px;
     color: #000000;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.inglese {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.biologia {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.chimica {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.meccanica {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.elettronica {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.economia {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.geografia {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.scienze {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.filosofia {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.arte {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: black;
     font-weight: bold;
     font-size: 20px;
 }

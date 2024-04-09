@@ -243,7 +243,8 @@ button {
     border-radius: 50px;
     margin-left: 560px;
     margin-top: 5px;
-    border: 1px solid black;
+    border: 3px solid gray;
+    background-color: white;
 }
 .tutto2 {
     position: absolute;

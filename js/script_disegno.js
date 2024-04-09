@@ -22,3 +22,16 @@
         Esporta(drawArea);
         document.forms["fTSend"].submit();
     }
+
+    function Esporta2(Canvas){
+        const canvasA = document.getElementById(Canvas);
+        //canvasA.getContext("2d").fillRect(10, 10, 20, 20);
+        const base64 = canvasA.toDataURL();
+        var Input = document.getElementById("contenutoTemp");
+        Input.value = base64;
+    }
+
+    function SendTwo(drawArea){
+        Esporta2(drawArea);
+        document.forms["Temp"].submit();
+    }

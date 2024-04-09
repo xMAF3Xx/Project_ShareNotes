@@ -13,6 +13,27 @@
 <?php
         include("conn.inc.php");
 
+        if(isset($_POST['Temporary'])){
+
+            $conn->begin_transaction();
+            try{
+                $stmtTemp = $conn->prepare("UPDATE nota SET contenuto=? WHERE codicenota=?");
+                $stmtTemp->bind_param("si", $newContent, $codeN);
+
+                $codeN = (int) $_POST['codNota'];
+                $newContent = (string) $_POST['contenutoTemp'];
+
+                $stmtTemp->execute();
+
+                $conn->commit();
+            } catch (mysqli_sql_exception $exception){
+                $conn->rollback();
+
+                throw $exception;
+            }
+
+        }
+
         if(isset($_POST['upCodice'])){
             $contenutoN = (string) $_POST["Salva"];
             $contenutoNota = (string) $_POST['Vecchio'];
@@ -81,7 +102,12 @@
                 </div>
                 <div id="textCursor" class="cursor"></div>
                 <div id="bottoni">
-                    <img id="moveButton" src="img/foto5.png">
+                    <form action="download.php" method="post" id="Temp">
+                        <input type="text" name="contenutoTemp" style="display: none;" id="contenutoTemp">
+                        <input type="number" name="codNota" style="display: none;" value=<?php echo $codiceNota ?>>
+                        <input type="number" name='Temporary' value=1 style="display:none;">
+                    </form>
+                    <button style="border: none; background: none; margin-top: -10px; margin-left: -15px" id="salvaTemp" onclick="SendTwo('drawingCanvas')"><img id="moveButton" src="img/foto5.png"></button>
                 </div>
                 <br>
             </div>
