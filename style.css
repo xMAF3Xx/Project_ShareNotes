@@ -3,6 +3,7 @@ body{
     background-image: url('img/sfondo_index.jpg');
     background-repeat: no-repeat;
     /*background-repeat: repeat-y;*/
+    font-family:inter;
 }
 .container-fluid{
     background-color: white;
