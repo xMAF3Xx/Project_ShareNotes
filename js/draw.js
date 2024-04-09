@@ -11,6 +11,7 @@ const ciao = document.getElementById('moveButton');
 const hola = document.getElementById('blocco');
 const h = document.getElementById("croce");
 const f = document.getElementById("nota");
+const uscita = document.getElementById('uscita');
 const g = document.getElementById("submit");
 let drawingThickness = thicknessSlider.value;
 const v = document.getElementById("tutto");
@@ -62,15 +63,15 @@ function erase(e) {
 // ...
 
 function eraseAll() {
-    // Aggiungi le coordinate degli elementi di tipo 'image' cancellati
+    // Aggiungi le coordinate degli elementi di tipo 'image' e 'rectangle' cancellati
     erasedDrawings = erasedDrawings.concat(
-        drawings.filter(item => item.type === 'image').map(erasedDrawing => ({ x: 0, y: 0 }))
+        drawings.filter(item => item.type === 'image' || item.type === 'rectangle').map(erasedDrawing => ({ x: 0, y: 0 }))
     );
 
     // Pulisci il canvas principale
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Ridisegna gli elementi di tipo 'text' rimanenti nel canvas principale
+    // Ridisegna gli elementi di tipo 'text' e 'rectangle' rimanenti nel canvas principale
     drawings.filter(item => item.type !== 'image').forEach(drawItem => {
         if (drawItem.type === 'text') {
             // Disegna il testo
@@ -87,6 +88,10 @@ function eraseAll() {
                 context.lineTo(drawItem.x + textMetrics.width, underlineY);
                 context.stroke();
             }
+        } else if (drawItem.type === 'rectangle') {
+            // Disegna il rettangolo
+            context.fillStyle = drawItem.color;
+            context.fillRect(drawItem.x, drawItem.y, drawItem.width, drawItem.height);
         }
     });
 
@@ -95,8 +100,8 @@ function eraseAll() {
     erasedDrawings.forEach(erasedDrawing => {
         context.fillRect(erasedDrawing.x, erasedDrawing.y, eraseSize, eraseSize);
     });
-
 }
+
 
 
 function startDrawing(e) {
@@ -112,7 +117,7 @@ function startDrawing(e) {
     const canvasY = e.clientY - canvas.offsetTop;
 
     // Posiziona il cursore esattamente sopra il punto di inizio del testo
-    textCursor.style.left = canvasX - 190 + 'px';
+    textCursor.style.left = canvasX - 570 + 'px';
     textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop + 28 + 'px';
     context.beginPath();
     context.moveTo(canvasX, canvasY);
@@ -330,9 +335,324 @@ function finishWriting() {
 
 
 
+const riquadro=document.getElementById("fotina3");
+const barretta=document.getElementById("barretta");
+barretta.style.display='none';
+
+riquadro.addEventListener('click',function(){
+    if(barretta.style.display==='block')
+    {
+        barretta.style.display='none';
+    }
+    else if(barretta2.style.display==='block') 
+    {
+      barretta2.style.display='none';
+      barretta.style.display='block';
+    }
+    else if(barretta7.style.display==='block') 
+    {
+      barretta7.style.display='none';
+      barretta.style.display='block';
+    }
+    
+    else
+    {
+        barretta.style.display='block';
+    }
+})
+
+const riquadro2=document.getElementById("fotina4");
+const barretta2=document.getElementById("barretta2");
+barretta2.style.display='none';
+
+riquadro2.addEventListener('click',function(){
+    if(barretta2.style.display==='block')
+    {
+        barretta2.style.display='none';
+    }
+    else if(barretta.style.display==='block') 
+    {
+      barretta.style.display='none';
+      barretta2.style.display='block';
+    }
+    else if(barretta7.style.display==='block') 
+    {
+      barretta7.style.display='none';
+      barretta2.style.display='block';
+    }
+    else
+    {
+        barretta2.style.display='block';
+    }
+})
+
+
+const riquadro3=document.getElementById("fotina5");
+let interazioneAbilitata = true;
+const riquadro4=document.getElementById("moveButton");
+const riquadro5=document.getElementById("chiudi");
+
+riquadro3.addEventListener('click', function() {
+    if (interazioneAbilitata) {
+        // Disabilita l'interazione con il canvas
+        riquadro.style.display='none';
+        riquadro2.style.display='none';
+        riquadro4.style.display='none';
+        riquadro5.style.display='none';
+        uscita.style.display='none';
+        riquadro7.style.display='none';
+        if(barretta.style.display==='block')
+        {
+            barretta.style.display='none'
+        }
+        if(barretta2.style.display==='block')
+        {
+            barretta2.style.display='none'
+        }
+        let isDragging = false;
+let draggedText = null;
+let lastMouseX, lastMouseY;
+
+canvas.addEventListener('mousedown', function(e) {
+    if (e.button === 1) { // Controllo se il pulsante premuto è il pulsante centrale del mouse
+        isDragging = true;
+        lastMouseX = e.clientX - canvas.offsetLeft;
+        lastMouseY = e.clientY - canvas.offsetTop;
+
+        // Trova il testo su cui è stato fatto clic
+        for (let i = drawings.length - 1; i >= 0; i--) {
+            const drawing = drawings[i];
+            if (drawing.type === 'text') {
+                context.font = `${drawing.fontSize} ${drawing.font}`;
+                const textWidth = context.measureText(drawing.text).width;
+                const lineHeight = parseInt(drawing.fontSize) + 10;
+
+                if (
+                    lastMouseX > drawing.x &&
+                    lastMouseX < drawing.x + textWidth &&
+                    lastMouseY > drawing.y - lineHeight &&
+                    lastMouseY < drawing.y
+                ) {
+                    // Imposta il testo corrente come quello da trascinare
+                    draggedText = drawing;
+                    break;
+                }
+            }
+        }
+    }
+});
+
+
+
+
+
+
+
+canvas.addEventListener('mouseup', function(e) {
+    if (e.button === 1 && isDragging) { // Controllo se il pulsante rilasciato è il pulsante centrale del mouse
+        isDragging = false;
+        draggedText = null;
+    }
+});
+
+canvas.addEventListener('mousemove', function(e) {
+     if (isDragging && draggedText !== null) {
+        const mouseX = e.clientX - canvas.offsetLeft;
+        const mouseY = e.clientY - canvas.offsetTop;
+
+        const deltaX = mouseX - lastMouseX;
+        const deltaY = mouseY - lastMouseY;
+
+        // Sposta il testo
+        draggedText.x += deltaX;
+        draggedText.y += deltaY;
+
+        // Ridisegna il canvas con il testo spostato
+        redrawCanvas();
+
+        // Aggiorna le coordinate del mouse
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
+    }
+    else if (isErasing) {
+        erase(e);
+    } else if (isDrawing) {
+        draw(e);
+    }
+});
+
+        canvas.removeEventListener('click', editText);
+
+        // Disabilita l'interazione con gli elementi di testo
+        document.removeEventListener('keydown', handleKeyDown);
+        document.removeEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                finishWriting();
+            }
+        });
+        writeButton.removeEventListener('click', function() {
+            spostaBloccoVersoDestra();
+            eraseAll();
+            enableWriting();
+        });
+        finishButton.removeEventListener('click', finishWriting);
+
+        // Disabilita l'interazione con il selettore di spessore
+        thicknessSlider.disabled = true;
+
+        // Nascondi altri elementi non interattivi
+        eraseButton.style.display = 'none';
+        colorPicker.disabled = true;
+        colorPicker.style.pointerEvents = 'none';
+        fontSelector.disabled = true;
+        fontSizeSelector.disabled = true;
+
+        // Nascondi gli altri bottoni non interattivi
+        const bottoniNonInterattivi = document.querySelectorAll('.non-interattivo');
+        bottoniNonInterattivi.forEach(bottone => {
+            bottone.style.display = 'none';
+        });
+
+        // Disabilita l'interazione con il bottone di salvataggio
+        g.disabled = true;
+        g.style.backgroundColor = "gray";
+        g.style.borderColor = "gray";
+        g.classList.add("submit-senza-hover");
+        
+        interazioneAbilitata = false;
+    } else {
+        // Riattiva l'interazione con il canvas
+        riquadro.style.display='block';
+        riquadro2.style.display='block';
+        uscita.style.display='block';
+        riquadro4.style.display='block';
+        riquadro5.style.display='block';
+        riquadro7.style.display='block';
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mousemove', function(e) {
+            if (isErasing) {
+                erase(e);
+            } else if (isDrawing) {
+                draw(e);
+            }
+        });
+        canvas.addEventListener('click', editText);
+
+        // Riattiva l'interazione con gli elementi di testo
+        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter' && isTyping) {
+                finishWriting();
+            }
+        });
+        writeButton.addEventListener('click', function() {
+            spostaBloccoVersoDestra();
+            eraseAll();
+            enableWriting();
+        });
+        finishButton.addEventListener('click', finishWriting);
+
+        // Riattiva l'interazione con il selettore di spessore
+        thicknessSlider.disabled = false;
+
+        // Riattiva altri elementi non interattivi
+        eraseButton.style.display = 'block';
+        colorPicker.disabled = false;
+        colorPicker.style.pointerEvents = 'auto';
+        fontSelector.disabled = false;
+        fontSizeSelector.disabled = false;
+
+        // Riattiva gli altri bottoni non interattivi
+        const bottoniNonInterattivi = document.querySelectorAll('.non-interattivo');
+        bottoniNonInterattivi.forEach(bottone => {
+            bottone.style.display = 'block';
+        });
+
+        // Riattiva l'interazione con il bottone di salvataggio
+        g.disabled = false;
+        g.style.backgroundColor = "#FFD847";
+        g.style.borderColor = "#FFD847";
+        g.classList.remove("submit-senza-hover");
+        
+        interazioneAbilitata = true;
+    }
+});
+
+let isCreatingTriangle = false;
+let triangles = []; // Array per memorizzare tutti i triangoli creati
+let start3X, start3Y, current3X, current3Y;
+
+const forme3Button = document.getElementById('forme2');
+
+
+
+forme3Button.addEventListener('click', function() {
+    isCreatingTriangle = !isCreatingTriangle; // Cambia lo stato del flag
+    if (!isCreatingTriangle) {
+        // Se smettiamo di creare triangoli, rimuoviamo anche l'ascoltatore di eventi mousemove
+        canvas.removeEventListener('mousemove', onMouseMoveTriangle);
+    }
+});
+
+
+canvas.addEventListener('mousedown', function(e) {
+    if (isCreatingTriangle) {
+        start3X = e.clientX - canvas.offsetLeft;
+        start3Y = e.clientY - canvas.offsetTop;
+        current3X = start3X;
+        current3Y = start3Y;
+        redrawCanvas();
+        canvas.addEventListener('mousemove', onMouseMoveTriangle);
+    }
+});
+
+function onMouseMoveTriangle(e) {
+    current3X = e.clientX - canvas.offsetLeft;
+    current3Y = e.clientY - canvas.offsetTop;
+    redrawCanvas();
+    drawTriangle(start3X, start3Y, current3X, current3Y);
+}
+
+canvas.addEventListener('mouseup', function() {
+    if (isCreatingTriangle && start3X !== undefined && start3Y !== undefined) {
+        triangles.push({ x1: start3X, y1: start3Y, x2: current3X, y2: current3Y });
+        start3X = undefined;
+        start3Y = undefined;
+        current3X = undefined;
+        current3Y = undefined;
+        canvas.removeEventListener('mousemove', onMouseMoveTriangle);
+    }
+});
+
+function drawTriangle(x1, y1, x2, y2) {
+    context.beginPath();
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.lineTo(x1 + (x1 - x2), y2);
+    context.closePath();
+    context.strokeStyle = '#000000';
+    context.lineWidth = 2;
+    context.stroke();
+}
+
+
+
+
+
+
+
 
 function redrawCanvas() {
     context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    circles.forEach(circle => {
+        drawCircle(circle.x, circle.y, circle.radius);
+    });
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    triangles.forEach(triangle => {
+        drawTriangle(triangle.x1, triangle.y1, triangle.x2, triangle.y2);
+    });
 
     for (const drawing of drawings) {
         if (drawing.type === 'text') {
@@ -462,16 +782,144 @@ eraseButton.addEventListener('click', function() {
     toggleEraser();
 });
 
+ 
 
-canvas.addEventListener('mousedown', startDrawing);
-canvas.addEventListener('mouseup', stopDrawing);
+let isDragging = false;
+let draggedText = null;
+let lastMouseX, lastMouseY;
+
+canvas.addEventListener('mousedown', function(e) {
+    if (e.button === 1) { // Controllo se il pulsante premuto è il pulsante centrale del mouse
+        lastMouseX = e.clientX - canvas.offsetLeft;
+        lastMouseY = e.clientY - canvas.offsetTop;
+
+        // Trova il testo su cui è stato fatto clic
+        for (let i = drawings.length - 1; i >= 0; i--) {
+            const drawing = drawings[i];
+            if (drawing.type === 'text') {
+                context.font = `${drawing.fontSize} ${drawing.font}`;
+                const textWidth = context.measureText(drawing.text).width;
+                const lineHeight = parseInt(drawing.fontSize) + 10;
+
+                if (
+                    lastMouseX > drawing.x &&
+                    lastMouseX < drawing.x + textWidth &&
+                    lastMouseY > drawing.y - lineHeight &&
+                    lastMouseY < drawing.y
+                ) {
+                    // Imposta il testo corrente come quello da trascinare
+                    draggedText = drawing;
+                    isDragging = true;
+                    break;
+                }
+            }
+        }
+    } else {
+        startDrawing(e); // Inizia a disegnare solo se non si sta trascinando il testo
+    }
+});
+
+canvas.addEventListener('mouseup', function(e) {
+    if (e.button === 1 && isDragging) { // Controllo se il pulsante rilasciato è il pulsante centrale del mouse e si sta trascinando
+        isDragging = false;
+        draggedText = null;
+    } else {
+        stopDrawing(); // Interrompi il disegno solo se non si sta trascinando il testo
+    }
+});
+
 canvas.addEventListener('mousemove', function(e) {
     if (isErasing) {
         erase(e);
     } else if (isDrawing) {
         draw(e);
     }
+    if (isDragging && draggedText !== null) {
+        const mouseX = e.clientX - canvas.offsetLeft;
+        const mouseY = e.clientY - canvas.offsetTop;
+
+        const deltaX = mouseX - lastMouseX;
+        const deltaY = mouseY - lastMouseY;
+
+        // Sposta il testo
+        draggedText.x += deltaX;
+        draggedText.y += deltaY;
+
+        // Ridisegna il canvas con il testo spostato
+        redrawCanvas();
+
+        // Aggiorna le coordinate del mouse
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
+    }
 });
+
+let isCreatingCircle = false;
+let circles = []; // Array per memorizzare tutti i cerchi creati
+let startXCircle, startYCircle, currentXCircle, currentYCircle;
+
+const forme2Button = document.getElementById('forme3');
+
+forme2Button.addEventListener('click', function() {
+    if(isCreatingCircle) {
+        isCreatingCircle = false;
+    } else {
+        isCreatingCircle = true;
+    }
+});
+
+canvas.addEventListener('mousedown', function(e) {
+    if (isCreatingCircle) {
+        startXCircle = e.clientX - canvas.offsetLeft;
+        startYCircle = e.clientY - canvas.offsetTop;
+        currentXCircle = startXCircle;
+        currentYCircle = startYCircle;
+        canvas.addEventListener('mousemove', onMouseMoveCircle);
+    }
+});
+
+function onMouseMoveCircle(e) {
+    currentXCircle = e.clientX - canvas.offsetLeft;
+    currentYCircle = e.clientY - canvas.offsetTop;
+    redrawCanvas();
+    const radius = Math.sqrt((currentXCircle - startXCircle) ** 2 + (currentYCircle - startYCircle) ** 2);
+    drawCircle(startXCircle, startYCircle, radius);
+}
+
+canvas.addEventListener('mouseup', function() {
+    if (isCreatingCircle && startXCircle !== undefined && startYCircle !== undefined) {
+        const radius = Math.sqrt((currentXCircle - startXCircle) ** 2 + (currentYCircle - startYCircle) ** 2);
+        circles.push({ x: startXCircle, y: startYCircle, radius: radius });
+        startXCircle = undefined;
+        startYCircle = undefined;
+        currentXCircle = undefined;
+        currentYCircle = undefined;
+        canvas.removeEventListener('mousemove', onMouseMoveCircle);
+    }
+});
+
+function drawCircle(x, y, radius) {
+    context.beginPath();
+    context.arc(x, y, radius, 0, 2 * Math.PI);
+    context.strokeStyle = '#000000';
+    context.lineWidth = 2;
+    context.stroke();
+}
+
+
+
+
+
+ 
+let triangButton = document.getElementById("forme2");
+
+triangButton.addEventListener("click", function(){
+});
+
+
+
+
+
 const submitButton = document.getElementById('submit');
 canvas.addEventListener('click', editText);
 
@@ -481,9 +929,32 @@ window.addEventListener('resize', function() {
     redrawCanvas();
 });
 
-function spostaBloccoVersoDestra() {
-    tutto.classList.toggle('spostato-verso-destra');
-}
+let riquadro7=document.getElementById("fotina7");
+let barretta7=document.getElementById("tutto4");
+ barretta7.style.display='none';
+
+riquadro7.addEventListener("click",function(){
+  if(barretta7.style.display==='block')
+  {
+    barretta7.style.display='none'
+  }
+  else if(barretta.style.display==='block') 
+    {
+      barretta.style.display='none';
+      barretta7.style.display='block';
+    }
+    else if(barretta2.style.display==='block') 
+    {
+      barretta2.style.display='none';
+      barretta7.style.display='block';
+    }
+  else
+  {
+    barretta7.style.display='block'
+  }
+})
+
+
 
 document.addEventListener('keydown', handleKeyDown);
 
@@ -492,23 +963,12 @@ colorPicker.addEventListener('input', function() {
     setDrawingColor(colorPicker.value);
 });
 
-function ripristinaPosizioneOriginaria() {
-    tutto.classList.remove('spostato-verso-destra');
-    tutto.classList.toggle("spostato-verso-sinistra");
-}
+
 submitButton.addEventListener('click', function() {
     ripristinaPosizioneOriginaria();
 });
-document.addEventListener('keyup', function(event) {
 
-    if (event.keyCode === 13) {
-        if (tutto.classList.contains('spostato-verso-destra')) {
-            ripristinaPosizioneOriginaria();
-        }
-    }
-});
 writeButton.addEventListener('click', function() {
-    spostaBloccoVersoDestra();
     eraseAll();
     enableWriting();
 });
@@ -517,7 +977,7 @@ finishButton.style.display = 'none';
 finishButton.addEventListener('click', finishWriting);
 
 document.addEventListener('keyup', function(e) {
-    if (e.key === 'Enter' && isTyping) {
+    if (e.key === 'Enter') {
         finishWriting();
     }
 });
@@ -525,15 +985,7 @@ thicknessSlider.addEventListener('input', function() {
     drawingThickness = thicknessSlider.value;
 });
 moveButton.addEventListener('click', function() {
-    if (hola.style.display === 'block' || banner.style.display === 'block') {
-        hola.style.display = 'none';
-
-    } else {
-        hola.style.display = 'block';
-        tutto2.style.filter = 'blur(5px)';
-        document.getElementById('tutto2').style.pointerEvents = 'none';
-        event.stopPropagation();
-    }
+    
 });
 
 let isCreatingRectangle = false;
@@ -543,7 +995,14 @@ let startX, startY, currentX, currentY;
 const formeButton = document.getElementById('forme');
 
 formeButton.addEventListener('click', function() {
-    isCreatingRectangle = true;
+    if(isCreatingRectangle===true)
+    {
+        isCreatingRectangle=false;
+    }
+    else
+    {
+        isCreatingRectangle = true;
+    }
 });
 
 canvas.addEventListener('mousedown', function(e) {
@@ -597,7 +1056,6 @@ function drawRectangle(x, y, width, height) {
 
 
 
-
 let materia = document.getElementById('nota2').value;
 let annoScolastico = document.getElementById('nota3').value;
 let controlloElement = document.getElementById('ctr');
@@ -628,18 +1086,19 @@ function validateSave() {
     let annoScolastico = document.getElementById('nota3').value;
     let titleNote = document.getElementById('nota').value;
     let controlloElement = document.getElementById('ctr');
-    if (titleNote.length > 20 || titleNote.length < 5 || materia === 'materia' || annoScolastico === 'anno' || (titleNote.toLowerCase() === "notabianca")) {
-        controlloElement.innerText = 'valori inseriti non validi :(';
-        g.disabled = true;
-        g.style.backgroundColor = "gray";
-        g.style.borderColor = "gray";
-        g.classList.add("submit-senza-hover");
-    } else {
+    if (titleNote.length < 20 && titleNote.length > 5 && materia != 'CURRENT' && annoScolastico != 'CURRENT' && (titleNote.toLowerCase() != "notabianca")) {
         controlloElement.innerText = '';
         g.disabled = false;
         g.style.backgroundColor = "#FFD847";
         g.style.borderColor = "#FFD847";
         g.classList.remove("submit-senza-hover");
+    } else {
+
+        controlloElement.innerText = 'valori inseriti non validi :(';
+        g.disabled = true;
+        g.style.backgroundColor = "gray";
+        g.style.borderColor = "gray";
+        g.classList.add("submit-senza-hover");
     }
 }
 
@@ -652,8 +1111,29 @@ l.addEventListener('click', function() {
 })
 
 p.addEventListener('click', function() {
-    v.style.display = 'none';
-    l.style.display = 'block';
+    if(barretta.style.display==='block')
+    {
+        barretta.style.display='none';
+        v.style.display = 'none';
+        l.style.display = 'block';
+    }
+    else if(barretta2.style.display==='block')
+    {
+        barretta2.style.display='none';
+        v.style.display = 'none';
+        l.style.display = 'block';
+    }
+    else if(barretta7.style.display==='block')
+    {
+        barretta7.style.display='none';
+        v.style.display = 'none';
+        l.style.display = 'block';
+    }
+    else
+    {
+        v.style.display = 'none';
+        l.style.display = 'block';
+    }
 })
 
 
@@ -692,7 +1172,7 @@ function toggleUnderline() {
     isUnderline = !isUnderline;
     redrawCanvas();
 }
-const uscita = document.getElementById('uscita');
+
 const banner = document.getElementById('banner');
 const confermaSalvataggio = document.getElementById('confermaSalvataggio');
 const annullaSalvataggio = document.getElementById('annullaSalvataggio');

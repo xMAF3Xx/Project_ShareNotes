@@ -10,29 +10,17 @@
 
 <body class="body" onload="Importa('drawingCanvas')">
 
-    <?php
+<?php
         include("conn.inc.php");
 
-        $stmt_codice = $conn->prepare("SELECT contenuto,titolo,materia,annoScolastico FROM nota WHERE codicenota=?");
-        $stmt_codice->bind_param('i', $codiceNota);
-
-        $codiceNota = (int) $_POST["codNota"];
-
-        $stmt_codice->execute();
-        $resultRiga = $stmt_codice->get_result();
-        $rigaNota = $resultRiga->fetch_assoc();
-        $contenutoNota = $rigaNota["contenuto"];
-        $title = $rigaNota["titolo"];
-        $materia = $rigaNota["materia"];
-        $anno = $rigaNota["annoScolastico"];
-        $contenutoN = (string) $_POST["Salva"];
-
         if(isset($_POST['upCodice'])){
+            $contenutoN = (string) $_POST["Salva"];
+            $contenutoNota = (string) $_POST['Vecchio'];
 
             $conn->begin_transaction();
             try{
                 if($contenutoNota != $contenutoN){
-                    $stmt = $conn->prepare("UPDATE nota SET contenuto=?, materia=?, titolo=?, annoScolastico=? mia=? WHERE codicenota=?");
+                    $stmt = $conn->prepare("UPDATE nota SET contenuto=?, materia=?, titolo=?, annoScolastico=?, mia=? WHERE codicenota=?");
                     $stmt->bind_param('sssiii', $contenutoN, $mat, $titolo, $ann, $mine, $codiceN);
                 }else {
                     $stmt = $conn->prepare("UPDATE nota SET contenuto=?, materia=?, titolo=?, annoScolastico=? WHERE codicenota=?");
@@ -62,64 +50,92 @@
                 }, 0)
             </script>';
         }
+
+        $codiceNota = (int) $_POST["codNota"];
+        $stmt_codice = $conn->prepare("SELECT contenuto,titolo,materia,annoScolastico FROM nota WHERE codicenota=?");
+        $stmt_codice->bind_param('i', $codiceNota);
+
+        $stmt_codice->execute();
+        $resultRiga = $stmt_codice->get_result();
+        $rigaNota = $resultRiga->fetch_assoc();
+        $contenutoNota = $rigaNota["contenuto"];
+        $title = $rigaNota["titolo"];
+        $materia = $rigaNota["materia"];
+        $anno = $rigaNota["annoScolastico"];
+
     ?>
 
     <input type="text" id="contenutoNota" style="display: none;" value="<?php echo $contenutoNota ?>">
     <div id="tutto2">
         <img id="apri" src="img/+.jpg">
-        <img id="uscita" src="img/uscita.png">
         <div id="ciao">
-            <div id="tutto">
-                <b><p id="strumenti">BARRA DEGLI STRUMENTI</p></b>
+            <div class="tutto" id="tutto">
+                <img id="fotina5" src="img/foto2.png">
+                <img id="uscita" src="img/foto.png">
+                <img id="fotina3" src="img/foto3.png">
+                <img id="fotina7" src="img/foto7.png">
+                <img id="fotina4" src="img/foto4.png">
+
                 <div id="textOptions">
-                    <label for="fontSelector">Font:</label>
-                    <select id="fontSelector">
-                    <option value="Arial">Arial</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                    <option value="Courier New">Courier New</option>
-                </select>
-                    <div id="selettore">
-                        <label for="fontSizeSelector">Dimensione del testo:</label>
-                        <select id="fontSizeSelector">
-                        <option value="12">12px</option>
-                        <option value="16">16px</option>
-                        <option value="20">20px</option>
-                    </select>
-                    </div>
-                    <button id="chiudi">CHIUDI</button>
-                </div>
-                <div id="tools">
-                    <!-- ... altri bottoni ... -->
-                    <label for="thicknessSlider">Spessore Linea:</label>
-                    <input type="range" id="thicknessSlider" min="1" max="100" value="5">
+                    <img src="img/foto6.png" id="chiudi">
                 </div>
                 <div id="textCursor" class="cursor"></div>
-                <div id="gomma2">
-                    <label for="gomma">Spessore Gomma:</label>
-                    <input type="range" id="gomma" min="1" max="100" value="5">
-                </div>
-                <button id="eraseButton">Cancella</button>
-                <button id="writeButton">Scrivi</button>
                 <div id="bottoni">
-                    <button id="boldButton" onclick="toggleBold()">B</button>
-                    <button id="italicButton" onclick="toggleItalic()">I</button>
-                    <button id="underlineButton" onclick="toggleUnderline()">U</button>
-                    <button id="finishButton"></button>
-                    <button id="moveButton">SALVA</button>
+                    <img id="moveButton" src="img/foto5.png">
                 </div>
                 <br>
-                <div id="colore">
-                    <label for="colorPicker">Colore:</label>
-                    <input type="color" id="colorPicker" value="#ff0000">
-                </div>
-                <div id="rett">
-                    <button id="forme">Forme</button>
-                </div>
             </div>
         </div>
-        <textarea id="textArea" style="display:none;"></textarea>
-        <canvas id="drawingCanvas"></canvas>
+        <div id="barretta" class="tutto2">
+            <img id="foto3" src="img/prova.png">
+            <img src="img/foglio.png" id="writeButton">
+            <select class="select" id="fontSelector">
+            <option  class="testo" value="Arial">Arial</option>
+            <option  class="testo"value="Times New Roman">Times New Roman</option>
+            <option  class="testo" value="Courier New">Courier New</option>
+            </select>
+            <div id="selettore">
+            <select id="fontSizeSelector">
+            <option   class="testo" value="12">12px</option>
+            <option  class="testo"value="16">16px</option>
+            <option   class="testo" value="20">20px</option>
+            <option   class="testo" value="24">24px</option>
+            <option  class="testo" value="28">28px</option>
+            <option    class="testo" value="32">32px</option>
+            </select>
+            </div>
+            <img src ="img/corsivo.png" id="boldButton" onclick="toggleBold()">
+            <img src="img/ita.png" id="italicButton" onclick="toggleItalic()">
+            <img src="img/sottolineato.png" id="underlineButton" onclick="toggleUnderline()">
+         </div>
     </div>
+    <div id="barretta2" class="tutto3" style="display:none">
+        <img id="foto3" src="img/prova2.png">
+        <div id="colore">
+            <label for="colorPicker">Colore:</label>
+            <input type="color" id="colorPicker" value="#ff0000">
+        </div>
+        <div id="tools">
+            <!-- ... altri bottoni ... -->
+            <label id="labello" for="thicknessSlider"><img id="matita" src="img/matita.png"></label>
+            <input type="range" id="thicknessSlider" min="1" max="100" value="5">
+        </div>
+        <div id="gomma2">
+            <label id="labello2" for="gomma"><img id="foto-gomma" src="img/gomma.png"></label>
+            <input type="range" id="gomma" min="1" max="100" value="5">
+        </div>
+        <img src="img/gommina.png" id="eraseButton">
+        
+    </div>
+       <div class="tutto4" id="tutto4">
+         <img src="img/formine.png" id="formine">
+         <img src="img/rett.png" id="forme">
+         <img src="img/cerchio.png" id="forme3">
+         <img src="img/triang.png" id="forme2">
+    </div>
+    <button id="finishButton"></button>
+    <textarea id="textArea" style="display:none;"></textarea>
+    <canvas id="drawingCanvas"></canvas>
     <div id="blocco">
         <span class="close-pop-up" id="croce">&times;</span>
         <!-- cambio tipo di pulsante per la chiusura del pop-up-->
@@ -130,6 +146,7 @@
             <!--aggiunto placeholder-->
             <input id="salvaImmagine" name="Salva" type="text" style="display: none;">
             <input name="upCodice" type="number" style="display: none;" value=<?php echo $codiceNota ?>>
+            <input name="Vecchio" type="text" style="display: none;" value=<?php echo $contenutoNota ?>>
             <select ID="nota2" name="matScelta" onchange="validateSave()"> <!-- cambiaton "CURRENT" con "materia" e reso minuscolo le varie materie e cambio del valore del primo elemento della lista-->
                 <option value="<?php echo $materia ?>">CURRENT</option>
                 <option value="matematica">matematica</option>

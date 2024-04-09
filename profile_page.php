@@ -110,7 +110,15 @@
                 }
                 
                 $resultNuovaNota = $stmtNuovaNota->affected_rows;
-                $codice = $newCode = mysqli_insert_id($conn);
+
+                $stmtCodice = $conn->prepare("SELECT codicenota FROM nota WHERE email=? and titolo=?");
+                $stmtCodice->bind_param('ss', $mail, $blank);
+
+                $blank = 'NotaBianca';
+
+                $stmtCodice->execute();
+                $resultCode = $stmtCodice->get_result();
+                $codice = ($resultCode->fetch_assoc())['codicenota'];
                 echo '<form method="post" action="download.php" id="fTSend">
                     <input type="number" name="codNota" style="display: none;" value='.$codice.'>
                 </form>
@@ -175,23 +183,19 @@
         function printNote($codice, $title, $content, $classe, $anno, $likes){ //In più rispetto a Matte... (poi da aggiungere)
             echo '<div class="NoteBlock">
                     <form method="POST" action="download.php" class="Apri">
-                        <button name="codNota" class="ApriNota" value=', $codice, '>', $title,'<img src="img/matita2.png" class="matita"></button>
+                        <button name="codNota" class="ApriNota" value=', $codice ,'>', $title ,'</button>
                     </form>
-                    <div class="Dati">
-                        <h5 class="titleDati">Dati:</h5>
-                        <li class="listDati">
-                            <ul>Classe: '.$classe.'</ul>
-                            <ul>Anno: '.$anno.'</ul>
-                            <ul>Likes: '.$likes.'</ul>
-                        </li>
-                    </div>
+                    <hr class="verticalLine">
+                    <p class="Classe">Classe: ', $classe ,'</p>
+                    <p class="Anno">Anno: ', $anno ,'\'</p>
+                    <p class="likes"><img src="img/cuore.png" class="cuore">', $likes ,'</p>
                     <form method="POST" action="profile_page.php" class="Elimina">
-                        <button name="eliminaNota" value=', $codice, ' class="EliminaNota"><img src="img/bidone3.png" class="bidone"></button>
+                        <button name="eliminaNota" value=', $codice, ' class="EliminaNota"><img src="img/bidone.png" class="bidone"></button>
                     </form>
                     <form action="profile_page.php" method="post" class="Condividi">
-                        <button name="share" value=', $codice, ' class="CondividiNota"><img src="img/share1.png" class="share"></button>
+                        <button name="share" value=', $codice, ' class="CondividiNota"><img src="img/share.png" class="share"></button>
                     </form>
-                    <button onclick="downloadNota(\''.$title.'\',\''.$content.'\')" class="DownloadNota"><img src="img/scarica1.png" class="scarica"></button>
+                    <button onclick="downloadNota(\''.$title.'\',\''.$content.'\')" class="DownloadNota"><img src="img/scarica.png" class="scarica"></button>
                 </div>';
         }
 

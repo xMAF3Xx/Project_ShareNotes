@@ -18,24 +18,141 @@
 }
 
 #gomma2 {
-    margin-top: -105px;
-    margin-left: 1300px;
+    margin-top: -23px;
+    margin-left: 600px;
 }
+
+.select {
+    float: right; 
+    margin-right: 10px; 
+    margin-top: 25px; 
+}
+#labello2
+{
+    margin-left: -60px;
+    margin-top: 3px;
+}
+
+
 
 #strumenti {
     font-size: 23px;
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.tutto3 
+{
+    position: absolute;
+    width: 750px;
+    margin-top: 120px;
+    height: 70px;
+    border-radius: 30px;
+    margin-left: 562px;
+    background-color: orange;
+    border: 1px solid black; 
+}
+
+.tutto4
+{
+    position: absolute;
+    width: 330px;
+    margin-top: 120px;
+    height: 70px;
+    margin-left:765px;
+    border-radius: 30px;
+    background-color: brown;
+    border: 1px solid black; 
 }
 
 #selettore {
     margin-left: 35px;
 }
+#fotina3
+{
+    position: absolute;
+    width: 80px;
+    height: 77px;
+   margin-left: 340px;
+   top: 0.5px;
+}
+#fotina7 
+{
+    position: absolute;
+    width: 85px;
+    height: 77px;
+   margin-left: 240px;
+   top: 0.2px;
+}
+#fotina7:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+#fotina3:hover
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+#thicknessSlider
+{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 40px;
+}
+.testo 
+{
+    text-align: center;
+}
+
+#labello
+{
+    margin-top: -10px;
+}
+#fontSelector
+{
+    margin-top: 23.5px;
+    width: 200px; 
+    margin-right: 50px;
+}
+#fotina4
+{
+    position: absolute;
+    width: 80px;
+    height: 73px;
+   margin-left: 450px;
+   margin-top: 3.6px;
+}
+#fotina5
+{
+    position: absolute;
+    width: 88px;
+    height: 81px;
+   margin-left: 40px;
+   margin-top: 0.2px;
+}
+#fotina5:hover
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+#fotina4:hover
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
 
 #tools {
-    margin-top: 5px;
-    margin-left: 1300px;
+    margin-top: -25px;
+    margin-left: 350px;
 }
+#fontSizeSelector
+{
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 290px;
+}
+
 
 textarea {
     position: absolute;
@@ -70,6 +187,7 @@ button {
     z-index: 1;
 }
 
+
 #blocco {
     /*cambiato css di blocco*/
     position: absolute;
@@ -79,19 +197,62 @@ button {
     width: 450px;
     height: 450px;
     border: none;
+    z-index: 1;
     border-radius: 30px;
     background-image: url("img/sfondo-popup-new.png");
     display: none;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-#tutto {
+#foto-gomma
+{
+    height: 35px;
+    width: 35px;
+    margin-top: -4px;
+}
+
+#gomma
+{
     position: absolute;
-    width: 1500px;
-    height: 140px;
+    margin-top: 5px;
+}
+#matita
+{
+    position: absolute;
+    height: 40px;
+    width: 45px;
+    margin-top: -8px;
+    right: 360px;
+}
+
+
+#foto3
+{
+    width: 40px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 30px;
+    background-color: white;
     border-radius: 30px;
-    background-image: url("img/sfondo1.png");
-    margin-left: 190px;
+}
+
+.tutto {
+    position: absolute;
+    width: 750px;
+    height: 80px;
+    border-radius: 50px;
+    margin-left: 560px;
+    margin-top: 5px;
+    border: 1px solid black;
+}
+.tutto2 {
+    position: absolute;
+    width: 850px;
+    margin-top: 120px;
+    height: 70px;
+    border-radius: 30px;
+    margin-left: 520px;
+    background-color: greenyellow;
     border: 1px solid black;
 }
 
@@ -118,33 +279,48 @@ button {
 }
 
 #colore {
-    margin-top: -20px;
-    margin-left: 1050px;
+    margin-top: -35px;
+    margin-left: 205px;
 }
 
 #eraseButton {
-    height: 20px;
+    position: absolute;
+    height: 40px;
     width: 70px;
-    margin-top: 60px;
-    margin-left: 600px;
-    border-radius: 30px;
+    margin-top: -43px;
+    margin-left: 115px;
+}
+
+#eraseButton:hover 
+{
+    transform: scale(1.2);
 }
 
 #writeButton {
-    height: 20px;
-    width: 70px;
-    margin-top: 60px;
-    margin-left: 700px;
-    border-radius: 30px;
+    position: absolute;
+    height: 65px;
+    width: 65px;
+    margin-top: 4px;
+    margin-left: 40px;
+}
+#writeButton:hover 
+{
+    transform: scale(1.2);
 }
 
 #chiudi {
-    height: 20px;
-    width: 70px;
-    margin-top: 90px;
-    margin-left: 900px;
+    position: absolute;
+    height: 89px;
+    width: 89px;
+    margin-top: 75px;
+    margin-left: 580px;
     border-radius: 30px;
     border: 0.5 solid black;
+}
+#chiudi:hover
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease; 
 }
 
 #titolino {
@@ -280,30 +456,42 @@ button {
 }
 
 #boldButton {
-    height: 20px;
+    position: absolute;
+    margin-top: -36px;
+    height: 33px;
     width: 30px;
-    margin-top: 90px;
-    margin-left: 540px;
-    border-radius: 30px;
-    border: 0.5 solid black;
+    margin-left: 230px;
+    align-items: center;
+}
+#boldButton:hover 
+{
+    transform: scale(1.2);
 }
 
 #italicButton {
-    height: 20px;
+    position: absolute;
+    margin-top: -39px;
+    height: 40px;
     width: 30px;
-    margin-top: 90px;
-    margin-left: 620px;
-    border-radius: 30px;
-    border: 0.5 solid black;
+    margin-left: 430px;
+    align-items: center;
+}
+#italicButton:hover 
+{
+    transform: scale(1.2);
 }
 
 #underlineButton {
-    height: 20px;
-    width: 30px;
-    margin-top: 90px;
-    margin-left: 720px;
-    border-radius: 30px;
-    border: 0.5 solid black;
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    margin-top: -43px;
+    margin-left: 317px;
+}
+
+#underlineButton:hover 
+{
+    transform: scale(1.2);
 }
 
 #eraseimagesButton {
@@ -317,14 +505,17 @@ button {
 }
 
 #moveButton {
-    height: 20px;
-    width: 70px;
-    margin-top: 90px;
-    margin-left: 800px;
-    border-radius: 30px;
-    border: 0.5 solid black;
+    position: absolute;
+    width: 88px;
+    height: 82px;
+    margin-left: 540px;
+    margin-top: -2.8px;
 }
-
+#moveButton:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
 #salva {
     margin-top: 40px;
     margin-left: 900px;
@@ -341,12 +532,10 @@ button {
 
 #uscita {
     position: absolute;
-    top: 0;
-    left: 1840px;
-    margin-top: -5px;
-    margin-left: 0;
-    height: 55px;
-    width: 55px;
+    left: 140px;
+    margin-top: 3px;
+    height: 76px;
+    width: 87px;
 }
 
 #ciao.aperta {
@@ -387,12 +576,54 @@ button {
 }
 
 #forme {
-    height: 20px;
-    width: 70px;
-    margin-top: 60px;
-    margin-left: 800px;
-    border-radius: 30px;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    margin-top: 6px;
+    margin-left: 110px;
 }
+#forme:hover 
+{
+    transform: scale(1.2);
+}
+#forme3
+{
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    margin-top: 6px;
+    margin-left: 170px;
+}
+#forme2
+{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    margin-top: 13px;
+    margin-left: 250px;
+}
+
+#forme2:hover 
+{
+    transform: scale(1.2);
+}
+#forme3:hover 
+{
+    transform: scale(1.2);
+}
+#formine
+{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    margin-top: 15px;
+    margin-left: 30px;
+    background-color: white;
+    border-radius: 30px;
+
+}
+
+
 
 #annulla {
     margin-top: 145px;
