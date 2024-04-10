@@ -1,0 +1,226 @@
+.body
+{
+    background-image: url("img/pagina.png");
+    background-repeat: no-repeat;
+    background-position: center; /* Center the background image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inter;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    position: fixed; 
+    height: 160px;
+    width: 2100px;
+    margin: 0;
+    top:0;
+    padding: 0; 
+    margin-bottom: 10px;
+    z-index:1;
+}
+.container-fluid
+{
+    text-align: center;
+    margin-top: -5px;
+}
+#bottone1 {
+    position: absolute;
+    font-size: 23px;
+    margin-top: 65px; 
+    padding: 1px;
+    margin-left: -1400px;
+    border: none;
+    margin: none;
+    color: none;
+    background-color: none;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#bottone1:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+#bottone2 {
+    position: absolute;
+    font-size: 23px;
+    margin-top: 65px; 
+    padding: 1px;
+    margin-left: -980px;
+    border: none;
+    margin: none;
+    background-color: none;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#bottone2:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+#bottone3 {
+    position: absolute;
+    font-size: 23px;
+    margin-top: 65px; 
+    padding: 1px;
+    margin-left: -500px;
+    background-color: none;
+    border: none;
+    margin: none;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#bottone5 
+{
+    margin: 0px 0;
+    background-color: WHITE;
+}
+#bott
+{
+    margin: white;
+    background-color: white;
+    border: none;
+    background: none;
+}
+
+#bottone3:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+.bottoni
+{
+    text-align: center;
+    background-color: white;
+}
+
+#linea {
+    margin-top: 23px;
+    margin: 10px 0; 
+    border: none;
+    width: 2000px;
+    border-top: 2px solid  grey; 
+}
+#imm
+{
+    margin-right: 1750px;
+    margin-top: 5px;
+    
+    width: 150px;
+    height: 150px;
+}
+#imm2:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+#titoletto2
+{
+    position: absolute;
+    margin-top: 2000px;
+    margin-left: 920px;
+    color: red;
+}
+#si
+{
+    margin: none;
+}
+
+#imm2
+{
+    position: absolute;
+    margin-left: -100px;
+    margin-top: -110px;
+    width: 70px;
+    height: 70px;
+}
+#titolo
+{
+    font-size: 45px;
+    margin-top: 100px;
+    margin-left: 750px;
+    font-family: inter;
+    color: orange;
+}
+#titoletto
+{
+    position: absolute;
+    margin-top: 600px;
+    margin-left: -820px;
+    color: red;
+}
+#testo
+{
+    margin-top: 250px;
+    margin-left: -1050px;
+    font-size: 29px;
+    text-align: center;
+}
+#immagine
+{
+    position: absolute;
+    border-radius: 30px;
+    margin-top: 1300px;
+    width: 1000px;
+    height: 600px;
+    margin-left: -810px;
+
+}
+#profilo
+{
+    position: absolute;
+    font-size: 25px;
+    margin-top: 1300px;
+    margin-left: 1100px;
+}
+#immagine2
+{
+    position: absolute;
+    border-radius: 30px;
+    margin-top: 2700px;
+    width: 950px;
+    height: 600px;
+    margin-left: 930px;
+    margin-right: 30px;
+}
+#creazione 
+{
+    position: absolute;
+    font-size: 25px;
+    margin-top: 2700px;
+    margin-left :-973px;
+}
+.stile
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#titoletto3
+{
+    position: absolute;
+    margin-top: 3500px;
+    margin-left: -820px;
+    color: red;
+}
+#immagine3
+{
+    position: absolute;
+    border-radius: 30px;
+    margin-top: 4200px;
+    width: 1000px;
+    height: 600px;
+    margin-left: -830px;
+}
+#cerca
+{
+    position: absolute;
+    font-size: 25px;
+    margin-top: 4150px;
+    margin-left: 1100px;
+}

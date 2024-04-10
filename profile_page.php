@@ -306,7 +306,7 @@
                 <a href="index.php"><button class="top-buttons-style">Home</button></a>
                 <a href="aboutPage.php"><button class="top-buttons-style">Chi siamo?</button></a>
                 <a href="cercaNote.php"><button class="top-buttons-style">Cerca appunti</button></a>
-                <a href="#"><button class="top-buttons-style">Funzionalità</button></a>
+                <a href="Functionalities.php"><button class="top-buttons-style">Funzionalità</button></a>
                 <hr class="line-horizontal">
                 <div class="open-zone">
                     <h1 class="main-title">Appunti</h1>

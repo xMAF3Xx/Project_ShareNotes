@@ -140,7 +140,7 @@
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
         <div class="container-fluid">
             <a href="index.php"><img id="imm" class="bar-Btns" src="img/im.png" style="height:95px; width: 220px"></a>
-            <a href="#"><button id="bottone1"  class="bar-Btns" type="button">Funzionalità</button></a>
+            <a href="Functionalities.php"><button id="bottone1"  class="bar-Btns" type="button">Funzionalità</button></a>
             <a href="index.php"><button id="bottone2"  class="bar-Btns" type="button">Home</button></a>
             <a href="aboutPage.php"><button  id="bottone3" class="bar-Btns" type="button">Chi Siamo?</button></a>
           <?php

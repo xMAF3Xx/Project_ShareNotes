@@ -20,7 +20,7 @@
           <nav id="navbar" class="navbar navbar-dark bg-light fixed-top">
           <div class="container-fluid">
               <img id="img_logo" src="img/logo.png">
-            <a href="#"><button class="Functionalities" type="button">Funzionalità</button></a>
+            <a href="Functionalities.php"><button class="Functionalities" type="button">Funzionalità</button></a>
             <a href="cercaNote.php"><button class="SearchNotes" type="button">Cerca appunti</button></a>
             <a href="aboutPage.php"><button class="About" type="button">About</button></a>
             <?php
