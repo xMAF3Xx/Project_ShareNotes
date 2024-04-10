@@ -77,11 +77,11 @@ body {
     text-align: center;
     box-sizing: border-box;
     font-size: 20px;
+    transition: ease all 0.1s;
 }
 
 .top-buttons-style:hover {
     font-weight: bold;
-    transition: all 0.3s;
 }
 
 .divisions {
