@@ -63,6 +63,7 @@ body {
     background: none;
     position: absolute;
     left: 20%;
+    transition: ease all 0.1s;
 }
 
 .Functionalities:hover {
@@ -75,6 +76,7 @@ body {
     background: none;
     position: absolute;
     left: 40%;
+    transition: ease all 0.1s;
 }
 
 .SearchNotes:hover {
@@ -87,6 +89,7 @@ body {
     background: none;
     position: absolute;
     left: 60%;
+    transition: ease all 0.1s;
 }
 
 .About:hover {
