@@ -6,7 +6,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: inter;
 }
 
 .navbar {
@@ -15,7 +14,7 @@
     align-items: center;
     background-color: white;
     position: fixed; 
-    height: 160px;
+    height: 167px;
     width: 2100px;
     margin: 0;
     top:0;
@@ -31,7 +30,7 @@
 #bottone1 {
     position: absolute;
     font-size: 23px;
-    margin-top: 65px; 
+    margin-top: 78px; 
     padding: 1px;
     margin-left: -1400px;
     border: none;
@@ -50,7 +49,7 @@
 #bottone2 {
     position: absolute;
     font-size: 23px;
-    margin-top: 65px; 
+    margin-top: 78px; 
     padding: 1px;
     margin-left: -980px;
     border: none;
@@ -68,7 +67,7 @@
 #bottone3 {
     position: absolute;
     font-size: 23px;
-    margin-top: 65px; 
+    margin-top: 78px; 
     padding: 1px;
     margin-left: -500px;
     background-color: none;
@@ -111,21 +110,30 @@
 #imm
 {
     margin-right: 1750px;
-    margin-top: 5px;
+    margin-top: 20px;
     
     width: 150px;
     height: 150px;
+}
+#si
+{
+    border: none;
 }
 #imm2:hover 
 {
     transform: scale(1.2);
     transition: transform 0.3s ease;
 }
+.font
+{
+    font-family: inter;
+}
 #titoletto2
 {
     position: absolute;
     margin-top: 2000px;
-    margin-left: 920px;
+    margin-left: 900px;
+    
     color: red;
 }
 #si
@@ -137,7 +145,7 @@
 {
     position: absolute;
     margin-left: -100px;
-    margin-top: -110px;
+    margin-top: -115px;
     width: 70px;
     height: 70px;
 }
@@ -178,7 +186,7 @@
     position: absolute;
     font-size: 25px;
     margin-top: 1300px;
-    margin-left: 1100px;
+    margin-left: 1200px;
 }
 #immagine2
 {
@@ -187,7 +195,7 @@
     margin-top: 2700px;
     width: 950px;
     height: 600px;
-    margin-left: 930px;
+    margin-left: 940px;
     margin-right: 30px;
 }
 #creazione 
@@ -195,7 +203,9 @@
     position: absolute;
     font-size: 25px;
     margin-top: 2700px;
-    margin-left :-973px;
+    margin-left :-963px;
+    background-image: url("sfondino,png");
+    background-repeat: no-repeat;
 }
 .stile
 {
@@ -207,6 +217,14 @@
     margin-top: 3500px;
     margin-left: -820px;
     color: red;
+}
+#prova
+{
+    position: absolute;
+    margin-top: 2700px;
+    margin-left: -963px;
+    z-index: -1;
+    width: 500px;
 }
 #immagine3
 {
