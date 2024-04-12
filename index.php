@@ -299,7 +299,7 @@
         <img id="img_Explore" src="img/immagine.png" alt="Inserire un'immagine">
       </div>
       <div class="Create">
-        <img id="img_Create" src="img/cration.jpg" alt="Inserire un'immagine">
+        <img id="img_Create" src="img/cration.png" alt="Inserire un'immagine">
         <h3 id="title_Create">Crea</h3>
         <text id="txt_Create">Crea appunti, aiutati con immagini, disegni, schemi, colori e dai vita ad opere uniche!</text>
         <div class="Create_btn">
