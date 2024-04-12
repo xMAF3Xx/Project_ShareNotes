@@ -1,309 +1,244 @@
-.body {
-    background-image: url("img/sfondo.png");
+.body
+{
+    background-image: url("img/pagina.png");
     background-repeat: no-repeat;
-    background-size: cover; 
-    background-attachment: fixed; 
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    background-position: center; /* Center the background image */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: auto; 
-    height: 100vh; 
-}
-
-.to_pPage{
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #212529;
-    border-radius: 25px;
-    border-color: #bcc0c56a;
-    padding: 18px;
-    /*margin-right: -100px;*/
-    color: white;
-    font-weight: bold;
-}
-
-.logOut{
-    background-image: url('img/logout.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #212529;
-    border-radius: 50%;
-    border-color: #bcc0c56a;
-    padding: 22px;
-    /*margin-left: -100px;*/
-    margin-right: 15px;
-}
-
-#imm
-{
-    margin-right: 350px;
-    margin-top: 10px;
-    
-    width: 125px;
-    height: 175px;
-}
-#cerchio {
-    position: absolute;
-    top: 360px; 
-    margin-left: 5px;
-   
-    transform: translateX(-50%); 
-    z-index: -1; 
-}
-#cerchio2 {
-    position: absolute;
-    top: 440px; 
-    margin-left: 250px;
-    transform: translateX(-50%); 
-    z-index: -1; 
-}
-
-
-.immagine
-{
-    width: 100px;
-    height: 210px;
-    margin-top: 200px;
-    margin-left: -60px;
-}
-#foto
-{
-    margin-top: 10px;
     justify-content: center;
-    width: 110px;
-    height: 90px;
-    margin-left: 1300px;
-    margin-right: -150px;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    position: fixed; 
+    height: 167px;
+    width: 2100px;
+    margin: 0;
+    top:0;
+    padding: 0; 
+    margin-bottom: 10px;
+    z-index:1;
 }
 .container-fluid
 {
     text-align: center;
     margin-top: -5px;
-    width: 100%;
-}
-
-.titoloOne{
-    margin-left: 450px;
-}
-
-.container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.navbar {
-    background-color: white;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 215px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-#linea {
-    margin-top: 32px;
-    margin: 10px 0; 
-    border: none;
-    border-top: 2px solid  grey; 
-    color: grey;
-}
-
-
-
-
-
-.navbar button {
-    margin: 65px;
-}
-
-.offcanvas-body {
-    text-align: center;
 }
 #bottone1 {
+    position: absolute;
     font-size: 23px;
-    margin-top: 20px; 
+    margin-top: 78px; 
     padding: 1px;
-    margin-left: -100px;
-    background: none;
+    margin-left: -1400px;
     border: none;
+    margin: none;
+    color: none;
+    background-color: none;
     justify-content: center;
     margin-bottom: 30px;
 }
+#bottone1:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
 
 #bottone2 {
-    margin-top: -15px; /* Adjust this value to move the button higher */
+    position: absolute;
     font-size: 23px;
-    background: none;
+    margin-top: 78px; 
+    padding: 1px;
+    margin-left: -980px;
     border: none;
+    margin: none;
+    background-color: none;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#bottone2:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
 }
 
 #bottone3 {
+    position: absolute;
     font-size: 23px;
-    margin-top: -5px; /* Adjust this value to move the button higher */
-    background: none;
+    margin-top: 78px; 
+    padding: 1px;
+    margin-left: -500px;
+    background-color: none;
     border: none;
+    margin: none;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#bottone5 
+{
+    margin: 0px 0;
+    background-color: WHITE;
+}
+#bott
+{
+    margin: white;
+    background-color: white;
+    border: none;
+    background: none;
+}
+
+#bottone3:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
 }
 .bottoni
 {
     text-align: center;
+    background-color: white;
 }
 
-#bottone6 {
-    font-size: 23px;
-    margin-top: -5px; /* Adjust this value to move the button higher */
-    background: none;
+#linea {
+    margin-top: 23px;
+    margin: 10px 0; 
+    border: none;
+    width: 2000px;
+    border-top: 2px solid  grey; 
+}
+#imm
+{
+    margin-right: 1750px;
+    margin-top: 20px;
+    
+    width: 150px;
+    height: 150px;
+}
+#si
+{
     border: none;
 }
-
-#bottone4 {
-    justify-content: end;
-    font-size: 23px;
-    border-radius: 30px;
-    margin-top: -5px; /* Adjust this value to move the button higher */
-    margin-right: 55px;
+#imm2:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+.font
+{
+    font-family: inter;
+}
+#titoletto2
+{
+    position: absolute;
+    margin-top: 2000px;
+    margin-left: 900px;
+    
+    color: red;
+}
+#si
+{
+    margin: none;
 }
 
 #imm2
 {
-    margin-left: 50px;
+    position: absolute;
+    margin-left: -100px;
+    margin-top: -115px;
     width: 70px;
     height: 70px;
 }
-#openPopupBtn
+#titolo
 {
-    background: none;
-    border:none;
-    height: 50px;
-    width: 60px;
+    font-size: 45px;
+    margin-top: 100px;
+    margin-left: 750px;
+    font-family: inter;
+    color: orange;
 }
-.testone
+#titoletto
 {
+    position: absolute;
+    margin-top: 600px;
+    margin-left: -820px;
+    color: red;
+}
+#testo
+{
+    margin-top: 250px;
+    margin-left: -1050px;
+    font-size: 29px;
     text-align: center;
-    font-size: 30px;
 }
-.tutto
+#immagine
 {
-    display:flex;
-}
-.titolo
-{
-    margin-top: 380px;
-    font-size: 60px;
- 
-    color: black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: absolute;
+    border-radius: 30px;
+    margin-top: 1300px;
+    width: 1000px;
+    height: 600px;
+    margin-left: -810px;
 
-    
 }
-
-.titoletto
+#profilo
 {
-    text-align: center;
-    font-size: 30px;
-}
-.testino
-{
+    position: absolute;
     font-size: 25px;
-    text-align: center;
+    margin-top: 1300px;
+    margin-left: 1200px;
 }
-.come
+#immagine2
 {
-    width: 190px;
-    height: 160px;
-    margin-left: 130px;
-    justify-content: center;
+    position: absolute;
+    border-radius: 30px;
+    margin-top: 2700px;
+    width: 950px;
+    height: 600px;
+    margin-left: 940px;
+    margin-right: 30px;
 }
-.titoletto2
+#creazione 
 {
-    text-align: center;
-    font-size: 30px;
-}
-.testino2
-{
+    position: absolute;
     font-size: 25px;
-    text-align: center;
+    margin-top: 2700px;
+    margin-left :-963px;
+    background-image: url("sfondino,png");
+    background-repeat: no-repeat;
 }
-
-.titoletto3
+.stile
 {
-    text-align: center;
-    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.testino3
+#titoletto3
 {
+    position: absolute;
+    margin-top: 3500px;
+    margin-left: -820px;
+    color: red;
+}
+#prova
+{
+    position: absolute;
+    margin-top: 2700px;
+    margin-left: -963px;
+    z-index: -1;
+    width: 500px;
+}
+#immagine3
+{
+    position: absolute;
+    border-radius: 30px;
+    margin-top: 4200px;
+    width: 1000px;
+    height: 600px;
+    margin-left: -830px;
+}
+#cerca
+{
+    position: absolute;
     font-size: 25px;
-    margin-left: 20px;
-    text-align: center;
+    margin-top: 4150px;
+    margin-left: 1100px;
 }
-
-.bottone
-{
-    margin-top: 90px;
-    width: 400px;
-    height: 40px;
-    margin-left: 40px;
-}
-.serpente
-{
-    height: 80px;
-    width: 50px;
-    margin-top: 60px;
-   position: relative;
-   margin-right: 10px;
-}
-.titoletto4
-{
-    text-align: center;
-    font-size: 30px;
-}
-.testino4
-{
-    font-size: 25px;
-    text-align: center;
-}
-
-.tutto2
-{
-    display:flex;
-    margin-top: 50px;
-}
-.lista
-{
-    text-align: center;
-    font-size: 30px;
-}
-@keyframes entrataBlocchi {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-#centro,
-#centro2,
-#centro3,
-#centro4
-{
-    font-size: 20px;
-    text-align: center;
-}
-
-
-
