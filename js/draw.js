@@ -102,10 +102,21 @@ function redrawCanvas() {
             context.stroke();
         }
 
-        // Non disegnare il testo qui
     }
 }
 
+
+
+let isZoomingOrDezooming = false;
+
+
+canvas.addEventListener('zoomstart', function() {
+    isZoomingOrDezooming = true;
+});
+
+canvas.addEventListener('zoomend', function() {
+    isZoomingOrDezooming = false;
+});
 
 
 function erase(e) {
@@ -114,49 +125,36 @@ function erase(e) {
     const mouseX = e.clientX - canvas.offsetLeft;
     const mouseY = e.clientY - canvas.offsetTop;
 
+    // "Cancella" il disegno aggiungendo la sua posizione all'array erasedDrawings
+    erasedDrawings.push({ x: mouseX, y: mouseY });
+
+    // Pulisci solo la zona dove è presente la gomma
     context.clearRect(mouseX - gommaSize / 2, mouseY - gommaSize / 2, gommaSize, gommaSize);
 }
-// ...
 
 function eraseAll() {
-    // Aggiungi le coordinate degli elementi di tipo 'image' e 'rectangle' cancellati
-    erasedDrawings = erasedDrawings.concat(
-        drawings.filter(item => item.type === 'image' || item.type === 'rectangle').map(erasedDrawing => ({ x: 0, y: 0 }))
-    );
+    erasedDrawings.forEach(erasedDrawing => {
+        context.fillRect(erasedDrawing.x - eraseSize / 2, erasedDrawing.y - eraseSize / 2, eraseSize, eraseSize);
+    });
+
+    erasedDrawings = [];
 
     // Pulisci il canvas principale
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     // Ridisegna gli elementi di tipo 'text' e 'rectangle' rimanenti nel canvas principale
     drawings.filter(item => item.type !== 'image').forEach(drawItem => {
-        if (drawItem.type === 'text') {
-            // Disegna il testo
-            context.font = drawItem.font;
-            context.fillStyle = drawItem.color;
-            context.fillText(drawItem.text, drawItem.x, drawItem.y);
-
-            // Applica sottolineato
-            if (drawItem.textDecoration === 'underline') {
-                const textMetrics = context.measureText(drawItem.text);
-                const underlineY = drawItem.y + parseInt(drawItem.fontSize) + 5;
-                context.beginPath();
-                context.moveTo(drawItem.x, underlineY);
-                context.lineTo(drawItem.x + textMetrics.width, underlineY);
-                context.stroke();
-            }
-        } else if (drawItem.type === 'rectangle') {
-            // Disegna il rettangolo
-            context.fillStyle = drawItem.color;
-            context.fillRect(drawItem.x, drawItem.y, drawItem.width, drawItem.height);
-        }
+        // ...
     });
 
     // Ridisegna gli elementi cancellati con il colore bianco
-    context.fillStyle = '#ffffff'; // Colore bianco
-    erasedDrawings.forEach(erasedDrawing => {
-        context.fillRect(erasedDrawing.x, erasedDrawing.y, eraseSize, eraseSize);
-    });
+    // ...
 }
+
+// Il resto del codice rimane invariato
+
+
+
 
 
 
@@ -535,59 +533,24 @@ canvas.addEventListener('mousemove', function(e) {
 
 
 const riquadro3=document.getElementById("fotina5");
-let interazioneAbilitata = true;
+let interazioneAbilitata;
 const riquadro4=document.getElementById("moveButton");
 const riquadro5=document.getElementById("chiudi");
 
 riquadro3.addEventListener('click', function() {
     if (interazioneAbilitata) {
+        barretta2.style.display='none';
+        barretta7.style.display='none';
         riquadro.style.display='none';
         riquadro2.style.display='none';
         riquadro4.style.display='none';
         riquadro5.style.display='none';
         uscita.style.display='none';
+        barretta.style.display='none';
         riquadro7.style.display='none';
 
 
         isErasing=true;
-        canvas.removeEventListener('click', editText);
-
-        // Disabilita l'interazione con gli elementi di testo
-        document.removeEventListener('keydown', handleKeyDown);
-        document.removeEventListener('keyup', function(e) {
-            if (e.key === 'Enter') {
-                finishWriting();
-            }
-        });
-        writeButton.removeEventListener('click', function() {
-            spostaBloccoVersoDestra();
-            eraseAll();
-            enableWriting();
-        });
-        finishButton.removeEventListener('click', finishWriting);
-
-        // Disabilita l'interazione con il selettore di spessore
-        thicknessSlider.disabled = true;
-
-        // Nascondi altri elementi non interattivi
-        eraseButton.style.display = 'none';
-        colorPicker.disabled = true;
-        colorPicker.style.pointerEvents = 'none';
-        fontSelector.disabled = true;
-        fontSizeSelector.disabled = true;
-
-        // Nascondi gli altri bottoni non interattivi
-        const bottoniNonInterattivi = document.querySelectorAll('.non-interattivo');
-        bottoniNonInterattivi.forEach(bottone => {
-            bottone.style.display = 'none';
-        });
-
-        // Disabilita l'interazione con il bottone di salvataggio
-        g.disabled = true;
-        g.style.backgroundColor = "gray";
-        g.style.borderColor = "gray";
-        g.classList.add("submit-senza-hover");
-        
         interazioneAbilitata = false;
     } else {
         // Riattiva l'interazione con il canvas
@@ -598,45 +561,6 @@ riquadro3.addEventListener('click', function() {
         riquadro5.style.display='block';
         riquadro7.style.display='block';
         isErasing=false;
-        canvas.addEventListener('click', editText);
-
-        // Riattiva l'interazione con gli elementi di testo
-        document.addEventListener('keydown', handleKeyDown);
-        document.addEventListener('keyup', function(e) {
-            if (e.key === 'Enter' && isTyping) {
-                finishWriting();
-            }
-        });
-        writeButton.addEventListener('click', function() {
-            spostaBloccoVersoDestra();
-            eraseAll();
-            enableWriting();
-        });
-        finishButton.addEventListener('click', finishWriting);
-
-        // Riattiva l'interazione con il selettore di spessore
-        thicknessSlider.disabled = false;
-
-        // Riattiva altri elementi non interattivi
-        eraseButton.style.display = 'block';
-        colorPicker.disabled = false;
-        colorPicker.style.pointerEvents = 'auto';
-        fontSelector.disabled = false;
-        fontSizeSelector.disabled = false;
-        
-
-        // Riattiva gli altri bottoni non interattivi
-        const bottoniNonInterattivi = document.querySelectorAll('.non-interattivo');
-        bottoniNonInterattivi.forEach(bottone => {
-            bottone.style.display = 'block';
-        });
-
-        // Riattiva l'interazione con il bottone di salvataggio
-        g.disabled = false;
-        g.style.backgroundColor = "#FFD847";
-        g.style.borderColor = "#FFD847";
-        g.classList.remove("submit-senza-hover");
-        
         interazioneAbilitata = true;
     }
 });
