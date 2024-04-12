@@ -52,6 +52,62 @@ gommaSlider.addEventListener('input', function() {
     gommaSize = gommaSlider.value;
 });
 
+function redrawCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    circles.forEach(circle => {
+        drawCircle(circle.x, circle.y, circle.radius);
+    });
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    triangles.forEach(triangle => {
+        drawTriangle(triangle.x1, triangle.y1, triangle.x2, triangle.y2);
+    });
+
+    for (const drawing of drawings) {
+        if (drawing.type === 'text') {
+            context.font = drawing.font;
+            context.fillStyle = drawing.color;
+
+            // Disegna il testo
+            context.fillText(drawing.text, drawing.x, drawing.y);
+
+            // Applica sottolineato
+            if (drawing.textDecoration === 'underline') {
+                const textMetrics = context.measureText(drawing.text);
+                const underlineY = drawing.y + parseInt(drawing.fontSize) + 5;
+                context.beginPath();
+                context.moveTo(drawing.x, underlineY);
+                context.lineTo(drawing.x + textMetrics.width, underlineY);
+                context.stroke();
+            }
+        } else if (drawing.type === 'image') {
+            context.putImageData(drawing.imageData, 0, 0);
+        }
+    }
+
+    if (isTyping && currentText !== '') {
+        const fontStyle = `${getSelectedFontSize()} ${fontSelector.value}`;
+        context.font = fontStyle;
+        context.fillStyle = drawingColor;
+
+        // Applica grassetto, corsivo e sottolineato
+        if (isBold) context.font = `bold ${context.font}`;
+        if (isItalic) context.font = `italic ${context.font}`;
+        if (isUnderline) {
+            const textMetrics = context.measureText(currentText);
+            const underlineY = clickStart.y + parseInt(getSelectedFontSize()) + 5;
+            context.beginPath();
+            context.moveTo(clickStart.x, underlineY);
+            context.lineTo(clickStart.x + textMetrics.width, underlineY);
+            context.stroke();
+        }
+
+        // Non disegnare il testo qui
+    }
+}
+
+
+
 function erase(e) {
     if (!isErasing) return;
 
@@ -124,6 +180,33 @@ function startDrawing(e) {
     clickStart = { x: canvasX, y: canvasY };
     updateCursorSize();
 }
+
+canvas.addEventListener('mousemove', function(e) {
+
+    if (isErasing) {
+        erase(e);
+    } else if (isDrawing) {
+        draw(e);
+    }
+    if (isDragging && draggedText !== null) {
+        const mouseX = e.clientX - canvas.offsetLeft;
+        const mouseY = e.clientY - canvas.offsetTop;
+
+        const deltaX = mouseX - lastMouseX;
+        const deltaY = mouseY - lastMouseY;
+
+        // Sposta il testo
+        draggedText.x += deltaX;
+        draggedText.y += deltaY;
+
+        // Ridisegna il canvas con il testo spostato
+        redrawCanvas();
+
+        // Aggiorna le coordinate del mouse
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
+    }
+});
 
 
 
@@ -386,33 +469,6 @@ riquadro2.addEventListener('click',function(){
     }
 })
 
-
-const riquadro3=document.getElementById("fotina5");
-let interazioneAbilitata = true;
-const riquadro4=document.getElementById("moveButton");
-const riquadro5=document.getElementById("chiudi");
-
-riquadro3.addEventListener('click', function() {
-    if (interazioneAbilitata) {
-        // Disabilita l'interazione con il canvas
-        riquadro.style.display='none';
-        riquadro2.style.display='none';
-        riquadro4.style.display='none';
-        riquadro5.style.display='none';
-        uscita.style.display='none';
-        riquadro7.style.display='none';
-        if(barretta.style.display==='block')
-        {
-            barretta.style.display='none'
-        }
-        if(barretta2.style.display==='block')
-        {
-            barretta2.style.display='none'
-        }
-        let isDragging = false;
-let draggedText = null;
-let lastMouseX, lastMouseY;
-
 canvas.addEventListener('mousedown', function(e) {
     if (e.button === 1) { // Controllo se il pulsante premuto è il pulsante centrale del mouse
         isDragging = true;
@@ -474,13 +530,26 @@ canvas.addEventListener('mousemove', function(e) {
         lastMouseX = mouseX;
         lastMouseY = mouseY;
     }
-    else if (isErasing) {
-        erase(e);
-    } else if (isDrawing) {
-        draw(e);
-    }
 });
 
+
+
+const riquadro3=document.getElementById("fotina5");
+let interazioneAbilitata = true;
+const riquadro4=document.getElementById("moveButton");
+const riquadro5=document.getElementById("chiudi");
+
+riquadro3.addEventListener('click', function() {
+    if (interazioneAbilitata) {
+        riquadro.style.display='none';
+        riquadro2.style.display='none';
+        riquadro4.style.display='none';
+        riquadro5.style.display='none';
+        uscita.style.display='none';
+        riquadro7.style.display='none';
+
+
+        isErasing=true;
         canvas.removeEventListener('click', editText);
 
         // Disabilita l'interazione con gli elementi di testo
@@ -528,15 +597,7 @@ canvas.addEventListener('mousemove', function(e) {
         riquadro4.style.display='block';
         riquadro5.style.display='block';
         riquadro7.style.display='block';
-        canvas.addEventListener('mousedown', startDrawing);
-        canvas.addEventListener('mouseup', stopDrawing);
-        canvas.addEventListener('mousemove', function(e) {
-            if (isErasing) {
-                erase(e);
-            } else if (isDrawing) {
-                draw(e);
-            }
-        });
+        isErasing=false;
         canvas.addEventListener('click', editText);
 
         // Riattiva l'interazione con gli elementi di testo
@@ -562,6 +623,7 @@ canvas.addEventListener('mousemove', function(e) {
         colorPicker.style.pointerEvents = 'auto';
         fontSelector.disabled = false;
         fontSizeSelector.disabled = false;
+        
 
         // Riattiva gli altri bottoni non interattivi
         const bottoniNonInterattivi = document.querySelectorAll('.non-interattivo');
@@ -642,60 +704,6 @@ function drawTriangle(x1, y1, x2, y2) {
 
 
 
-
-function redrawCanvas() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    circles.forEach(circle => {
-        drawCircle(circle.x, circle.y, circle.radius);
-    });
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    triangles.forEach(triangle => {
-        drawTriangle(triangle.x1, triangle.y1, triangle.x2, triangle.y2);
-    });
-
-    for (const drawing of drawings) {
-        if (drawing.type === 'text') {
-            context.font = drawing.font;
-            context.fillStyle = drawing.color;
-
-            // Disegna il testo
-            context.fillText(drawing.text, drawing.x, drawing.y);
-
-            // Applica sottolineato
-            if (drawing.textDecoration === 'underline') {
-                const textMetrics = context.measureText(drawing.text);
-                const underlineY = drawing.y + parseInt(drawing.fontSize) + 5;
-                context.beginPath();
-                context.moveTo(drawing.x, underlineY);
-                context.lineTo(drawing.x + textMetrics.width, underlineY);
-                context.stroke();
-            }
-        } else if (drawing.type === 'image') {
-            context.putImageData(drawing.imageData, 0, 0);
-        }
-    }
-
-    if (isTyping && currentText !== '') {
-        const fontStyle = `${getSelectedFontSize()} ${fontSelector.value}`;
-        context.font = fontStyle;
-        context.fillStyle = drawingColor;
-
-        // Applica grassetto, corsivo e sottolineato
-        if (isBold) context.font = `bold ${context.font}`;
-        if (isItalic) context.font = `italic ${context.font}`;
-        if (isUnderline) {
-            const textMetrics = context.measureText(currentText);
-            const underlineY = clickStart.y + parseInt(getSelectedFontSize()) + 5;
-            context.beginPath();
-            context.moveTo(clickStart.x, underlineY);
-            context.lineTo(clickStart.x + textMetrics.width, underlineY);
-            context.stroke();
-        }
-
-        // Non disegnare il testo qui
-    }
-}
 
 
 
@@ -828,31 +836,7 @@ canvas.addEventListener('mouseup', function(e) {
     }
 });
 
-canvas.addEventListener('mousemove', function(e) {
-    if (isErasing) {
-        erase(e);
-    } else if (isDrawing) {
-        draw(e);
-    }
-    if (isDragging && draggedText !== null) {
-        const mouseX = e.clientX - canvas.offsetLeft;
-        const mouseY = e.clientY - canvas.offsetTop;
 
-        const deltaX = mouseX - lastMouseX;
-        const deltaY = mouseY - lastMouseY;
-
-        // Sposta il testo
-        draggedText.x += deltaX;
-        draggedText.y += deltaY;
-
-        // Ridisegna il canvas con il testo spostato
-        redrawCanvas();
-
-        // Aggiorna le coordinate del mouse
-        lastMouseX = mouseX;
-        lastMouseY = mouseY;
-    }
-});
 
 let isCreatingCircle = false;
 let circles = []; // Array per memorizzare tutti i cerchi creati
@@ -1197,7 +1181,7 @@ d.addEventListener('click', function() {
 })
 
 annullaSalvataggio.addEventListener('click', function() {
-    window.location.href = 'profile_page.php';
+    window.location.href = 'il_tuo_link_di_destinazione';
 });
 
 function applicaSfocatura() {
