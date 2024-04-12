@@ -80,13 +80,21 @@
 <div>
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
         <div class="container-fluid">
-            <img id="imm" src="im.png">
-          <a href="#"><button id="bottone1" class="bottoni"  type="button">FUNZIONALITA'</button></a>
-          <a href="#"><button id="bottone2" class="bottoni"   type="button">HOME</button></a>
-          <a href="#"><button  id="bottone3" class="bottoni"  type="button">CERCA NOTE</button></a>
-          <a href="#"><button id="bottone6" class="bottoni"   type="button">CREA NOTE</button></a>
-          <a href="#" ><button id="bottone4" class="bottoni"   type="button">REGISTRATI</button></a>
-          <a href="#" ><button id="bottone5" class="bottoni"  type="button"><img id="imm2" src="profile.png"></button></a>
+        <a href="index.php"><img id="imm" src="img/im.png"></a>
+                        <a href="Functionalities.php"><button id="bottone1" class="bottoni"  type="button">FUNZIONALITA'</button></a>
+                        <a href="index.php"><button id="bottone2" class="bottoni"   type="button">HOME</button></a>
+                        <a href="cercaNote.php"><button id="bottone3" class="bottoni" type="button">CERCA NOTE</button></a>
+                        <!--<button id="openPopupBtn" class="bottoni"  type="button"><img id="imm2" src="img/profile.png"></button>-->
+                        <?php
+                            session_start();
+                            include ('utils.inc.php');
+                            if (isLogged()) {
+                                echo '<a href="profile_page.php"><img id="imm2" src="img/user.png"></a>';
+                            }else {
+                                //style="background-image: url(\'img/loggedIn.png\');"
+                                echo '<a href="index.php"><img id="imm2" src="img/user.png"></a>';
+                            }
+                        ?>
           <hr id="linea">
             </div>
           </div>
