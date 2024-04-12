@@ -156,3 +156,13 @@ body {
     font-weight: bold;
     transition: all 0.3s;
 }
+
+.seeNote{
+    border: 3px solid black;
+    border-radius: 15px;
+    font-size: 25px;
+    background-color: white;
+    color: darkblue;
+    font-weight: bold;
+    margin-top: 15px;
+}

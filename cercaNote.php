@@ -81,9 +81,9 @@
 
     function searchT($nome, $find, $codice){
         if(stripos($nome, $find) or stripos($find, $nome)){
-            echo "<br><button name='codNota' value=$codice>$nome</button>";
+            echo "<br><button class='seeNote' name='codNota' value=$codice>$nome</button>";
         }else if($find == NULL){
-            echo "<br><button name='codNota' value=$codice>$nome</button>";
+            echo "<br><button class='seeNote' name='codNota' value=$codice>$nome</button>";
         }
     }
 
