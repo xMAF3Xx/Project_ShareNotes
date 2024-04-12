@@ -199,7 +199,7 @@
         </div>
     <div class="input-container">
         <form action="cercaNote.php" method="post" id="Search">
-            <input name="SearchBar" id="input" type="text" placeholder="CERCA DEGLI APPUNTI TRAMITE IL LORO TITOLO:" onchange="submitSelected('input', 'Search')">
+            <input name="SearchBar" id="input" type="text" placeholder="CERCA APPUNTI INSERENDO IL TITOLO:" onchange="submitSelected('input', 'Search')">
         </form>
         <div id="allNotes">
             <?php stampaNote($conn, $anno ?? 0, $classe ?? 'none', $materia ?? 'all', $ricerca ?? NULL); ?>

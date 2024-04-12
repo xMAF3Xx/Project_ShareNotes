@@ -73,11 +73,12 @@
                 $mail = (string) $_SESSION["UserData"]["email"];
                 $classe = (string) $_SESSION["UserData"]["classe"];
             }else {
-                $stmtClass = $conn->prepare("SELECT classe FROM user WHERE mail=?");
+                $stmtClass = $conn->prepare("SELECT classe FROM user WHERE email=?");
                 $stmtClass->bind_param('s', $mail);
 
                 $mail = (string) $_COOKIE["UserMail"];
 
+                $stmtClass->execute();
                 $resultClass = $stmtClass->get_result();
                 $classe = ($resultClass->fetch_assoc())['classe'];
             }
@@ -331,7 +332,7 @@
                             <?php echo $mail ?>
                             <h3>
                                 <div class="line-horizontal"></div>
-                                <h3 class="divisions">Divisioni</h3>
+                                <h3 class="divisions">Filtri:</h3>
                                 <nav class="division-column">
                                     <ul>
                                         <form action="profile_page.php" method="post" id="formFilter">

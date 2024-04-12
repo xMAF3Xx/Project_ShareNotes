@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
         <link rel="stylesheet" href="show.css">
         <script src="js/show.js"></script>
+        <script src="js/scarica.js"></script>
     </head>
     <body>
         <?php
@@ -64,42 +67,6 @@
             $resultCreatore = $stmtCreatore->get_result();
             $nomeCrt = ($resultCreatore->fetch_assoc())['name'];
 
-            if(isset($_POST['salva'])){
-                if(!isLogged()){
-                    if(sexOrCock()){
-                        $mail = $_SESSION['UserData']['email'];
-                    }else{
-                        $mail = $_COOKIE['UserMail'];
-                    }
-
-                    $conn->begin_transaction();
-                    try{
-                        $stmtAdd = $conn->prepare("INSERT INTO nota(email, materia, classe, annoScolastico, likes, contenuto, titolo, mia)
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                        $stmtAdd->bind_param('sssiissi', $mail, $materia, $classe, $anno, $newLikes, $contenuto, $titolo, $newMia);
-
-                        $stmtAdd->execute();
-
-                        $conn->commit();
-                    } catch (mysqli_sql_exception $exception){
-                        $conn->rollback();
-
-                        throw $exception;
-                    }
-                    
-                    $resultAdd = $stmtAdd->affected_rows;
-                    if($resultAdd < 1){
-                        echo '<script>
-                            alert("Non e\' stato possibile aggiungere la nota alla libreria, riprovare in seguito...");
-                        </script>';
-                    }
-                }else {
-                    echo '<script>
-                        alert("Devi prima loggarti per poter mettere like, salvare e/o modificare le note, per farlo recati alla pagina home e clicca sul\'icona del profilo.");
-                    </script>';
-                }
-            }
-
             if(isset($_POST['modifica'])){
                 if(!isLogged()){
                     if(sexOrCock()){
@@ -144,32 +111,45 @@
             }
 
         ?>
-        <h1 id="titoloNota"><?php echo $titolo ?></h1>
-        <a href="index.php"><img src="img/logo.png" alt="LOGO" id="logo"></a>
-        <div class="cornice">
-            <img src="<?php echo $contenuto ?>" alt="Immagine Scelta" id="notaScelta">
+        <div class="barra">
+            <a href="index.php"><img src="img/logo.png" alt="LOGO" id="logo"></a>
+            <a href="index.php"><button style="border: none; background: none;" id="home">Home</button></a>
+            <a href="Functionalities.php"><button style="border: none; background: none;" id="funzionalita">Funzionalità</button></a>
+            <a href="aboutPage.php"><button style="border: none; background: none;" id="about">About</button></a>
+            <!-- Pulsante profilo da mettere con php -->
+            <?php
+                if(isLogged()){
+                    echo '<a href="index.php"><img src="img/user.png" alt="USER" id="user"></a>';
+                }else {
+                    echo '<a href="profile_page.php"><img src="img/user.png" alt="USER" id="user"></a>';
+                }
+            ?>
+            <hr id="fine-barra">
         </div>
-        <div class="dati">
-            <h2 id="titoloDati">Dati della nota:</h2>
-            <br><h4 id="dato">Materia:</h4><p id="valore"><?php echo $materia ?></><br>
-            <br><h4 id="dato">Classe:</h4><p id="valore"><?php echo $classe ?></p><br>
-            <br><h4 id="dato">Anno:</h4><p id="valore"><?php echo $anno ?></p><br>
-            <br><h4 id="dato">Likes:</h4><p id="valore"><?php echo $like ?></p><br>
-            <br><h4 id="dato">Creatore:</h4><p id="valore"><?php echo $nomeCrt ?></p><br>
+        <h2 id="title"><?php echo $titolo ?></h2>
+        <div class="noteContainer">
+            <img id="nota" src="<?php echo $contenuto ?>">
         </div>
         <div class="bottoni">
-            <form action="show.php" method="post"> <!-- LIKE -->
-                <input name="codNota" type="number" value=<?php echo $codice ?> style="display: none;">
-                <button name="like" value=1><img src="img/like.png" alt="Like" id="like"></button>
-            </form>
-            <form action="show.php" method="post"> <!-- SALVA -->
-                <input name="codNota" type="number" value=<?php echo $codice ?> style="display: none;">
-                <button name="salva" value=1><img src="img/save.png" alt="Salva" id="save"></button>
-            </form>
+            <button onclick="downloadNota('<?php echo $titolo ?>','<?php echo $contenuto ?>')"><img src="img/scarica.png" alt="Salva" id="save"></button>
             <form action="show.php" method="post"> <!-- MODIFICA -->
                 <input name="codNota" type="number" value=<?php echo $codice ?> style="display: none;">
-                <button name="modifica" value=1><img src="img/modify.png" alt="Modifica" id="modify"></button>
+                <button name="modifica" value=1><img src="img/prova2.png" alt="Modifica" id="modify"></button>
             </form>
+            <form action="show.php" method="post"> <!-- LIKE -->
+                <input name="codNota" type="number" value=<?php echo $codice ?> style="display: none;">
+                <button name="like" value=1 class="likes"><img src="img/cuore.png" alt="Like" id="like"><img src="img/cuorerosso.png" id="rosso"></button>
+            </form>
+            <p id="nLikes"> <?php echo $like ?> </p>
+        </div>
+        <div class="info">
+            <h4 id="titleinfo">Info</h4>
+            <li class="dati">
+                <ul>Creatore:   <?php echo $nomeCrt ?></ul>
+                <ul>Materia:    <?php echo $materia ?></ul>
+                <ul>Classe:    <?php echo $classe ?></ul>
+                <ul>Anno:   <?php echo $anno ?></ul>
+            </li>
         </div>
     </body>
 </html>

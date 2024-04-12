@@ -288,7 +288,7 @@
       <h1 id="main_title">Benvenuti su Sharenotes!</h1>
       <div class="img-text">
         <img id="img_insert" src="img/immagine.png" alt="Inserire l'immagine...">
-          <text id="text_1">Prendere appunti, studiare, lavorare in gruppo e condividere con tutti i tuoi lavori!</text>
+          <text id="text_1">Prendere appunti, studiare, lavorare in gruppo e condividere con tutti il tuo lavoro!</text>
       </div>
       <div class="Explore">
         <h3 id="title_Explore">Esplora</h3>
@@ -299,20 +299,20 @@
         <img id="img_Explore" src="img/immagine.png" alt="Inserire un'immagine">
       </div>
       <div class="Create">
-        <img id="img_Create" src="img/immagine.png" alt="Inserire un'immagine">
+        <img id="img_Create" src="img/cration.jpg" alt="Inserire un'immagine">
         <h3 id="title_Create">Crea</h3>
-        <text id="txt_Create">Crea appunti, aiutati con immagini, disegni, schemi, colori e dai vita ad appunti unici!</text>
+        <text id="txt_Create">Crea appunti, aiutati con immagini, disegni, schemi, colori e dai vita ad opere uniche!</text>
         <div class="Create_btn">
           <a href="#" alt="ciao ciao"><button class="UniscitiCreate" type="button">Unisciti a noi</button></a>
         </div>
       </div>
       <div class="Share">
         <h3 id="title_Share">Condividi</h3>
-        <text id="txt_Share">Condivi con chi desideri i tuoi appunti, aiuta e confrotati con i tuoi amici per migliorare sempre di più!</text>
+        <text id="txt_Share">Condividi con chi desideri i tuoi appunti, aiuta e confrontati con i tuoi amici per migliorare sempre di più!</text>
         <div class="Share_btn">
           <a href="bhopage" alt="ciao ciao"><button class="UniscitiShare" type="button">Unisciti a noi</button></a>
         </div>
-        <img id="img_Share" src="img/immagine.png" alt="Inserire un'immagine">
+        <img id="img_Share" src="img/sharing.png" alt="Inserire un'immagine">
       </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </div>

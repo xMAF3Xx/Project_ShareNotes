@@ -194,7 +194,7 @@ body {
 .Explore_btn {
     background-image: url('img/sfondo_btn_explore.png');
     background-repeat: no-repeat;
-    margin-left: -400px;
+    margin-left: -370px;
     margin-right: 250px;
     margin-top: 320px;
     width: 565px;
@@ -270,6 +270,7 @@ body {
     font-style: inherit;
     /* è solo un font di prova...*/
     width: 400px;
+    text-align: center;
 }
 
 #title_Explore {
@@ -342,7 +343,7 @@ body {
     font-style: inherit;
     width: 360px;
     font-weight: 500;
-    text-align: end;
+    text-align: center;
 }
 
 .offcanvas-body {

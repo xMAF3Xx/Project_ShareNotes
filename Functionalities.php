@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/CSS" href="stile.css">
+    <link rel="stylesheet" type="text/CSS" href="stile_Functionalities.css">
 </head>
 <body class="body">
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
         <div class="container-fluid">
             <img id="imm" src="img/im.png">
-          <a href="#"><button id="bottone1" class="bottoni"  type="button">HOME</button></a>
-          <a href="#"><button id="bottone2" class="bottoni"   type="button">ABOUT</button></a>
-          <a href="#"><button  id="bottone3" class="bottoni"  type="button">CERCA NOTE</button></a>
-          <a  id="bott" href="#" ><button id="si" class="bottoni"  type="button"><img id="imm2" id="bottone5"  src="img/profile.png"></button></a>
-          <hr id="linea">
+            <a href="index.php"><button id="bottone1" class="bottoni"  type="button">HOME</button></a>
+            <a href="aboutPage.php"><button id="bottone2" class="bottoni"   type="button">ABOUT</button></a>
+            <a href="cercaNote.php"><button  id="bottone3" class="bottoni"  type="button">CERCA NOTE</button></a>
+            <?php
+                  session_start();
+                  include ('utils.inc.php');
+                  if (!isLogged()) {
+                      echo '<a  id="bott" href="profile_page.php" ><button id="si" class="bottoni"  type="button"><img id="imm2" id="bottone5"  src="img/user.png"></button></a>';
+                  }else {
+                      //style="background-image: url(\'img/loggedIn.png\');"
+                      echo '<a  id="bott" href="index.php" ><button id="si" class="bottoni"  type="button"><img id="imm2" id="bottone5"  src="img/user.png"></button></a>';
+                  }
+              ?>
+              <hr id="linea">
         </div>
     </nav>
     <h1 id="titolo">FUNZIONALITA'</h1>

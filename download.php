@@ -174,14 +174,14 @@
             <input name="upCodice" type="number" style="display: none;" value=<?php echo $codiceNota ?>>
             <input name="Vecchio" type="text" style="display: none;" value=<?php echo $contenutoNota ?>>
             <select ID="nota2" name="matScelta" onchange="validateSave()"> <!-- cambiaton "CURRENT" con "materia" e reso minuscolo le varie materie e cambio del valore del primo elemento della lista-->
-                <option value="<?php echo $materia ?>">CURRENT</option>
+                <option value="<?php echo $materia ?>"><?php echo $materia ?></option>
                 <option value="matematica">matematica</option>
                 <option value="italiano">italiano</option>
                 <option value="informatica">informatica</option>
                 <option value="inglese">inglese</option>
             </select>
             <select ID="nota3" name="anno" onchange="validateSave()">
-                <option value=<?php echo $anno ?>>CURRENT</option> <!-- cambiato "CURRENT" con "anno" e cambio del valore del primo elemento della lista-->
+                <option value=<?php echo $anno ?>><?php echo $anno ?>°</option> <!-- cambiato "CURRENT" con "anno" e cambio del valore del primo elemento della lista-->
                 <option value=1>1°</option>
                 <option value=2>2°</option>
                 <option value=3>3°</option>

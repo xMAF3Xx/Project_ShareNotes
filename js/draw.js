@@ -1105,7 +1105,7 @@ d.addEventListener('click', function() {
 })
 
 annullaSalvataggio.addEventListener('click', function() {
-    window.location.href = 'il_tuo_link_di_destinazione';
+    window.location.href = 'profile_page.php';
 });
 
 function applicaSfocatura() {

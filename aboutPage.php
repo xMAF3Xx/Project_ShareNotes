@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/CSS" href="pippo.css">
+    <link rel="stylesheet" href="aboutPage.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu a Tendina</title>
@@ -103,9 +103,9 @@
     
 <div>
 <hr>
-<img id="cerchio" src="cerchio.png">
-<img id="cerchio2" src="cerchio.png">
-<img src="about.png" class="titolo">
+<img id="cerchio" src="img/cerchio.png">
+<img id="cerchio2" src="img/cerchio.png">
+<img src="img/about.png" class="titolo">
 <div  id="pallini" ></div>
 <div  id="pallini2" ></div>
 <div  id="pallini3"  ></div>
@@ -152,7 +152,6 @@
                 ciao.style.backgroundColor = "pink";
                 ciao.addEventListener("click", function() {
                     if (ciao.style.backgroundColor === "pink") {
-                        alert("ciaao");
                         ciao.style.animation = "explode 0.5s forwards";
                         // Rimuovi l'event listener dopo l'esplosione
                         ciao.removeEventListener("click", arguments.callee);
@@ -215,7 +214,7 @@
         function cambiaSfondoSeNecessario() {
             var numeroPallini = 8; // Numero totale di pallini
             if (cont === numeroPallini-1) {
-                document.body.style.backgroundImage = "url('sfondo.png')";
+                document.body.style.backgroundImage = "url('img/sfondo.png')";
             }
         }
 });
@@ -237,7 +236,7 @@
         <div id="centro"><b>CHI SIAMO?</b></div>
        <b> <p class="titoletto">CHI SIAMO?</p></b><br>
         <p class="testino">Siamo quattro ragazzi che hanno deciso di realizzare un sito per prendere appunti per partecipare ad un concorso di Informatica (abbiamo tutti sedici anni)</p>
-        <div class="tenor-gif-embed" data-postid="15201219" data-share-method="host" data-aspect-ratio="1" data-width="100%"><img src="ciao.gif" class="come" alt="gif senza sfondo">
+        <div class="tenor-gif-embed" data-postid="15201219" data-share-method="host" data-aspect-ratio="1" data-width="100%"><img src="img/ciao.gif" class="come" alt="gif senza sfondo">
     </div>
     </div>
     <div class="blocco2">
