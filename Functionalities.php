@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/CSS" href="stile_Functionalities.css">
+    <link  href="stile.css" rel="stylesheet" type="text/CSS">
     <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
 </head>
 <body class="body">
@@ -44,13 +44,22 @@
     </b><p id="creazione" class="font">La pagina creazione ti permette di creare le tue note. E' formata da varie<br> barre che possono essere aperte mediante la barra principale [visibile <br>premendo il +]<br>
                       I punti da segnalare sono i seguenti: <br>
                       1] Per confermare la cancellazione di un elemento(come per le varie forme)<br> ripremere  sul tasto una volta finito e posizionarsi  con il cursore su qualsiasi <br>punto del foglio<br>
-                      2] E' possibile spostare solo l'ultima parola inserita e solo fino a quando<br> non si cambia posizione del cursore<br></p></b>
+                      2] E' possibile spostare solo l'ultima parola inserita e solo fino a quando<br> non si cambia posizione del cursore<br>
+                      3] Per modificare una parola, ripremere il bottone scrivi. Dopo averlo fatto <br>vedrai la parola inserita precedentemente (cambiandola e premendo invio<br> verrà modificata), altrimenti cancellala e scrivi qualcos altro per inserire un<br> nuovo testo<br>
+                      4] STAI ATTENTO con il salvataggio, ricorda quando rientri in una nota<br> salvata temporaneamente clicca sul canvas perchè altrimenti VERRA'<br> <span style="background-color:yellow">CANCELLATO TUTTO IL TUO LAVORO!</span></p></b>
     <h2 id="titoletto3" class="stile" class="font">PAGINA CERCA NOTE</h2>
     <img id="immagine3" src="img/image3.png">
      </b><p id="cerca" class="font">La pagina cerca note ti permette di trovare e scaricare le note<br> fatte da altre persone.
                   I punti da segnalare sono i seguenti:<br>
                   1] Hai la possibilita' di mettere i likes alle note che più ti piacciono<br>
                   2] Usa i filtri per muoverti più velocemente tra le varie note<br>
+                  <br>
+                  <br>
+                  P.S: Per la password di registrazione valgono i seguenti criteri:<br>
+                  1] Minimo 8 caratteri <br>
+                  2] Non devono avere spazi <br>
+                  3] Non devono iniziuare ne con $ ne con @  <br>
+                  4] Non può essere password, PASSWORD, 12345678, 00000000, ABCDEFGH o abcdefgh <br>
 
     </p></b>
 
