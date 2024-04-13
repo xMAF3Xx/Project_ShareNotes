@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="R_E.css">
-        <title>Ripristino Password</title>
-        <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
-    </head>
-    <body>
-        <?php
+
+<head>
+    <link rel="stylesheet" href="R_E.css">
+    <title>Ripristino Password</title>
+    <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
+    <script src="js/nweP.js"></script>
+</head>
+
+<body>
+    <?php
             include("utils.inc.php");
             include("conn.inc.php");
 
@@ -46,17 +49,20 @@
                 $key = (string) $_GET["key"];
             }
         ?>
-        <h1 id="titoloM">New password ?</h1>
+        <h1 id="titoloM">Cambia la tua password</h1>
         <a href="index.php"><img src="img/logo.png" alt="#" id="logo"></a>
         <div class="block">
             <form action="nweP.php" method="post">
-                <h3 id="titoloP">New Password:</h3>
-                <input type="text" id="password" name="passwordInput">
-                <h3 id="titoloP">Repeat:</h3>
-                <input type="text" id="password" name="confermaPasswordInput">
+                <h3 id="titoloP">password:</h3>
+                <input type="password" placeholder="inserici la tua nuova password" id="password" class="pswInput" name="passwordInput" onchange="ctrPassword()">
+                <input type="checkbox" id="showPsw" onchange="makeVisiblePsw()">
+                <h3 id="titoloP">conferma:</h3>
+                <input type="password" placeholder="conferma la password" id="passwordCtr" class="pswInput" name="confermaPasswordInput" onchange="ctrPassword()">
                 <input type="text" name="K" id="KHey" style="display: none;" value=<?php echo $key ?>>
-                <br><input name="reset" type="submit" value="Go !" id="go">
+                <p class="controlloPsw" id="ctrPsw"></p>
+                <br><input name="reset" class="goBtnOpen" type="submit" value="Avanti" id="go">
             </form>
         </div>
-    </body>
+</body>
+
 </html>
