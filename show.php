@@ -109,7 +109,7 @@
                     }
                 }else {
                     echo '<script>
-                        alert("Devi prima loggarti per poter mettere like, salvare e/o modificare le note, per farlo recati alla pagina home e clicca sul\'icona del profilo.");
+                        alert("Devi prima loggarti per poter mettere like o modificare le note, per farlo recati alla pagina home e clicca sul\'icona del profilo.");
                     </script>';
                 }
             }
@@ -175,7 +175,7 @@
                     </script>';
                 }else {
                     echo '<script>
-                        alert("Devi prima loggarti per poter mettere like, salvare e/o modificare le note, per farlo recati alla pagina home e clicca sul\'icona del profilo.");
+                        alert("Devi prima loggarti per poter mettere like o modificare le note, per farlo recati alla pagina home e clicca sul\'icona del profilo.");
                     </script>';
                 }
             }
