@@ -132,6 +132,29 @@ function erase(e) {
     context.clearRect(mouseX - gommaSize / 2, mouseY - gommaSize / 2, gommaSize, gommaSize);
 }
 
+window.addEventListener('load', function() {
+    // Chiamiamo direttamente la funzione startDrawing con un evento fittizio
+    simulateClick();
+});
+
+function simulateClick() {
+    const canvas = document.getElementById('canvas');
+    const offsetX = 100; // Modifica questi valori per posizionare il cursore dove desideri
+    const offsetY = 100;
+
+    // Crea un evento di mouse simulato con le coordinate desiderate
+    const fakeEvent = {
+        clientX: canvas.offsetLeft + offsetX,
+        clientY: canvas.offsetTop + offsetY
+    };
+
+    // Chiama la funzione startDrawing con l'evento fittizio
+    startDrawing(fakeEvent);
+}
+
+
+
+
 
 
 
@@ -1085,7 +1108,7 @@ d.addEventListener('click', function() {
 })
 
 annullaSalvataggio.addEventListener('click', function() {
-    window.location.href = 'profile_page.php';
+    window.location.href = 'il_tuo_link_di_destinazione';
 });
 
 function applicaSfocatura() {
