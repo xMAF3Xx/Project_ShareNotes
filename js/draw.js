@@ -172,7 +172,7 @@ function startDrawing(e) {
 
     // Posiziona il cursore esattamente sopra il punto di inizio del testo
     textCursor.style.left = canvasX - 550 + 'px';
-    textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop +8 + 'px';
+    textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop +18 + 'px';
     context.beginPath();
     context.moveTo(canvasX, canvasY);
     clickStart = { x: canvasX, y: canvasY };
