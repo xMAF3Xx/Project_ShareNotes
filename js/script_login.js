@@ -151,19 +151,37 @@ document.addEventListener('DOMContentLoaded', function() {
         var controlloElement = document.getElementById('controllo');
         var registerButton = document.getElementById('avanti-register');
         var classy = document.getElementById('classes').value;
+        const LUNGMINPSW = 8;
+    	let spaces = false;
+    	
+    	for (let i = 0; i < password.value.length; i++) {
+        	if (passwordInput.value[i] === ' ') {
+            	controlloElement.innerText = 'Credenziali non valide :(';
+            	registerButton.disabled = true;
+            	registerButton.style.backgroundColor = "gray";
+            	registerButton.style.borderColor = "gray";
+            	registerButton.classList.add("avanti-register-button-senza-hover");
+            	spaces = true;
+           		break;
+        	} else {
+            	spaces = false;
+        	}
+    	}
 
-        if (passwordInput === confirmPasswordInput && checkEmail(email) && nick !== '' && passwordInput !== '' && classy !== 'none') {
+        if (spaces === false && passwordInput === confirmPasswordInput && checkEmail(email) && nick !== '' && passwordInput !== '' && classy !== 'none' ) {
             controlloElement.innerText = '';
             registerButton.disabled = false;
             registerButton.style.backgroundColor = "#FF0000";
             registerButton.style.borderColor = "#FF0000";
             registerButton.classList.remove("avanti-register-button-senza-hover");
+            spaces = false;
         } else {
             controlloElement.innerText = 'Credenziali non valide :(';
             registerButton.disabled = true;
             registerButton.style.backgroundColor = "gray";
             registerButton.style.borderColor = "gray";
             registerButton.classList.add("avanti-register-button-senza-hover");
+            spaces = true;
         }
     }
 
@@ -175,8 +193,24 @@ document.addEventListener('DOMContentLoaded', function() {
         var controlloElement = document.getElementById('controllo');
         var registerButton = document.getElementById('avanti-register');
         var classy = document.getElementById('classes').value;
+        const LUNGMINPSW = 8;
+    	let spaces = false;
+    	
+    	for (let i = 0; i < password.value.length; i++) {
+        	if (passwordInput.value[i] === ' ') {
+            	controlloElement.innerText = 'Credenziali non valide :(';
+            	registerButton.disabled = true;
+            	registerButton.style.backgroundColor = "gray";
+            	registerButton.style.borderColor = "gray";
+            	registerButton.classList.add("avanti-register-button-senza-hover");
+            	spaces = true;
+           		break;
+        	} else {
+            	spaces = false;
+        	}
+    	}
 
-        if (checkEmail(email) && passwordInput === confirmPasswordInput && nick !== '' && passwordInput !== '' && classy !== 'none') {
+        if (spaces === false && checkEmail(email) && passwordInput === confirmPasswordInput && nick !== '' && passwordInput !== '' && classy !== 'none') {
             controlloElement.innerText = '';
             registerButton.disabled = false;
             registerButton.style.backgroundColor = "#FF0000";
