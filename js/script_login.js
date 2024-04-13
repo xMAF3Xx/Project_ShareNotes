@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         	}
     	}
 
-        if (spaces === false && passwordInput === confirmPasswordInput && checkEmail(email) && nick !== '' && passwordInput !== '' && classy !== 'none' ) {
+        if (spaces === false && passwordInput === confirmPasswordInput && checkEmail(email) && nick !== '' && passwordInput !== '' && classy !== 'none' && passwordInput.value.length >= LUNGMINPSW && passwordInput.value[0] != '$' && passwordInput.value[0] != '@' && passwordInput.value != 'password' && passwordInput.value != 'PASSWORD' && passwordInput.value != '12345678' && passwordInput.value != '00000000' && passwordInput.value != 'ABCDEFGH' && passwordInput.value != 'abcdefgh') {
             controlloElement.innerText = '';
             registerButton.disabled = false;
             registerButton.style.backgroundColor = "#FF0000";
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
         	}
     	}
 
-        if (spaces === false && checkEmail(email) && passwordInput === confirmPasswordInput && nick !== '' && passwordInput !== '' && classy !== 'none') {
+        if (spaces === false && checkEmail(email) && passwordInput === confirmPasswordInput && nick !== '' && passwordInput !== '' && classy !== 'none' && passwordInput.value.length >= LUNGMINPSW && passwordInput.value[0] != '$' && passwordInput.value[0] != '@' && passwordInput.value != 'password' && passwordInput.value != 'PASSWORD' && passwordInput.value != '12345678' && passwordInput.value != '00000000' && passwordInput.value != 'ABCDEFGH' && passwordInput.value != 'abcdefgh') {
             controlloElement.innerText = '';
             registerButton.disabled = false;
             registerButton.style.backgroundColor = "#FF0000";

@@ -24,7 +24,7 @@ function ctrPassword() {
             spaces = false;
         }
     }
-    if (spaces === false && psw.value === ctrPsw.value && psw.value != '' && psw.value.length >= LUNGMINPSW && psw.value[0] != '$' && psw.value[0] != '@' && psw.value != 'password' && psw.value != 'PASSWORD' && psw.value != '12345678' && psw.value != 'Password1' && psw.value != 'ABCDEFGH' && psw.value != 'abcdefgh') {
+    if (spaces === false && psw.value === ctrPsw.value && psw.value != '' && psw.value.length >= LUNGMINPSW && psw.value[0] != '$' && psw.value[0] != '@' && psw.value != 'password' && psw.value != 'PASSWORD' && psw.value != '12345678' && psw.value != '00000000' && psw.value != 'ABCDEFGH' && psw.value != 'abcdefgh') {
         ctrReset.innerText = '';
         btnGo.disabled = false;
         btnGo.classList.remove("goBtnLocked");
