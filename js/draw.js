@@ -21,6 +21,7 @@ v.style.display = 'none';
 const s = document.getElementById("croce");
 const d = document.getElementById("annulla");
 const tutto2 = document.getElementById("tutto2");
+let isCreating=false;
 
 
 g.style.backgroundColor = "gray";
@@ -42,7 +43,7 @@ let eraseSize;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-let erasedDrawings = []; // Array per mantenere le coordinate degli elementi cancellati
+let erasedDrawings = []; 
 
 // ...
 const gommaSlider = document.getElementById('gomma');
@@ -132,34 +133,9 @@ function erase(e) {
     context.clearRect(mouseX - gommaSize / 2, mouseY - gommaSize / 2, gommaSize, gommaSize);
 }
 
-window.addEventListener('load', function() {
-    // Chiamiamo direttamente la funzione startDrawing con un evento fittizio
-    simulateClick();
-});
-
-function simulateClick() {
-    const canvas = document.getElementById('canvas');
-    const offsetX = 100; // Modifica questi valori per posizionare il cursore dove desideri
-    const offsetY = 100;
-
-    // Crea un evento di mouse simulato con le coordinate desiderate
-    const fakeEvent = {
-        clientX: canvas.offsetLeft + offsetX,
-        clientY: canvas.offsetTop + offsetY
-    };
-
-    // Chiama la funzione startDrawing con l'evento fittizio
-    startDrawing(fakeEvent);
-}
-
-
-
-
-
-
 
 function startDrawing(e) {
-    if (isErasing) return;
+    if (isErasing || isCreating) return;
     isDrawing = true;
     isTyping = false;
 
@@ -171,8 +147,8 @@ function startDrawing(e) {
     const canvasY = e.clientY - canvas.offsetTop;
 
     // Posiziona il cursore esattamente sopra il punto di inizio del testo
-    textCursor.style.left = canvasX - 550 + 'px';
-    textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop +18 + 'px';
+    textCursor.style.left = canvasX - 560 + 'px';
+    textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop +20 + 'px';
     context.beginPath();
     context.moveTo(canvasX, canvasY);
     clickStart = { x: canvasX, y: canvasY };
@@ -497,11 +473,6 @@ canvas.addEventListener('mousedown', function(e) {
 });
 
 
-
-
-
-
-
 canvas.addEventListener('mouseup', function(e) {
     if (e.button === 1 && isDragging) { // Controllo se il pulsante rilasciato è il pulsante centrale del mouse
         isDragging = false;
@@ -550,7 +521,7 @@ riquadro3.addEventListener('click', function() {
         riquadro7.style.display='none';
 
 
-        isErasing=true;
+        isCreating=true;
         interazioneAbilitata = false;
     } else {
         // Riattiva l'interazione con il canvas
@@ -560,7 +531,7 @@ riquadro3.addEventListener('click', function() {
         riquadro4.style.display='block';
         riquadro5.style.display='block';
         riquadro7.style.display='block';
-        isErasing=false;
+        isCreating=false;
         interazioneAbilitata = true;
     }
 });
@@ -621,16 +592,6 @@ function drawTriangle(x1, y1, x2, y2) {
     context.lineWidth = 2;
     context.stroke();
 }
-
-
-
-
-
-
-
-
-
-
 
 function getUpdatedFontStyle(fontStyle) {
     // Aggiorna gli stili al font in base allo stato corrente di grassetto e corsivo
