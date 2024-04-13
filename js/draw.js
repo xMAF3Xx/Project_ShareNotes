@@ -22,7 +22,7 @@ const s = document.getElementById("croce");
 const d = document.getElementById("annulla");
 const tutto2 = document.getElementById("tutto2");
 
-g.disabled = true;
+
 g.style.backgroundColor = "gray";
 g.style.borderColor = "gray";
 g.classList.add("submit-senza-hover");
@@ -132,29 +132,6 @@ function erase(e) {
     context.clearRect(mouseX - gommaSize / 2, mouseY - gommaSize / 2, gommaSize, gommaSize);
 }
 
-function eraseAll() {
-    erasedDrawings.forEach(erasedDrawing => {
-        context.fillRect(erasedDrawing.x - eraseSize / 2, erasedDrawing.y - eraseSize / 2, eraseSize, eraseSize);
-    });
-
-    erasedDrawings = [];
-
-    // Pulisci il canvas principale
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Ridisegna gli elementi di tipo 'text' e 'rectangle' rimanenti nel canvas principale
-    drawings.filter(item => item.type !== 'image').forEach(drawItem => {
-        // ...
-    });
-
-    // Ridisegna gli elementi cancellati con il colore bianco
-    // ...
-}
-
-// Il resto del codice rimane invariato
-
-
-
 
 
 
@@ -171,8 +148,8 @@ function startDrawing(e) {
     const canvasY = e.clientY - canvas.offsetTop;
 
     // Posiziona il cursore esattamente sopra il punto di inizio del testo
-    textCursor.style.left = canvasX - 570 + 'px';
-    textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop + 28 + 'px';
+    textCursor.style.left = canvasX - 550 + 'px';
+    textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop +8 + 'px';
     context.beginPath();
     context.moveTo(canvasX, canvasY);
     clickStart = { x: canvasX, y: canvasY };
@@ -224,9 +201,9 @@ function setDrawingColor(color) {
 }
 
 function draw(e) {
-    if (!isDrawing || isErasing) return;
+ 
 
-    context.lineWidth = drawingThickness; // Usa lo spessore corrente
+    context.lineWidth = drawingThickness; 
     context.lineCap = 'round';
     context.strokeStyle = drawingColor;
 
@@ -640,23 +617,27 @@ function getUpdatedFontStyle(fontStyle) {
 
 
 function enableWriting() {
-    finishButton.style.display = 'none';
-    isDrawing = false;
-    isTyping = true;
-    canvas.style.cursor = 'auto';
+
+    // Mostra l'area di testo e il pulsante di completamento
     textarea.style.display = 'block';
     finishButton.style.display = 'block';
+    isErasing=true;
+
+    // Focalizza sull'area di testo
     textarea.focus();
 
+    // Se stai modificando un testo esistente, imposta il valore dell'area di testo
     if (editingText !== null) {
         textarea.value = editingText.text;
     }
 }
 
+
 function hideWritingOptions() {
     textarea.style.display = 'none';
     finishButton.style.display = 'none';
     editingText = null;
+    isErasing=false;
 }
 
 function getSelectedFontSize() {
@@ -877,7 +858,6 @@ submitButton.addEventListener('click', function() {
 });
 
 writeButton.addEventListener('click', function() {
-    eraseAll();
     enableWriting();
 });
 finishButton.style.display = 'none';
@@ -974,7 +954,7 @@ h.addEventListener('click', function() {
     document.getElementById('tutto2').style.pointerEvents = 'auto';
 })
 f.addEventListener('input', function() {
-    if (this.value.length > 20 || this.value.length < 5 || materia === 'materia' || annoScolastico === 'anno' || (this.value.toLowerCase() === "notabianca")) {
+    if (this.value.length > 20 || this.value.length < 5  (this.value.toLowerCase() === "notabianca")) {
         controlloElement.innerText = 'valori inseriti non validi :(';
         g.disabled = true;
         g.style.backgroundColor = "gray";
@@ -1105,7 +1085,7 @@ d.addEventListener('click', function() {
 })
 
 annullaSalvataggio.addEventListener('click', function() {
-    window.location.href = 'profile_page.php';
+    window.location.href = 'il_tuo_link_di_destinazione';
 });
 
 function applicaSfocatura() {
