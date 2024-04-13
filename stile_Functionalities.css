@@ -152,13 +152,14 @@
 #titolo
 {
     font-size: 45px;
-    margin-top: 100px;
-    margin-left: 750px;
+    margin-top: 80px;
+    margin-left: 740px;
     font-family: inter;
     color: orange;
 }
 #titoletto
 {
+    margin-top:10px;
     position: absolute;
     margin-top: 600px;
     margin-left: -820px;
@@ -166,7 +167,7 @@
 }
 #testo
 {
-    margin-top: 250px;
+    margin-top: 260px;
     margin-left: -1050px;
     font-size: 29px;
     text-align: center;
@@ -239,6 +240,6 @@
 {
     position: absolute;
     font-size: 25px;
-    margin-top: 4150px;
+    margin-top: 4200px;
     margin-left: 1100px;
 }
