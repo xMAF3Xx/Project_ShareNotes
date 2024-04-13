@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paint-Like Drawing</title>
     <link rel="stylesheet" href="stile.css">
+    <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
 </head>
 
 <body class="body" onload="Importa('drawingCanvas')">

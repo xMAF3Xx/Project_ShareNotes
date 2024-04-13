@@ -12,7 +12,6 @@
     <script src="js/script_selezione.js"></script>
     <script src="js/scarica.js"></script>
     <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styleNote.css">
     <!-- inserire qui una nuova immagine come logo della finestra nel browser, chiedere a forna di farla-->
 </head>
 
@@ -25,7 +24,7 @@
         if (isLogged()) {
             echo "<script>alert('Devi prima loggarti per poter prendere appunti.')
                     setTimeout(function() {
-                    window.location.replace(\"index.html\");
+                    window.location.replace(\"index.php\");
                     }, 0)
                 </script>";
         }

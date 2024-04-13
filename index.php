@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
     <script src="js/script_login.js"></script>
-    <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon"> <!-- inserire qui una nuova immagine come logo della finestra nel browser, chiedere a forna di farla-->
+    <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
   </head>
   <body id="corpo">
     <div id="blurrato" class="transition-back">
@@ -106,11 +106,11 @@
           </style>
           <img src="logo.png" alt="LOGO" style="position:absolute; left:0%; top:0%;
               height: 200px;">
-          <h1 style="color: orange; margin-top:100px; font-size:50px;">Pasuwādo no risetto:</h1>
-          <p style="color: black; margin-top:40px; font-size:30px;">Risetto o yōkyū shiteinai bāi wa <br> kono mēru o mushi shitekudasai; sonota:</p>
+          <h1 style="color: orange; margin-top:100px; font-size:50px;">Password reset:</h1>
+          <p style="color: black; margin-top:40px; font-size:30px;">Se non hai richiesto tu <br> il ripristino ignora <br> questa mail; altrimenti: </p>
           <a href="http://localhost/nweP.php?key=' . $K. '"><button style="background-color:lightblue; 
               border-color:darkblue; color:black; font-weight:bold; border-radius: 20px; font-size:20px; padding:6px;
-              border-width:3px;">Pasuwādo o risetto suru</button></a>';
+              border-width:3px;">Ripristina la tua <br> password</button></a>';
               $alt = "Ohayo $nome,\r\nPasuwādo o risetto suru ni wa, kono rinku o kurikku shitekudasai:\r\n\r\nhttp://localhost/nweP.php?key=" . $K. "\n";
               $sub = 'Ripristino Password';
 
@@ -232,10 +232,10 @@
             <img src="logo.png" alt="LOGO" style="position:absolute; left:0%; top:0%;
               height: 200px;">
             <h1 style="color: red; margin-top:100px; font-size:50px;">Benvenuto '.$nickName.'<br>su ShareNotes!!</h1>
-            <p style="color: black; margin-top:40px; font-size:30px;">Click here to <br> validate your <br> account:</p>
+            <p style="color: black; margin-top:40px; font-size:30px;">Clicca qui per <br> attivare il tuo <br> account:</p>
             <a href="http://localhost/activate.php?key=' .$key. '"><button style="background-color:pink; 
               border-color:blueviolet; color:black; font-weight:bold; border-radius: 15px; font-size:20px; padding:6px;
-              border-width:3px;">Validate</button></a>';
+              border-width:3px;">Attiva</button></a>';
               $alt = "Benvenuto $nickName,\r\nper confermare la tua iscrizione clicca sul seguente link:\r\n\r\nhttp://localhost/activate.php?key=" . $key. "\n";
               $sub = 'Attivazione account';
 

@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="show.css">
         <script src="js/show.js"></script>
         <script src="js/scarica.js"></script>
+        <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
     </head>
     <body>
         <?php
@@ -16,26 +17,95 @@
 
             if(isset($_POST['like'])){
                 if(!isLogged()){
+                    $stmtPresente = $conn->prepare("SELECT * FROM bloccolike WHERE email=? AND codice=?");
+                    $stmtPresente->bind_param("si", $mail, $codice);
 
-                    $conn->begin_transaction();
-                    try{
-                        $stmtLike = $conn->prepare("UPDATE nota SET likes=likes+1 WHERE codicenota=?");
-                        $stmtLike->bind_param('i', $codice);
-
-                        $stmtLike->execute();
-
-                        $conn->commit();
-                    } catch (mysqli_sql_exception $exception){
-                        $conn->rollback();
-
-                        throw $exception;
+                    if(sexOrCock()){
+                        $mail = (string) $_SESSION['UserData']['email'];
+                    }else {
+                        $mail = (string) $_COOKIE['UserMail'];
                     }
+
+                    $stmtPresente->execute();
+                    $presenteResult = $stmtPresente->get_result();
+
+                    if($presenteResult->num_rows == 0){
+
+                        $conn->begin_transaction();
+                        try{
+                            $stmtMipiace = $conn->prepare("INSERT INTO bloccolike(codice, email) VALUES (?, ?)");
+                            $stmtMipiace->bind_param("is", $codice, $mail);
+
+                            $stmtMipiace->execute();
+
+                            $conn->commit();
+                        } catch (mysqli_sql_exception $exception){
+                            $conn->rollback();
+
+                            throw $exception;
+                        }
+                        $Mipiace = $stmtMipiace->affected_rows;
+
+                        if($Mipiace == 1){
+                            $conn->begin_transaction();
+                            try{
+                                $stmtLike = $conn->prepare("UPDATE nota SET likes=likes+1 WHERE codicenota=?");
+                                $stmtLike->bind_param('i', $codice);
+
+                                $stmtLike->execute();
+
+                                $conn->commit();
+                            } catch (mysqli_sql_exception $exception){
+                                $conn->rollback();
+
+                                throw $exception;
+                            }
                     
-                    $resultLike = $stmtLike->affected_rows;
-                    if($resultLike < 1){
-                        echo '<script>
-                            alert("Non e\' stato possibile mettere like alla nota, riprovare in seguito...");
-                        </script>';
+                            $resultLike = $stmtLike->affected_rows;
+                            if($resultLike < 1){
+                                echo '<script>
+                                    alert("Non e\' stato possibile mettere like alla nota, riprovare in seguito...");
+                                </script>';
+                            }
+                        }
+                    }else {
+                        $conn->begin_transaction();
+                        try{
+                            $stmtNonpiace = $conn->prepare("DELETE FROM bloccolike WHERE codice=? AND email=?");
+                            $stmtNonpiace->bind_param("is", $codice, $mail);
+
+                            $stmtNonpiace->execute();
+
+                            $conn->commit();
+                        } catch (mysqli_sql_exception $exception){
+                            $conn->rollback();
+
+                            throw $exception;
+                        }
+                        $Nonpiace = $stmtNonpiace->affected_rows;
+
+                        if($Nonpiace == 1){
+                            $conn->begin_transaction();
+                            try{
+                                $stmtDislike = $conn->prepare("UPDATE nota SET likes=likes-1 WHERE codicenota=?");
+                                $stmtDislike->bind_param('i', $codice);
+
+                                $stmtDislike->execute();
+
+                                $conn->commit();
+                            } catch (mysqli_sql_exception $exception){
+                                $conn->rollback();
+
+                                throw $exception;
+                            }
+                    
+                            $resultDislike = $stmtDislike->affected_rows;
+                            if($resultDislike < 1){
+                                echo '<script>
+                                    alert("Non e\' stato possibile togliere il like dalla nota, riprovare in seguito...");
+                                </script>';
+                            }
+                        }
                     }
                 }else {
                     echo '<script>

@@ -34,9 +34,6 @@
     width: 450px;
     margin-top: 20px; 
 }
- 
-
-        
     </style>
     <script>
     function toggleBlocco(blocco, centroId) {
@@ -73,6 +70,7 @@
         });
     });
 </script>
+<link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
 </head>
 <body class="body">
     <div class="container">

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>CERCA NOTE</title>
     <link rel="stylesheet" href="cercaNote.css">
@@ -10,6 +9,7 @@
     <script src="js/cercaNote.js"></script>
     <link rel="stylesheet" href="style_login.css">
     <script src="script_login.js"></script>
+    <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
 </head>
 
 <body onload="setAll()">

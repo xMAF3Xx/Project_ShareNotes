@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="activateStyle.css">
+        <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
     </head>
     <body>
         <h1 id="pageTitle">VALIDAZIONE <br> INDIRIZZO E-MAIL</h1>
@@ -35,10 +36,10 @@
                 $dati = $resultDati->fetch_assoc();
                 $name = $dati["name"];
                 if ($resultActivate > 0) {
-                    echo '<p id="conferma">Il tuo account è stato <br> validato con successo '. $name. '!!</p><br>
+                    echo '<p id="conferma">Il tuo account è stato <br> attivato con successo '. $name. '!!</p><br>
                         <br><h2 id="thanks">Grazie per averci <br> scelto ora puoi tornare <br> alla home</h2>';
                 }else {
-                    echo "<p id='conferma'>Siamo spiacenti c'è stato un errore <br> nella validazione :(</p><br>
+                    echo "<p id='conferma'>Siamo spiacenti c'è stato un errore <br> nell'attivazione del tuo account  :(</p><br>
                         <br><h2 id='thanks'>Riprova più tardi...</h2>";
                 }
             ?>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/CSS" href="stile_Functionalities.css">
+    <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
 </head>
 <body class="body">
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">

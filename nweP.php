@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="R_E.css">
         <title>Ripristino Password</title>
+        <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
     </head>
     <body>
         <?php
@@ -54,7 +55,7 @@
                 <h3 id="titoloP">Repeat:</h3>
                 <input type="text" id="password" name="confermaPasswordInput">
                 <input type="text" name="K" id="KHey" style="display: none;" value=<?php echo $key ?>>
-                <br><input name="reset" type="submit" value="Iku !" id="go">
+                <br><input name="reset" type="submit" value="Go !" id="go">
             </form>
         </div>
     </body>
