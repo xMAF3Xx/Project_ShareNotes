@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <head>
-    <link  href="stile.css" rel="stylesheet" type="text/CSS">
+    <link  href="stile_Functionalities.css" rel="stylesheet" type="text/CSS">
     <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
 </head>
 <body class="body">
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
         <div class="container-fluid">
             <img id="imm" src="img/im.png">
-            <a href="index.php"><button id="bottone1" class="bottoni"  type="button">HOME</button></a>
-            <a href="aboutPage.php"><button id="bottone2" class="bottoni"   type="button">ABOUT</button></a>
-            <a href="cercaNote.php"><button  id="bottone3" class="bottoni"  type="button">CERCA NOTE</button></a>
+            <a href="index.php"><button id="bottone1" class="bottoni"  type="button">Home</button></a>
+            <a href="aboutPage.php"><button id="bottone2" class="bottoni"   type="button">About</button></a>
+            <a href="cercaNote.php"><button  id="bottone3" class="bottoni"  type="button">Cerca Note</button></a>
             <?php
                   session_start();
                   include ('utils.inc.php');
