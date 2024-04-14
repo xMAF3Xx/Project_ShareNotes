@@ -232,24 +232,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var controlloElement = document.getElementById('controlloLog');
         var checkon = document.getElementById('loggedOn');
         var checkoff = document.getElementById('loggedOff');
-        const LUNGMINPSW = 8;
-    	let spaces = false;
-    	
-    	for (let i = 0; i < password.value.length; i++) {
-        	if (passwordInput.value[i] === ' ') {
-            	controlloElement.innerText = 'Credenziali non valide :(';
-            	registerButton.disabled = true;
-            	registerButton.style.backgroundColor = "gray";
-            	registerButton.style.borderColor = "gray";
-            	registerButton.classList.add("avanti-register-button-senza-hover");
-            	spaces = true;
-           		break;
-        	} else {
-            	spaces = false;
-        	}
-    	}
 
-        if (spaces === false && checkEmail(email) && email !== "" && password !== '' && (checkon.checked || checkoff.checked) && passwordInput.value.length >= LUNGMINPSW && passwordInput.value[0] != '$' && passwordInput.value[0] != '@' && passwordInput.value != 'password' && passwordInput.value != 'PASSWORD' && passwordInput.value != '12345678' && passwordInput.value != '00000000' && passwordInput.value != 'ABCDEFGH' && passwordInput.value != 'abcdefgh') {
+        if (checkEmail(email) && email !== "" && password !== '' && (checkon.checked || checkoff.checked)) {
             controlloElement.innerText = '';
             loginButton.disabled = false;
             loginButton.style.backgroundColor = "#9A9CF2";
