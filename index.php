@@ -231,12 +231,12 @@
             </style>
             <img src="logo.png" alt="LOGO" style="position:absolute; left:0%; top:0%;
               height: 200px;">
-            <h1 style="color: red; margin-top:100px; font-size:50px;">Benvenuto '.$nickName.'<br>su ShareNotes!!</h1>
+            <h1 style="color: red; margin-top:100px; font-size:50px;">Benvenuto '.$nickname.'<br>su ShareNotes!!</h1>
             <p style="color: black; margin-top:40px; font-size:30px;">Clicca qui per <br> attivare il tuo <br> account:</p>
             <a href="http://localhost/activate.php?key=' .$key. '"><button style="background-color:pink; 
               border-color:blueviolet; color:black; font-weight:bold; border-radius: 15px; font-size:20px; padding:6px;
               border-width:3px;">Attiva</button></a>';
-              $alt = "Benvenuto $nickName,\r\nper confermare la tua iscrizione clicca sul seguente link:\r\n\r\nhttp://localhost/activate.php?key=" . $key. "\n";
+              $alt = "Benvenuto $nickname,\r\nper confermare la tua iscrizione clicca sul seguente link:\r\n\r\nhttp://localhost/activate.php?key=" . $key. "\n";
               $sub = 'Attivazione account';
 
               sendMail($email, $nickname, $key, $sub, $Body, $alt);
@@ -366,11 +366,11 @@
                 <h1 class="popup-sets">Registrati:</h1>
                 <form action="index.php" method="post">
                     <input class="login-inputs" type="text" id="nickinput" name="regNickInput" placeholder="Nickname"><br>
-                    <input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="validatePassword()"><br>
+                    <input class="login-inputs" type="text" id="emailInput" name="emailInput" placeholder="E-mail" autocomplete="email" onchange="ctrPassword()"><br>
                     <input class="login-inputs" type="password" id="passwordInput" name="passwordInput" placeholder="Password" autocomplete="current-password"><br>
                     <input type="checkbox" id="showPasswordRegister" class="checkbox-register">
-                    <input class="login-inputs" type="password" id="passwordInputControl" name="passwordInputControl" placeholder="Conferma password" autocomplete="current-password" onchange="validateEmail()"><br>
-                    <select id="classes" name="classe-sel" class="class-select" onchange="validatePassword()">
+                    <input class="login-inputs" type="password" id="passwordInputControl" name="passwordInputControl" placeholder="Conferma password" autocomplete="current-password" onchange="ctrPassword()"><br>
+                    <select id="classes" name="classe-sel" class="class-select" onchange="ctrPassword()">
                         <option value="none">classe</option>
                         <?php mostraClassi($conn) ?>
                         <!-- inserire scelte, quella test è di prova -->

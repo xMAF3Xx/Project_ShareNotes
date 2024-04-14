@@ -86,7 +86,7 @@
                         <?php
                             session_start();
                             include ('utils.inc.php');
-                            if (isLogged()) {
+                            if (!isLogged()) {
                                 echo '<a href="profile_page.php"><img id="imm2" src="img/user.png"></a>';
                             }else {
                                 //style="background-image: url(\'img/loggedIn.png\');"
@@ -265,13 +265,8 @@
 <div class="blocco4">
     <div id="centro4"><b>COME CONTATTARE IN CASO DI BUG?</b></div>
     <b> <p class="titoletto4">COME CONTATTARE IN CASO DI BUG?</p></b><br>
-     <p class="testino4">Di seguito sono presenti le nostre mail:</p>
-     <ul class="lista">
-        <li><a href="mailto: f981953@gmail.com">FEDERICO</a></li>
-        <li><a href="mailto: matteograncan@gmail.com">MATTEO</a></li>
-        <li><a href="mailto: ossologabriele@gmail.com">GABRIELE</a></li>
-        <li><a href="mailto: fornazzzzzz@gmail.com" >MATTIA</a></li>
-     </ul>
+     <p class="testino4">Di seguito la mail del sito:</p>
+     <a href="sharenotes.workspace@gmail.com" id="Share">SHARENOTES</a>
    </div>
 </div>
 </body>

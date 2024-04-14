@@ -165,7 +165,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 215px;
+    height: 208px;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -220,6 +220,7 @@
 .bottoni
 {
     text-align: center;
+    margin-top: -10px;
 }
 
 #bottone6 {
@@ -375,4 +376,10 @@
         transform: scale(2);
         opacity: 0;
     }
+}
+
+#Share{
+    text-align: center;
+    font-size: 40px;
+    margin-left: 75px;
 }

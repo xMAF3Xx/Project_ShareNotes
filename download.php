@@ -85,6 +85,21 @@
         $materia = $rigaNota["materia"];
         $anno = $rigaNota["annoScolastico"];
 
+        function stampaMaterie($conn){
+            $stmtMaterie = $conn->prepare("SELECT * FROM materia");
+
+            $stmtMaterie->execute();
+            $resultMaterie = $stmtMaterie->get_result();
+            $numMaterie = mysqli_num_rows($resultMaterie);
+            $Materie = array();
+            while ($row = $resultMaterie->fetch_assoc()) {
+                $Materie[] = $row;
+            }
+            for($j = 0; $j < $numMaterie; $j++){
+                echo '<option value="'.$Materie[$j]['nome'].'">'.$Materie[$j]['nome'].'</option>';
+            }
+        }
+
     ?>
 
     <input type="text" id="contenutoNota" style="display: none;" value="<?php echo $contenutoNota ?>">
@@ -176,10 +191,7 @@
             <input name="Vecchio" type="text" style="display: none;" value=<?php echo $contenutoNota ?>>
             <select ID="nota2" name="matScelta" onchange="validateSave()"> <!-- cambiaton "CURRENT" con "materia" e reso minuscolo le varie materie e cambio del valore del primo elemento della lista-->
                 <option value="<?php echo $materia ?>"><?php echo $materia ?></option>
-                <option value="matematica">matematica</option>
-                <option value="italiano">italiano</option>
-                <option value="informatica">informatica</option>
-                <option value="inglese">inglese</option>
+                <?php stampaMaterie($conn) ?>
             </select>
             <select ID="nota3" name="anno" onchange="validateSave()">
                 <option value=<?php echo $anno ?>><?php echo $anno ?>°</option> <!-- cambiato "CURRENT" con "anno" e cambio del valore del primo elemento della lista-->
