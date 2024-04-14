@@ -296,7 +296,7 @@
         <div class="Explore_btn">
           <a href="bhopage" alt="ciao ciao"><button class="UniscitiExplore" type="button">Unisciti a noi</button></a>
         </div>
-        <img id="img_Explore" src="img/immagine.png" alt="Inserire un'immagine">
+        <img id="img_Explore" src="img/Ricerca.png" alt="Inserire un'immagine">
       </div>
       <div class="Create">
         <img id="img_Create" src="img/cration.png" alt="Inserire un'immagine">
