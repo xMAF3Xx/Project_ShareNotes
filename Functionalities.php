@@ -28,7 +28,7 @@
                   Questa pagina è come <br>una mappa, ti aiuterà a scoprire ed a trovare la strada migliore per creare i tuoi appunti.
                    Buon viaggio!!</p>
     <h2 class="font" id="titoletto" class="stile">PAGINA PROFILO</h2>
-    <img id="immagine" src="img/image.jpg">
+    <img id="immagine" src="img/profilo.png">
     <img id="prova" src="img/sfondino.png">
     </b><p id="profilo" class="font">La pagina profilo ti permette di visionare le note create e quelle che hai deciso<br> di salvare,
         l'unico punto da segnalare per quanto riguarda questa pagina è che<br> alcune materie più grandi ne contengono altre.<br>
@@ -40,7 +40,7 @@
         5] Chimica (analitica, orgnica) <br>
         6] Sistemi e reti verrà aggiunto in seguito </p></b>
     <h2 id="titoletto2" class="font" class="stile">PAGINA CREAZIONE</h2>
-    <img id="immagine2" src="img/image2.jpg">
+    <img id="immagine2" src="img/crea.png">
     </b><p id="creazione" class="font">La pagina creazione ti permette di creare le tue note. E' formata da varie<br> barre che possono essere aperte mediante la barra principale [visibile <br>premendo il +]<br>
                       I punti da segnalare sono i seguenti: <br>
                       1] Per confermare la cancellazione di un elemento(come per le varie forme)<br> ripremere  sul tasto una volta finito e posizionarsi  con il cursore su qualsiasi <br>punto del foglio<br>
@@ -48,20 +48,21 @@
                       3] Per modificare una parola, ripremere il bottone scrivi. Dopo averlo fatto <br>vedrai la parola inserita precedentemente (cambiandola e premendo invio<br> verrà modificata), altrimenti cancellala e scrivi qualcos altro per inserire un<br> nuovo testo<br>
                       4] STAI ATTENTO con il salvataggio, ricorda quando rientri in una nota<br> salvata temporaneamente clicca sul canvas perchè altrimenti VERRA'<br> <span style="background-color:yellow">CANCELLATO TUTTO IL TUO LAVORO!</span></p></b>
     <h2 id="titoletto3" class="stile" class="font">PAGINA CERCA NOTE</h2>
-    <img id="immagine3" src="img/image3.png">
+    <img id="immagine3" src="img/reset.png">
      </b><p id="cerca" class="font">La pagina cerca note ti permette di trovare e scaricare le note<br> fatte da altre persone.
                   I punti da segnalare sono i seguenti:<br>
                   1] Hai la possibilita' di mettere i likes alle note che più ti piacciono<br>
                   2] Usa i filtri per muoverti più velocemente tra le varie note<br>
                   <br>
                   <br>
-                  P.S: Per la password di registrazione valgono i seguenti criteri:<br>
+                  P.S: Per il reset password per questioni di sicurezza valgono i seguenti criteri:<br>
                   1] Minimo 8 caratteri <br>
                   2] Non devono avere spazi <br>
                   3] Non devono iniziuare ne con $ ne con @  <br>
                   4] Non può essere password, PASSWORD, 12345678, 00000000, ABCDEFGH o abcdefgh <br>
 
     </p></b>
+
 
 
 </body>
