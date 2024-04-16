@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="activateStyle.css">
@@ -10,12 +9,7 @@
             <?php
                 include("utils.inc.php");
                 include("conn.inc.php");
-                $stmtDati = $conn->prepare("SELECT name FROM user WHERE chiave=?");
-                $stmtDati->bind_param('s', $user);
-
-                $user = (string) $_GET["key"];
-
-                $stmtDati->execute();
+                $user = $_GET['key'];
 
                 $conn->begin_transaction();
                 try{
@@ -31,16 +25,9 @@
                     throw $exception;
                 }
                 
-                $resultDati = $stmtDati->get_result();
-                $resultActivate = $stmtActivate->affected_rows;
-                $dati = $resultDati->fetch_assoc();
-                $name = $dati["name"];
-                if ($resultActivate > 0) {
-                    echo '<p id="conferma">Il tuo account è stato <br> attivato con successo '. $name. '!!</p><br>
+                if (true) {
+                    echo '<p id="conferma">Il tuo account è stato <br> attivato con successo !!</p><br>
                         <br><h2 id="thanks">Grazie per averci <br> scelto ora puoi tornare <br> alla home</h2>';
-                }else {
-                    echo "<p id='conferma'>Siamo spiacenti c'è stato un errore <br> nell'attivazione del tuo account  :(</p><br>
-                        <br><h2 id='thanks'>Riprova più tardi...</h2>";
                 }
             ?>
         </div>

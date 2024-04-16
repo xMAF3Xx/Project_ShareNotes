@@ -2,6 +2,7 @@ body {
     background-color: rgb(255, 255, 255);
     background-image: url('img/sfondo_index.jpg');
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container-fluid {
@@ -15,7 +16,7 @@ body {
 #Link {
     color: black;
 }
-
+/*
 #offcanvasDarkNavbarLabel {
     font-weight: bold;
     text-shadow: 3px 3px grey;
@@ -31,28 +32,11 @@ body {
     font-size: 100px;
 }
 
-#menu_button {
-    position: absolute;
-    left: 152px;
-    display: flex;
-    color: black;
-    background-color: black;
-}
-
 #img_logo {
     width: 82px;
     height: auto;
     border-radius: 25%;
     margin-left: 20px;
-}
-
-.registration_button {
-    background-color: #212529;
-    border-radius: 15%;
-    color: white;
-    top: 50px;
-    margin-right: -330px;
-    margin-left: 0px;
 }
 
 .Functionalities {
@@ -259,9 +243,6 @@ body {
     border: black solid 2px;
 }
 
-
-/* reminder: chiedere al prossimo mett-up come deve cambiare sui dispositivi mobili affiancarsi/andare_a_capo/...*/
-
 #text_1 {
     margin-inline-end: auto;
     margin-left: 30px;
@@ -269,7 +250,6 @@ body {
     margin-top: 50px;
     font-size: 40px;
     font-weight: 500;
-    /* è solo un font di prova...*/
     width: 400px;
     text-align: center;
 }
@@ -784,4 +764,199 @@ ul {
     transform: scale(0.9);
     background-color: gray;
     color: white;
+}*/
+
+@media (max-width: 1800px){
+    #offcanvasDarkNavbarLabel {
+        font-weight: bold;
+        text-shadow: 3px 3px grey;
+        font-size: 40px;
+    }
+    #main_title {
+        color: black;
+        margin-top: 140px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 80px;
+    }
+    #img_logo {
+        width: 74px;
+        height: auto;
+        border-radius: 25%;
+        margin-left: 10px;
+    }
+    .Functionalities {
+        border: none;
+        background: none;
+        position: absolute;
+        left: 10%;
+        transition: ease all 0.1s;
+    }
+    .Functionalities:hover {
+        font-weight: bold;
+    }
+    .SearchNotes {
+        border: none;
+        background: none;
+        position: absolute;
+        left: 20.5%;
+        transition: ease all 0.1s;
+    }
+    .SearchNotes:hover {
+        font-weight: bold;
+    }
+    .About {
+        border: none;
+        background: none;
+        position: absolute;
+        left: 32%;
+        transition: ease all 0.1s;
+    }
+    .About:hover {
+        font-weight: bold;
+    }
+    .login_button_1 {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #212529;
+        border-radius: 50%;
+        border-color: #bcc0c56a;
+        padding: 18px;
+        position: absolute;
+        right: 7%;
+    }
+    .login_button_2 {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #212529;
+        border-radius: 20%;
+        border-color: #bcc0c56a;
+        padding: 18px;
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        right: 18%;
+    }
+    .logOut {
+        background-image: url('img/logout.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #212529;
+        border-radius: 50%;
+        border-color: #bcc0c56a;
+        padding: 18px;
+        position: absolute;
+        right: 7%;
+    }
+    .UniscitiExplore {
+        border-radius: 20px;
+        font-size: 13px;
+        background-color: rgba(127, 131, 247, 0.8);
+        border-color: rgba(85, 91, 251, 0.8);
+        color: white;
+        position: absolute;
+        margin-top: 0.85%;
+        margin-left: 1.7%;
+        font-weight: bold;
+        width: 100px;
+        height: 30px;
+    }
+    .UniscitiCreate {
+        border-radius: 20px;
+        font-size: 13px;
+        background-color: rgba(102, 170, 234, 0.85);
+        border-color: rgb(54, 150, 241);
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        margin-top: 2.25%;
+        margin-left: 5%;
+        width: 120px;
+        height: 30px;
+    }
+    .UniscitiShare {
+        border-radius: 20px;
+        font-size: 13px;
+        background-color: rgba(245, 138, 89, 0.85);
+        border-color: rgb(247, 112, 50);
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        margin-top: 0.7%;
+        margin-left: 5%;
+        width: 120px;
+        height: 30px;
+    }
+    .Create_btn {
+        background-image: url('img/sfondo_btn_create.png');
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 80px;
+    }
+    .Share_btn {
+        background-image: url('img/sfondo_btn_share.png');
+        background-repeat: no-repeat;
+        width: 200px;
+        height: 50px;
+    }
+    .Explore_btn {
+        background-image: url('img/sfondo_btn_explore.png');
+        background-repeat: no-repeat;
+        width: 565px;
+    }
+    .img-text {
+        margin-top: 200px;
+        background: none;
+        display: flex;
+        height: 300px;
+    }
+    .Explore {
+        margin-top: 70px;
+        background: none;
+        display: flex;
+        height: 300px;
+    }
+    .Share {
+        margin-top: 70px;
+        background: none;
+        display: flex;
+        height: 300px;
+    }
+    .Create {
+        margin-top: 70px;
+        background: none;
+        display: flex;
+        height: 300px;
+    }
+    #img_Share {
+        margin-inline-start: auto;
+        margin-right: 300px;
+        height: 300px;
+        border-radius: 20px;
+        border: black solid 2px;
+    }
+    #img_insert {
+        margin-inline-start: auto;
+        height: 300px;
+        border-radius: 20px;
+        border: black solid 2px;
+    }
+    #img_Explore {
+        margin-inline-start: auto;
+        height: 300px;
+        border-radius: 20px;
+        border: black solid 2px;
+    }
+    #img_Create {
+        margin-inline-start: auto;
+        height: 300px;
+        border-radius: 20px;
+        border: black solid 2px;
+    }
+    #text_1 {
+        margin-inline-end: auto;
+        font-size: 20px;
+        width: 200px;
+        text-align: center;
+    }
 }

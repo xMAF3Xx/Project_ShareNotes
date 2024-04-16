@@ -319,7 +319,7 @@
             <div class='vertical'>
                 <div class="red-circle">
                     <form action="index.php" method="post">
-                        <button type="submit" name="loGOut" value=1 style="background:none; border:none;"><img class="exit-btn" src="img\exit.png"></button>
+                        <button type="submit" name="loGgOut" value=1 style="background:none; border:none;"><img class="exit-btn" src="img\exit.png"></button>
                         <!-- da aggiungere a matte... -->
                     </form>
                 </div>

@@ -79,9 +79,9 @@
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
         <div class="container-fluid">
         <a href="index.php"><img id="imm" src="img/im.png"></a>
-                        <a href="Functionalities.php"><button id="bottone1" class="bottoni"  type="button">FUNZIONALITA'</button></a>
-                        <a href="index.php"><button id="bottone2" class="bottoni"   type="button">HOME</button></a>
-                        <a href="cercaNote.php"><button id="bottone3" class="bottoni" type="button">CERCA NOTE</button></a>
+                        <a href="Functionalities.php"><button id="bottone1" class="bottoni"  type="button">Funzionalita'</button></a>
+                        <a href="index.php"><button id="bottone2" class="bottoni"   type="button">Home</button></a>
+                        <a href="cercaNote.php"><button id="bottone3" class="bottoni" type="button">Cerca Note</button></a>
                         <!--<button id="openPopupBtn" class="bottoni"  type="button"><img id="imm2" src="img/profile.png"></button>-->
                         <?php
                             session_start();
@@ -266,7 +266,7 @@
     <div id="centro4"><b>COME CONTATTARE IN CASO DI BUG?</b></div>
     <b> <p class="titoletto4">COME CONTATTARE IN CASO DI BUG?</p></b><br>
      <p class="testino4">Di seguito la mail del sito:</p>
-     <a href="sharenotes.workspace@gmail.com" id="Share">SHARENOTES</a>
+     <a href="mailto:sharenotes.workspace@gmail.com" id="Share">SHARENOTES</a>
    </div>
 </div>
 </body>

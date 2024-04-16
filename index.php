@@ -12,9 +12,9 @@
     <script src="js/script.js"></script>
     <script src="js/script_login.js"></script>
     <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/925415bf1c0eb0e4faac294b088d2d58.js"></script>  
   </head>
   <body id="corpo">
-    <div id="blurrato" class="transition-back">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <header>
           <nav id="navbar" class="navbar navbar-dark bg-light fixed-top">
@@ -38,12 +38,10 @@
             include ('utils.inc.php');
             include("conn.inc.php");
 
-            if(isset($_POST['loGOut'])){
+            if(isset($_POST['loGgOut'])){
               logOut();
-              if (isset($_COOKIE["UserMail"])){
-                unset($_COOKIE["UserData"]);
-                setcookie("UserMail", Null, -1,"/");
-              }
+              unset($_COOKIE['UserMail']);
+              setcookie("UserMail", Null, time()-3600,"/");
             }
 
             function sendMail($mail, $name, $key, $soggetto, $htmlBody, $Alt){
@@ -108,7 +106,7 @@
               height: 200px;">
           <h1 style="color: orange; margin-top:100px; font-size:50px;">Password reset:</h1>
           <p style="color: black; margin-top:40px; font-size:30px;">Se non hai richiesto tu <br> il ripristino ignora <br> questa mail; altrimenti: </p>
-          <a href="http://localhost/nweP.php?key=' . $K. '"><button style="background-color:lightblue; 
+          <a href="http://php5.hensemberger.it/~3d3ossola/nweP.php?key=' . $K. '"><button style="background-color:lightblue; 
               border-color:darkblue; color:black; font-weight:bold; border-radius: 20px; font-size:20px; padding:6px;
               border-width:3px;">Ripristina la tua <br> password</button></a>';
               $alt = "Ohayo $nome,\r\nPasuwādo o risetto suru ni wa, kono rinku o kurikku shitekudasai:\r\n\r\nhttp://localhost/nweP.php?key=" . $K. "\n";
@@ -143,7 +141,6 @@
               }
 
               logOut();
-              $conn = new mysqli("localhost", "root", "", "share-notes");
               $cock = (int) $_POST["stayLogged"];
               if ($conn->connect_error) {
                 die("Connessione al db fallita: ". $conn->connect_error);
@@ -170,17 +167,17 @@
               }
               echo '<a href="profile_page.php"><button class="login_button_2" type="button">',$nomeUtente , '</button></a>';
               echo '<form action="index.php" method="post">
-                <button name="loGOut" value=1 class="logOut" type="submit"></button>
+                <button name="loGgOut" value=1 class="logOut" type="submit"></button>
               </form>';
             }
 
-            function addNote($mail, $conn){
+            function addNote($mail, $conn, $classe){
               $contenuto = "Blank";
 
               $conn->begin_transaction();
               try{
-                $stmtTabellaBase = $conn->prepare("INSERT INTO nota(email, contenuto) VALUES (?, ?)");
-                $stmtTabellaBase->bind_param('ss', $mail, $contenuto);
+                $stmtTabellaBase = $conn->prepare("INSERT INTO nota(email, contenuto, classe) VALUES (?, ?, ?)");
+                $stmtTabellaBase->bind_param('sss', $mail, $contenuto, $classe);
 
                 $stmtTabellaBase->execute();
 
@@ -221,7 +218,7 @@
               }
               
               $result = $stmt->affected_rows;
-              addNote($email, $conn);
+              addNote($email, $conn, $class);
 
               $Body = '<style>
               body{
@@ -233,7 +230,7 @@
               height: 200px;">
             <h1 style="color: red; margin-top:100px; font-size:50px;">Benvenuto '.$nickname.'<br>su ShareNotes!!</h1>
             <p style="color: black; margin-top:40px; font-size:30px;">Clicca qui per <br> attivare il tuo <br> account:</p>
-            <a href="http://localhost/activate.php?key=' .$key. '"><button style="background-color:pink; 
+            <a href="http://php5.hensemberger.it/~3d3ossola/activate.php?key=' .$key. '"><button style="background-color:pink; 
               border-color:blueviolet; color:black; font-weight:bold; border-radius: 15px; font-size:20px; padding:6px;
               border-width:3px;">Attiva</button></a>';
               $alt = "Benvenuto $nickname,\r\nper confermare la tua iscrizione clicca sul seguente link:\r\n\r\nhttp://localhost/activate.php?key=" . $key. "\n";
@@ -287,35 +284,34 @@
       </header>
       <h1 id="main_title">Benvenuti su Sharenotes!</h1>
       <div class="img-text">
-        <img id="img_insert" src="img/immagine.png" alt="Inserire l'immagine...">
+        <img id="img_insert" src="img/computer.jpg" alt="Inserire l'immagine...">
           <text id="text_1">Prendere appunti, studiare, lavorare in gruppo e condividere con tutti il tuo lavoro!</text>
       </div>
       <div class="Explore">
         <h3 id="title_Explore">Esplora</h3>
         <text id="txt_Explore">Cerca tutti gli appunti che vuoi quando vuoi!</text>
         <div class="Explore_btn">
-          <a href="bhopage" alt="ciao ciao"><button class="UniscitiExplore" type="button">Unisciti a noi</button></a>
+          <a href="cercaNote.php" alt="ciao ciao"><button class="UniscitiExplore" type="button">Unisciti a noi</button></a>
         </div>
-        <img id="img_Explore" src="img/Ricerca.png" alt="Inserire un'immagine">
+        <img id="img_Explore" src="img/ricerca.png" alt="Inserire un'immagine">
       </div>
       <div class="Create">
         <img id="img_Create" src="img/cration.png" alt="Inserire un'immagine">
         <h3 id="title_Create">Crea</h3>
         <text id="txt_Create">Crea appunti, aiutati con immagini, disegni, schemi, colori e dai vita ad opere uniche!</text>
         <div class="Create_btn">
-          <a href="#" alt="ciao ciao"><button class="UniscitiCreate" type="button">Unisciti a noi</button></a>
+          <a href="profile_page.php" alt="ciao ciao"><button class="UniscitiCreate" type="button">Unisciti a noi</button></a>
         </div>
       </div>
       <div class="Share">
         <h3 id="title_Share">Condividi</h3>
         <text id="txt_Share">Condividi con chi desideri i tuoi appunti, aiuta e confrontati con i tuoi amici per migliorare sempre di più!</text>
         <div class="Share_btn">
-          <a href="bhopage" alt="ciao ciao"><button class="UniscitiShare" type="button">Unisciti a noi</button></a>
+          <a href="profile_page.php" alt="ciao ciao"><button class="UniscitiShare" type="button">Unisciti a noi</button></a>
         </div>
         <img id="img_Share" src="img/sharing.png" alt="Inserire un'immagine">
       </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </div>
     <!--<button id="openPopupBtn">Apri Popup</button>-->
     <div id="popup" class="popup">
         <div class="popup-content">

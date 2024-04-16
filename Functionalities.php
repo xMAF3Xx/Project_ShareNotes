@@ -25,7 +25,7 @@
     </nav>
     <h1 id="titolo">FUNZIONALITA'</h1>
     <p id="testo" class="font">Consulta questa pagina prima di iniziare a creare le tue note, in modo da poterti orientare meglio all'interno del mondo di<br> Sharenotes.
-                  Questa pagina è come <br>una mappa, ti aiuterà a scoprire ed a trovare la strada migliore per creare i tuoi appunti.
+                  (Ricorda che questo sito è ottimizzato solo per pc al momento)Questa pagina è come <br>una mappa, ti aiuterà a scoprire ed a trovare la strada migliore per creare i tuoi appunti.
                    Buon viaggio!!</p>
     <h2 class="font" id="titoletto" class="stile">PAGINA PROFILO</h2>
     <img id="immagine" src="img/profilo.png">
