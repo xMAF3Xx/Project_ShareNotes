@@ -15,6 +15,7 @@
     <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/925415bf1c0eb0e4faac294b088d2d58.js"></script>  
   </head>
   <body id="corpo">
+    <div id="blurrato" class="transition-back">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <header>
           <nav id="navbar" class="navbar navbar-dark bg-light fixed-top">
@@ -313,6 +314,7 @@
       </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!--<button id="openPopupBtn">Apri Popup</button>-->
+    </div>
     <div id="popup" class="popup">
         <div class="popup-content">
             <span class="close" id="closePopupBtn">&times;</span>
