@@ -940,9 +940,6 @@ ul {
         height: 300px;
         border-radius: 20px;
         border: black solid 2px;
-        margin-top: -100px;
-        margin-left: 240px;
-        margin-right: 6px;
     }
     #img_Explore {
         margin-inline-start: auto;
@@ -958,33 +955,8 @@ ul {
     }
     #text_1 {
         margin-inline-end: auto;
-        font-size: 24px;
+        font-size: 20px;
         width: 200px;
         text-align: center;
-        margin-top: -50px;
-        margin-left: 6px;
-    }
-    #title_Explore {
-        color: black;
-        font-size: 28px;
-        font-weight: bold;
-        background-image: url('img/Sfondo_Titoli.png');
-        background-repeat: no-repeat;
-        width: 200px;
-        height: 60px;
-        text-align: end;
-    }
-    #title_Share {
-        color: black;
-        font-size: 28px;
-        font-weight: bold;
-        background-image: url('img/Sfondo_Titoli.png');
-        background-repeat: no-repeat;
-        width: 200px;
-        height: 60px;
-    }
-    #txt_Explore {
-        margin-inline-end: auto;
-        font-size: 24px;
     }
 }
