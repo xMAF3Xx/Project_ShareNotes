@@ -249,6 +249,7 @@ button {
     margin-top: 5px;
     border: 3px solid gray;
     background-color: white;
+    
 }
 .tutto2 {
     position: absolute;
@@ -686,3 +687,447 @@ html {
 .save-btns:hover {
     transform: scale(1.2);
 }
+
+
+
+
+
+@media(max-width:850px ) and (min-width:767px)
+{
+    .tutto {
+        position: absolute;
+        align-items: center;
+        width: 750px;
+        height: 80px;
+        border-radius: 50px;
+        margin-left: 28px;
+        margin-top: 5px;
+        border: 3px solid gray;
+        background-color: white;
+    }
+    
+    #fontSizeSelector
+    {
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 185px;
+    }
+    .tutto2 {
+        position: absolute;
+        width: 700px;
+        margin-top: 120px;
+        height: 70px;
+        border-radius: 30px;
+        margin-left: 67px;
+        background-color: greenyellow;
+        border: 1px solid black;
+    }
+    #fontSizeSelector
+    {
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 190px;
+    }
+    #italicButton {
+        position: absolute;
+        margin-top: -39px;
+        height: 40px;
+        width: 30px;
+        margin-left: 400px;
+        align-items: center;
+    }
+    #fontSelector
+    {
+    margin-top: 23.5px;
+    width: 100px; 
+    margin-right: 50px;
+    }
+    .tutto3 
+    {
+    position: absolute;
+    width: 750px;
+    margin-top: 120px;
+    height: 70px;
+    border-radius: 30px;
+    margin-left: 21px;
+    background-color: orange;
+    border: 1px solid black; 
+   }
+   #banner {
+    width: 300px;
+    height: 200px;
+    border-radius: 30px;
+    margin-left: 400px;
+    margin-top: -500px;
+    background-image: url('img/sfondo_banner.JPG');
+    transform: translate(-50%, -50%);
+    border: none;
+    text-align: center;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.tutto4
+{
+    position: absolute;
+    width: 330px;
+    margin-top: 120px;
+    height: 70px;
+    margin-left:245px;
+    border-radius: 30px;
+    background-color: brown;
+    border: 1px solid black; 
+}
+
+   
+}
+@media(max-width:980px ) and (min-width:850px)
+{
+    .tutto {
+        position: absolute;
+        align-items: center;
+        width: 750px;
+        height: 80px;
+        border-radius: 50px;
+        margin-left: 66px;
+        margin-top: 5px;
+        border: 3px solid gray;
+        background-color: white;
+    }
+    
+    #fontSizeSelector
+    {
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 185px;
+    }
+    .tutto2 {
+        position: absolute;
+        width: 700px;
+        margin-top: 120px;
+        height: 70px;
+        border-radius: 30px;
+        margin-left: 87px;
+        background-color: greenyellow;
+        border: 1px solid black;
+    }
+    #fontSizeSelector
+    {
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 190px;
+    }
+    #italicButton {
+        position: absolute;
+        margin-top: -39px;
+        height: 40px;
+        width: 30px;
+        margin-left: 400px;
+        align-items: center;
+    }
+    #fontSelector
+    {
+    margin-top: 23.5px;
+    width: 100px; 
+    margin-right: 50px;
+    }
+    .tutto3 
+    {
+    position: absolute;
+    width: 750px;
+    margin-top: 120px;
+    height: 70px;
+    border-radius: 30px;
+    margin-left: 71px;
+    background-color: orange;
+    border: 1px solid black; 
+   }
+   #banner {
+    width: 300px;
+    height: 200px;
+    border-radius: 30px;
+    margin-left: 470px;
+    margin-top: -500px;
+    background-image: url('img/sfondo_banner.JPG');
+    transform: translate(-50%, -50%);
+    border: none;
+    text-align: center;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.tutto4
+{
+    position: absolute;
+    width: 330px;
+    margin-top: 120px;
+    height: 70px;
+    margin-left:255px;
+    border-radius: 30px;
+    background-color: brown;
+    border: 1px solid black; 
+}
+
+   
+}
+
+
+@media(max-width:1200px ) and (min-width:980px)
+{
+    .tutto {
+        position: absolute;
+        align-items: center;
+        width: 750px;
+        height: 80px;
+        border-radius: 50px;
+        margin-left: 145px;
+        margin-top: 5px;
+        border: 3px solid gray;
+        background-color: white;
+    }
+    
+    #fontSizeSelector
+    {
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 185px;
+    }
+    .tutto2 {
+        position: absolute;
+        width: 700px;
+        margin-top: 120px;
+        height: 70px;
+        border-radius: 30px;
+        margin-left: 160px;
+        background-color: greenyellow;
+        border: 1px solid black;
+    }
+    #fontSizeSelector
+    {
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 190px;
+    }
+    #italicButton {
+        position: absolute;
+        margin-top: -39px;
+        height: 40px;
+        width: 30px;
+        margin-left: 400px;
+        align-items: center;
+    }
+    #fontSelector
+    {
+    margin-top: 23.5px;
+    width: 100px; 
+    margin-right: 50px;
+    }
+    .tutto3 
+    {
+    position: absolute;
+    width: 750px;
+    margin-top: 120px;
+    height: 70px;
+    border-radius: 30px;
+    margin-left: 141px;
+    background-color: orange;
+    border: 1px solid black; 
+   }
+   #banner {
+    width: 300px;
+    height: 200px;
+    border-radius: 30px;
+    margin-left: 500px;
+    margin-top: -500px;
+    background-image: url('img/sfondo_banner.JPG');
+    transform: translate(-50%, -50%);
+    border: none;
+    text-align: center;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.tutto4
+{
+    position: absolute;
+    width: 330px;
+    margin-top: 120px;
+    height: 70px;
+    margin-left:328px;
+    border-radius: 30px;
+    background-color: brown;
+    border: 1px solid black; 
+}
+
+   
+}
+@media(max-width:1500px) and (min-width:1200px)
+{
+    .tutto {
+        position: absolute;
+        align-items: center;
+        width: 750px;
+        height: 80px;
+        border-radius: 50px;
+        margin-left: 280px;
+        margin-top: 5px;
+        border: 3px solid gray;
+        background-color: white;
+    }
+    
+    #fontSizeSelector
+    {
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 185px;
+    }
+    .tutto2 {
+        position: absolute;
+        width: 700px;
+        margin-top: 120px;
+        height: 70px;
+        border-radius: 30px;
+        margin-left: 300px;
+        background-color: greenyellow;
+        border: 1px solid black;
+    }
+    #fontSizeSelector
+    {
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 190px;
+    }
+    #italicButton {
+        position: absolute;
+        margin-top: -39px;
+        height: 40px;
+        width: 30px;
+        margin-left: 400px;
+        align-items: center;
+    }
+    #fontSelector
+    {
+    margin-top: 23.5px;
+    width: 100px; 
+    margin-right: 50px;
+    }
+    .tutto3 
+    {
+    position: absolute;
+    width: 750px;
+    margin-top: 120px;
+    height: 70px;
+    border-radius: 30px;
+    margin-left: 281px;
+    background-color: orange;
+    border: 1px solid black; 
+   }
+   #banner {
+    width: 300px;
+    height: 200px;
+    border-radius: 30px;
+    margin-left: 620px;
+    margin-top: -500px;
+    background-image: url('img/sfondo_banner.JPG');
+    transform: translate(-50%, -50%);
+    border: none;
+    text-align: center;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.tutto4
+{
+    position: absolute;
+    width: 330px;
+    margin-top: 120px;
+    height: 70px;
+    margin-left:468px;
+    border-radius: 30px;
+    background-color: brown;
+    border: 1px solid black; 
+}
+
+}
+@media(max-width:1800px) and (min-width:1500px)
+{
+    .tutto {
+        position: absolute;
+        align-items: center;
+        width: 750px;
+        height: 80px;
+        border-radius: 50px;
+        margin-left: 415px;
+        margin-top: 5px;
+        border: 3px solid gray;
+        background-color: white;
+    }
+    
+    #fontSizeSelector
+    {
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 185px;
+    }
+    .tutto2 {
+        position: absolute;
+        width: 700px;
+        margin-top: 120px;
+        height: 70px;
+        border-radius: 30px;
+        margin-left: 435px;
+        background-color: greenyellow;
+        border: 1px solid black;
+    }
+    #fontSizeSelector
+    {
+    float: right;
+    margin-top: -29.5px; 
+    margin-right: 190px;
+    }
+    #italicButton {
+        position: absolute;
+        margin-top: -39px;
+        height: 40px;
+        width: 30px;
+        margin-left: 400px;
+        align-items: center;
+    }
+    #fontSelector
+    {
+    margin-top: 23.5px;
+    width: 100px; 
+    margin-right: 50px;
+    }
+    .tutto3 
+    {
+    position: absolute;
+    width: 750px;
+    margin-top: 120px;
+    height: 70px;
+    border-radius: 30px;
+    margin-left: 411px;
+    background-color: orange;
+    border: 1px solid black; 
+   }
+   #banner {
+    width: 300px;
+    height: 200px;
+    border-radius: 30px;
+    margin-left: 770px;
+    margin-top: -500px;
+    background-image: url('img/sfondo_banner.JPG');
+    transform: translate(-50%, -50%);
+    border: none;
+    text-align: center;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.tutto4
+{
+    position: absolute;
+    width: 330px;
+    margin-top: 120px;
+    height: 70px;
+    margin-left:578px;
+    border-radius: 30px;
+    background-color: brown;
+    border: 1px solid black; 
+}
+
+}
+
+
+
+
