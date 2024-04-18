@@ -200,17 +200,32 @@ function setDrawingColor(color) {
 }
 
 function draw(e) {
- 
+    
+    var isTouch = e.type.startsWith('touch');
+    
+   
+    var x, y;
+    if (isTouch) {
 
+        x = e.touches[0].clientX - canvas.offsetLeft;
+        y = e.touches[0].clientY - canvas.offsetTop;
+    } else {
+        
+        x = e.clientX - canvas.offsetLeft;
+        y = e.clientY - canvas.offsetTop;
+    }
+
+    
     context.lineWidth = drawingThickness; 
     context.lineCap = 'round';
     context.strokeStyle = drawingColor;
 
-    context.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    context.lineTo(x, y);
     context.stroke();
     context.beginPath();
-    context.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    context.moveTo(x, y);
 }
+
 
 
 
