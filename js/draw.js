@@ -133,6 +133,30 @@ function erase(e) {
     context.clearRect(mouseX - gommaSize / 2, mouseY - gommaSize / 2, gommaSize, gommaSize);
 }
 
+//Prova da qui: OKK
+function eraseTouch(e) {
+    if (!isErasing) return;
+
+    var x, y;
+    if (e.type.startsWith('touch')) {
+        // Handle touch event
+        var touch = e.touches[0]; // Get the first touch point
+        x = touch.clientX - canvas.offsetLeft;
+        y = touch.clientY - canvas.offsetTop;
+    } else {
+        // Handle mouse event
+        x = e.clientX - canvas.offsetLeft;
+        y = e.clientY - canvas.offsetTop;
+    }
+
+    // "Cancella" il disegno aggiungendo la sua posizione all'array erasedDrawings
+    erasedDrawings.push({ x: x, y: y });
+
+    // Pulisci solo la zona dove è presente la gomma
+    context.clearRect(x - gommaSize / 2, y - gommaSize / 2, gommaSize, gommaSize);
+}
+//Fine prova OKK
+
 
 function startDrawing(e) {
     if (isErasing || isCreating) return;
@@ -154,6 +178,42 @@ function startDrawing(e) {
     clickStart = { x: canvasX, y: canvasY };
     updateCursorSize();
 }
+
+//Prova da qui:
+function startDrawingTouch(e) {
+    if (isErasing || isCreating) return;
+    isDrawing = true;
+    isTyping = false;
+
+    const textCursor = document.getElementById('textCursor');
+    textCursor.style.display = 'block';
+
+    // Determine if the event is from a touch device
+    let clientX, clientY;
+    if (e.type.startsWith('touch')) {
+        // Prevent default behavior like scrolling
+        e.preventDefault();
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+    } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+    }
+
+    // Calculate the position relative to the canvas
+    const canvasX = clientX - canvas.offsetLeft;
+    const canvasY = clientY - canvas.offsetTop;
+
+    // Position the cursor exactly above the start point of the text
+    textCursor.style.left = canvasX - 560 + 'px'; // Adjust this value based on your specific layout
+    textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop + 20 + 'px';
+
+    context.beginPath();
+    context.moveTo(canvasX, canvasY);
+    clickStart = { x: canvasX, y: canvasY };
+    updateCursorSize();
+}
+//Fine prova
 
 canvas.addEventListener('mousemove', function(e) {
 
@@ -182,6 +242,17 @@ canvas.addEventListener('mousemove', function(e) {
     }
 });
 
+//Prova da qui: OKK
+canvas.addEventListener('touchmove', function(e){
+    if (isErasing) {
+        eraseTouch(e);
+    } else if (isDrawing) {
+        draw(e);
+    }
+});
+canvas.addEventListener('touchstart', startDrawingTouch);
+canvas.addEventListener('touchend', stopDrawing);
+//Fine prova OKK
 
 
 
@@ -202,7 +273,7 @@ function setDrawingColor(color) {
 function draw(e) {
     
     var isTouch = e.type.startsWith('touch');
-    
+    e.preventDefault();
    
     var x, y;
     if (isTouch) {
@@ -597,6 +668,42 @@ canvas.addEventListener('mouseup', function() {
     }
 });
 
+//Prova da qui: OKK
+canvas.addEventListener('touchstart', function(e) {
+    e.preventDefault(); // Prevents default scrolling behavior on touch devices
+    if (isCreatingTriangle) {
+        let touch = e.touches[0]; // Get the first touch point
+        start3X = touch.clientX - canvas.offsetLeft;
+        start3Y = touch.clientY - canvas.offsetTop;
+        current3X = start3X;
+        current3Y = start3Y;
+        redrawCanvas();
+        canvas.addEventListener('touchmove', onTouchMoveTriangle);
+    }
+});
+
+function onTouchMoveTriangle(e) {
+    e.preventDefault();
+    let touch = e.touches[0]; // Get the first touch point
+    current3X = touch.clientX - canvas.offsetLeft;
+    current3Y = touch.clientY - canvas.offsetTop;
+    redrawCanvas();
+    drawTriangle(start3X, start3Y, current3X, current3Y);
+}
+
+canvas.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    if (isCreatingTriangle && start3X !== undefined && start3Y !== undefined) {
+        triangles.push({ x1: start3X, y1: start3Y, x2: current3X, y2: current3Y });
+        start3X = undefined;
+        start3Y = undefined;
+        current3X = undefined;
+        current3Y = undefined;
+        canvas.removeEventListener('touchmove', onTouchMoveTriangle);
+    }
+});
+//Fine prova OKK
+
 function drawTriangle(x1, y1, x2, y2) {
     context.beginPath();
     context.moveTo(x1, y1);
@@ -786,6 +893,43 @@ canvas.addEventListener('mouseup', function() {
     }
 });
 
+//Prova da qui in poi: OKK
+canvas.addEventListener('touchstart', function(e) {
+    e.preventDefault(); // Prevent default touch behavior, like scrolling
+    if (isCreatingCircle) {
+        let touch = e.touches[0]; // Get the first touch
+        startXCircle = touch.clientX - canvas.offsetLeft;
+        startYCircle = touch.clientY - canvas.offsetTop;
+        currentXCircle = startXCircle;
+        currentYCircle = startYCircle;
+        canvas.addEventListener('touchmove', onMouseMoveCircle);
+    }
+});
+
+function onMouseMoveCircle(e) {
+    e.preventDefault();
+    let touch = e.touches[0]; // Get the first touch
+    currentXCircle = touch.clientX - canvas.offsetLeft;
+    currentYCircle = touch.clientY - canvas.offsetTop;
+    redrawCanvas();
+    const radius = Math.sqrt((currentXCircle - startXCircle) ** 2 + (currentYCircle - startYCircle) ** 2);
+    drawCircle(startXCircle, startYCircle, radius);
+}
+
+canvas.addEventListener('touchend', function(e) {
+    e.preventDefault(); // Prevent default touch behavior
+    if (isCreatingCircle && startXCircle !== undefined && startYCircle !== undefined) {
+        const radius = Math.sqrt((currentXCircle - startXCircle) ** 2 + (currentYCircle - startYCircle) ** 2);
+        circles.push({ x: startXCircle, y: startYCircle, radius: radius });
+        startXCircle = undefined;
+        startYCircle = undefined;
+        currentXCircle = undefined;
+        currentYCircle = undefined;
+        canvas.removeEventListener('touchmove', onMouseMoveCircle);
+    }
+});
+//Fine prova OKK
+
 function drawCircle(x, y, radius) {
     context.beginPath();
     context.arc(x, y, radius, 0, 2 * Math.PI);
@@ -932,6 +1076,54 @@ canvas.addEventListener('mouseup', function() {
         currentY = undefined;
     }
 });
+
+// prova da qui in poi: OKK
+canvas.addEventListener('touchend', function(e) {
+    e.preventDefault(); // Prevent default touch behavior, like scrolling
+    if (isCreatingRectangle && startX !== undefined && startY !== undefined) {
+        let touch = e.changedTouches[0]; // Get the first touch
+        let currentX = touch.clientX - canvas.offsetLeft;
+        let currentY = touch.clientY - canvas.offsetTop;
+
+        let width = currentX - startX;
+        let height = currentY - startY;
+        if (width < 0) {
+            startX += width;
+            width = Math.abs(width);
+        }
+        if (height < 0) {
+            startY += height;
+            height = Math.abs(height);
+        }
+        rectangles.push({ x: startX, y: startY, width: width, height: height });
+        redrawCanvas();
+        startX = undefined;
+        startY = undefined;
+        currentX = undefined;
+        currentY = undefined;
+    }
+});
+
+canvas.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    if (isCreatingRectangle) {
+        let touch = e.touches[0];
+        startX = touch.clientX - canvas.offsetLeft;
+        startY = touch.clientY - canvas.offsetTop;
+    }
+});
+
+canvas.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    if (isCreatingRectangle && startX !== undefined && startY !== undefined) {
+        let touch = e.touches[0];
+        currentX = touch.clientX - canvas.offsetLeft;
+        currentY = touch.clientY - canvas.offsetTop;
+        redrawCanvas();
+        drawRectangle(startX, startY, currentX - startX, currentY - startY);
+    }
+});
+//Fine prova OKK
 
 function drawRectangle(x, y, width, height) {
     context.strokeStyle = '#000000';
