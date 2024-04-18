@@ -317,7 +317,7 @@ body {
     right: -20px;
 }
 
-.NoteBlock{
+.NoteBlock {
     border-color: black;
     border-radius: 15px;
     border-width: 2px;
@@ -326,14 +326,14 @@ body {
     margin-top: 30px;
 }
 
-.ApriNota{
+.ApriNota {
     background: none;
     border: none;
     font-size: 30px;
     margin-right: 1070px;
 }
 
-.DownloadNota{
+.DownloadNota {
     position: absolute;
     background: none;
     border: none;
@@ -341,11 +341,11 @@ body {
     right: 4%;
 }
 
-.scarica{
+.scarica {
     height: 35px;
 }
 
-.CondividiNota{
+.CondividiNota {
     position: absolute;
     background: none;
     border: none;
@@ -353,11 +353,11 @@ body {
     top: 1%;
 }
 
-.share{
+.share {
     height: 35px;
 }
 
-.EliminaNota{
+.EliminaNota {
     position: absolute;
     background: none;
     border: none;
@@ -365,7 +365,7 @@ body {
     top: 0%;
 }
 
-.bidone{
+.bidone {
     height: 35px;
 }
 
@@ -420,4 +420,234 @@ body {
 
 .container-bidoni:hover .bidone-profile {
     display: block;
+}
+
+@media (max-width: 1800px) {
+    .vertical {
+        display: inline-block;
+        min-width: 258px;
+        min-height: 1080px;
+    }
+    .options-dims {
+        width: 180px;
+        height: 18px;
+    }
+    .create-btn {
+        width: 150px;
+        height: 150px;
+        margin-left: 60%;
+        margin-top: -50px;
+    }
+    .crea-txt {
+        font-size: 40px;
+        margin-left: 40%;
+        margin-top: 25vh;
+    }
+    .top-buttons-style {
+        margin-left: 5%;
+        margin-bottom: 15px;
+        width: 150px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .vertical {
+        display: inline-block;
+        min-width: 258px;
+        min-height: 1080px;
+    }
+    .options-dims {
+        width: 180px;
+        height: 18px;
+    }
+    .create-btn {
+        width: 150px;
+        height: 150px;
+        margin-left: 95%;
+        margin-top: -50px;
+    }
+    .crea-txt {
+        font-size: 40px;
+        margin-left: 60%;
+        margin-top: 25vh;
+    }
+    .top-buttons-style {
+        margin-left: 6%;
+        margin-bottom: 15px;
+        width: 150px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .vertical {
+        display: inline-block;
+        min-width: 258px;
+        min-height: 1080px;
+    }
+    .options-dims {
+        width: 180px;
+        height: 18px;
+    }
+    .create-btn {
+        width: 150px;
+        height: 150px;
+        margin-left: 60%;
+        margin-top: -50px;
+    }
+    .crea-txt {
+        font-size: 40px;
+        margin-left: 40%;
+        margin-top: 25vh;
+    }
+    .top-buttons-style {
+        margin-left: 0%;
+        margin-bottom: 15px;
+        width: 150px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 980px) {
+    .vertical {
+        display: inline-block;
+        min-width: 258px;
+        min-height: 1080px;
+    }
+    .options-dims {
+        width: 180px;
+        height: 18px;
+    }
+    .create-btn {
+        width: 150px;
+        height: 150px;
+        margin-left: 60%;
+        margin-top: -50px;
+    }
+    .crea-txt {
+        font-size: 40px;
+        margin-left: 40%;
+        margin-top: 25vh;
+    }
+    .top-buttons-style {
+        margin-left: 0%;
+        margin-bottom: 15px;
+        width: 150px;
+        font-size: 20px;
+        background: transparent;
+    }
+}
+
+@media (max-width: 976px) {
+    .vertical {
+        display: inline-block;
+        min-width: 258px;
+        min-height: 1080px;
+    }
+    .options-dims {
+        width: 180px;
+        height: 18px;
+    }
+    .create-btn {
+        width: 150px;
+        height: 150px;
+        margin-left: 60%;
+        margin-top: -50px;
+    }
+    .crea-txt {
+        font-size: 40px;
+        margin-left: 40%;
+        margin-top: 25vh;
+    }
+    .top-buttons-style {
+        width: 150px;
+        font-size: 20px;
+        background: transparent;
+    }
+    .red-circle {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        background-color: #FF0000;
+        position: absolute;
+        top: -40px;
+        right: -25px;
+    }
+    #findNotes {
+        position: absolute;
+        top: 10%;
+        left: 35%;
+    }
+    #casa {
+        position: absolute;
+        top: 7%;
+        left: 17%;
+    }
+    #funz {
+        position: absolute;
+        top: 10%;
+        left: 17%;
+    }
+    #circa {
+        position: absolute;
+        top: 7%;
+        left: 35%;
+    }
+}
+
+@media (max-width: 680px) {
+    .vertical {
+        display: inline-block;
+        min-width: 258px;
+        min-height: 1080px;
+    }
+    .options-dims {
+        width: 180px;
+        height: 18px;
+    }
+    .create-btn {
+        width: 150px;
+        height: 150px;
+        margin-left: 60%;
+        margin-top: -50px;
+    }
+    .crea-txt {
+        font-size: 40px;
+        margin-left: 40%;
+        margin-top: 25vh;
+    }
+    .top-buttons-style {
+        width: 150px;
+        font-size: 20px;
+        background: transparent;
+    }
+    .red-circle {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        background-color: #FF0000;
+        position: absolute;
+        top: -40px;
+        right: -25px;
+    }
+    #findNotes {
+        position: absolute;
+        top: 10%;
+        left: 35%;
+    }
+    #casa {
+        position: absolute;
+        top: 7%;
+        left: 14%;
+    }
+    #funz {
+        position: absolute;
+        top: 10%;
+        left: 14%;
+    }
+    #circa {
+        position: absolute;
+        top: 7%;
+        left: 35%;
+    }
 }

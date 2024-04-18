@@ -303,10 +303,10 @@
         <div class='container-verti'>
             <div class='horizontal'>
                 <a href="index.php"><img class="logo" src="img/logo.png"></a>
-                <a href="index.php"><button class="top-buttons-style">Home</button></a>
-                <a href="aboutPage.php"><button class="top-buttons-style">About</button></a>
-                <a href="cercaNote.php"><button class="top-buttons-style">Cerca appunti</button></a>
-                <a href="Functionalities.php"><button class="top-buttons-style">Funzionalità</button></a>
+                <a href="index.php"><button id="casa" class="top-buttons-style">Home</button></a>
+                <a href="aboutPage.php"><button id="circa" class="top-buttons-style">About</button></a>
+                <a href="cercaNote.php"><button id="findNotes" class="top-buttons-style">Cerca appunti</button></a>
+                <a href="Functionalities.php"><button id="funz" class="top-buttons-style">Funzionalità</button></a>
                 <hr class="line-horizontal">
                 <div class="open-zone">
                     <h1 class="main-title">Appunti</h1>
