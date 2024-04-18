@@ -51,10 +51,10 @@ body {
 }
 
 #input {
-    width: 750px;
+    width: 50%;
     height: 45px;
     margin-top: 100px;
-    margin-left: 590px;
+    margin-left: 35%;
     display: flex;
     border-radius: 30px;
     justify-content: center;
@@ -157,7 +157,7 @@ body {
     transition: all 0.3s;
 }
 
-.seeNote{
+.seeNote {
     border: 3px solid black;
     border-radius: 15px;
     font-size: 25px;
