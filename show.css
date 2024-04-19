@@ -1,6 +1,7 @@
 body {
     overflow: hidden;
     background-image: url("img/sfondo_index.jpg");
+    font-family: 'Inter', sans-serif;
 }
 
 .barra{

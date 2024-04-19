@@ -2,6 +2,7 @@
 <head>
     <link  href="stile_Functionalities.css" rel="stylesheet" type="text/CSS">
     <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="body">
     <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">

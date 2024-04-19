@@ -13,6 +13,7 @@
     <script src="js/script_login.js"></script>
     <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
     <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/925415bf1c0eb0e4faac294b088d2d58.js"></script>  
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body id="corpo">
     <div id="blurrato" class="transition-back">

@@ -6,6 +6,7 @@
     <title>Ripristino Password</title>
     <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
     <script src="js/nweP.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>

@@ -12,6 +12,7 @@
     <script src="js/script_selezione.js"></script>
     <script src="js/scarica.js"></script>
     <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <!-- inserire qui una nuova immagine come logo della finestra nel browser, chiedere a forna di farla-->
 </head>
 

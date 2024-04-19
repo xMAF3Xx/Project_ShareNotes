@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="activateStyle.css">
         <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <h1 id="pageTitle">VALIDAZIONE <br> INDIRIZZO E-MAIL</h1>

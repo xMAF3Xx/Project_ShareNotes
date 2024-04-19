@@ -48,6 +48,7 @@ body {
     background-size: cover;
     /* Aggiunta questa riga per coprire l'intera area con l'immagine */
     background-position: center center;
+    font-family: 'Inter', sans-serif;
 }
 
 #input {

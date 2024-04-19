@@ -1,7 +1,7 @@
 body {
     background-image: url('img/sfondo_index.jpg');
     background-repeat: no-repeat;
-    font-family: inter;
+    font-family: 'Inter', sans-serif;
 }
 
 #titoloM {
