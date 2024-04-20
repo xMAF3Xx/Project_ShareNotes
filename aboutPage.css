@@ -1,8 +1,10 @@
+
 .body {
     background-image: url("img/bianco.png");
     background-repeat: no-repeat;
     background-size: cover; 
     background-attachment: fixed; 
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,7 +12,6 @@
     align-items: center;
     overflow-y: auto; 
     height: 100vh; 
-    font-family: 'Inter', sans-serif;
 }
 
 #pallini
@@ -112,8 +113,8 @@
 }
 #cerchio {
     position: absolute;
-    top: 390px; 
-    margin-left: 30px;
+    top: 360px; 
+    margin-left: 5px;
    
     transform: translateX(-50%); 
     z-index: -1; 
@@ -181,6 +182,10 @@
     border: none;
     border-top: 2px solid  grey; 
 }
+.prova
+{
+    position: absolute;
+}
 
 
 
@@ -197,11 +202,26 @@
     font-size: 23px;
     margin-top: 20px; 
     padding: 1px;
-    margin-left: -100px;
+    margin-left: -200px;
     background: none;
     border: none;
     justify-content: center;
     margin-bottom: 30px;
+}
+#bottone1:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+#bottone2:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+#bottone3:hover 
+{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
 }
 
 #bottone2 {
@@ -240,7 +260,8 @@
 
 #imm2
 {
-    margin-left: 50px;
+    margin-top: -50px;
+    margin-left: -30px;
     width: 70px;
     height: 70px;
 }
@@ -278,7 +299,7 @@
 }
 .testino
 {
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
 }
 .come
@@ -288,6 +309,10 @@
     margin-left: 130px;
     justify-content: center;
 }
+#openPopupBtn
+{
+    margin-left: -10px;
+}
 .titoletto2
 {
     text-align: center;
@@ -295,8 +320,9 @@
 }
 .testino2
 {
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
+    margin-top: -45px;
 }
 
 .titoletto3
@@ -306,7 +332,7 @@
 }
 .testino3
 {
-    font-size: 25px;
+    font-size: 20px;
     margin-left: 20px;
     text-align: center;
 }
@@ -333,7 +359,7 @@
 }
 .testino4
 {
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -362,10 +388,10 @@
 #centro3,
 #centro4
 {
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
-}
 
+}
 
 @keyframes explode {
     0% {
@@ -382,9 +408,4 @@
     text-align: center;
     font-size: 40px;
     margin-left: 75px;
-}
-
-.bottoni:hover {
-    transform: scale(1.2);
-    transition: transform 0.3s ease;
 }
