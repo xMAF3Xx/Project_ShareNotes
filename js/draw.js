@@ -789,6 +789,69 @@ function editText(e) {
     enableWriting();
 }
 
+// Aggiungi gli eventi touch
+canvas.addEventListener('touchstart', function(e) {
+    e.preventDefault(); // Evita che il browser gestisca l'evento di tocco in modo predefinito
+    const touch = e.touches[0]; // Ottieni il primo tocco
+    const touchX = touch.clientX - canvas.offsetLeft;
+    const touchY = touch.clientY - canvas.offsetTop;
+
+    // Trova il testo su cui è stato fatto tocco
+    for (let i = drawings.length - 1; i >= 0; i--) {
+        const drawing = drawings[i];
+        if (drawing.type === 'text') {
+            context.font = `${drawing.fontSize} ${drawing.font}`;
+            const textWidth = context.measureText(drawing.text).width;
+            const lineHeight = parseInt(drawing.fontSize) + 10;
+
+            if (
+                touchX > drawing.x &&
+                touchX < drawing.x + textWidth &&
+                touchY > drawing.y - lineHeight &&
+                touchY < drawing.y
+            ) {
+                // Imposta il testo corrente come quello da trascinare
+                draggedText = drawing;
+                isDragging = true;
+                lastMouseX = touchX;
+                lastMouseY = touchY;
+                break;
+            }
+        }
+    }
+});
+
+canvas.addEventListener('touchmove', function(e) {
+    e.preventDefault(); // Evita che il browser gestisca l'evento di tocco in modo predefinito
+    if (isDragging && draggedText !== null) {
+        const touch = e.touches[0]; // Ottieni il primo tocco
+        const touchX = touch.clientX - canvas.offsetLeft;
+        const touchY = touch.clientY - canvas.offsetTop;
+
+        const deltaX = touchX - lastMouseX;
+        const deltaY = touchY - lastMouseY;
+
+        // Sposta il testo
+        draggedText.x += deltaX;
+        draggedText.y += deltaY;
+
+        // Ridisegna il canvas con il testo spostato
+        redrawCanvas();
+
+        // Aggiorna le coordinate del tocco
+        lastMouseX = touchX;
+        lastMouseY = touchY;
+    }
+});
+
+canvas.addEventListener('touchend', function(e) {
+    if (isDragging && draggedText !== null) {
+        isDragging = false;
+        draggedText = null;
+    }
+});
+
+
 
 
 
