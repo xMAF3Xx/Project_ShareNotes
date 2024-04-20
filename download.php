@@ -103,7 +103,7 @@
 
     ?>
 
-    <input type="text" id="contenutoNota" style="display: none;" value="<?php echo $contenutoNota ?>">
+    <input type="text" id="contenutoNota" style="display: none;" value="<?php if($contenutoNota == null) echo 1; else echo $contenutoNota ?>">
     <div id="tutto2">
         <img id="apri" src="img/+.jpg">
         <div id="ciao">

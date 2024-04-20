@@ -174,12 +174,11 @@
             }
 
             function addNote($mail, $conn, $classe){
-              $contenuto = "Blank";
 
               $conn->begin_transaction();
               try{
-                $stmtTabellaBase = $conn->prepare("INSERT INTO nota(email, contenuto, classe) VALUES (?, ?, ?)");
-                $stmtTabellaBase->bind_param('sss', $mail, $contenuto, $classe);
+                $stmtTabellaBase = $conn->prepare("INSERT INTO nota(email, classe) VALUES (?, ?)");
+                $stmtTabellaBase->bind_param('ss', $mail, $classe);
 
                 $stmtTabellaBase->execute();
 

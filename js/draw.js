@@ -22,6 +22,7 @@ const s = document.getElementById("croce");
 const d = document.getElementById("annulla");
 const tutto2 = document.getElementById("tutto2");
 let isCreating=false;
+let firstTimeClick = true;
 
 
 g.style.backgroundColor = "gray";
@@ -54,12 +55,11 @@ gommaSlider.addEventListener('input', function() {
 });
 
 function redrawCanvas() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(0, 0, canvas.width, canvas.height);
     circles.forEach(circle => {
         drawCircle(circle.x, circle.y, circle.radius);
     });
-    context.clearRect(0, 0, canvas.width, canvas.height);
     triangles.forEach(triangle => {
         drawTriangle(triangle.x1, triangle.y1, triangle.x2, triangle.y2);
     });
@@ -130,7 +130,8 @@ function erase(e) {
     erasedDrawings.push({ x: mouseX, y: mouseY });
 
     // Pulisci solo la zona dove è presente la gomma
-    context.clearRect(mouseX - gommaSize / 2, mouseY - gommaSize / 2, gommaSize, gommaSize);
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(mouseX - gommaSize / 2, mouseY - gommaSize / 2, gommaSize, gommaSize);
 }
 
 //Prova da qui: OKK
@@ -153,7 +154,8 @@ function eraseTouch(e) {
     erasedDrawings.push({ x: x, y: y });
 
     // Pulisci solo la zona dove è presente la gomma
-    context.clearRect(x - gommaSize / 2, y - gommaSize / 2, gommaSize, gommaSize);
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(x - gommaSize / 2, y - gommaSize / 2, gommaSize, gommaSize);
 }
 //Fine prova OKK
 
@@ -359,7 +361,8 @@ function handleKeyDown(e) {
 }
 
 function redrawCanvas() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = '#FFFFFF';
+    context.fillRect(0, 0, canvas.width, canvas.height);
     let currentText;
     for (const drawing of drawings) {
         if (drawing.type === 'text') {
@@ -678,11 +681,11 @@ canvas.addEventListener('touchstart', function(e) {
         current3X = start3X;
         current3Y = start3Y;
         redrawCanvas();
-        canvas.addEventListener('touchmove', onTouchMoveTriangle);
+        canvas.addEventListener('touchmove', onTouchMoveTriangleTouch);
     }
 });
 
-function onTouchMoveTriangle(e) {
+function onTouchMoveTriangleTouch(e) {
     e.preventDefault();
     let touch = e.touches[0]; // Get the first touch point
     current3X = touch.clientX - canvas.offsetLeft;
@@ -699,7 +702,7 @@ canvas.addEventListener('touchend', function(e) {
         start3Y = undefined;
         current3X = undefined;
         current3Y = undefined;
-        canvas.removeEventListener('touchmove', onTouchMoveTriangle);
+        canvas.removeEventListener('touchmove', onTouchMoveTriangleTouch);
     }
 });
 //Fine prova OKK
@@ -902,11 +905,11 @@ canvas.addEventListener('touchstart', function(e) {
         startYCircle = touch.clientY - canvas.offsetTop;
         currentXCircle = startXCircle;
         currentYCircle = startYCircle;
-        canvas.addEventListener('touchmove', onMouseMoveCircle);
+        canvas.addEventListener('touchmove', onMouseMoveCircleTouch);
     }
 });
 
-function onMouseMoveCircle(e) {
+function onMouseMoveCircleTouch(e) {
     e.preventDefault();
     let touch = e.touches[0]; // Get the first touch
     currentXCircle = touch.clientX - canvas.offsetLeft;
@@ -925,7 +928,7 @@ canvas.addEventListener('touchend', function(e) {
         startYCircle = undefined;
         currentXCircle = undefined;
         currentYCircle = undefined;
-        canvas.removeEventListener('touchmove', onMouseMoveCircle);
+        canvas.removeEventListener('touchmove', onMouseMoveCircleTouch);
     }
 });
 //Fine prova OKK
