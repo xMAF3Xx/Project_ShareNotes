@@ -23,8 +23,9 @@
             max-height: 0;
             transition: max-height 0.5s ease-out;
             animation: entrataBlocchi 0.5s ease-in-out;
-            margin-left: 50px;
+            margin-left: 0px;
 }
+
 
 .blocco.visible,
 .blocco2.visible,
@@ -70,8 +71,315 @@
         });
     });
 </script>
+<style>
+@media(max-width:1200px)
+{
+    .blocco.visible,
+.blocco2.visible,
+.blocco3.visible,
+.blocco4.visible {
+    max-height: 500px;
+    width: 450px;
+    margin-top: 20px; 
+}
+    #Share
+    {
+        margin-left: -25px;
+    }
+    
+   .bottone
+{
+    margin-top: 40px;
+    width: 190px;
+    height: 40px;
+    margin-left: 16px;
+}
+   
+    #bottone1 {
+   
+        font-size: 14px;
+        margin-top: 20px; 
+        margin-left: -329.9px;
+        margin-bottom: 30px;
+    }
+
+    
+    #bottone2 {
+       
+        margin-top: -45px; /* Adjust this value to move the button higher */
+        font-size: 14px;
+        background: none;
+        border: none;
+    }
+    
+    #bottone3 {
+        
+        font-size: 14px;
+        margin-top: -45px; /* Adjust this value to move the button higher */
+        background: none;
+        border: none;
+    }
+    #pallini
+{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: -250px;
+    margin-top: -28px;
+    background-color: pink;
+
+}
+#pallini2
+{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 465px;
+    margin-top: 198px;
+    background-color: green;
+    
+}
+#pallini3
+{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 385px;
+    margin-top: 338px;
+    background-color: red;
+  
+}
+#pallini4
+{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 305px;
+    margin-top: 291px;
+    background-color: purple;
+    
+}
+#pallini5
+{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 465px;
+    margin-top: 291px;
+    background-color: green;
+
+}
+#pallini6
+{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 385px;
+    margin-top: 244px;
+    background-color: orange;
+   
+}
+#pallini7
+{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: 465px;
+    margin-top: 391px;
+    background-color: pink;
+   
+}
+#linea {
+    margin-top: -25px;
+    border: 1px solid black;
+}
+#pallini8
+{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    border-radius: 50%;
+    margin-left: -435px;
+    margin-top: 391px;
+    background-color: lightblue;
+    
+}
+.blocco,
+        .blocco2,
+        .blocco3,
+        .blocco4 {
+            width: 70%;
+            max-width: 200px;
+            height: 370px;
+            border: 2px solid #000;
+            text-align: left;
+            margin: 100px 30px;
+            padding: 50px;
+            border-radius: 10px;
+            background-color: gainsboro;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-out;
+            animation: entrataBlocchi 0.5s ease-in-out;
+            margin-left: 55px;
+}
+#imm2
+{
+    position: absolute;
+    margin-left:-15px;
+}
+.come
+{
+    width: 90px;
+    height: 90px;
+    margin-left: 50px;
+    margin-top: -20px;
+
+}
+
+.prova
+{
+    margin-top: -60px;
+    margin-left: -30px;
+    
+}
+#imm
+{
+    margin-left: -10px;
+    margin-top: 10px;
+    
+    width: 90px;
+    height: 110px;
+}
+.navbar {
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 170px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+body
+{
+    background-image: url('img/sfondo.png');
+    background-size: contain;
+    height: 100vh;
+    width: 100vh;
+}
+}
+@media(max-width:1800px)
+{
+
+    #pallini
+    {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        border-radius: 50%;
+        margin-left: -450px;
+        margin-top: -28px;
+        background-color: pink;
+    
+    }
+    #pallini2
+    {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        border-radius: 50%;
+        margin-left: 655px;
+        margin-top: 138px;
+        background-color: green;
+        
+    }
+    #pallini3
+    {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        border-radius: 50%;
+        margin-left: 525px;
+        margin-top: 338px;
+        background-color: red;
+      
+    }
+    #pallini4
+    {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        border-radius: 50%;
+        margin-left: 375px;
+        margin-top: 291px;
+        background-color: purple;
+        
+    }
+    #pallini5
+    {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        border-radius: 50%;
+        margin-left: 655px;
+        margin-top: 291px;
+        background-color: green;
+    
+    }
+    #pallini6
+    {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        border-radius: 50%;
+        margin-left: 525px;
+        margin-top: 224px;
+        background-color: orange;
+       
+    }
+    #pallini7
+    {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        border-radius: 50%;
+        margin-left: 655px;
+        margin-top: 431px;
+        background-color: pink;
+       
+    }
+    body
+    {
+        background-image: url('img/sfondo.png');
+        height: 100vh;
+        width: 100vw;
+        background-size: contain;
+        background-position: center;
+    }
+    #Share
+    {
+        margin-left: 90px;
+    }
+}
+
+</style>
 <link rel="icon" href="img\logo_favicon.ico" type="image/x-icon">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="body">
     <div class="container">
@@ -83,7 +391,8 @@
                         <a href="Functionalities.php"><button id="bottone1" class="bottoni"  type="button">Funzionalita'</button></a>
                         <a href="index.php"><button id="bottone2" class="bottoni"   type="button">Home</button></a>
                         <a href="cercaNote.php"><button id="bottone3" class="bottoni" type="button">Cerca Note</button></a>
-                        <!--<button id="openPopupBtn" class="bottoni"  type="button"><img id="imm2" src="img/profile.png"></button>-->
+                        <button id="openPopupBtn" class="bottoni" class="prova" type="button"><img id="imm2" class="prova" src="img/profile.png"></button>
+                        
                         <?php
                             session_start();
                             include ('utils.inc.php');
@@ -214,6 +523,8 @@
             var numeroPallini = 8; // Numero totale di pallini
             if (cont === numeroPallini-1) {
                 document.body.style.backgroundImage = "url('img/sfondo.png')";
+            
+
             }
         }
 });
@@ -234,14 +545,14 @@
     <div class="blocco">
         <div id="centro"><b>CHI SIAMO?</b></div>
        <b> <p class="titoletto">CHI SIAMO?</p></b><br>
-        <p class="testino">Siamo quattro ragazzi che hanno deciso di realizzare un sito per prendere appunti per partecipare ad un concorso di Informatica (abbiamo tutti sedici anni)</p>
+        <b><p class="testino">Siamo quattro ragazzi che hanno deciso di realizzare un sito per prendere appunti per milgiorare le nostre capacità e sotto consiglio delle nostre prof di informatica</p></b>
         <div class="tenor-gif-embed" data-postid="15201219" data-share-method="host" data-aspect-ratio="1" data-width="100%"><img src="img/ciao.gif" class="come" alt="gif senza sfondo">
     </div>
     </div>
     <div class="blocco2">
         <div id="centro2"><b>COME FUNZIONA IL SITO?</div>
         <b> <p class="titoletto2">COME FUNZIONA IL SITO?</p></b><br>
-        <p class="testino2">Il sito permette non solo di prendere appunti, ma anche di cercare appunti fatti da qualcun altro e scaricarli (e' un sito fatto dagli studenti per gli studenti e in questo modo favorisce un aiuto reciproco)</p>
+        <p class="testino2">Il sito permette non solo di prendere appunti, ma anche di cercare appunti fatti da qualcun altro e scaricarli (e' un sito fatto dagli studenti per gli studenti)</p>
 
 </div>
 </div>
@@ -249,9 +560,9 @@
 </div>
 <div class="tutto2">
     <div class="blocco3">
-        <div id="centro3"><b>CHE SCUOLA FREQUENTIAMO?</b></div>
-        <b> <p class="titoletto3">CHE SCUOLA FREQUENTIAMO?</p></b><br>
-         <p class="testino3">Tutti e quattro frequentiamo l'ITIS Pino Hensemberger di Monza</p>
+        <div id="centro3"><b>CHE SCUOLA FREQUENTIAMO</b></div>
+        <b> <p class="titoletto3">CHE SCUOLA FREQUENTIAMO</p></b><br>
+         <p class="testino3">Tutti e quattro frequentiamo l'istituto tecnico industriale Pino Hensemberger di Monza</p>
          <button type="button" class="bottone" onclick="apriLink()">SITO SCUOLA</button>
 
 <script>
@@ -264,10 +575,10 @@
 
 </div>
 <div class="blocco4">
-    <div id="centro4"><b>COME CONTATTARE IN CASO DI BUG?</b></div>
-    <b> <p class="titoletto4">COME CONTATTARE IN CASO DI BUG?</p></b><br>
+    <div id="centro4"><b>COME CONTATTARCI</b></div>
+    <b> <p class="titoletto4">COME CONTATTARCI</p></b><br>
      <p class="testino4">Di seguito la mail del sito:</p>
-     <a href="mailto:sharenotes.workspace@gmail.com" id="Share">SHARENOTES</a>
+     <a href="sharenotes.workspace@gmail.com" id="Share">SHARENOTES</a>
    </div>
 </div>
 </body>
