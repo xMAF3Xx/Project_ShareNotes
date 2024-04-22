@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>CERCA NOTE</title>
     <link rel="stylesheet" href="cercaNote.css">
@@ -138,51 +139,52 @@
         echo "</form>";
     }
     ?>
-    <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
-        <div class="container-fluid">
-            <a href="index.php"><img id="imm" class="bar-Btns" src="img/im.png" style="height:95px; width: 220px"></a>
-            <a href="Functionalities.php"><button id="bottone1"  class="bar-Btns" type="button">Funzionalità</button></a>
-            <a href="index.php"><button id="bottone2"  class="bar-Btns" type="button">Home</button></a>
-            <a href="aboutPage.php"><button  id="bottone3" class="bar-Btns" type="button">Chi Siamo?</button></a>
-          <?php
+        <nav class="navbar" class="navbar navbar-dark bg-light fixed-top">
+            <div class="container-fluid">
+                <a href="index.php"><img id="imm" class="logo" class="bar-Btns" src="img/im.png"></a>
+                <a href="Functionalities.php"><button id="bottone1"  class="bar-Btns" type="button">Funzionalità</button></a>
+                <a href="index.php"><button id="bottone2"  class="bar-Btns" type="button">Home</button></a>
+                <a href="aboutPage.php"><button  id="bottone3" class="bar-Btns" type="button">Chi Siamo?</button></a>
+                <a href="index.php"><button id="bottone5" type="button"><img src="img/user.png" class="profile"></button></a>
+                <?php
             if (isLogged()) {
-                echo '<a href="index.php" ><button id="bottone5" type="button"><img src="img/user.png" style="height: 80px"></button></a>';
+                echo '<a href="index.php" ><button id="bottone5" type="button"><img src="img/user.png" class="profile"></button></a>';
             }else {
-                echo '<a href="profile_page.php" ><button id="bottone5" type="button"><img src="img/user.png" style="height: 80px"></button></a>';
+                echo '<a href="profile_page.php" ><button id="bottone5" type="button"><img src="img/user.png" class="profile"></button></a>';
             }
           ?>
-          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ShareNotes</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="Home" aria-current="page" role="button" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="Link" role="button" href="#">Link</a>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ShareNotes</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="Home" aria-current="page" role="button" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="Link" role="button" href="#">Link</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
             </div>
-        </div>
-    </nav>
-    <hr id="rowUpper">
-    <div class="ciao">
-        <div class="sidebar">
-            <h1 id="titolo">Cerca tutti gli appunti che desideri</h1>
-            <hr id="titleRow">
-            <!-- materia, anno, classe-->
-            <h3 id="titleFilters">Filtri:</h3>
-            <div class="filtersBlock">
-                <form action="cercaNote.php" method="post" id="Filters">
-                    <select name="materia" id="matFilter" onchange="submitSelected('matFilter')">
+        </nav>
+        <hr id="rowUpper">
+        <div class="ciao">
+            <div class="sidebar">
+                <h1 id="titolo">Cerca tutti gli appunti che desideri</h1>
+                <hr id="titleRow">
+                <!-- materia, anno, classe-->
+                <h3 id="titleFilters">Filtri:</h3>
+                <div class="filtersBlock">
+                    <form action="cercaNote.php" method="post" id="Filters">
+                        <select name="materia" id="matFilter" onchange="submitSelected('matFilter')">
                     <option value='all'>Materia</option>
                     <?php mostraMaterie($conn) ?>
                 </select><br>
-                    <select name="anno" id="annoFilter" onchange="submitSelected('annoFilter')">
+                        <select name="anno" id="annoFilter" onchange="submitSelected('annoFilter')">
                     <option value=0>Anno</option>
                     <option value=1>1°</option>
                     <option value=2>2°</option>
@@ -190,22 +192,23 @@
                     <option value=4>4°</option>
                     <option value=5>5°</option>
                 </select><br>
-                    <select name="classe" id="classFilter" onchange="submitSelected('classFilter')">
+                        <select name="classe" id="classFilter" onchange="submitSelected('classFilter')">
                     <option value='none'>Classe</option>
                     <?php mostraClassi($conn) ?>
                 </select>
-                </form>
+                    </form>
+                </div>
+                <div id="vr" style="height:100%; width:1px;margin-left:270px;margin-top:-378px;"></div>
             </div>
-            <div id="vr" style="height:100%; width:1px;margin-left:270px;margin-top:-378px;"></div>
+            <div class="input-container">
+                <form action="cercaNote.php" method="post" id="Search">
+                    <input name="SearchBar" id="input" type="text" placeholder="CERCA APPUNTI INSERENDO IL TITOLO:" onchange="submitSelected('input', 'Search')">
+                </form>
+                <div id="allNotes">
+                    <?php stampaNote($conn, $anno ?? 0, $classe ?? 'none', $materia ?? 'all', $ricerca ?? NULL); ?>
+                </div>
+            </div>
         </div>
-    <div class="input-container">
-        <form action="cercaNote.php" method="post" id="Search">
-            <input name="SearchBar" id="input" type="text" placeholder="CERCA APPUNTI INSERENDO IL TITOLO:" onchange="submitSelected('input', 'Search')">
-        </form>
-        <div id="allNotes">
-            <?php stampaNote($conn, $anno ?? 0, $classe ?? 'none', $materia ?? 'all', $ricerca ?? NULL); ?>
-        </div>
-    </div>
-  </div>
 </body>
+
 </html>
