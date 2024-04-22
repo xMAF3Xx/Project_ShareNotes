@@ -72,7 +72,7 @@
         document.forms["Temp"].submit();
     }
 
-    window.addEventListener('deviceorientation', function() {
+    window.addEventListener('orientationchange', function() {
         // Reload the current page without using the cache
         window.location.reload(true);
     });
