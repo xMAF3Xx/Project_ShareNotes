@@ -145,7 +145,6 @@
                 <a href="Functionalities.php"><button id="bottone1"  class="bar-Btns" type="button">Funzionalità</button></a>
                 <a href="index.php"><button id="bottone2"  class="bar-Btns" type="button">Home</button></a>
                 <a href="aboutPage.php"><button  id="bottone3" class="bar-Btns" type="button">Chi Siamo?</button></a>
-                <a href="index.php"><button id="bottone5" type="button"><img src="img/user.png" class="profile"></button></a>
                 <?php
             if (isLogged()) {
                 echo '<a href="index.php" ><button id="bottone5" type="button"><img src="img/user.png" class="profile"></button></a>';
