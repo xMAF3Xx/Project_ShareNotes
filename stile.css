@@ -190,6 +190,18 @@ button {
     left: 10px;
     z-index: 1;
 }
+#fotona 
+{
+    position: absolute;
+    height: 35px;
+    width: 45px;
+    margin-top: 19px;
+    margin-left: 100px;
+}
+#fotona:hover 
+{
+    transform: scale(1.2);
+}
 
 
 #blocco {
@@ -307,7 +319,7 @@ button {
     height: 65px;
     width: 65px;
     margin-top: 4px;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 #writeButton:hover 
 {
@@ -466,7 +478,7 @@ button {
     margin-top: -36px;
     height: 33px;
     width: 30px;
-    margin-left: 230px;
+    margin-left: 250px;
     align-items: center;
 }
 #boldButton:hover 
@@ -492,7 +504,7 @@ button {
     height: 45px;
     width: 45px;
     margin-top: -43px;
-    margin-left: 317px;
+    margin-left: 327px;
 }
 
 #underlineButton:hover 
@@ -700,7 +712,7 @@ html {
         width: 750px;
         height: 80px;
         border-radius: 50px;
-        margin-left: 28px;
+        margin-left: 18px;
         margin-top: 5px;
         border: 3px solid gray;
         background-color: white;
@@ -718,7 +730,7 @@ html {
         margin-top: 120px;
         height: 70px;
         border-radius: 30px;
-        margin-left: 67px;
+        margin-left: 57px;
         background-color: greenyellow;
         border: 1px solid black;
     }
