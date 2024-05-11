@@ -12,7 +12,7 @@
 
 <body class="body" onload="Importa('drawingCanvas')">
 
-<?php
+ <?php
         include("conn.inc.php");
 
         if(isset($_POST['Temporary'])){
@@ -131,6 +131,7 @@
         </div>
         <div id="barretta" class="tutto2">
             <img id="foto3" src="img/prova.png">
+            <img id="fotona" src="img/cocco.png">
             <img src="img/foglio.png" id="writeButton">
             <select class="select" id="fontSelector">
             <option  class="testo" value="Arial">Arial</option>
@@ -159,7 +160,7 @@
             <input type="color" id="colorPicker" value="#ff0000">
         </div>
         <div id="tools">
-            <!-- ... altri bottoni ... -->
+             
             <label id="labello" for="thicknessSlider"><img id="matita" src="img/matita.png"></label>
             <input type="range" id="thicknessSlider" min="1" max="100" value="5">
         </div>
