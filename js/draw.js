@@ -21,6 +21,7 @@ v.style.display = 'none';
 const s = document.getElementById("croce");
 const d = document.getElementById("annulla");
 const tutto2 = document.getElementById("tutto2");
+const evidenziatore = document.getElementById("fotona");
 let isCreating=false;
 let firstTimeClick = true;
 
@@ -40,6 +41,7 @@ let editingText = null;
 let isBold = false;
 let isItalic = false;
 let isUnderline = false;
+let isHigh=true;
 let eraseSize;
 
 canvas.width = window.innerWidth;
@@ -108,6 +110,7 @@ function redrawCanvas() {
 
 
 
+
 let isZoomingOrDezooming = false;
 
 
@@ -158,28 +161,27 @@ function eraseTouch(e) {
     context.fillRect(x - gommaSize / 2, y - gommaSize / 2, gommaSize, gommaSize);
 }
 //Fine prova OKK
-
-
 function startDrawing(e) {
-    if (isErasing || isCreating) return;
+    if (isErasing || isCreating || isHighlighting) return; // Se si sta cancellando, creando o evidenziando, esce dalla funzione
     isDrawing = true;
     isTyping = false;
 
-    const textCursor = document.getElementById('textCursor');
-    textCursor.style.display = 'block';
-
-    // Calcola la posizione del cursore rispetto al canvas
     const canvasX = e.clientX - canvas.offsetLeft;
     const canvasY = e.clientY - canvas.offsetTop;
 
-    // Posiziona il cursore esattamente sopra il punto di inizio del testo
+    // Imposta il cursore esattamente sopra il punto di inizio del testo
+    const textCursor = document.getElementById('textCursor');
+    textCursor.style.display = 'block';
     textCursor.style.left = canvasX - 560 + 'px';
-    textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop +20 + 'px';
+    textCursor.style.top = canvasY - textCursor.offsetHeight + canvas.offsetTop + 20 + 'px';
+
     context.beginPath();
     context.moveTo(canvasX, canvasY);
     clickStart = { x: canvasX, y: canvasY };
     updateCursorSize();
 }
+
+
 
 //Prova da qui:
 function startDrawingTouch(e) {
@@ -730,7 +732,7 @@ function enableWriting() {
     // Mostra l'area di testo e il pulsante di completamento
     textarea.style.display = 'block';
     finishButton.style.display = 'block';
-    isErasing=true;
+    isCreating=true;
 
     // Focalizza sull'area di testo
     textarea.focus();
@@ -746,7 +748,7 @@ function hideWritingOptions() {
     textarea.style.display = 'none';
     finishButton.style.display = 'none';
     editingText = null;
-    isErasing=false;
+    isCreating=false;
 }
 
 function getSelectedFontSize() {
@@ -1101,6 +1103,59 @@ formeButton.addEventListener('click', function() {
         isCreatingRectangle = true;
     }
 });
+
+let isHighlighting = false;
+
+// Funzione per attivare l'evidenziatore solo con il tasto sinistro del mouse
+function attivaEvidenziatore(e) {
+    if (isErasing || isTyping) return; // Non attivare se si sta cancellando o digitando
+    isHighlighting = true;
+    highlightArea(); // Avvia l'evidenziatore
+    
+}
+
+
+function highlightArea() {
+    canvas.addEventListener("mousemove", drawHighlight); 
+
+    
+    document.body.style.userSelect = 'none';
+
+    
+    canvas.oncontextmenu = () => false;
+}
+
+function drawHighlight(e) {
+    if (isHighlighting && e.buttons === 1) { 
+        const mouseX = e.clientX - canvas.offsetLeft;
+        const mouseY = e.clientY - canvas.offsetTop;
+        context.globalCompositeOperation = 'destination-over';
+
+        
+        const highlightSize = 30; 
+        const highlightX = mouseX - highlightSize / 2;
+        const highlightY = mouseY - highlightSize / 2;
+
+        context.fillStyle ='rgba(255, 255, 0, 0.2)'; 
+        context.fillRect(highlightX, highlightY, highlightSize, highlightSize);
+    }
+}
+
+
+
+
+
+
+
+evidenziatore.addEventListener("click", function() {
+    if (isHighlighting) {
+        isHighlighting=false;
+    } else {
+        attivaEvidenziatore(); 
+    }
+});
+
+
 
 canvas.addEventListener('mousedown', function(e) {
     if (isCreatingRectangle) {
