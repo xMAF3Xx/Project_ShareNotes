@@ -1106,54 +1106,56 @@ formeButton.addEventListener('click', function() {
 
 let isHighlighting = false;
 
-// Funzione per attivare l'evidenziatore solo con il tasto sinistro del mouse
 function attivaEvidenziatore(e) {
-    if (isErasing || isTyping) return; // Non attivare se si sta cancellando o digitando
+    if (isErasing || isTyping) return;
     isHighlighting = true;
-    highlightArea(); // Avvia l'evidenziatore
-    
+    isCreating=true;
+    highlightArea();
 }
 
-
 function highlightArea() {
-    canvas.addEventListener("mousemove", drawHighlight); 
+    canvas.addEventListener("mousemove", drawHighlight);
+    canvas.addEventListener("touchmove", drawHighlight); // Aggiungi gestore per touchmove
 
-    
     document.body.style.userSelect = 'none';
-
-    
     canvas.oncontextmenu = () => false;
 }
 
 function drawHighlight(e) {
-    if (isHighlighting && e.buttons === 1) { 
-        const mouseX = e.clientX - canvas.offsetLeft;
-        const mouseY = e.clientY - canvas.offsetTop;
+    e.preventDefault(); // Evita il comportamento predefinito (scroll/page zoom) durante il tocco
+
+    let clientX, clientY;
+    if (e.type === 'mousemove') {
+        clientX = e.clientX;
+        clientY = e.clientY;
+    } else if (e.type === 'touchmove') {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+    }
+
+    if (isHighlighting && (e.buttons === 1 || e.type === 'touchmove')) {
+        const mouseX = clientX - canvas.offsetLeft;
+        const mouseY = clientY - canvas.offsetTop;
         context.globalCompositeOperation = 'destination-over';
 
-        
-        const highlightSize = 30; 
+        const highlightSize = 30;
         const highlightX = mouseX - highlightSize / 2;
         const highlightY = mouseY - highlightSize / 2;
 
-        context.fillStyle ='rgba(255, 255, 0, 0.2)'; 
+        context.fillStyle = 'rgba(255, 255, 0, 0.2)';
         context.fillRect(highlightX, highlightY, highlightSize, highlightSize);
     }
 }
 
-
-
-
-
-
-
+// Aggiungi gestore per click/tap sull'elemento che attiva/disattiva l'evidenziatore
 evidenziatore.addEventListener("click", function() {
     if (isHighlighting) {
-        isHighlighting=false;
+        isHighlighting = false;
     } else {
-        attivaEvidenziatore(); 
+        attivaEvidenziatore();
     }
 });
+
 
 
 
