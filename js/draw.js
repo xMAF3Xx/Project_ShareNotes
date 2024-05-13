@@ -256,7 +256,7 @@ canvas.addEventListener('touchmove', function(e){
 });
 canvas.addEventListener('touchstart', startDrawingTouch);
 canvas.addEventListener('touchend', stopDrawing);
-//Fine prova OKK
+
 
 
 
@@ -673,7 +673,7 @@ canvas.addEventListener('mouseup', function() {
     }
 });
 
-//Prova da qui: OKK
+
 canvas.addEventListener('touchstart', function(e) {
     e.preventDefault(); // Prevents default scrolling behavior on touch devices
     if (isCreatingTriangle) {
@@ -1108,21 +1108,27 @@ let isHighlighting = false;
 
 function attivaEvidenziatore(e) {
     if (isErasing || isTyping) return;
-    isHighlighting = true;
-    isCreating=true;
-    highlightArea();
+    
+    isHighlighting = !isHighlighting; // Cambia lo stato di isHighlighting
+    if (isHighlighting) {
+        highlightArea();
+    } else {
+        canvas.removeEventListener("mousemove", drawHighlight);
+        canvas.removeEventListener("touchmove", drawHighlight);
+        document.body.style.userSelect = 'auto'; // Ripristina la selezione di testo predefinita
+        canvas.oncontextmenu = null; // Ripristina il comportamento predefinito del menu contestuale
+    }
 }
 
 function highlightArea() {
     canvas.addEventListener("mousemove", drawHighlight);
-    canvas.addEventListener("touchmove", drawHighlight); // Aggiungi gestore per touchmove
-
+    canvas.addEventListener("touchmove", drawHighlight);
     document.body.style.userSelect = 'none';
     canvas.oncontextmenu = () => false;
 }
 
 function drawHighlight(e) {
-    e.preventDefault(); // Evita il comportamento predefinito (scroll/page zoom) durante il tocco
+    e.preventDefault();
 
     let clientX, clientY;
     if (e.type === 'mousemove') {
@@ -1148,13 +1154,9 @@ function drawHighlight(e) {
 }
 
 // Aggiungi gestore per click/tap sull'elemento che attiva/disattiva l'evidenziatore
-evidenziatore.addEventListener("click", function() {
-    if (isHighlighting) {
-        isHighlighting = false;
-    } else {
-        attivaEvidenziatore();
-    }
-});
+evidenziatore.addEventListener("click", attivaEvidenziatore);
+
+
 
 
 
