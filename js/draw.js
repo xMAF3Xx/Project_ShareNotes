@@ -1112,9 +1112,7 @@ function attivaEvidenziatore(e) {
     if (isHighlighting) {
         highlightArea();
     } else {
-        // Disattiva l'evidenziatore
-        canvas.removeEventListener("mousemove", drawHighlight);
-        canvas.removeEventListener("touchmove", drawHighlight);
+
         document.body.style.userSelect = 'auto'; // Ripristina la selezione di testo predefinita
         canvas.oncontextmenu = null; // Ripristina il comportamento predefinito del menu contestuale
     }
@@ -1128,7 +1126,7 @@ function highlightArea() {
 }
 
 function drawHighlight(e) {
-    e.preventDefault();
+   
 
     let clientX, clientY;
     if (e.type === 'mousemove') {
@@ -1153,8 +1151,17 @@ function drawHighlight(e) {
     }
 }
 
-// Aggiungi gestore per click/tap sull'elemento che attiva/disattiva l'evidenziatore
-evidenziatore.addEventListener("click", attivaEvidenziatore);
+
+evidenziatore.addEventListener("click", function(){
+    if(isHighlighting)
+        {
+           isHighlighting=false;
+        }
+    else
+    {
+        attivaEvidenziatore();
+    }
+});
 
 
 
