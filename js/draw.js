@@ -185,7 +185,7 @@ function startDrawing(e) {
 
 //Prova da qui:
 function startDrawingTouch(e) {
-    if (isErasing || isCreating) return;
+    if (isErasing || isCreating || isHighlighting) return;
     isDrawing = true;
     isTyping = false;
 
@@ -1103,16 +1103,16 @@ formeButton.addEventListener('click', function() {
         isCreatingRectangle = true;
     }
 });
-
 let isHighlighting = false;
+
 
 function attivaEvidenziatore(e) {
     if (isErasing || isTyping) return;
-    
-    isHighlighting = !isHighlighting; // Cambia lo stato di isHighlighting
+    isHighlighting = !isHighlighting;
     if (isHighlighting) {
         highlightArea();
     } else {
+        // Disattiva l'evidenziatore
         canvas.removeEventListener("mousemove", drawHighlight);
         canvas.removeEventListener("touchmove", drawHighlight);
         document.body.style.userSelect = 'auto'; // Ripristina la selezione di testo predefinita
@@ -1155,8 +1155,6 @@ function drawHighlight(e) {
 
 // Aggiungi gestore per click/tap sull'elemento che attiva/disattiva l'evidenziatore
 evidenziatore.addEventListener("click", attivaEvidenziatore);
-
-
 
 
 
