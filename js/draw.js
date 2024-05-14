@@ -1111,23 +1111,15 @@ function attivaEvidenziatore(e) {
     isHighlighting = !isHighlighting;
     if (isHighlighting) {
         highlightArea();
-    } else {
-
-        document.body.style.userSelect = 'auto'; // Ripristina la selezione di testo predefinita
-        canvas.oncontextmenu = null; // Ripristina il comportamento predefinito del menu contestuale
     }
 }
 
 function highlightArea() {
     canvas.addEventListener("mousemove", drawHighlight);
     canvas.addEventListener("touchmove", drawHighlight);
-    document.body.style.userSelect = 'none';
-    canvas.oncontextmenu = () => false;
+    
 }
-
 function drawHighlight(e) {
-   
-
     let clientX, clientY;
     if (e.type === 'mousemove') {
         clientX = e.clientX;
@@ -1143,11 +1135,14 @@ function drawHighlight(e) {
         context.globalCompositeOperation = 'destination-over';
 
         const highlightSize = 30;
-        const highlightX = mouseX - highlightSize / 2;
-        const highlightY = mouseY - highlightSize / 2;
+        const highlightX = mouseX;
+        const highlightY = mouseY;
+        const radius = highlightSize / 2;
 
+        context.beginPath();
         context.fillStyle = 'rgba(255, 255, 0, 0.2)';
-        context.fillRect(highlightX, highlightY, highlightSize, highlightSize);
+        context.arc(highlightX, highlightY, radius, 0, 2 * Math.PI);
+        context.fill();
     }
 }
 
