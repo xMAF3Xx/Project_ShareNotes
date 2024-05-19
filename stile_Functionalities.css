@@ -3,7 +3,7 @@
     background-image: url("img/pagina.png");
     background-repeat: no-repeat;
     background-position: center; /* Center the background image */
-    display: flex;
+    background-size: cover;
     justify-content: center;
     align-items: center;
     font-family: 'Inter', sans-serif;
@@ -26,7 +26,8 @@
 .container-fluid
 {
     text-align: center;
-    margin-top: -5px;
+    margin-left: -120px;
+    background-color: white;
 }
 #bottone1 {
     position: absolute;
@@ -54,8 +55,6 @@
     padding: 1px;
     margin-left: -980px;
     border: none;
-    margin: none;
-    background-color: none;
     justify-content: center;
     margin-bottom: 30px;
 }
@@ -84,7 +83,6 @@
 }
 #bott
 {
-    margin: white;
     background-color: white;
     border: none;
     background: none;
@@ -102,18 +100,17 @@
 }
 
 #linea {
-    margin-top: 23px;
-    margin: 10px 0; 
+    margin-top: 23px; 
     border: none;
     width: 2000px;
     border-top: 2px solid  grey; 
 }
 #imm
 {
-    margin-right: 1750px;
+    margin-right: 1550px;
     margin-top: 20px;
-    
     width: 110px;
+    margin-left: -200px;
 }
 #si
 {
@@ -124,14 +121,6 @@
     transform: scale(1.2);
     transition: transform 0.3s ease;
 }
-#titoletto2
-{
-    position: absolute;
-    margin-top: 2000px;
-    margin-left: 900px;
-    
-    color: red;
-}
 #si
 {
     margin: none;
@@ -139,98 +128,197 @@
 
 #imm2
 {
-    position: absolute;
-    margin-left: -100px;
     margin-top: -115px;
     width: 70px;
+}
+.upper-Section{ /* UPPER */
+    margin-top: 11%;
 }
 #titolo
 {
     font-size: 45px;
-    margin-top: 80px;
-    margin-left: 600px;
-    margin-right: 140px;
     color: orange;
-}
-#titoletto
-{
-    margin-top:10px;
-    position: absolute;
-    margin-top: 600px;
-    margin-left: -820px;
-    color: red;
+    text-align: center;
 }
 #testo
 {
-    margin-top: 260px;
-    margin-left: -1050px;
     font-size: 29px;
     text-align: center;
 }
+
+.profile-Section{ /* PROFILE */
+    margin-top: 80px;
+    display: flex;
+}
+#titoletto
+{
+    color: red;
+    position: absolute;
+    right:15%;
+}
 #immagine
 {
-    position: absolute;
     border-radius: 30px;
-    margin-top: 1300px;
-    width: 1000px;
-    margin-left: -810px;
+    height: 485px;
     border: 1px solid black;
-
+    margin-top: 80px;
+    margin-left: 2%;
 }
 #profilo
 {
-    position: absolute;
     font-size: 25px;
-    margin-top: 1300px;
-    margin-left: 1200px;
+    margin-top: 90px;
+    margin-left: 10%;
 }
+
+.create-Section{ /* CREATE */
+    display: flex;
+    margin-top: 80px;
+}
+/*#prova
+{
+    z-index: -1;
+    width: 500px;
+}*/
 #immagine2
 {
-    position: absolute;
+    margin-top: 100px;
     border-radius: 30px;
-    margin-top: 2700px;
-    width: 950px;
-    margin-left: 1020px;
-    margin-right: 30px;
+    height: 500px;
     border: 1px solid black;
+    margin-left: 1.5%;
 }
 #creazione 
 {
-    position: absolute;
-    font-size: 25px;
-    margin-top: 2700px;
-    margin-left :-963px;
+    margin-top: 120px;
+    font-size: 22px;
     background-image: url("sfondino,png");
     background-repeat: no-repeat;
+    margin-left: 2%;
+}
+#titoletto2
+{
+    position: absolute;
+    color: red;
+    left: 15%;
+}
+
+.search-Section{ /* SEARCH */
+    display: flex;
+    margin-top: 80px;
 }
 #titoletto3
 {
     position: absolute;
-    margin-top: 3500px;
-    margin-left: -860px;
     color: red;
-}
-#prova
-{
-    position: absolute;
-    margin-top: 2700px;
-    margin-left: -963px;
-    z-index: -1;
-    width: 500px;
+    right: 15%;
 }
 #immagine3
 {
-    position: absolute;
+    margin-top: 80px;
     border-radius: 30px;
-    margin-top: 4200px;
-    width: 900px;
-    margin-left: -950px;
+    height: 495px;
     border: 1px solid black;
+    margin-left: 2%;
 }
 #cerca
 {
-    position: absolute;
+    margin-top: 100px;
     font-size: 25px;
-    margin-top: 4200px;
-    margin-left: 1100px;
+    margin-left: 7%;
+}
+
+@media (max-width: 1800px){
+    #imm{
+        margin-right: 1650px;
+        width: 80px;
+    }
+    #bottone1, #bottone2, #bottone3, #bottone5{
+        font-size: 17px;
+    }
+    #bottone1{
+        margin-left: -1500px;
+    }
+    #bottone2{
+        margin-left: -1180px;
+    }
+    #bottone3{
+        margin-left: -900px;
+    }
+    #imm2{
+        margin-left: -1300px;
+    }
+    /* UPPER */
+    .upper-Section{
+        margin-top: 15%;
+    }
+    #titolo{
+        font-size: 30px;
+    }
+    #testo{
+        font-size: 20px;
+    }
+    /* PROFILE */
+    #immagine{
+        height: 300px;
+    }
+    #profilo{
+        font-size: 15px;
+    }
+    /* CREATE */
+    #immagine2{
+        height: 300px;
+    }
+    #creazione{
+        font-size: 15px;
+        margin-top: 115px;
+    }
+    /* SEARCH */
+    #immagine3{
+        height: 300px;
+    }
+    #cerca{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 1200px){
+    #bottone1{
+        margin-left: -1600px;
+    }
+    #bottone2{
+        margin-left: -1380px;
+    }
+    #bottone3{
+        margin-left: -1150px;
+    }
+    #imm2{
+        margin-left: -1800px;
+    }
+    /* UPPER */
+    .upper-Section{
+        margin-top: 18%;
+    }
+    /* PROFILE */
+    #immagine{
+        height: 250px;
+    }
+    #profilo{
+        margin-left: 5%;
+        font-size: 12px;
+    }
+    /* CREATE */
+    #immagine2{
+        height: 250px;
+    }
+    #creazione{
+        font-size: 12px;
+    }
+    /* SEARCH */
+    #immagine3{
+        height: 250px;
+    }
+    #cerca{
+        font-size: 12px;
+    }
 }
