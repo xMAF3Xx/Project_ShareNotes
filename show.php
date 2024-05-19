@@ -187,7 +187,7 @@
             <a href="index.php"><button style="border: none; background: none;" id="home">Home</button></a>
             <a href="Functionalities.php"><button style="border: none; background: none;" id="funzionalita">Funzionalità</button></a>
             <a href="aboutPage.php"><button style="border: none; background: none;" id="about">About</button></a>
-            <!-- Pulsante profilo da mettere con php -->
+             Pulsante profilo da mettere con php 
             <?php
                 if(isLogged()){
                     echo '<a href="index.php"><img src="img/user.png" alt="USER" id="user"></a>';
@@ -195,23 +195,24 @@
                     echo '<a href="profile_page.php"><img src="img/user.png" alt="USER" id="user"></a>';
                 }
             ?>
+            <a href="index.php"><img src="img/user.png" alt="USER" id="user"></a>
             <hr id="fine-barra">
         </div>
-        <h2 id="title"><?php echo $titolo ?></h2>
+        <h2 id="title">NOTA BIANCHISSIMA<?php echo $titolo ?></h2>
         <div class="noteContainer">
             <img id="nota" src="<?php echo $contenuto ?>">
         </div>
         <div class="bottoni">
             <button onclick="downloadNota('<?php echo $titolo ?>','<?php echo $contenuto ?>')"><img src="img/scarica.png" alt="Salva" id="save"></button>
-            <form action="show.php" method="post"> <!-- MODIFICA -->
-                <input name="codNota" type="number" value=<?php echo $codice ?> style="display: none;">
+            <form action="show.php" method="post">  MODIFICA   <?php echo $codice ?>
+                <input name="codNota" type="number" value=0 style="display: none;">
                 <button name="modifica" value=1><img src="img/prova2.png" alt="Modifica" id="modify"></button>
             </form>
-            <form action="show.php" method="post"> <!-- LIKE -->
-                <input name="codNota" type="number" value=<?php echo $codice ?> style="display: none;">
+            <form action="show.php" method="post">  LIKE   <?php echo $codice ?>
+                <input name="codNota" type="number" value=0 style="display: none;">
                 <button name="like" value=1 class="likes"><img src="img/cuore.png" alt="Like" id="like"><img src="img/cuorerosso.png" id="rosso"></button>
             </form>
-            <p id="nLikes"> <?php echo $like ?> </p>
+            <p id="nLikes"> 239<?php echo $like ?> </p>
         </div>
         <div class="info">
             <h4 id="titleinfo">Info</h4>
