@@ -1,6 +1,7 @@
 body {
     overflow: hidden;
     background-image: url("img/sfondo_index.jpg");
+    background-repeat:no-repeat;
     font-family: 'Inter', sans-serif;
 }
 
@@ -47,7 +48,7 @@ body {
     position: relative;
     width: 325px;
     height: 100px;
-    background-color: white;
+    background:none;
     left: 15%;
     margin-top: 605px;
 }
@@ -55,11 +56,11 @@ body {
 .bottoni button{
     background: none;
     border: none;
-    margin-top: 35px;
+    margin-top: 10px;
 }
 
 .bottoni img{
-    height: 70px;
+    height: 50px;
 }
 
 .bottoni form{
@@ -69,24 +70,25 @@ body {
 #nLikes{
     display: inline;
     position: absolute;
-    font-size: 50px;
+    font-size: 45px;
     margin: 0px;
-    right: 0%;
-    margin-top: 40px;
+    right: 15%;
+    margin-top: 10px;
 }
 
 #nota{
     height: 576px;
     width: 1024px;
+
 }
 
 .noteContainer{
     height: 576px;
     width: 1024px;
-    position: absolute;
+    position:absolute;
     border: 2px solid gray;
+    bottom: 12%;
     left: 15%;
-    bottom: 110px;
     background-color: white;
 }
 
@@ -94,7 +96,7 @@ body {
     position: absolute;
     width: fit-content;
     height: fit-content;
-    right: 12%;
+    right: 8%;
     top: 25%;
     justify-content: center;
 }
@@ -111,7 +113,7 @@ body {
 }
 
 #title{
-    font-size: 60px;
+    font-size: 58px;
     margin: 0;
     text-align: center;
 }
@@ -126,4 +128,331 @@ body {
 
 .likes:hover #rosso{
     display: block;
+}
+
+
+@media (max-width: 1800px){
+    
+    .noteContainer{
+        height: 536.625px;
+        width: 954px;
+        position: static;
+        display: inline-block;
+        border: 2px solid gray;
+        margin-left: 10%;
+        background-color: white;
+    }
+    
+    .info{
+        width: fit-content;
+        height: fit-content;
+        margin-left: 74%;
+        display: inline-block;
+        justify-content: center;
+    }
+    
+    #titleinfo{
+        color: red;
+        font-size: 39px;
+        margin-left: 3%;
+    }
+
+    .dati{
+        list-style-type: none;
+        font-size: 25px;
+        margin-left: -28px;
+    }
+
+    #nota{
+        height: 536.625px;
+        width: 954px;
+    }
+    
+    #nLikes{
+        display: inline;
+        position: absolute;
+        font-size: 40px;
+        margin: 0px;
+        right: 17%;
+        margin-top: 10px;
+    }
+
+    .bottoni{
+        position: relative;
+        width: 325px;
+        height: 100px;
+        background:none;
+        left: 10%;
+        margin-top: 0%;
+    }
+
+    #title{
+        font-size: 57px;
+        margin-top: 2%;
+        margin-right: 8%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1500px) {
+    .noteContainer{
+        height: 405px;
+        width: 720px;
+        position: absolute;
+        border: 2px solid gray;
+        margin-top: 100px;
+        left: 2%;
+        background-color: white;
+    }
+    
+    .info{
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        right: 3.5%;
+        top: 25%;
+        justify-content: center;
+    }
+    
+    #titleinfo{
+        color: red;
+        font-size: 32px;
+        margin-left: 70px;
+        margin-top: 100px;
+    }
+
+    .dati{
+        list-style-type: none;
+        font-size: 20px;
+        margin-top: -10px;
+        margin-left: 30px;
+    }
+
+    #nota{
+        height: 405px;
+        width: 720px;
+    }
+    
+    #nLikes{
+        display: inline;
+        position: absolute;
+        font-size: 40px;
+        margin: 0px;
+        right: 17%;
+        margin-top: 10px;
+    }
+
+    .bottoni{
+        position: relative;
+        width: 325px;
+        height: 100px;
+        background:none;
+        left: 10%;
+        margin-top: 500px;
+    }
+
+    #title{
+        font-size: 57px;
+        margin-top: 2%;
+        margin-right: 8%;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 1200px) { 
+    .noteContainer{
+        height: 300px;
+        width: 531px;
+        border: 2px solid gray;
+        margin-bottom: 100px;
+        left: 2%;
+        background-color: white;
+    }
+    
+    .info{
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        right: 3.5%;
+        top: 25%;
+        justify-content: center;
+    }
+    
+    #titleinfo{
+        color: red;
+        font-size: 32px;
+        margin-left: 70px;
+        margin-top: 100px;
+    }
+
+    .dati{
+        list-style-type: none;
+        font-size: 20px;
+        margin-top: -10px;
+        margin-left: 30px;
+    }
+
+    #nota{
+        height: 300px;
+        width: 531px;
+    }
+    
+    #nLikes{
+        display: inline;
+        position: absolute;
+        font-size: 40px;
+        margin: 0px;
+        right: 17%;
+        margin-top: 10px;
+    }
+
+    .bottoni{
+        position: relative;
+        width: 325px;
+        height: 100px;
+        background:none;
+        left: 12%;
+        margin-top: 380px;
+    }
+
+    #title{
+        font-size: 57px;
+        margin-top: 2%;
+        margin-right: 8%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 940px){
+
+    .noteContainer{
+        height: 90px;
+        width: 160px;
+        border: 2px solid gray;
+        bottom:10%;
+        left: 2%;
+        background-color: white;
+    }
+    
+    .info{
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        right: 3.5%;
+        top: 25%;
+        justify-content: center;
+    }
+    
+    #titleinfo{
+        color: red;
+        font-size: 32px;
+        margin-left: 70px;
+        margin-top: 100px;
+    }
+
+    .dati{
+        list-style-type: none;
+        font-size: 20px;
+        margin-top: -10px;
+        margin-left: 30px;
+    }
+
+    #nota{
+        height: 300px;
+        width: 531px;
+    }
+    
+    #nLikes{
+        display: inline;
+        position: absolute;
+        font-size: 40px;
+        margin: 0px;
+        right: 17%;
+        margin-top: 10px;
+    }
+
+    .bottoni{
+        position: relative;
+        width: 325px;
+        height: 100px;
+        background:none;
+        left: 12%;
+        margin-top: 380px;
+    }
+
+    #title{
+        font-size: 57px;
+        margin-top: 2%;
+        margin-right: 8%;
+        text-align: center;
+    }
+
+}
+ 
+
+@media (max-width: 767px){
+
+    .noteContainer{
+        height: 90px;
+        width: 160px;
+        border: 2px solid gray;
+        bottom:-100px;
+        left: 2%;
+        background-color: white;
+    }
+    
+    .info{
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        right: 3.5%;
+        top: 25%;
+        justify-content: center;
+    }
+    
+    #titleinfo{
+        color: red;
+        font-size: 32px;
+        margin-left: 70px;
+        margin-top: 100px;
+    }
+
+    .dati{
+        list-style-type: none;
+        font-size: 20px;
+        margin-top: -10px;
+        margin-left: 30px;
+    }
+
+    #nota{
+        height: 300px;
+        width: 531px;
+    }
+    
+    #nLikes{
+        display: inline;
+        position: absolute;
+        font-size: 40px;
+        margin: 0px;
+        right: 17%;
+        margin-top: 10px;
+    }
+
+    .bottoni{
+        position:absolute;
+        width: 325px;
+        height: 100px;
+        background:none;
+        left: 12%;
+        bottom: 25%;
+    }
+
+    #title{
+        font-size: 57px;
+        margin-top: 2%;
+        margin-right: 8%;
+        text-align: center;
+    }
+
 }
