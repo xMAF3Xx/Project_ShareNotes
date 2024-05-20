@@ -198,7 +198,7 @@
             <a href="index.php"><img src="img/user.png" alt="USER" id="user"></a>
             <hr id="fine-barra">
         </div>
-        <h2 id="title">NOTA BIANCHISSIMA<?php echo $titolo ?></h2>
+        <h2 id="title"> <?php echo $titolo ?></h2>
         <div class="noteContainer">
             <img id="nota" src="<?php echo $contenuto ?>">
         </div>
@@ -212,7 +212,7 @@
                 <input name="codNota" type="number" value=0 style="display: none;">
                 <button name="like" value=1 class="likes"><img src="img/cuore.png" alt="Like" id="like"><img src="img/cuorerosso.png" id="rosso"></button>
             </form>
-            <p id="nLikes"> 239<?php echo $like ?> </p>
+            <p id="nLikes"> 2<?php echo $like ?> </p>
         </div>
         <div class="info">
             <h4 id="titleinfo">Info</h4>
