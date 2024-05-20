@@ -187,7 +187,6 @@
             <a href="index.php"><button style="border: none; background: none;" id="home">Home</button></a>
             <a href="Functionalities.php"><button style="border: none; background: none;" id="funzionalita">Funzionalità</button></a>
             <a href="aboutPage.php"><button style="border: none; background: none;" id="about">About</button></a>
-             Pulsante profilo da mettere con php 
             <?php
                 if(isLogged()){
                     echo '<a href="index.php"><img src="img/user.png" alt="USER" id="user"></a>';
@@ -195,7 +194,6 @@
                     echo '<a href="profile_page.php"><img src="img/user.png" alt="USER" id="user"></a>';
                 }
             ?>
-            <a href="index.php"><img src="img/user.png" alt="USER" id="user"></a>
             <hr id="fine-barra">
         </div>
         <h2 id="title"> <?php echo $titolo ?></h2>
