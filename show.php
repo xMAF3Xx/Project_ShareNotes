@@ -196,21 +196,21 @@
             ?>
             <hr id="fine-barra">
         </div>
-        <h2 id="title"> <?php echo $titolo ?></h2>
+        <h2 id="title"> <?php echo $titolo ?> </h2>
         <div class="noteContainer">
             <img id="nota" src="<?php echo $contenuto ?>">
         </div>
         <div class="bottoni">
             <button onclick="downloadNota('<?php echo $titolo ?>','<?php echo $contenuto ?>')"><img src="img/scarica.png" alt="Salva" id="save"></button>
-            <form action="show.php" method="post">  MODIFICA   <?php echo $codice ?>
-                <input name="codNota" type="number" value=0 style="display: none;">
+            <form action="show.php" method="post">
+                <input name="codNota" type="number" value=<?php echo $codice ?> style="display: none;">
                 <button name="modifica" value=1><img src="img/prova2.png" alt="Modifica" id="modify"></button>
             </form>
-            <form action="show.php" method="post">  LIKE   <?php echo $codice ?>
-                <input name="codNota" type="number" value=0 style="display: none;">
+            <form action="show.php" method="post">
+                <input name="codNota" type="number" value=<?php echo $codice ?> style="display: none;">
                 <button name="like" value=1 class="likes"><img src="img/cuore.png" alt="Like" id="like"><img src="img/cuorerosso.png" id="rosso"></button>
             </form>
-            <p id="nLikes"> 2<?php echo $like ?> </p>
+            <p id="nLikes"> <?php echo $like ?> </p>
         </div>
         <div class="info">
             <h4 id="titleinfo">Info</h4>
