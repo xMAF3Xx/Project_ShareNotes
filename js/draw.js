@@ -1132,7 +1132,7 @@ function drawHighlight(e) {
     if (isHighlighting && (e.buttons === 1 || e.type === 'touchmove')) {
         const mouseX = clientX - canvas.offsetLeft;
         const mouseY = clientY - canvas.offsetTop;
-        context.globalCompositeOperation = 'destination-over';
+        //context.globalCompositeOperation = 'destination-over';
 
         const highlightSize = 30;
         const highlightX = mouseX;
